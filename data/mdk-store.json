@@ -686,6 +686,36 @@
       "sortOrder": 22,
       "createdAt": "2026-10-11T08:00:00.000Z",
       "updatedAt": "2026-10-11T08:00:00.000Z"
+    },
+    {
+      "id": "website_google_calculator",
+      "name": "Google Calculator",
+      "slug": "google-calculator",
+      "logo": "",
+      "banner": "",
+      "screenshots": [],
+      "description": "A modern Google Calculator web application built with clean UI and accurate arithmetic calculations.",
+      "shortDescription": "Modern Google Calculator web application.",
+      "category": "Web Applications",
+      "features": [
+        "Clean Google Calculator UI",
+        "Real-time calculations",
+        "History and responsive design"
+      ],
+      "productsAndServices": [
+        "Google Calculator"
+      ],
+      "url": "https://google-calculator-omega.vercel.app",
+      "launchDate": null,
+      "status": "live",
+      "businessDivisionId": null,
+      "ownershipType": "other",
+      "showOwnershipPublicly": false,
+      "analyticsEnabled": false,
+      "isPublic": true,
+      "sortOrder": 23,
+      "createdAt": "2026-11-21T06:05:50.000Z",
+      "updatedAt": "2026-11-21T06:05:50.000Z"
     }
   ],
   "teamMembers": [
@@ -4679,6 +4709,78 @@
       "referrerHost": null,
       "id": "5f2608b18caee31842ee899c",
       "createdAt": "2026-11-21T06:21:51.975Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "a6320636b891fbe406690fd6",
+      "createdAt": "2026-11-21T06:27:59.983Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "71ca046414b468a1213eb715",
+      "createdAt": "2026-11-21T06:49:57.747Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "5bb696cdf8a63b8903e8f249",
+      "createdAt": "2026-11-21T06:50:09.854Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "85cad360aa8735e90270fead",
+      "createdAt": "2026-11-21T06:50:28.309Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "32385dd5c9ccf731917ac91e",
+      "createdAt": "2026-11-21T06:50:29.304Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "fe38a32d6722921ff0a95eea",
+      "createdAt": "2026-11-21T06:50:42.441Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "ce62645955a6f38d5231afb6",
+      "createdAt": "2026-11-21T06:55:01.084Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "50f14f86b5d659081bb977ec",
+      "createdAt": "2026-11-21T06:58:23.224Z"
     }
   ],
   "hostedProjects": [
@@ -4789,6 +4891,24 @@
       "viewCount": 2310,
       "createdAt": "2024-07-01T00:00:00.000Z",
       "updatedAt": "2026-11-20T12:37:34.621Z"
+    },
+    {
+      "id": "proj_google_calculator",
+      "userId": "usr_c5322c59-a",
+      "userEmail": "sabirusmani159@gmail.com",
+      "userName": "Sabir Usmani",
+      "projectName": "Google Calculator",
+      "slug": "google-calculator",
+      "description": "Modern Google Calculator web application with clean UI and complete arithmetic calculations.",
+      "visibility": "public",
+      "deploymentStatus": "live",
+      "storageUsedBytes": 1250000,
+      "totalDeployments": 1,
+      "viewCount": 1,
+      "createdAt": "2026-11-21T06:05:50.000Z",
+      "updatedAt": "2026-11-21T06:05:50.000Z",
+      "activeDeploymentId": "dep_google_calc_01",
+      "deploymentUrl": "https://google-calculator-omega.vercel.app"
     }
   ],
   "hostedDeployments": [
@@ -4845,6 +4965,23 @@
       ],
       "createdAt": "2026-11-20T11:37:08.310Z",
       "publishedAt": "2026-11-20T11:37:08.310Z"
+    },
+    {
+      "id": "dep_google_calc_01",
+      "projectId": "proj_google_calculator",
+      "userId": "usr_c5322c59-a",
+      "deploymentStatus": "live",
+      "deploymentUrl": "https://google-calculator-omega.vercel.app",
+      "storagePath": "D:\\3. Project\\MDK Enterpriceses\\data\\hosted-sites\\usr_c5322c59-a\\google-calculator",
+      "fileCount": 12,
+      "totalSize": 1250000,
+      "entryFile": "index.html",
+      "logs": [
+        "[2026-11-21T06:05:50.000Z] Build export verified: index.html",
+        "[2026-11-21T06:05:50.000Z] Deployed successfully to https://google-calculator-omega.vercel.app"
+      ],
+      "createdAt": "2026-11-21T06:05:50.000Z",
+      "publishedAt": "2026-11-21T06:05:50.000Z"
     }
   ],
   "hostedProjectFiles": [
