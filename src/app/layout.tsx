@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     siteName: "Samad Expo",
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "j7N4EKQjh9NpQFnXBGQopLmSeJ8lLXxYPD2E3pndgNA",
   },
 };
 
