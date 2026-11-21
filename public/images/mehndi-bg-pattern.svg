@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" fill="none">
+  <g stroke="#D4AF37" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
+    <!-- Center airy mandala bloom at (160,160) -->
+    <circle cx="160" cy="160" r="18" stroke-width="0.9" />
+    <circle cx="160" cy="160" r="34" stroke-width="0.7" stroke-dasharray="3 4" />
+    <circle cx="160" cy="160" r="56" stroke-width="0.85" />
+    <circle cx="160" cy="160" r="4" fill="#D4AF37" stroke="none" />
+
+    <!-- 8 symmetric lotus petals around center -->
+    <path d="M160 104 C153 84 160 72 167 84 C169 92 164 101 160 104 Z" stroke-width="0.9" />
+    <path d="M160 216 C153 236 160 248 167 236 C169 228 164 219 160 216 Z" stroke-width="0.9" />
+    <path d="M104 160 C84 153 72 160 84 167 C92 169 101 164 104 160 Z" stroke-width="0.9" />
+    <path d="M216 160 C236 153 248 160 236 167 C228 169 219 164 216 160 Z" stroke-width="0.9" />
+
+    <path d="M120 120 C102 110 98 98 112 104 C120 108 122 116 120 120 Z" stroke-width="0.85" />
+    <path d="M200 120 C218 110 222 98 208 104 C200 108 198 116 200 120 Z" stroke-width="0.85" />
+    <path d="M120 200 C102 210 98 222 112 216 C120 212 122 204 120 200 Z" stroke-width="0.85" />
+    <path d="M200 200 C218 210 222 222 208 216 C200 212 198 204 200 200 Z" stroke-width="0.85" />
+
+    <!-- Fine outer mandala dots -->
+    <circle cx="160" cy="64" r="1.6" fill="#D4AF37" stroke="none" />
+    <circle cx="160" cy="256" r="1.6" fill="#D4AF37" stroke="none" />
+    <circle cx="64" cy="160" r="1.6" fill="#D4AF37" stroke="none" />
+    <circle cx="256" cy="160" r="1.6" fill="#D4AF37" stroke="none" />
+    <circle cx="94" cy="94" r="1.5" fill="#D4AF37" stroke="none" />
+    <circle cx="226" cy="94" r="1.5" fill="#D4AF37" stroke="none" />
+    <circle cx="94" cy="226" r="1.5" fill="#D4AF37" stroke="none" />
+    <circle cx="226" cy="226" r="1.5" fill="#D4AF37" stroke="none" />
+
+    <!-- Delicate corner diamond paisleys tiling seamlessly at (0,0) / (320,320) -->
+    <path d="M0 32 C18 28 28 18 32 0" stroke-width="0.8" stroke-dasharray="2.5 3.5" />
+    <path d="M320 32 C302 28 292 18 288 0" stroke-width="0.8" stroke-dasharray="2.5 3.5" />
+    <path d="M0 288 C18 292 28 302 32 320" stroke-width="0.8" stroke-dasharray="2.5 3.5" />
+    <path d="M320 288 C302 292 292 302 288 320" stroke-width="0.8" stroke-dasharray="2.5 3.5" />
+
+    <path d="M18 18 C34 14 44 26 38 40 C32 50 18 46 18 34" stroke-width="0.85" />
+    <path d="M302 18 C286 14 276 26 282 40 C288 50 302 46 302 34" stroke-width="0.85" />
+    <path d="M18 302 C34 306 44 294 38 280 C32 270 18 274 18 286" stroke-width="0.85" />
+    <path d="M302 302 C286 306 276 294 282 280 C288 270 302 274 302 286" stroke-width="0.85" />
+  </g>
+</svg>

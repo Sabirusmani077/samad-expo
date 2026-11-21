@@ -1,0 +1,5832 @@
+{
+  "users": [
+    {
+      "id": "usr_admin_01",
+      "name": "Sabir Usmani (Store Administrator)",
+      "email": "sabirusmani159@gmail.com",
+      "phone": "+91 94582 04216",
+      "passwordHash": "9745328908d338819b0942321bbebb15:8fd1d119092baa837c98d8b9a96b05fa19e9174401c624c17ee2262cc6342bca8f588ca25db255e6de4a67c1e21cecdfdebbf94fd4dd9b009200fc53621d9db2",
+      "role": "admin",
+      "emailVerified": true,
+      "privacyConsent": true,
+      "savedAddresses": [],
+      "createdAt": "2026-10-11T08:00:00.000Z",
+      "updatedAt": "2026-10-11T08:00:00.000Z"
+    },
+    {
+      "id": "usr_customer_01",
+      "name": "Aarav Sharma (Demo Customer)",
+      "email": "customer@mdkenterprises.example.com",
+      "phone": "+91 98765 43210",
+      "passwordHash": "8c6801e4efc0e86f1e9b30b375bc7efb:de2ca06993c4cd1a995efba5c88593867be4997feb2133597d8e40e20df006a0d133ddaf58db123fe878ea307e91e77e3fdc18521f4a9865dae6f35247182a51",
+      "role": "customer",
+      "emailVerified": true,
+      "privacyConsent": true,
+      "savedAddresses": [
+        {
+          "id": "addr_demo_1",
+          "label": "Home Delivery Address",
+          "fullName": "Aarav Sharma",
+          "phone": "+91 98765 43210",
+          "line1": "Flat 402, Emerald Residency, MG Road",
+          "line2": "Near Metro Station",
+          "city": "Bengaluru",
+          "state": "Karnataka",
+          "postalCode": "560001",
+          "country": "India",
+          "isDefault": true
+        }
+      ],
+      "createdAt": "2026-10-11T08:00:00.000Z",
+      "updatedAt": "2026-10-13T09:03:45.186Z"
+    },
+    {
+      "id": "usr_vendor_01",
+      "name": "Rajesh Patel (Apex Retail Solutions)",
+      "email": "vendor@mdkenterprises.example.com",
+      "phone": "+91 94582 04216",
+      "passwordHash": "1ccdb6326e276b60d98ec642a55cb179:d0a0791eeed6409bf7e621ad027c29e6484adda1e44d0c8aa0a7a65e19da9edbbdbada95f8a9a2f49e690bc7f16cf35c01568808b69932d75df7b30cbbc9ceed",
+      "role": "vendor",
+      "emailVerified": true,
+      "privacyConsent": true,
+      "savedAddresses": [],
+      "vendorId": "vnd_apex_01",
+      "createdAt": "2026-10-11T08:00:00.000Z",
+      "updatedAt": "2026-10-11T08:00:00.000Z"
+    },
+    {
+      "id": "usr_v_e6236863",
+      "name": "Devendra Singhania (Aura Audio Works)",
+      "email": "test.vendor.1791890182295@example.com",
+      "phone": "9876543210",
+      "passwordHash": "59f8433af5ad1a957177b8e327eaf015:dfd52bc20fe50a3b205ba771ecf5206b98261191b1373d9398792d7edb2e13d7741ccc519f6aaf14f19fd4adecd270706f3223f8b38aeb05f4a8a8b895d9b5a4",
+      "role": "vendor",
+      "emailVerified": true,
+      "privacyConsent": true,
+      "savedAddresses": [],
+      "vendorId": "vnd_8caca5e9",
+      "createdAt": "2026-10-13T11:16:22.317Z",
+      "updatedAt": "2026-10-13T11:16:22.317Z"
+    },
+    {
+      "id": "usr_v_90cd5a3f",
+      "name": "Devendra Singhania (Aura Audio Works)",
+      "email": "test.vendor.1791890212067@example.com",
+      "phone": "9876543210",
+      "passwordHash": "5caf2d966fac95429b95363e09e3007e:9ec95c613fdfe462c2ba3b80c7d5e80671f61d8dd878c3071d79cd1e202722d9ba8c051cf60682ef2ce17df0f12aceefef25e6c618c859994ec807c555c63999",
+      "role": "vendor",
+      "emailVerified": true,
+      "privacyConsent": true,
+      "savedAddresses": [],
+      "vendorId": "vnd_1fc9ced9",
+      "createdAt": "2026-10-13T11:16:52.090Z",
+      "updatedAt": "2026-10-13T11:16:52.090Z"
+    },
+    {
+      "id": "usr_v_50b22a64",
+      "name": "Devendra Singhania (Aura Audio Works)",
+      "email": "test.vendor.1791890275700@example.com",
+      "phone": "9876543210",
+      "passwordHash": "867256b7799bc0665eca8ba0fd6ff5d0:36dd50157c9dec2869c918926531e8cb02ae10ae7179e61a61302d10f6019fd5b93d54b8c8a1bee9d2223b7f2d0fe8f3b6ba8a91d1026c6b05d071275287b433",
+      "role": "vendor",
+      "emailVerified": true,
+      "privacyConsent": true,
+      "savedAddresses": [],
+      "vendorId": "vnd_bc7cd5a4",
+      "createdAt": "2026-10-13T11:17:56.395Z",
+      "updatedAt": "2026-10-13T11:17:56.395Z"
+    },
+    {
+      "id": "usr_v_996b6760",
+      "name": "Devendra Singhania (Aura Audio Works)",
+      "email": "test.vendor.1792576235886@example.com",
+      "phone": "9876543210",
+      "passwordHash": "de01065c5fea0992821dc2c9296e8817:83d25d217ea520c25da6f6a9df23f354a7085d1e42f4e067d69bdcffaf9319adc50e9299f32e761c1b6deb057babcf43b5c49560cc4e1b6509deec4e83d138da",
+      "role": "vendor",
+      "emailVerified": true,
+      "privacyConsent": true,
+      "savedAddresses": [],
+      "vendorId": "vnd_4de31600",
+      "createdAt": "2026-10-21T09:50:37.634Z",
+      "updatedAt": "2026-10-21T09:50:37.634Z"
+    },
+    {
+      "id": "usr_v_f0aa78e1",
+      "name": "Devendra Singhania (Aura Audio Works)",
+      "email": "test.vendor.1792578380995@example.com",
+      "phone": "9876543210",
+      "passwordHash": "e6000dda399546d97530feb5860a9fe7:24488d56ddd91f7d70f018895a4f53dcb781965be376e765e49b34421649ae1ea9bc40f758e81b58f75fd7c6647521df6844516c2587fb2f9926b13b4e15f029",
+      "role": "vendor",
+      "emailVerified": true,
+      "privacyConsent": true,
+      "savedAddresses": [],
+      "vendorId": "vnd_0adaaab4",
+      "createdAt": "2026-10-21T10:26:21.797Z",
+      "updatedAt": "2026-10-21T10:26:21.797Z"
+    },
+    {
+      "id": "usr_v_65733e83",
+      "name": "Devendra Singhania (Aura Audio Works)",
+      "email": "test.vendor.1792578883291@example.com",
+      "phone": "9876543210",
+      "passwordHash": "a355ad7f5aa7e1cf7065b507bcfb6b9d:f67b7c99781d3b65f136b01d01efc299e47034c7c3edbe3e668874341ba137e45f116e1c582fd23e9d648776b867884fcbe99c88cc70032489653dbdd46e3c58",
+      "role": "vendor",
+      "emailVerified": true,
+      "privacyConsent": true,
+      "savedAddresses": [],
+      "vendorId": "vnd_a51adbdd",
+      "createdAt": "2026-10-21T10:34:43.721Z",
+      "updatedAt": "2026-10-21T10:34:43.721Z"
+    },
+    {
+      "id": "usr_v_10029c62",
+      "name": "Devendra Singhania (Aura Audio Works)",
+      "email": "test.vendor.1792579491527@example.com",
+      "phone": "9876543210",
+      "passwordHash": "6ae914ec8242edee3d3f90f91c682dab:798a354a857daaef9ac75519c3500a2d0d5731fc5822f5549182cde6e937ac35259027d7c7cb898808d24ae407055bdb9df79a2565f8997b8eddb47c8b61af82",
+      "role": "vendor",
+      "emailVerified": true,
+      "privacyConsent": true,
+      "savedAddresses": [],
+      "vendorId": "vnd_0132aa96",
+      "createdAt": "2026-10-21T10:44:52.053Z",
+      "updatedAt": "2026-10-21T10:44:52.053Z"
+    },
+    {
+      "id": "usr_v_77ec9f57",
+      "name": "Devendra Singhania (Aura Audio Works)",
+      "email": "test.vendor.1794895370403@example.com",
+      "phone": "9876543210",
+      "passwordHash": "18ebeca878810a21d62fcd6a40c40484:51f425239fe6aa1a61e6a56e9fc5fc7664f1f8e144d0be456f59ea3ab07cb7a7c42912970f028b8987e9accbbe58dd65aaba2dada73a134ec1146c90abea573d",
+      "role": "vendor",
+      "emailVerified": true,
+      "privacyConsent": true,
+      "savedAddresses": [],
+      "vendorId": "vnd_335ecb4c",
+      "createdAt": "2026-11-17T06:02:50.423Z",
+      "updatedAt": "2026-11-17T06:02:50.423Z"
+    },
+    {
+      "id": "usr_73c8de56-3",
+      "name": "Test Engineer",
+      "email": "dev_1795174628188@samadgroups-test.com",
+      "phone": "+91 99999 88888",
+      "passwordHash": "4101a240f303835298040599f9e8d21d:adb5487ef4693a71c6619358c6962b670ebd5c482614892d129124f6eee25aab13581496407a94827035887a4d3f3a7a5f37e806ac26db20004bba560397f7eb",
+      "role": "customer",
+      "emailVerified": true,
+      "privacyConsent": true,
+      "savedAddresses": [],
+      "createdAt": "2026-11-20T11:37:08.206Z",
+      "updatedAt": "2026-11-20T11:37:08.206Z"
+    },
+    {
+      "id": "usr_4639423a-2",
+      "name": "Test Engineer",
+      "email": "dev_1795174702427@samadgroups-test.com",
+      "phone": "+91 99999 88888",
+      "passwordHash": "1707f658206a37465746b6451089efdf:4f954e70d5494f545bba8b137f09eb9ebd4f82973c72c2b8ab7a90cc1e5a511941a3734a71c83e5f9152eff5195cafa828b286048c9f0700cc812ca1dbb45ce0",
+      "role": "customer",
+      "emailVerified": true,
+      "privacyConsent": true,
+      "savedAddresses": [],
+      "createdAt": "2026-11-20T11:38:22.458Z",
+      "updatedAt": "2026-11-20T11:38:22.458Z"
+    },
+    {
+      "id": "usr_a82d9144-5",
+      "name": "Sabir Test",
+      "email": "dev@samadgroups.com",
+      "phone": "",
+      "passwordHash": "ea76300bc1eb455b68f9830618924825:50b54cc078822a65c86cc45ee996ef39857f0cf0af0c0054b84d09d3242f21966b3f8c230f46195d91733251cc23d496dad8272b5f4ef41ccf846ace60c51362",
+      "role": "customer",
+      "emailVerified": true,
+      "privacyConsent": true,
+      "savedAddresses": [],
+      "createdAt": "2026-11-20T11:39:51.783Z",
+      "updatedAt": "2026-11-20T11:39:51.783Z"
+    },
+    {
+      "id": "usr_c5322c59-a",
+      "name": "SABIR",
+      "email": "khansbir166@gmail.com",
+      "phone": "9458204216",
+      "passwordHash": "2b38d8d6e89e407b75d464c804c30b45:d8f442f969f455f99ebd4d1b0629a29272a34e47d84251c7110613969ce57d08c07ea4c791fe86f2f0c7c4b01f3d4d61c5c4a0d615bbd5450c6c597a48a2034e",
+      "role": "customer",
+      "emailVerified": true,
+      "privacyConsent": true,
+      "savedAddresses": [],
+      "createdAt": "2026-11-20T11:41:50.643Z",
+      "updatedAt": "2026-11-20T11:41:50.643Z"
+    },
+    {
+      "id": "usr_4641b198-e",
+      "name": "QA Tester",
+      "email": "qa_1795240154458@test.com",
+      "phone": "",
+      "passwordHash": "05c19ba57bee8c3ddd75334c8c21b68f:a6847419afbcf0b475ee2aae3a7eb9598d260554a6ae5c9e4aef908ffeb22572c6c67ee67cf6f3dca93e2714f437eb4e84fa743d6faff7ca0816d921f8e63ccf",
+      "role": "customer",
+      "emailVerified": true,
+      "privacyConsent": true,
+      "savedAddresses": [],
+      "createdAt": "2026-11-21T05:49:16.163Z",
+      "updatedAt": "2026-11-21T05:49:16.163Z"
+    },
+    {
+      "id": "usr_4729b675-b",
+      "name": "Sabir Tester",
+      "email": "testuser@samadexpo.com",
+      "phone": "",
+      "passwordHash": "8fcad5412b61a2e3bacd3785dc072525:35b8f0beb15ad66f54b096aa9dbc849030f3ccda51aab727eb36f172846ac8d3a5287d3e4f06bada6de0d8cd63be7d584e0d1ca7e2e1be795e9e78236e3a6d45",
+      "role": "customer",
+      "emailVerified": true,
+      "privacyConsent": true,
+      "savedAddresses": [],
+      "createdAt": "2026-11-21T05:59:20.891Z",
+      "updatedAt": "2026-11-21T05:59:20.891Z"
+    }
+  ],
+  "categories": [],
+  "products": [],
+  "discountCodes": [],
+  "orders": [],
+  "reviews": [],
+  "inquiries": [
+    {
+      "id": "inq_dc73dee3f937",
+      "name": "Meera Nair",
+      "email": "meera.nair@example.com",
+      "phone": "+91 98222 33444",
+      "subject": "Bulk Order Inquiry",
+      "message": "Hello Samad Expo, I would like a quote for 20 desk lamps.",
+      "status": "new",
+      "createdAt": "2026-11-17T06:02:38.344Z",
+      "updatedAt": "2026-11-17T06:02:38.344Z"
+    },
+    {
+      "id": "inq_77b347e301e2",
+      "name": "Meera Nair",
+      "email": "meera.nair@example.com",
+      "phone": "+91 98222 33444",
+      "subject": "Bulk Order Inquiry",
+      "message": "Hello Samad Expo, I would like a quote for 20 desk lamps.",
+      "status": "new",
+      "createdAt": "2026-10-21T10:02:20.342Z",
+      "updatedAt": "2026-10-21T10:02:20.342Z"
+    },
+    {
+      "id": "inq_4374a0e5b991",
+      "name": "Meera Nair",
+      "email": "meera.nair@example.com",
+      "phone": "+91 98222 33444",
+      "subject": "Bulk Order Inquiry",
+      "message": "Hello Samad Expo, I would like a quote for 20 desk lamps.",
+      "status": "new",
+      "createdAt": "2026-10-21T09:45:26.812Z",
+      "updatedAt": "2026-10-21T09:45:26.812Z"
+    },
+    {
+      "id": "inq_d00a3b7bc748",
+      "name": "Meera Nair",
+      "email": "meera.nair@example.com",
+      "phone": "+91 98222 33444",
+      "subject": "Bulk Order Inquiry",
+      "message": "Hello Samad Expo, I would like a quote for 20 desk lamps.",
+      "status": "new",
+      "createdAt": "2026-10-13T11:18:56.706Z",
+      "updatedAt": "2026-10-13T11:18:56.706Z"
+    },
+    {
+      "id": "inq_17ea577e4f04",
+      "name": "Meera Nair",
+      "email": "meera.nair@example.com",
+      "phone": "+91 98222 33444",
+      "subject": "Bulk Order Inquiry",
+      "message": "Hello Samad Expo, I would like a quote for 20 desk lamps.",
+      "status": "new",
+      "createdAt": "2026-10-13T11:16:11.049Z",
+      "updatedAt": "2026-10-13T11:16:11.049Z"
+    },
+    {
+      "id": "inq_caf6347acade",
+      "name": "Meera Nair",
+      "email": "meera.nair@example.com",
+      "phone": "+91 98222 33444",
+      "subject": "Bulk Order Inquiry",
+      "message": "Hello Samad Expo, I would like a quote for 20 desk lamps.",
+      "status": "new",
+      "createdAt": "2026-10-13T10:41:56.534Z",
+      "updatedAt": "2026-10-13T10:41:56.534Z"
+    },
+    {
+      "id": "inq_71dbbe189e7f",
+      "name": "SABIR",
+      "email": "sabirusmani159@gmail.com",
+      "phone": "+919458204216",
+      "subject": "[Cancellation] Support Inquiry",
+      "message": "Category: Cancellation\nOrder ID: N/A\nPhone: +919458204216\n\ngegrsgser",
+      "status": "new",
+      "createdAt": "2026-10-13T10:31:46.612Z",
+      "updatedAt": "2026-10-13T10:31:46.612Z"
+    },
+    {
+      "id": "inq_c3bd5bb6fd69",
+      "name": "Meera Nair",
+      "email": "meera.nair@example.com",
+      "phone": "+91 98222 33444",
+      "subject": "Bulk Order Inquiry",
+      "message": "Hello Samad Expo, I would like a quote for 20 desk lamps.",
+      "status": "new",
+      "createdAt": "2026-10-13T10:29:29.091Z",
+      "updatedAt": "2026-10-13T10:29:29.091Z"
+    },
+    {
+      "id": "inq_1a53de0dce8c",
+      "name": "Meera Nair",
+      "email": "meera.nair@example.com",
+      "phone": "+91 98222 33444",
+      "subject": "Bulk Order Inquiry",
+      "message": "Hello Samad Expo, I would like a quote for 20 desk lamps.",
+      "status": "new",
+      "createdAt": "2026-10-13T10:08:25.887Z",
+      "updatedAt": "2026-10-13T10:08:25.887Z"
+    },
+    {
+      "id": "inq_ef3b8733d5e0",
+      "name": "Meera Nair",
+      "email": "meera.nair@example.com",
+      "phone": "+91 98222 33444",
+      "subject": "Bulk Order Inquiry",
+      "message": "Hello Samad Expo, I would like a quote for 20 desk lamps.",
+      "status": "new",
+      "createdAt": "2026-10-13T10:00:27.846Z",
+      "updatedAt": "2026-10-13T10:00:27.846Z"
+    },
+    {
+      "id": "inq_adaf9879c15f",
+      "name": "Meera Nair",
+      "email": "meera.nair@example.com",
+      "phone": "+91 98222 33444",
+      "subject": "Bulk Order Inquiry",
+      "message": "Hello Samad Expo, I would like a quote for 20 desk lamps.",
+      "status": "new",
+      "createdAt": "2026-10-13T09:51:07.623Z",
+      "updatedAt": "2026-10-13T09:51:07.623Z"
+    }
+  ],
+  "faqs": [
+    {
+      "id": "faq_01",
+      "category": "Orders & Delivery",
+      "question": "How are delivery charges and timelines calculated?",
+      "answer": "Orders meeting our free-shipping threshold (currently ₹999 or above) qualify for complimentary standard shipping across India. Orders below the threshold incur a flat ₹99 delivery charge. Standard delivery takes 3–6 business days depending on your pin code.",
+      "sortOrder": 1,
+      "active": true
+    },
+    {
+      "id": "faq_02",
+      "category": "Orders & Delivery",
+      "question": "How can I track my order securely?",
+      "answer": "Visit the Track Order page and enter your unique Order Reference (e.g., MDK-YYYYMMDD-XXXX) along with the email address or phone number used during checkout. Registered customers can also view all orders under My Orders.",
+      "sortOrder": 2,
+      "active": true
+    },
+    {
+      "id": "faq_03",
+      "category": "Payments & Pricing",
+      "question": "What payment methods are accepted at checkout?",
+      "answer": "We accept UPI, Credit Cards, Debit Cards, Net Banking, and supported Wallets through our verified payment gateway integration. All payable amounts, taxes, and discounts are verified on our server before payment initialization.",
+      "sortOrder": 3,
+      "active": true
+    },
+    {
+      "id": "faq_04",
+      "category": "Payments & Pricing",
+      "question": "Are my card or UPI details stored on the Samad Expo website?",
+      "answer": "No. Samad Expo never collects or stores raw card numbers, CVVs, UPI PINs, or net banking passwords. All payment authorizations are processed directly by our PCI-DSS compliant payment gateway.",
+      "sortOrder": 4,
+      "active": true
+    },
+    {
+      "id": "faq_05",
+      "category": "Returns & Refunds",
+      "question": "What is your return and refund policy?",
+      "answer": "Eligible unused items in original packaging with intact tags and accessories may be requested for return within 7 days of delivery. Once inspected and approved, refunds are processed back to the original payment source with a verifiable transaction reference.",
+      "sortOrder": 5,
+      "active": true
+    },
+    {
+      "id": "faq_06",
+      "category": "Products & Account",
+      "question": "Are the current products on the storefront demonstration items?",
+      "answer": "Yes. The initial items labeled 'Demo Item' are demonstration catalogue entries created to showcase full search, filtering, cart, checkout, and inventory capabilities. Authorized staff can replace or unpublish them anytime from the Admin Dashboard.",
+      "sortOrder": 6,
+      "active": true
+    }
+  ],
+  "settings": {
+    "businessName": "Samad Expo",
+    "tagline": "Quality Products. Trusted Service. Smarter Shopping.",
+    "supportEmail": "sabirusmani159@gmail.com",
+    "supportPhone": "+91 94582 04216",
+    "businessAddress": "Samad Expo Retail Operations — Update Registered Office Address in Admin Dashboard before launch",
+    "businessHours": "Monday – Saturday, 9:30 AM – 6:30 PM IST",
+    "gstinPlaceholder": "Pending Merchant GSTIN Configuration",
+    "currency": "INR",
+    "currencySymbol": "₹",
+    "taxRatePercent": 18,
+    "standardShippingFee": 99,
+    "freeShippingThreshold": 999,
+    "estimatedDeliveryDays": "3–6 Business Days across India",
+    "returnWindowDays": 7,
+    "paymentMode": "sandbox",
+    "paymentProvider": "razorpay",
+    "demoModeNotice": true,
+    "socialLinks": {
+      "whatsappNumber": "",
+      "whatsappDefaultMessage": "Hello Samad Expo, I need assistance with your products.",
+      "whatsappEnabled": false,
+      "instagram": "",
+      "facebook": "https://www.facebook.com/profile.php?id=61595047961100",
+      "linkedin": "",
+      "youtube": "",
+      "x": "",
+      "telegram": ""
+    },
+    "defaultCommissionPercent": 7,
+    "vendorAutoApproval": false,
+    "codEnabled": true,
+    "codFee": 0,
+    "autoReplaceDemoProducts": true,
+    "hideDemoProducts": false,
+    "demoPurged": true
+  },
+  "vendors": [],
+  "payouts": [],
+  "financialLedger": [],
+  "auditLogs": [
+    {
+      "id": "audit_3a36ca6ad5acfea4bab1",
+      "userId": "usr_admin_01",
+      "userName": "Sabir Usmani (Store Administrator)",
+      "userRole": "admin",
+      "action": "Business division deleted",
+      "details": "MDK Web Applications & Utility Tools",
+      "timestamp": "2026-11-20T09:56:29.443Z"
+    },
+    {
+      "id": "audit_ba1fd4f8b7e2f2d7880a",
+      "userId": "usr_admin_01",
+      "userName": "Sabir Usmani (Store Administrator)",
+      "userRole": "admin",
+      "action": "Business division deleted",
+      "details": "MD Digital Media & Educational Ventures",
+      "timestamp": "2026-11-20T09:51:42.212Z"
+    },
+    {
+      "id": "audit_4fd723486874943d6d79",
+      "userId": "usr_admin_01",
+      "userName": "Sabir Usmani (Store Administrator)",
+      "userRole": "admin",
+      "action": "Business division deleted",
+      "details": "MD Digital Labs & Platform Engineering",
+      "timestamp": "2026-11-20T09:51:39.922Z"
+    },
+    {
+      "id": "audit_d042fe176b3e4835eaaf",
+      "userId": "usr_admin_01",
+      "userName": "Sabir Usmani (Store Administrator)",
+      "userRole": "admin",
+      "action": "inquiries content changed",
+      "details": "Administrator updated or removed a record.",
+      "timestamp": "2026-11-20T09:51:24.790Z"
+    },
+    {
+      "id": "audit_96acf9a103173457af4a",
+      "userId": "usr_admin_01",
+      "userName": "Sabir Usmani (Store Administrator)",
+      "userRole": "admin",
+      "action": "inquiries content changed",
+      "details": "Administrator updated or removed a record.",
+      "timestamp": "2026-11-20T09:51:18.001Z"
+    },
+    {
+      "id": "audit_e63e6897ff8c2cc77a90",
+      "userId": "usr_admin_01",
+      "userName": "Sabir Usmani (Store Administrator)",
+      "userRole": "admin",
+      "action": "inquiries content changed",
+      "details": "Administrator updated or removed a record.",
+      "timestamp": "2026-11-20T09:49:48.912Z"
+    },
+    {
+      "id": "audit_6fd9e7bc40762ef3d718",
+      "userId": "usr_admin_01",
+      "userName": "Sabir Usmani (Store Administrator)",
+      "userRole": "admin",
+      "action": "Website listing deleted",
+      "details": "MD NextGen SaaS Suite",
+      "timestamp": "2026-11-20T07:34:15.922Z"
+    },
+    {
+      "id": "audit_2cb554dc6a4f55bd941c",
+      "userId": "usr_admin_01",
+      "userName": "Sabir Usmani (Store Administrator)",
+      "userRole": "admin",
+      "action": "Website listing deleted",
+      "details": "MD Cloud API & Integration Hub",
+      "timestamp": "2026-11-20T07:34:13.676Z"
+    },
+    {
+      "id": "audit_00e1cf0e68d2ce058043",
+      "userId": "usr_admin_01",
+      "userName": "Sabir Usmani (Store Administrator)",
+      "userRole": "admin",
+      "action": "Website listing deleted",
+      "details": "MD Central Management Console",
+      "timestamp": "2026-11-20T07:34:11.460Z"
+    },
+    {
+      "id": "audit_8e079cfe9240cd7630a3",
+      "userId": "usr_admin_01",
+      "userName": "Sabir Usmani (Store Administrator)",
+      "userRole": "admin",
+      "action": "Website listing deleted",
+      "details": "MD Academy & Learning Gateway",
+      "timestamp": "2026-11-20T07:34:09.136Z"
+    },
+    {
+      "id": "audit_65240af7b7dfc8edab8c",
+      "userId": "usr_admin_01",
+      "userName": "Sabir Usmani (Store Administrator)",
+      "userRole": "admin",
+      "action": "Company profile updated",
+      "details": "Corporate identity and content",
+      "timestamp": "2026-11-18T13:42:16.748Z"
+    },
+    {
+      "id": "audit_2a9e3763c6ad3c1af622",
+      "userId": "usr_admin_01",
+      "userName": "Sabir Usmani (Store Administrator)",
+      "userRole": "admin",
+      "action": "Company profile updated",
+      "details": "Corporate identity and content",
+      "timestamp": "2026-11-18T13:39:13.927Z"
+    },
+    {
+      "id": "audit_1ab83d7ba37863de6c94",
+      "userId": "usr_admin_01",
+      "userName": "Sabir Usmani (Store Administrator)",
+      "userRole": "admin",
+      "action": "Business division deleted",
+      "details": "MD Media & Publishing Group",
+      "timestamp": "2026-11-18T13:33:21.726Z"
+    },
+    {
+      "id": "audit_6fd57230974fc5a7ec4d",
+      "userId": "usr_admin_01",
+      "userName": "Sabir Usmani (Store Administrator)",
+      "userRole": "admin",
+      "action": "Business division deleted",
+      "details": "MD Digital Labs & Platform Engineering",
+      "timestamp": "2026-11-18T13:33:17.591Z"
+    }
+  ],
+  "webhookEvents": [],
+  "businessDivisions": [],
+  "websiteListings": [
+    {
+      "id": "website_sabir_age_calculator",
+      "name": "MDK Chrono Age Calculator",
+      "slug": "mdk-chrono-age-calculator",
+      "logo": "",
+      "banner": "",
+      "screenshots": [],
+      "description": "A 3D age calculator with date and optional time input, age breakdowns, milestones, countdowns, and time-unit views.",
+      "shortDescription": "A 3D age calculator for exploring age, milestones, and time units.",
+      "category": "Web Applications",
+      "features": [
+        "3D age experience",
+        "Date and optional birth-time input",
+        "Age and milestone views"
+      ],
+      "productsAndServices": [
+        "Age Calculator"
+      ],
+      "url": "https://sabirusmani077.github.io/Age-calculator/",
+      "launchDate": null,
+      "status": "live",
+      "businessDivisionId": null,
+      "ownershipType": "other",
+      "showOwnershipPublicly": false,
+      "analyticsEnabled": false,
+      "isPublic": true,
+      "sortOrder": 20,
+      "createdAt": "2026-10-11T08:00:00.000Z",
+      "updatedAt": "2026-10-11T08:00:00.000Z"
+    },
+    {
+      "id": "website_sabir_mdk_convertor",
+      "name": "MDK Convertor",
+      "slug": "mdk-convertor",
+      "logo": "",
+      "banner": "",
+      "screenshots": [],
+      "description": "A browser-based image and PDF conversion website with tools for common image formats and image-to-PDF workflows.",
+      "shortDescription": "Free in-browser image and PDF conversion tools.",
+      "category": "File Tools",
+      "features": [
+        "Image format conversion",
+        "Image-to-PDF tools",
+        "Browser-based file processing"
+      ],
+      "productsAndServices": [
+        "Image Converter",
+        "JPG to PDF",
+        "PNG to JPG",
+        "JPG to PNG"
+      ],
+      "url": "https://sabirusmani077.github.io/MDK-Convertor/",
+      "launchDate": null,
+      "status": "live",
+      "businessDivisionId": null,
+      "ownershipType": "other",
+      "showOwnershipPublicly": false,
+      "analyticsEnabled": false,
+      "isPublic": true,
+      "sortOrder": 21,
+      "createdAt": "2026-10-11T08:00:00.000Z",
+      "updatedAt": "2026-10-11T08:00:00.000Z"
+    },
+    {
+      "id": "website_sabir_personal_portfolio",
+      "name": "Sabir Usmani — Personal Portfolio",
+      "slug": "sabir-usmani-portfolio",
+      "logo": "",
+      "banner": "",
+      "screenshots": [],
+      "description": "Sabir Usmani's personal portfolio for technology, creativity, business, web projects, and contact links.",
+      "shortDescription": "A personal portfolio featuring web projects, technology, and contact details.",
+      "category": "Personal Portfolio",
+      "features": [
+        "Personal profile and contact links",
+        "Web project gallery",
+        "Technology and analytics overview"
+      ],
+      "productsAndServices": [
+        "Personal Portfolio"
+      ],
+      "url": "https://sabirusmani077.github.io/Self-Portfolio-/",
+      "launchDate": null,
+      "status": "live",
+      "businessDivisionId": null,
+      "ownershipType": "other",
+      "showOwnershipPublicly": false,
+      "analyticsEnabled": false,
+      "isPublic": true,
+      "sortOrder": 22,
+      "createdAt": "2026-10-11T08:00:00.000Z",
+      "updatedAt": "2026-10-11T08:00:00.000Z"
+    }
+  ],
+  "teamMembers": [
+    {
+      "id": "team_founder",
+      "name": "Sabir Usmani",
+      "photo": "/images/founder-portrait.jpg",
+      "designation": "Founder & Owner",
+      "bio": "Visionary entrepreneur and systems architect behind Samad Expo, leading our strategic expansion across digital platforms, web applications, and software ecosystems.",
+      "responsibilities": [
+        "Overall Strategic Vision & Corporate Leadership",
+        "Digital Ecosystem Architecture & Product Innovation",
+        "Technology Strategy & Platform Engineering"
+      ],
+      "isFounder": true,
+      "founderMessage": "Welcome to Samad Expo. Our journey began with a fundamental belief: that great digital platforms are built on robust architecture, continuous technological innovation, and exceptional user value.",
+      "leadershipPhilosophy": "Lead through innovation, build scalable foundations, and empower every platform with world-class engineering standards.",
+      "professionalBackground": "Entrepreneur and systems architect with expertise in full-stack web engineering, distributed cloud architecture, and digital venture incubation.",
+      "socialLinks": {
+        "linkedin": "",
+        "twitter": "",
+        "instagram": "",
+        "facebook": "https://www.facebook.com/profile.php?id=61595047961100",
+        "website": "https://mdenterprises.in",
+        "email": "sabirusmani159@gmail.com"
+      },
+      "sortOrder": 1,
+      "isActive": true,
+      "createdAt": "2026-11-17T06:00:25.605Z",
+      "updatedAt": "2026-11-20T07:05:35.233Z"
+    }
+  ],
+  "corporateServices": [
+    {
+      "id": "svc_hosting",
+      "name": "Multi-User Website Hosting & Instant Deployment",
+      "slug": "website-hosting",
+      "category": "Cloud Infrastructure",
+      "shortDescription": "Upload your website source files or ZIP package, preview in real-time, and get an instant live public URL in seconds.",
+      "description": "Our automated hosting platform operates similarly to GitHub Pages, Netlify, and Vercel. Users can authenticate, upload website ZIP packages or source folders, preview responsive rendering on desktop, tablet, and mobile, and deploy to our high-speed cloud hosting server with unique public URLs.",
+      "features": [
+        "ZIP file upload and automatic index.html entry detection",
+        "Isolated responsive preview sandbox (Desktop, Tablet, Mobile)",
+        "Instant unique public deployment URLs (e.g. /sites/username/project)",
+        "Developer dashboard for managing, updating, and redeploying projects"
+      ],
+      "icon": "Rocket",
+      "status": "active",
+      "sortOrder": 1,
+      "createdAt": "2026-11-20T19:00:00.000Z",
+      "updatedAt": "2026-11-20T19:00:00.000Z"
+    },
+    {
+      "id": "svc_web_eng",
+      "name": "Full-Stack Web Engineering & Custom Software",
+      "slug": "web-engineering",
+      "category": "Software Solutions",
+      "shortDescription": "Custom web application design and engineering using Next.js 15, React 19, TypeScript, and high-concurrency cloud backends.",
+      "description": "End-to-end web engineering delivering high-performance responsive web applications, secure REST APIs, clean database architecture, and custom digital tools tailored to business requirements.",
+      "features": [
+        "Modern Next.js 15 App Router architecture with TypeScript type-safety",
+        "Ultra-fast, responsive UI/UX built with Tailwind CSS design systems",
+        "Secure authentication, session management, and role-based access control",
+        "REST/JSON API bridges and custom database integrations"
+      ],
+      "icon": "Globe",
+      "status": "active",
+      "sortOrder": 2,
+      "createdAt": "2026-11-20T19:00:00.000Z",
+      "updatedAt": "2026-11-20T19:00:00.000Z"
+    }
+  ],
+  "portfolioEntries": [
+    {
+      "id": "port_corporate_hub",
+      "title": "Central Digital Headquarters Platform",
+      "slug": "central-digital-headquarters",
+      "category": "Corporate Systems",
+      "shortDescription": "The unified holding company website and digital ecosystem gateway uniting 100+ decentralized web properties under one umbrella.",
+      "description": "Engineered to serve as the master brand identity of Samad Expo, supporting dynamic directory listings, business divisions architecture, founder/leadership showcases, and centralized API analytics.",
+      "images": [],
+      "url": "http://localhost:3000",
+      "businessDivisionId": "bdiv_tech",
+      "tags": [
+        "Holding Company",
+        "Ecosystem Directory",
+        "CMS",
+        "TypeScript"
+      ],
+      "featured": true,
+      "completedAt": "2024-11-01",
+      "status": "active",
+      "sortOrder": 2,
+      "createdAt": "2026-11-17T06:00:25.605Z",
+      "updatedAt": "2026-11-17T06:00:25.605Z"
+    }
+  ],
+  "blogPosts": [
+    {
+      "id": "blog_announcement",
+      "title": "Samad Expo Establishes Official Central Digital Headquarters",
+      "slug": "samad-expo-official-headquarters",
+      "category": "Corporate News",
+      "excerpt": "Unifying our independent websites, web applications, and business divisions under a central parent-company brand and digital directory.",
+      "content": "Today marks a pivotal milestone for our organization with the official launch of the Samad Expo corporate website and central digital headquarters.\n\nAs our operations have expanded across direct e-commerce, cloud platform engineering, and digital media, establishing a clear parent company identity became essential.\n\nSamad Expo will continue to champion independent brand identities: every website in our ecosystem retains its specialized domain, unique branding, and tailored customer experience. Simultaneously, all properties benefit from shared cryptographic security, centralized governance, and high-performance server infrastructure.\n\nWe look forward to introducing upcoming business divisions and welcome strategic partners to collaborate with us.",
+      "coverImage": "",
+      "tags": [
+        "Corporate",
+        "Announcement",
+        "Ecosystem"
+      ],
+      "author": "Samad Expo Executive Office",
+      "status": "published",
+      "featured": true,
+      "publishedAt": "2026-11-17T06:00:25.605Z",
+      "createdAt": "2026-11-17T06:00:25.605Z",
+      "updatedAt": "2026-11-17T06:00:25.605Z"
+    },
+    {
+      "id": "blog_decentralized_vision",
+      "title": "Decentralized Branding with Centralized Governance: Our Architectural Philosophy",
+      "slug": "decentralized-branding-centralized-governance",
+      "category": "Technology & Architecture",
+      "excerpt": "Why forcing every product into a single generic layout fails, and how Samad Expo empowers distinct digital platforms to thrive.",
+      "content": "In modern digital business, one size never fits all. A specialized tech developer tool requires a vastly different interface and tone than a lifestyle retail storefront or an interactive educational academy.\n\nAt Samad Expo, we rejected the traditional monolithic website model in favor of an interconnected ecosystem:\n\n1. Independent Branding: Every platform maintains its unique domain, visual identity, and audience focus.\n2. Centralized Security: All platforms share verified payment protocols, cryptographic signatures, and audit standards.\n3. Central Directory: Visitors can discover and navigate across all Samad Expo properties from our central headquarters.\n\nThis architecture ensures scalability for over 100+ future independent platforms without rebuilding core systems.",
+      "coverImage": "",
+      "tags": [
+        "Architecture",
+        "Scalability",
+        "Tech Strategy"
+      ],
+      "author": "MD, Founder & Owner",
+      "status": "published",
+      "featured": true,
+      "publishedAt": "2026-11-17T06:00:25.605Z",
+      "createdAt": "2026-11-17T06:00:25.605Z",
+      "updatedAt": "2026-11-17T06:00:25.605Z"
+    }
+  ],
+  "companyProfile": {
+    "businessName": "Samad Expo",
+    "legalName": "Samad Expo",
+    "tagline": "Modern Website Hosting, Developer Tools & Digital Solutions",
+    "about": "Samad Expo is a modern digital technology company and automated website hosting platform founded by Sabir Usmani in Agra, India. We empower developers, students, and businesses to upload, preview, and deploy live websites with instant public URLs and high-speed cloud routing.",
+    "story": "Founded by Sabir Usmani in Bodla, Agra, Samad Expo started as an independent web engineering initiative and has grown into a versatile technology platform providing multi-user static website hosting, digital utilities, and custom software development.",
+    "vision": "To build a fast, reliable, and accessible website hosting platform and developer ecosystem that simplifies web deployment and provides high-utility digital tools to users worldwide.",
+    "mission": "To deliver lightning-fast, zero-hassle website deployment alongside beautifully engineered web applications that solve real everyday problems.",
+    "coreValues": [
+      {
+        "title": "Practical Innovation",
+        "description": "Building practical web tools and deployment engines that solve real problems with zero friction.",
+        "icon": "Sparkles"
+      },
+      {
+        "title": "Reliability & Uptime",
+        "description": "Ensuring fast global CDN routing, secure isolated sandboxes, and high platform availability.",
+        "icon": "ShieldCheck"
+      },
+      {
+        "title": "Simplicity & Speed",
+        "description": "Eliminating deployment complexity with 1-click ZIP upload, real-time preview, and instant URLs.",
+        "icon": "Zap"
+      },
+      {
+        "title": "Transparent Governance",
+        "description": "Clear ownership, verified credentials, and honest platform metrics without marketing fluff.",
+        "icon": "Award"
+      }
+    ],
+    "founded": "2024",
+    "headquarters": "Bodla, Agra, Uttar Pradesh",
+    "founderName": "Sabir Usmani",
+    "founderDesignation": "Founder & Owner",
+    "founderPhoto": "/images/founder-portrait.jpg",
+    "founderBio": "Visionary entrepreneur and systems architect behind Samad Expo, leading our strategic expansion across digital platforms, web applications, and software ecosystems.",
+    "founderMessage": "Welcome to Samad Expo. Our journey began with a fundamental belief: that great digital platforms are built on robust architecture, continuous technological innovation, and exceptional user value.",
+    "achievements": [
+      {
+        "title": "Multi-User Website Hosting Platform Launch",
+        "description": "Full-featured hosting engine with ZIP uploads, responsive isolated preview sandboxes, and instant public URLs.",
+        "year": "2024"
+      },
+      {
+        "title": "Public Digital Tools & Web Applications Suite",
+        "description": "Production deployment of MDK Chrono Age Calculator, MDK Convertor, and developer utilities.",
+        "year": "2024"
+      }
+    ],
+    "futureRoadmap": "Continuously expanding our deployment engine with custom domain mapping, automated SSL certificates, advanced visitor analytics, and adding new developer utility tools.",
+    "contactEmail": "sabirusmani159@gmail.com",
+    "contactPhone": "+91 94582 04216",
+    "contactAddress": "Bodla, Agra, Uttar Pradesh 282010, India",
+    "socialLinks": {
+      "linkedin": "",
+      "twitter": "",
+      "instagram": "",
+      "facebook": "https://www.facebook.com/profile.php?id=61595047961100",
+      "youtube": "",
+      "website": "https://mdenterprises.in"
+    },
+    "brandFontFamily": "Inter, Arial, sans-serif",
+    "favicon": "/images/primary-logo.png",
+    "logo": "/images/primary-logo.png",
+    "brandColors": {
+      "primary": "#000000",
+      "accent": "#FFF33D"
+    },
+    "googleMapsUrl": "https://maps.app.goo.gl/UnzqY6kZ3i2BRieKA"
+  },
+  "jobListings": [
+    {
+      "id": "job_fullstack",
+      "title": "Full-Stack Web Engineer (Next.js / TypeScript)",
+      "department": "Platform Engineering",
+      "type": "full_time",
+      "location": "India (Remote)",
+      "isRemote": true,
+      "salaryRange": "Industry Standard",
+      "description": "We are seeking an ambitious Full-Stack Engineer with strong mastery of Next.js 15, React 19, TypeScript, and modern API architecture to help expand the Samad Expo digital ecosystem.",
+      "responsibilities": [
+        "Build high-performance web applications and utility platforms",
+        "Implement server components, server actions, and secure API endpoints",
+        "Ensure strict TypeScript safety and clean architectural separation"
+      ],
+      "requirements": [
+        "Proven experience with Next.js App Router and React 19",
+        "Strong knowledge of TypeScript, Tailwind CSS, and cloud deployment",
+        "Self-starter mindset with attention to detail and UX polish"
+      ],
+      "benefits": [
+        "100% Remote flexibility",
+        "Cutting-edge tech stack",
+        "Direct mentorship from founder"
+      ],
+      "status": "open",
+      "sortOrder": 1,
+      "createdAt": "2026-11-20T07:05:35.233Z",
+      "updatedAt": "2026-11-20T07:05:35.233Z"
+    },
+    {
+      "id": "job_uiux",
+      "title": "UI/UX & Visual Systems Designer",
+      "department": "Creative & Brand",
+      "type": "contract",
+      "location": "India (Remote)",
+      "isRemote": true,
+      "salaryRange": "Project-Based / Competitive",
+      "description": "Join Samad Expo to craft iconic, modern brand identities, 3D visual assets, and high-conversion user interfaces across our family of websites and digital applications.",
+      "responsibilities": [
+        "Design responsive, accessible UI mockups and design systems",
+        "Collaborate with developers to deliver seamless micro-animations and interactions",
+        "Elevate brand presentation across all ecosystem websites"
+      ],
+      "requirements": [
+        "Strong portfolio of web application designs and typography systems",
+        "Proficiency in Figma, Illustrator, and web design best practices"
+      ],
+      "benefits": [
+        "Creative freedom",
+        "Remote workflow",
+        "Long-term portfolio impact"
+      ],
+      "status": "open",
+      "sortOrder": 2,
+      "createdAt": "2026-11-20T07:05:35.233Z",
+      "updatedAt": "2026-11-20T07:05:35.233Z"
+    }
+  ],
+  "partnerships": [
+    {
+      "id": "part_tech_infra",
+      "partnerName": "Cloud & Next.js Infrastructure Alliance",
+      "slug": "cloud-nextjs-infra",
+      "logo": "/images/primary-logo.png",
+      "description": "Partnering on modern edge hosting, SSR server performance, and global CDN distribution for Samad Expo web properties.",
+      "url": "https://mdenterprises.in",
+      "partnerType": "technology",
+      "status": "active",
+      "sortOrder": 1,
+      "createdAt": "2026-11-20T07:05:35.233Z",
+      "updatedAt": "2026-11-20T07:05:35.233Z"
+    },
+    {
+      "id": "part_digital_media",
+      "partnerName": "Digital Creator & Developer Network",
+      "slug": "digital-creator-network",
+      "logo": "/images/primary-logo.png",
+      "description": "Collaborative initiative fostering software innovation, student developer workshops, and open utility tools.",
+      "url": "https://mdenterprises.in",
+      "partnerType": "business",
+      "status": "active",
+      "sortOrder": 2,
+      "createdAt": "2026-11-20T07:05:35.233Z",
+      "updatedAt": "2026-11-20T07:05:35.233Z"
+    }
+  ],
+  "corporateInquiries": [
+    {
+      "id": "cinq_a0a492979e070060",
+      "name": "SABIR",
+      "email": "sabirusmani159@gmail.com",
+      "phone": "",
+      "company": "Signature Enterprices",
+      "subject": "General inquiry",
+      "message": "dfgfdgsfdasff",
+      "relatedBusiness": "all",
+      "inquiryType": "business",
+      "status": "resolved",
+      "adminNotes": "fasfasdfasfasf",
+      "consentedAt": "2026-11-20T09:49:48.854Z",
+      "createdAt": "2026-11-20T09:49:48.854Z",
+      "updatedAt": "2026-11-20T09:51:24.749Z"
+    },
+    {
+      "id": "cinq_256fd0dae5465092",
+      "name": "SABIR",
+      "email": "sabirusmani159@gmail.com",
+      "phone": "",
+      "company": "Signature Enterprices",
+      "subject": "Web Platform & Full-Stack Engineering",
+      "message": "hgfhgmcfjg",
+      "relatedBusiness": "MD Digital Labs & Platform Engineering",
+      "inquiryType": "business",
+      "status": "new",
+      "adminNotes": "",
+      "consentedAt": "2026-11-18T09:51:56.515Z",
+      "createdAt": "2026-11-18T09:51:56.515Z",
+      "updatedAt": "2026-11-18T09:51:56.515Z"
+    }
+  ],
+  "pageViewEvents": [
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "50f1b3b27f2dcbc98913faa1",
+      "createdAt": "2026-11-18T09:50:42.306Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "a65a14f3fe2bfe2241a5f34a",
+      "createdAt": "2026-11-18T09:59:06.588Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "d121273daa4f0a96cce87a00",
+      "createdAt": "2026-11-18T10:06:01.782Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "419a7905c3a2db686d579b3a",
+      "createdAt": "2026-11-18T10:16:56.283Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/md-management-console",
+      "websiteId": "site_admin_hub",
+      "source": "direct",
+      "referrerHost": null,
+      "id": "08f58b733f95dd3683102d74",
+      "createdAt": "2026-11-18T10:17:05.397Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "3bfe19cbe8ce2128cb19469f",
+      "createdAt": "2026-11-18T10:17:07.854Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-direct-store",
+      "websiteId": "site_mdk_store",
+      "source": "direct",
+      "referrerHost": null,
+      "id": "0bb5de335fae50184ca31e4c",
+      "createdAt": "2026-11-18T10:17:19.741Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "63c3ca906fc13ae2023c1194",
+      "createdAt": "2026-11-18T10:17:20.780Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-direct-store",
+      "websiteId": "site_mdk_store",
+      "source": "direct",
+      "referrerHost": null,
+      "id": "68bd7e2ff29a3f4201766bde",
+      "createdAt": "2026-11-18T10:17:22.664Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "b0ba2f1d8d11b844ba16a4b1",
+      "createdAt": "2026-11-18T10:17:25.589Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "b0a79e013fe67c10edc9a616",
+      "createdAt": "2026-11-18T10:23:59.505Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-chrono-age-calculator",
+      "websiteId": "website_sabir_age_calculator",
+      "source": "direct",
+      "referrerHost": null,
+      "id": "1d71a51b7f361b78c54f0d64",
+      "createdAt": "2026-11-18T10:24:04.513Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "eca85985b0d59757722212d6",
+      "createdAt": "2026-11-18T10:24:05.529Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-chrono-age-calculator",
+      "websiteId": "website_sabir_age_calculator",
+      "source": "direct",
+      "referrerHost": null,
+      "id": "d5072f92ba6acb22eee314d7",
+      "createdAt": "2026-11-18T10:24:36.254Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-chrono-age-calculator",
+      "websiteId": "website_sabir_age_calculator",
+      "source": "direct",
+      "referrerHost": null,
+      "id": "1dcd616e369e95863119bb7d",
+      "createdAt": "2026-11-18T10:24:44.577Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/contact",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "4b78ffd2fecc432b14a8d3ab",
+      "createdAt": "2026-11-18T10:25:01.423Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "e820c0d7de4813b8cb429074",
+      "createdAt": "2026-11-18T10:25:14.982Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-chrono-age-calculator",
+      "websiteId": "website_sabir_age_calculator",
+      "source": "direct",
+      "referrerHost": null,
+      "id": "104cc6c439bcb988e6d99ccb",
+      "createdAt": "2026-11-18T10:25:20.968Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "54d8eb35a57705dd6a7926b0",
+      "createdAt": "2026-11-18T10:26:06.894Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-chrono-age-calculator",
+      "websiteId": "website_sabir_age_calculator",
+      "source": "direct",
+      "referrerHost": null,
+      "id": "310e1af7f8e0e6e097fcfd91",
+      "createdAt": "2026-11-18T10:26:29.723Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-chrono-age-calculator",
+      "websiteId": "website_sabir_age_calculator",
+      "source": "direct",
+      "referrerHost": null,
+      "id": "46d202a28807d69d76c83954",
+      "createdAt": "2026-11-18T10:41:17.520Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "2f63dbfa13d47cbb4494ef51",
+      "createdAt": "2026-11-18T10:42:13.791Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "00b805801c832a78a5d4b674",
+      "createdAt": "2026-11-18T10:44:41.278Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "98b6cb37572c59dad35fc147",
+      "createdAt": "2026-11-18T10:45:31.163Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-chrono-age-calculator",
+      "websiteId": "website_sabir_age_calculator",
+      "source": "direct",
+      "referrerHost": null,
+      "id": "fa7d532b8f4c7249bd39cec7",
+      "createdAt": "2026-11-18T10:45:39.109Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-chrono-age-calculator",
+      "websiteId": "website_sabir_age_calculator",
+      "source": "direct",
+      "referrerHost": null,
+      "id": "c6dbabfc5e37e0e205fd90f1",
+      "createdAt": "2026-11-18T10:46:38.690Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "8a2bca0561b969c630cd7bab",
+      "createdAt": "2026-11-18T10:46:40.967Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-convertor",
+      "websiteId": "website_sabir_mdk_convertor",
+      "source": "direct",
+      "referrerHost": null,
+      "id": "6e13dc7369fd065a55df191e",
+      "createdAt": "2026-11-18T10:47:10.680Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "c2bcc10e9d42d7185a028dea",
+      "createdAt": "2026-11-18T10:47:30.240Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-chrono-age-calculator",
+      "websiteId": "website_sabir_age_calculator",
+      "source": "direct",
+      "referrerHost": null,
+      "id": "d5c998740906f3343b4fa66c",
+      "createdAt": "2026-11-18T10:47:35.998Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/about-company",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "22e85cf7b27532ff0e0c7d58",
+      "createdAt": "2026-11-18T10:59:09.880Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "6bb7cdd1f546188491402775",
+      "createdAt": "2026-11-18T10:59:16.622Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/portfolio",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "7fa9eda1b0a7f36c52f49893",
+      "createdAt": "2026-11-18T10:59:22.944Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "8069ca6e2029421424f06783",
+      "createdAt": "2026-11-18T10:59:30.935Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "9ac51f0cd776ed91eb14505d",
+      "createdAt": "2026-11-18T11:51:46.561Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "1e2aa60521d9b40183080ba7",
+      "createdAt": "2026-11-18T12:31:58.769Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-chrono-age-calculator",
+      "websiteId": "website_sabir_age_calculator",
+      "source": "direct",
+      "referrerHost": null,
+      "id": "36a9423106612e2573094678",
+      "createdAt": "2026-11-18T12:32:06.208Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "1f03da379faf1ffabc03ba16",
+      "createdAt": "2026-11-18T12:34:09.412Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "3455228530147a435af2c459",
+      "createdAt": "2026-11-18T12:34:39.417Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/studio",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "9ac5629197b5fb04cdfb7236",
+      "createdAt": "2026-11-18T12:35:31.105Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/redesign",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "3581be9249531211dc6ce6f7",
+      "createdAt": "2026-11-18T12:35:33.164Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/home-redesign",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "47f33cabd98af18854eb5db0",
+      "createdAt": "2026-11-18T12:35:34.953Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/v2",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "5b1208f59edf30e7fc00d27a",
+      "createdAt": "2026-11-18T12:35:36.605Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "9659d25b3caddabeace9942f",
+      "createdAt": "2026-11-18T12:35:38.720Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "33fc1fbd83280d5dfd162b8f",
+      "createdAt": "2026-11-18T12:35:43.717Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "190a39efda4185008385b176",
+      "createdAt": "2026-11-18T12:35:46.563Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/reelhouse",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "bcc33f06498355b974f091b2",
+      "createdAt": "2026-11-18T12:35:48.871Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "7c8f163886bb9783515d5bad",
+      "createdAt": "2026-11-18T12:37:01.789Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "5805ef6d60e95a18dc55a69f",
+      "createdAt": "2026-11-18T12:41:18.148Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/sabir-usmani-portfolio",
+      "websiteId": "website_sabir_personal_portfolio",
+      "source": "direct",
+      "referrerHost": null,
+      "id": "dacc563a86cb6e96b6e2e75a",
+      "createdAt": "2026-11-18T12:42:34.232Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "d98fb68c79774002018b9e18",
+      "createdAt": "2026-11-18T12:42:37.502Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/corporate-services",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "acd9957fc136503854d6360c",
+      "createdAt": "2026-11-18T12:42:38.619Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "4e8fee5986f76f3f1aae286a",
+      "createdAt": "2026-11-18T12:42:39.354Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "59c67a6a310f5cb3d1fd4885",
+      "createdAt": "2026-11-18T12:42:45.777Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "488814f415732cb863bc4b94",
+      "createdAt": "2026-11-18T12:42:52.603Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "c78b2c3091f0d07e5c8e48e4",
+      "createdAt": "2026-11-18T12:42:53.716Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "0d504ee440834c436c1e82ea",
+      "createdAt": "2026-11-18T12:42:55.311Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/corporate-services",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "3128fffb538d128fd837109f",
+      "createdAt": "2026-11-18T12:42:59.888Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/portfolio",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "e26d2a4a0ad3263eac144f39",
+      "createdAt": "2026-11-18T12:43:01.107Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/store",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "3892f02704aef54737f903f1",
+      "createdAt": "2026-11-18T12:43:02.471Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/contact",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "75ed689727752e2d77953719",
+      "createdAt": "2026-11-18T12:43:50.962Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "27bc61e3b1cfb939c61a6d2d",
+      "createdAt": "2026-11-18T12:43:53.320Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "ac9cf1c0ffb32101105f25b2",
+      "createdAt": "2026-11-18T12:44:12.125Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "89b9ac97778ee9631c9052c2",
+      "createdAt": "2026-11-18T12:44:15.107Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "6198b615deec660f28849816",
+      "createdAt": "2026-11-18T12:55:45.520Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "9639838dd717acfe5ecbf456",
+      "createdAt": "2026-11-18T13:03:52.330Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "768454ecb91d3e17a8c35f47",
+      "createdAt": "2026-11-18T13:04:58.417Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "3a64f68a25195e0a2af66345",
+      "createdAt": "2026-11-18T13:05:13.284Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/corporate-services",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "7424ec2553b931c8174fdb20",
+      "createdAt": "2026-11-18T13:05:21.933Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/portfolio",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "6286dc91e022827cac886dcc",
+      "createdAt": "2026-11-18T13:05:27.680Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/blog",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "a584acffdfe82992afb0a4e7",
+      "createdAt": "2026-11-18T13:05:29.445Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/contact",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "a10e982f36524dddefb910e4",
+      "createdAt": "2026-11-18T13:05:30.258Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/blog",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "5775d6f344e8ec54c78188c7",
+      "createdAt": "2026-11-18T13:05:31.990Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/portfolio",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "72e81c44dae48a400606a424",
+      "createdAt": "2026-11-18T13:05:32.684Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/corporate-services",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "667e2b330e1fa48b72e5d24c",
+      "createdAt": "2026-11-18T13:05:35.919Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "2fd68940806c7a26ae65f9fa",
+      "createdAt": "2026-11-18T13:05:37.364Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "1224dbb8af1a2760159b41c4",
+      "createdAt": "2026-11-18T13:05:38.937Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "72ef252023a00c503f403a44",
+      "createdAt": "2026-11-18T13:05:40.164Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "a89a95e70464037bc1716a6d",
+      "createdAt": "2026-11-18T13:05:41.606Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses/md-media-publishing",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "11d421ef5433d0498dbcd256",
+      "createdAt": "2026-11-18T13:05:45.723Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "a5dc61007178efa028619876",
+      "createdAt": "2026-11-18T13:05:51.300Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "d867e55fe40555e3c97681dd",
+      "createdAt": "2026-11-18T13:05:52.113Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "c4cb801872792c4c1d2d6473",
+      "createdAt": "2026-11-18T13:05:52.857Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "dacd9caf691fc56b120e5294",
+      "createdAt": "2026-11-18T13:05:53.637Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/corporate-services",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "5329b902a76469eed4300151",
+      "createdAt": "2026-11-18T13:05:54.259Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/portfolio",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "9a9c125f3fac3e68147b1c4b",
+      "createdAt": "2026-11-18T13:05:54.327Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/corporate-services",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "882b644befb43b27a7b3efd1",
+      "createdAt": "2026-11-18T13:05:56.202Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "934ea53c69fde4f7c608d34a",
+      "createdAt": "2026-11-18T13:05:57.253Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/corporate-services",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "8b67039a5dbb1c9b3f9e503f",
+      "createdAt": "2026-11-18T13:05:58.497Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/portfolio",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "ccd071c470fb397c830254f3",
+      "createdAt": "2026-11-18T13:06:00.268Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/corporate-services",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "838508973c9479eeba0f91d2",
+      "createdAt": "2026-11-18T13:06:02.501Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "82ea93e6ac4bcaed27d52cef",
+      "createdAt": "2026-11-18T13:06:03.029Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "fd19c1d37bd0e17ae42e9783",
+      "createdAt": "2026-11-18T13:06:03.960Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "56653dbf8037dc0252164e68",
+      "createdAt": "2026-11-18T13:08:10.040Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "f20fe9556526f1654e9b4b8f",
+      "createdAt": "2026-11-18T13:08:17.256Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "2cfc08ca4c8c62ee1a8b08b0",
+      "createdAt": "2026-11-18T13:10:15.111Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "2389884e94e77d6f5e48469d",
+      "createdAt": "2026-11-18T13:16:08.438Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-convertor",
+      "websiteId": "website_sabir_mdk_convertor",
+      "source": "direct",
+      "referrerHost": null,
+      "id": "3bf636e9e5e6c5d3c2c7aa77",
+      "createdAt": "2026-11-18T13:17:29.655Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "3577a375c1ec797fa1292f58",
+      "createdAt": "2026-11-18T13:25:09.435Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "c39d9bebafd06e3994854137",
+      "createdAt": "2026-11-18T13:28:53.237Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "f8f99a030937e85bc514c48d",
+      "createdAt": "2026-11-18T13:28:58.511Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-chrono-age-calculator",
+      "websiteId": "website_sabir_age_calculator",
+      "source": "internal",
+      "referrerHost": null,
+      "id": "2eba7bfeaf5008de0537de6c",
+      "createdAt": "2026-11-18T13:29:26.262Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/contact",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "0ed71abb49e5fd3a9377048b",
+      "createdAt": "2026-11-18T13:30:31.925Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "39d1de7f094a279208f1f469",
+      "createdAt": "2026-11-18T13:30:32.828Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/about-company",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "a36d8861f990af2ce5f4031d",
+      "createdAt": "2026-11-18T13:30:34.251Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/founder",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "f0c38b17c38aab4031c4f53a",
+      "createdAt": "2026-11-18T13:30:37.085Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/careers",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "590407510015ca59ca6b7ea7",
+      "createdAt": "2026-11-18T13:30:44.969Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/partnerships",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "f90189e1a97112cbf526d2cc",
+      "createdAt": "2026-11-18T13:30:49.112Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/about-company",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "ae26f1fdb19870a13c45a1d1",
+      "createdAt": "2026-11-18T13:30:52.948Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/founder",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "6bb5bb1ee5e3a684138f095f",
+      "createdAt": "2026-11-18T13:30:56.687Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "cbf91a01bf8af0eaffeb3163",
+      "createdAt": "2026-11-18T13:42:26.593Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "737be7eb97c4ab4a073fd419",
+      "createdAt": "2026-11-18T13:46:49.392Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-chrono-age-calculator",
+      "websiteId": "website_sabir_age_calculator",
+      "source": "internal",
+      "referrerHost": null,
+      "id": "321e3969b200e95841406c1a",
+      "createdAt": "2026-11-18T13:48:03.974Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "7c072bb9de8543f786721788",
+      "createdAt": "2026-11-18T13:48:31.907Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/contact",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "53dada125e5fdc92f349d6c6",
+      "createdAt": "2026-11-18T13:48:32.839Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/disclaimer",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "228832c2170c0af828788041",
+      "createdAt": "2026-11-18T13:48:59.036Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/contact",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "a92b7f3ba28c72beda0324b0",
+      "createdAt": "2026-11-18T13:49:00.032Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "0c99ef3176e296a7a697da34",
+      "createdAt": "2026-11-18T13:50:00.651Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "c0442452c935e43669f8e61e",
+      "createdAt": "2026-11-18T13:51:27.150Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-convertor",
+      "websiteId": "website_sabir_mdk_convertor",
+      "source": "direct",
+      "referrerHost": null,
+      "id": "d4fce9df560d96f48bab834b",
+      "createdAt": "2026-11-18T13:51:29.703Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "135af2e349e51249be6b0c7b",
+      "createdAt": "2026-11-20T06:54:50.496Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "c61e6c2300920f62def46410",
+      "createdAt": "2026-11-20T07:12:51.614Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "12dd6ce0bc3d5292d452fa2c",
+      "createdAt": "2026-11-20T07:33:33.116Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-chrono-age-calculator",
+      "websiteId": "website_sabir_age_calculator",
+      "source": "internal",
+      "referrerHost": null,
+      "id": "75a086b50bf9d0bd639c7131",
+      "createdAt": "2026-11-20T07:33:56.854Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "15c436ae89470c6b473c25ce",
+      "createdAt": "2026-11-20T07:41:19.943Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "dc6bcbf0d1b65c3d38301894",
+      "createdAt": "2026-11-20T07:41:24.076Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "ecb302d8a303d4d966a964f3",
+      "createdAt": "2026-11-20T07:42:35.958Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "61e7e338b0fe727f07c4f44b",
+      "createdAt": "2026-11-20T07:43:08.955Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "1e319baaeec17ae9d0ee07b3",
+      "createdAt": "2026-11-20T07:43:41.792Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "e5fafbd9d5330b154eb4044e",
+      "createdAt": "2026-11-20T07:45:51.931Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "3cd1c84faecd85fe88e8afc8",
+      "createdAt": "2026-11-20T09:15:22.944Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "6932dfdb8537cd5ef6ae3d60",
+      "createdAt": "2026-11-20T09:15:38.669Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "dee653a891e53f6c6f0f8c21",
+      "createdAt": "2026-11-20T09:16:14.418Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "c4621120c760bbd04812acb3",
+      "createdAt": "2026-11-20T09:18:01.227Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "5fce8bf474d596c72e5bb1ec",
+      "createdAt": "2026-11-20T09:21:35.622Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "17af6a992224c0c76f2ba4ca",
+      "createdAt": "2026-11-20T09:21:44.712Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "2bf84441c438230ac3d8ed7c",
+      "createdAt": "2026-11-20T09:29:20.163Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "6f625479c681a08db2d2c58e",
+      "createdAt": "2026-11-20T09:35:10.007Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-convertor",
+      "websiteId": "website_sabir_mdk_convertor",
+      "source": "internal",
+      "referrerHost": null,
+      "id": "1577c70dafd3239492126fc0",
+      "createdAt": "2026-11-20T09:39:42.278Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "92ac6833b83a8b3a8be8650d",
+      "createdAt": "2026-11-20T09:40:42.216Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "289f521640dd472f7d79c657",
+      "createdAt": "2026-11-20T09:43:41.978Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "4125a5ae9c216bdd64685353",
+      "createdAt": "2026-11-20T09:44:36.051Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "3088664e11f1a89c6ac8acc6",
+      "createdAt": "2026-11-20T09:45:03.387Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "fd60244cc05119957bd72dd0",
+      "createdAt": "2026-11-20T09:46:23.851Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-convertor",
+      "websiteId": "website_sabir_mdk_convertor",
+      "source": "internal",
+      "referrerHost": null,
+      "id": "f9a5e1f35800ed2231449ed3",
+      "createdAt": "2026-11-20T09:50:11.871Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/about-company",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "bf575b971117ac61451098ff",
+      "createdAt": "2026-11-20T09:50:13.491Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/careers",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "653c27936b98f9aa04a0541c",
+      "createdAt": "2026-11-20T09:50:15.704Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "1b7abc057af700b26c785276",
+      "createdAt": "2026-11-20T09:50:21.893Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/contact",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "f8dffd6ec8b264b6ef28613e",
+      "createdAt": "2026-11-20T09:50:37.593Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "fb675bb07874a8e638057183",
+      "createdAt": "2026-11-20T10:03:07.265Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "9fda438d751016c4ed23f9a6",
+      "createdAt": "2026-11-20T10:03:16.181Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-chrono-age-calculator",
+      "websiteId": "website_sabir_age_calculator",
+      "source": "direct",
+      "referrerHost": null,
+      "id": "2e32d184ac6a11a3221f617a",
+      "createdAt": "2026-11-20T10:04:03.532Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "d664380f989df9235f803352",
+      "createdAt": "2026-11-20T10:05:01.424Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-convertor",
+      "websiteId": "website_sabir_mdk_convertor",
+      "source": "direct",
+      "referrerHost": null,
+      "id": "9777b4a5a0f1199d0c8aafab",
+      "createdAt": "2026-11-20T10:05:09.803Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "453a30d287bec5d41b9179b2",
+      "createdAt": "2026-11-20T10:05:11.683Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "85544394eb0f94be01dc0d57",
+      "createdAt": "2026-11-20T10:05:21.152Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "4246e3c9ea52c716f8dc2aa7",
+      "createdAt": "2026-11-20T10:09:36.674Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "f5ac0692ed3dfbf79894cab2",
+      "createdAt": "2026-11-20T10:15:02.815Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "e76877fdd1da732e595773ba",
+      "createdAt": "2026-11-20T10:30:25.100Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "3954f7a6f96b701599f57d4a",
+      "createdAt": "2026-11-20T10:34:29.583Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "333678f76006d4869b77f816",
+      "createdAt": "2026-11-20T10:35:34.923Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "bc60033f14973ac4a1bd11ff",
+      "createdAt": "2026-11-20T10:36:44.742Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "2bb2a5ceb8efe49dd2b5d631",
+      "createdAt": "2026-11-20T10:38:34.197Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "56807a05e65fb166d674bd94",
+      "createdAt": "2026-11-20T11:04:30.311Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "25b65f6424f55577aebd25d4",
+      "createdAt": "2026-11-20T11:05:40.485Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "ba737504c2a958d4d6345570",
+      "createdAt": "2026-11-20T11:05:48.965Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "b84e7412051032ec45b2d355",
+      "createdAt": "2026-11-20T11:05:53.623Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "cf985dace63938ec17f6dade",
+      "createdAt": "2026-11-20T11:14:12.210Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "823046e08b33c3b5957f865d",
+      "createdAt": "2026-11-20T11:30:30.051Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "be63e14c625e341bde1bebb4",
+      "createdAt": "2026-11-20T11:30:44.884Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "149e561705eed15d06eb6c0f",
+      "createdAt": "2026-11-20T11:30:45.772Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "cb429c149b1f63f2003e35c7",
+      "createdAt": "2026-11-20T11:30:48.684Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "329f93d309a2bf8e103cc0f4",
+      "createdAt": "2026-11-20T11:32:45.737Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "b2e778d218c25f7a96dfe2dd",
+      "createdAt": "2026-11-20T11:36:41.883Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "7efa9f620b8794f19ae73744",
+      "createdAt": "2026-11-20T11:38:37.998Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "4ad492a8be1a1b7ae0219a77",
+      "createdAt": "2026-11-20T11:39:10.804Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/register",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "20978c210ccb3044ccba5c18",
+      "createdAt": "2026-11-20T11:39:28.615Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "c08608f25a8a61bfcac7f868",
+      "createdAt": "2026-11-20T11:39:31.123Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "48c8bfbba497855e6420aad7",
+      "createdAt": "2026-11-20T11:39:51.888Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "4b0d0e71678fbe9ae3783dde",
+      "createdAt": "2026-11-20T11:39:53.850Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "85d942394aef7b19dbf7634a",
+      "createdAt": "2026-11-20T11:39:56.242Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/preview/proj_age_calculator",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "13ec376b417bf21096ecb067",
+      "createdAt": "2026-11-20T11:40:06.376Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "4fded5e09aae40381fcd8d28",
+      "createdAt": "2026-11-20T11:41:50.973Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "a4b545a0c1b1901c19e9eb54",
+      "createdAt": "2026-11-20T11:42:00.560Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "9291727842e13461e3a0d6a4",
+      "createdAt": "2026-11-20T11:42:23.855Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "b4325ea1ca8e039a91aa98fb",
+      "createdAt": "2026-11-20T11:42:25.830Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/preview/proj_b4ac853b-f",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "09f9611e0a067859c48abc03",
+      "createdAt": "2026-11-20T11:44:39.632Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/preview/proj_b4ac853b-f",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "81b443683af4cb35960963dc",
+      "createdAt": "2026-11-20T11:46:02.891Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "1c7eadcec5c4339ee4477c13",
+      "createdAt": "2026-11-20T11:46:17.111Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "111bde1bcf22f24700cdf1fe",
+      "createdAt": "2026-11-20T11:47:23.526Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "0f4fcf9d22e08baffc4795ce",
+      "createdAt": "2026-11-20T11:47:26.574Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/preview/proj_b4ac853b-f",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "2de3cdb0e17c64af8df1ba47",
+      "createdAt": "2026-11-20T11:47:50.118Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "cd0ab58cf987cc9637b88857",
+      "createdAt": "2026-11-20T11:49:26.619Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/preview/proj_b4ac853b-f",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "0e691455cbe25c46390b2c62",
+      "createdAt": "2026-11-20T11:49:29.385Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "af4a49c11e7e4d40faed2ed0",
+      "createdAt": "2026-11-20T11:49:42.964Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/preview/proj_solar_mkv5aed5",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "15562dd1a9a68fa293b8d2d2",
+      "createdAt": "2026-11-20T11:50:01.259Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "3316c9bed3bbe97183066552",
+      "createdAt": "2026-11-20T11:50:12.748Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/preview/proj_solar_mwowzfoi",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "94ff88b13c3cd381ba039735",
+      "createdAt": "2026-11-20T11:50:21.592Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "ad375b2d15d1401bcd268387",
+      "createdAt": "2026-11-20T11:50:52.363Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/preview/proj_b4ac853b-f",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "9be34a3b92a0d421e4b9d6d7",
+      "createdAt": "2026-11-20T11:50:54.212Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "d516e9452e2101836865a927",
+      "createdAt": "2026-11-20T11:51:02.331Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "5815628a8d069fcbc975b4a3",
+      "createdAt": "2026-11-20T11:52:37.200Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/about-company",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "60804be010e344ad92341dcc",
+      "createdAt": "2026-11-20T11:52:40.899Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/contact",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "8e2f8795ce713ccae0ed50e0",
+      "createdAt": "2026-11-20T11:52:53.280Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "7675028cbc9886d1fee1272b",
+      "createdAt": "2026-11-20T11:52:55.694Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/contact",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "ea2ecd06ce3e29ba5537c084",
+      "createdAt": "2026-11-20T11:52:57.690Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/preview/proj_solar_mwowzfoi",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "22820f0e5cca37f53c54a3a4",
+      "createdAt": "2026-11-20T11:53:08.233Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "d005c5ab862b5acb137cbc5f",
+      "createdAt": "2026-11-20T11:53:14.262Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "53866e95155aefdd7727d834",
+      "createdAt": "2026-11-20T11:54:48.926Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/preview/proj_b4ac853b-f",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "dece4cf6842724392ed6590c",
+      "createdAt": "2026-11-20T11:54:50.714Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "c605810ba0e6a6ccb5c36cd0",
+      "createdAt": "2026-11-20T11:55:25.332Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "1df69bb89a1f9990828b2e71",
+      "createdAt": "2026-11-20T11:55:43.019Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "d3b093f56ff633d456811271",
+      "createdAt": "2026-11-20T11:55:57.839Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "e07527d3982e83710c13fdd2",
+      "createdAt": "2026-11-20T11:56:03.139Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "e434c95a92278594174dc230",
+      "createdAt": "2026-11-20T11:57:42.185Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/about-company",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "9c15ebb9c806408a0586e02a",
+      "createdAt": "2026-11-20T11:57:44.916Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/partnerships",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "269a968c14d06b3cd5aaaad3",
+      "createdAt": "2026-11-20T11:57:48.296Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/careers",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "7ebe0f5d1ed200b3aac3fea3",
+      "createdAt": "2026-11-20T11:57:49.976Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/contact",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "a7e2035b4d4a5841bdeb6a89",
+      "createdAt": "2026-11-20T11:57:52.122Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "4a09538b9f536c85abf9955f",
+      "createdAt": "2026-11-20T11:57:54.928Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "3a5df464e0d0495ae02d6de8",
+      "createdAt": "2026-11-20T11:57:56.370Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "78e1f9e125e64073aca1b8c2",
+      "createdAt": "2026-11-20T11:58:11.121Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "17876d98a71432966bd3eafc",
+      "createdAt": "2026-11-20T11:59:53.790Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "65972cac49663a56d7bfe494",
+      "createdAt": "2026-11-20T12:00:07.311Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "60f1e166ecfc27b21297b956",
+      "createdAt": "2026-11-20T12:01:10.470Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "76196a2836f679ae11191c0f",
+      "createdAt": "2026-11-20T12:01:54.805Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "d32c30842e416515d5432a32",
+      "createdAt": "2026-11-20T12:02:02.999Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "98f755ef8af2769881ca3845",
+      "createdAt": "2026-11-20T12:02:19.743Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "a8bdae8cbaed09a8d28b42cc",
+      "createdAt": "2026-11-20T12:02:38.572Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "92e9e59f5a9006d82ef3ba34",
+      "createdAt": "2026-11-20T12:07:55.633Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "3656ee75eb01142afc5a65b8",
+      "createdAt": "2026-11-20T12:08:34.888Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "0d4b43755f3355ea8321b9df",
+      "createdAt": "2026-11-20T12:10:52.387Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "97c2338c2af4ac963f1b9e5b",
+      "createdAt": "2026-11-20T12:11:19.745Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "e07dfe9cd000bd50c8a8af7c",
+      "createdAt": "2026-11-20T12:12:21.762Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "18e14c6b40be16cae8ec14fd",
+      "createdAt": "2026-11-20T12:14:26.177Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "de5b807bd05bb559fc1dca1e",
+      "createdAt": "2026-11-20T12:36:25.693Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "1ef4c98bdad29cea41321a96",
+      "createdAt": "2026-11-20T12:36:32.506Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "69565ed6db509aaa78648ce8",
+      "createdAt": "2026-11-20T12:37:08.622Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "5f1e2968e35acd29fc2a1f83",
+      "createdAt": "2026-11-20T12:37:39.183Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "6914b853e76fbb7b501f617f",
+      "createdAt": "2026-11-20T12:40:03.539Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "97ba87a66dab130f93288a0c",
+      "createdAt": "2026-11-20T12:40:07.657Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "bb19d881dd367a95a375ffc9",
+      "createdAt": "2026-11-20T12:40:23.050Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "f22e40bc6ab7fe73617faf95",
+      "createdAt": "2026-11-20T12:40:31.901Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "b0eec61c5d13c00a288bf8b7",
+      "createdAt": "2026-11-20T12:41:04.060Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/preview/proj_0364d63f-d",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "2598870118d5c6812cd8e5f3",
+      "createdAt": "2026-11-20T12:41:32.299Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "abbed04b350bdea68e3d5f19",
+      "createdAt": "2026-11-20T12:41:59.331Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "4d4ef877021ea8f09a2513bf",
+      "createdAt": "2026-11-20T12:42:01.809Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/preview/proj_mdk_convertor",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "10d0324af67a3f8fec14fcb1",
+      "createdAt": "2026-11-20T12:42:09.030Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "3c875be3fad3671066d6e8a8",
+      "createdAt": "2026-11-20T12:42:11.051Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "703288e484d76e13982ec350",
+      "createdAt": "2026-11-20T12:42:19.913Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "9454a50c7324c9866dc04dc4",
+      "createdAt": "2026-11-20T12:42:23.483Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "125d469cfd3664f9b7ab4afb",
+      "createdAt": "2026-11-20T12:42:25.253Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "a300f7faafebb0cf3678b537",
+      "createdAt": "2026-11-20T12:42:28.613Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "8fe8119c475fa0b9634f7c4a",
+      "createdAt": "2026-11-20T12:42:41.295Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "facc4641fd89ae949da069ec",
+      "createdAt": "2026-11-20T12:42:50.294Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "424594201690863630d852e6",
+      "createdAt": "2026-11-20T12:42:54.935Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "dd5f532f2d70997b77e1937a",
+      "createdAt": "2026-11-20T12:44:12.393Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "2286dfbe8af4b5b0e8dec4cc",
+      "createdAt": "2026-11-20T12:44:22.004Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "9951edfecc8d1be10f45e337",
+      "createdAt": "2026-11-20T12:44:31.509Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "6756ad39a731b505d6a9ecc3",
+      "createdAt": "2026-11-20T12:48:35.543Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "975d319d490249f5c018056c",
+      "createdAt": "2026-11-20T12:48:39.772Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "f4ae61cf0abdd36461dcb2cb",
+      "createdAt": "2026-11-20T12:48:46.550Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "0226c2c002854c9172a0ea87",
+      "createdAt": "2026-11-20T12:48:58.184Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "c3472af68841b90d2fdf6bfa",
+      "createdAt": "2026-11-20T12:49:02.234Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "bedb32bacb5ecc43ab34bb61",
+      "createdAt": "2026-11-20T12:49:04.828Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "bd09f826b6a4836c7e223a78",
+      "createdAt": "2026-11-20T12:49:06.752Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "5ef715b8667f5c736f8b1fbb",
+      "createdAt": "2026-11-20T12:54:05.982Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "99d5864c42e1843bcb62e4c4",
+      "createdAt": "2026-11-20T12:54:13.082Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "2ea324c2e25845f85d903bcb",
+      "createdAt": "2026-11-20T13:05:12.449Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "53ab25918c27c0ba4023785c",
+      "createdAt": "2026-11-20T13:12:37.423Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "dbac56feffaea2c927e6d5be",
+      "createdAt": "2026-11-20T13:22:06.449Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "17e9b108cade3b6fe7f3d806",
+      "createdAt": "2026-11-20T13:22:21.845Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/about-company",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "40fd3ad1d2067bf45416ff44",
+      "createdAt": "2026-11-20T13:25:40.809Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/about-company",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "4fd90cc93430e74318517dcc",
+      "createdAt": "2026-11-20T13:25:49.629Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "42355cc4217219de612076fb",
+      "createdAt": "2026-11-20T13:25:49.922Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "ebfae771b96bbf5985e191c5",
+      "createdAt": "2026-11-20T13:28:14.179Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "a6b73970dfd09a22632f49b8",
+      "createdAt": "2026-11-20T13:28:22.549Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "be7058c4c0a6ae47fb2895a4",
+      "createdAt": "2026-11-20T13:28:32.043Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "4677d9fa5c125217da7f3cfd",
+      "createdAt": "2026-11-20T13:28:35.416Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "7d8c3fd5b953c417f8ff1c45",
+      "createdAt": "2026-11-20T13:28:40.996Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "31c6594ab77f87bfe85ae8c8",
+      "createdAt": "2026-11-20T13:28:46.235Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "3cf838e4a7cb550e730362fb",
+      "createdAt": "2026-11-20T13:28:49.187Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "8299acaa4df9c498e16d8d9f",
+      "createdAt": "2026-11-20T13:28:52.439Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "f649b69f0f0ba115ce84481b",
+      "createdAt": "2026-11-20T13:29:54.246Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "e5d4c6533d2774f2cb00c2e5",
+      "createdAt": "2026-11-20T13:30:01.761Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "daa9dfd4aa907b6640716453",
+      "createdAt": "2026-11-20T13:30:13.316Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "8804d76d4683b4a2d952093c",
+      "createdAt": "2026-11-20T13:31:25.800Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "a08c43cc906222dc2b0a2f84",
+      "createdAt": "2026-11-20T13:31:42.750Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "a4400f89683f91aa76df2b94",
+      "createdAt": "2026-11-20T13:32:03.048Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "9cd24cc867669a054f011e5e",
+      "createdAt": "2026-11-20T13:32:18.946Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "3299dc32dd46dfb061161e36",
+      "createdAt": "2026-11-20T13:32:20.410Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "2809635f611b88bd54c997a0",
+      "createdAt": "2026-11-20T13:32:21.630Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "7738a3a214e9643b40756cee",
+      "createdAt": "2026-11-20T13:32:22.269Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "dfad5a89816fd2901a00658e",
+      "createdAt": "2026-11-20T13:32:23.519Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "0f1fd2e406e314b54439c17c",
+      "createdAt": "2026-11-20T13:32:24.568Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "4f5d3380d859f6bc8d7bd30d",
+      "createdAt": "2026-11-20T13:32:25.664Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "bee9417a29314cc20dbf62fb",
+      "createdAt": "2026-11-20T13:32:28.044Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "e2893db4657405b5e2d36906",
+      "createdAt": "2026-11-20T13:33:32.328Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "7db2611a6f0091b28182d1e8",
+      "createdAt": "2026-11-20T13:35:44.207Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/preview/proj_0364d63f-d",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "3b0d69495b8714bc771850eb",
+      "createdAt": "2026-11-20T13:35:51.363Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "a6b1210e0f71602768724d2f",
+      "createdAt": "2026-11-20T13:36:45.627Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/preview/proj_0364d63f-d",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "9def7cd317389f72db8d1a84",
+      "createdAt": "2026-11-20T13:36:49.173Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "1f830aeef3f5ef4cf1358dc3",
+      "createdAt": "2026-11-20T13:36:49.955Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/preview/proj_0364d63f-d",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "6dc27c42173645d5b33c0ecf",
+      "createdAt": "2026-11-20T13:36:52.381Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "12bfa6010057539caae2ea11",
+      "createdAt": "2026-11-20T13:36:54.794Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "cca150e75bef64d1052570f5",
+      "createdAt": "2026-11-20T13:37:03.862Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "6494ec87a370df43201857c2",
+      "createdAt": "2026-11-20T13:37:06.604Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "ddfaf8c219cd30239bdb3e7d",
+      "createdAt": "2026-11-20T13:38:20.089Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "5eb704b6a2a614abc7d04d79",
+      "createdAt": "2026-11-20T13:38:41.809Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "a52396d9943e89b286c00fe7",
+      "createdAt": "2026-11-20T13:38:52.401Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "9b7c3bf299213c2eab539908",
+      "createdAt": "2026-11-20T13:39:03.999Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "d02c811a246754fa4c846413",
+      "createdAt": "2026-11-20T13:39:13.217Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "d365393820c3178c86335f98",
+      "createdAt": "2026-11-20T13:47:46.077Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "1c54560c8f8d2c11381033b7",
+      "createdAt": "2026-11-20T13:47:59.630Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "4147d2976b2cb8b92ad78347",
+      "createdAt": "2026-11-20T13:48:01.513Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "664a87ea926a12799dd1de91",
+      "createdAt": "2026-11-20T13:48:07.451Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "9b18c082cd3d7c0ba57e0283",
+      "createdAt": "2026-11-20T13:51:07.901Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "76ec4dc9ba55918b15498ebe",
+      "createdAt": "2026-11-20T13:51:51.821Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "9d7946be72549de647e98ed9",
+      "createdAt": "2026-11-20T13:53:20.076Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "fe1b3e1c9758428c70dc6d97",
+      "createdAt": "2026-11-20T13:53:20.955Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "665e9bf5d1f5d5d72fe06889",
+      "createdAt": "2026-11-20T13:57:48.805Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "85d2cd3862e6336593798372",
+      "createdAt": "2026-11-20T14:00:32.761Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "c88303f45a2d9d29828f39ab",
+      "createdAt": "2026-11-20T14:00:43.052Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "c80bfd8d7db8b4077d5e8aa3",
+      "createdAt": "2026-11-20T14:00:56.423Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "69efcb53d3f1fe7f78f181e7",
+      "createdAt": "2026-11-20T14:00:58.305Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "4c71292ad7fa1d6fbd168c34",
+      "createdAt": "2026-11-20T14:00:59.427Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "5ff09073d9738983fb6de241",
+      "createdAt": "2026-11-20T14:01:01.050Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "30dfe925d0336a1ba3313702",
+      "createdAt": "2026-11-20T14:01:09.332Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "2d2454f158dbf3b66e732c75",
+      "createdAt": "2026-11-20T14:01:15.254Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "ffe5736129ca08ca42ab564b",
+      "createdAt": "2026-11-20T14:01:19.413Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "0b6ac9d9da5b23ecb00bc9f0",
+      "createdAt": "2026-11-20T14:01:20.381Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "a2cb07f7b68439a5f19d0c46",
+      "createdAt": "2026-11-20T14:02:33.907Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "95d9d4962444077adffd7b15",
+      "createdAt": "2026-11-20T14:12:04.073Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "93a52887c40a68f7ead4ee4a",
+      "createdAt": "2026-11-20T14:12:27.953Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "01515a5b97e21d6542fb7acc",
+      "createdAt": "2026-11-20T14:13:55.024Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "961ad68b0977b48e0c308a3e",
+      "createdAt": "2026-11-20T14:14:00.674Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "f27f402c5a5f02df4c984082",
+      "createdAt": "2026-11-20T14:14:07.046Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "47f37637e647e72b1735a740",
+      "createdAt": "2026-11-20T14:14:08.615Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "69393beb0332178f32f64eb5",
+      "createdAt": "2026-11-20T14:14:11.216Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "6baf610e86bc11f42a481c43",
+      "createdAt": "2026-11-20T14:14:12.475Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "0108ac7afe308e365f279d89",
+      "createdAt": "2026-11-20T14:14:17.782Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "6cbcd2a0c82b67cc8b9571c4",
+      "createdAt": "2026-11-20T14:14:18.635Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "f609650d5c928145a2937f53",
+      "createdAt": "2026-11-20T14:14:19.515Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "8ab93819904afe21750156ff",
+      "createdAt": "2026-11-20T14:14:21.465Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "dfd33b9dc8fb9f59f3f374cd",
+      "createdAt": "2026-11-20T14:14:23.232Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "8ddaf22671b926ee74bfee2b",
+      "createdAt": "2026-11-20T14:14:25.245Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "331f6147a9ba240740c60cd0",
+      "createdAt": "2026-11-20T14:14:34.689Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "2d89c05c95db89b7dbcf7671",
+      "createdAt": "2026-11-20T14:14:35.420Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "1d927de8b8add1a821140f16",
+      "createdAt": "2026-11-20T14:17:06.309Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "25bf2c4a404a83efd8185af3",
+      "createdAt": "2026-11-21T05:19:09.252Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "d99ce9c884d457a20f522e07",
+      "createdAt": "2026-11-21T05:19:22.368Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "5839c09185c85067fe77faa2",
+      "createdAt": "2026-11-21T05:19:31.213Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "4c110f03864ae8fff11025fa",
+      "createdAt": "2026-11-21T05:19:33.528Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "4c6f220b55129c0ebeee5195",
+      "createdAt": "2026-11-21T05:19:36.475Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "82396733449a41bbb0d4a0cd",
+      "createdAt": "2026-11-21T05:19:37.985Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "52a6be056a75c473ec76392e",
+      "createdAt": "2026-11-21T05:20:05.664Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "648ca14e00970290f51ec341",
+      "createdAt": "2026-11-21T05:20:40.280Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "4eae47753bb399224bec7a48",
+      "createdAt": "2026-11-21T05:20:53.560Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "a43f6e306c7df27b5ea4ab5f",
+      "createdAt": "2026-11-21T05:21:56.547Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "3cefe584f8a19fc4c1e7d9e2",
+      "createdAt": "2026-11-21T05:22:19.455Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "04ee78ade76dab2d8cdf103f",
+      "createdAt": "2026-11-21T05:25:27.748Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "e1b4363e666f9a3108023bca",
+      "createdAt": "2026-11-21T05:25:33.845Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "561c287d1dec39efa853167d",
+      "createdAt": "2026-11-21T05:25:40.270Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "cf0388e57bae409f0ef9bd52",
+      "createdAt": "2026-11-21T05:25:49.674Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "a67dc1719f99657771185159",
+      "createdAt": "2026-11-21T05:25:55.542Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "3aa98352cba294cce82ada9d",
+      "createdAt": "2026-11-21T05:26:02.975Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "9778a3db42af2671460e55ad",
+      "createdAt": "2026-11-21T05:26:11.963Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "4f49df7506720bef37b7d6ea",
+      "createdAt": "2026-11-21T05:26:21.264Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "1aa7756c3a3d6928b17b665c",
+      "createdAt": "2026-11-21T05:26:25.226Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "1a968db3448edf09902c7701",
+      "createdAt": "2026-11-21T05:26:58.708Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "3b97f022061828ab40909675",
+      "createdAt": "2026-11-21T05:27:09.935Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "6e355b195cdaa951e029962c",
+      "createdAt": "2026-11-21T05:27:14.225Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "98cb4a833c516c84562a3ecf",
+      "createdAt": "2026-11-21T05:27:33.635Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "1c35f7be5f38cb1670832a28",
+      "createdAt": "2026-11-21T05:27:33.687Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "1ea5c59c1373a878f3a9e577",
+      "createdAt": "2026-11-21T05:27:36.661Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "3c09e53a834972db7e7c6171",
+      "createdAt": "2026-11-21T05:27:38.717Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "b5483e5fc9d2e14267bc3b34",
+      "createdAt": "2026-11-21T05:27:47.933Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "b2b1dc01c6c711a433b98c7a",
+      "createdAt": "2026-11-21T05:38:40.383Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "877df4798ef3252199d420dd",
+      "createdAt": "2026-11-21T05:46:24.756Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "1c18e460f0f1f04cbe6ba861",
+      "createdAt": "2026-11-21T05:47:42.033Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "216383bbaa40fa10ecb1b014",
+      "createdAt": "2026-11-21T05:49:16.404Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "b8e62378bc9291254dc3779d",
+      "createdAt": "2026-11-21T05:49:49.443Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "cb6cfbba5dfb5cc74563e666",
+      "createdAt": "2026-11-21T05:49:55.828Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "e19fb81ecce9f953414d3fba",
+      "createdAt": "2026-11-21T05:50:49.120Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "e5c8cbbcb3c354470e729671",
+      "createdAt": "2026-11-21T05:53:53.315Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "d1d6032b31d83374ffb33392",
+      "createdAt": "2026-11-21T05:56:07.452Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "ba7cb3506766bfd090350d2d",
+      "createdAt": "2026-11-21T05:58:38.336Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "7a3ba6cb48b7cb22c6a8ed0d",
+      "createdAt": "2026-11-21T05:58:49.337Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/register",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "3edb82087b261650b2e7facd",
+      "createdAt": "2026-11-21T05:59:09.755Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "78c70a6a04abb5c7cb8d2335",
+      "createdAt": "2026-11-21T05:59:21.008Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "3cb1ec86d2acad43e5c84d25",
+      "createdAt": "2026-11-21T05:59:44.307Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "6244871048731093892947b9",
+      "createdAt": "2026-11-21T06:04:57.580Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "164653d691b59df67f514302",
+      "createdAt": "2026-11-21T06:05:02.013Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "0ffe00195575665f1cc8fa18",
+      "createdAt": "2026-11-21T06:05:08.368Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "5db985c99ecbc33e10845fc8",
+      "createdAt": "2026-11-21T06:05:11.328Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "7ca51a92b4f74effc984325d",
+      "createdAt": "2026-11-21T06:09:22.506Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "ebddd7a1d26aa26ce5830233",
+      "createdAt": "2026-11-21T06:09:53.758Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "22693a3d0665e9e4a2d9bbe7",
+      "createdAt": "2026-11-21T06:10:14.857Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "c94f0cc4b65747bb33a4dd80",
+      "createdAt": "2026-11-21T06:13:02.806Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "bb9de3999db21a5d273e37c9",
+      "createdAt": "2026-11-21T06:19:54.657Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "268ab66ec08e05b3eaf32fff",
+      "createdAt": "2026-11-21T06:20:05.092Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "7f94e22fc143b23b63c926ca",
+      "createdAt": "2026-11-21T06:20:09.750Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "8b602e2d4fcd8ad307c382be",
+      "createdAt": "2026-11-21T06:20:26.593Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "bece4f91f6dfcecb43c073a5",
+      "createdAt": "2026-11-21T06:20:57.706Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "a5cd875de2aa63be6867c2d8",
+      "createdAt": "2026-11-21T06:21:01.316Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "78741b86587df94a5d2e410d",
+      "createdAt": "2026-11-21T06:21:04.860Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "5f2608b18caee31842ee899c",
+      "createdAt": "2026-11-21T06:21:51.975Z"
+    }
+  ],
+  "hostedProjects": [
+    {
+      "id": "proj_0364d63f-d",
+      "userId": "usr_c5322c59-a",
+      "userEmail": "khansbir166@gmail.com",
+      "userName": "SABIR",
+      "projectName": "solar intro",
+      "slug": "solar-intro",
+      "description": "test website",
+      "visibility": "public",
+      "deploymentStatus": "live",
+      "storageUsedBytes": 3761177,
+      "totalDeployments": 1,
+      "viewCount": 8,
+      "createdAt": "2026-11-20T12:41:29.198Z",
+      "updatedAt": "2026-11-20T12:41:29.538Z",
+      "activeDeploymentId": "dep_0159cb53-3",
+      "deploymentUrl": "/sites/solar-intro"
+    },
+    {
+      "id": "proj_2ea2f5ce-3",
+      "userId": "usr_4639423a-2",
+      "userEmail": "dev_1795174702427@samadgroups-test.com",
+      "userName": "Test Engineer",
+      "projectName": "Automated Test Platform",
+      "slug": "automated-test-platform-1",
+      "description": "Next-generation deployment test site.",
+      "visibility": "public",
+      "deploymentStatus": "live",
+      "storageUsedBytes": 309,
+      "totalDeployments": 1,
+      "viewCount": 6,
+      "createdAt": "2026-11-20T11:38:22.622Z",
+      "updatedAt": "2026-11-20T11:38:22.671Z",
+      "activeDeploymentId": "dep_efff124d-7",
+      "deploymentUrl": "/sites/automated-test-platform-1"
+    },
+    {
+      "id": "proj_c32afa5f-6",
+      "userId": "usr_73c8de56-3",
+      "userEmail": "dev_1795174628188@samadgroups-test.com",
+      "userName": "Test Engineer",
+      "projectName": "Automated Test Platform",
+      "slug": "automated-test-platform",
+      "description": "Next-generation deployment test site.",
+      "visibility": "public",
+      "deploymentStatus": "live",
+      "storageUsedBytes": 309,
+      "totalDeployments": 1,
+      "viewCount": 5,
+      "createdAt": "2026-11-20T11:37:08.290Z",
+      "updatedAt": "2026-11-20T11:37:08.310Z",
+      "activeDeploymentId": "dep_c614184e-c",
+      "deploymentUrl": "/sites/automated-test-platform"
+    },
+    {
+      "id": "proj_age_calculator",
+      "userId": "usr_admin_01",
+      "userEmail": "sabirusmani159@gmail.com",
+      "userName": "Sabir Usmani",
+      "projectName": "MDK Chrono Age Calculator",
+      "slug": "mdk-chrono-age-calculator",
+      "description": "Precise chronological time calculation, leap years, days, hours, and life milestone analytics.",
+      "visibility": "public",
+      "deploymentUrl": "https://sabirusmani077.github.io/Age-calculator/",
+      "deploymentStatus": "live",
+      "thumbnail": "/images/project-age-calc.jpg",
+      "storageUsedBytes": 254000,
+      "totalDeployments": 1,
+      "viewCount": 1423,
+      "createdAt": "2024-06-01T00:00:00.000Z",
+      "updatedAt": "2026-11-20T12:37:18.994Z"
+    },
+    {
+      "id": "proj_mdk_convertor",
+      "userId": "usr_admin_01",
+      "userEmail": "sabirusmani159@gmail.com",
+      "userName": "Sabir Usmani",
+      "projectName": "MDK Unit & Media Convertor",
+      "slug": "mdk-convertor",
+      "description": "Fast, accurate unit, measurement, and binary mathematical converter for students and engineers.",
+      "visibility": "public",
+      "deploymentUrl": "https://sabirusmani077.github.io/MDK-Convertor/",
+      "deploymentStatus": "live",
+      "thumbnail": "/images/project-convertor.jpg",
+      "storageUsedBytes": 310000,
+      "totalDeployments": 1,
+      "viewCount": 984,
+      "createdAt": "2024-06-15T00:00:00.000Z",
+      "updatedAt": "2026-11-20T12:37:26.676Z"
+    },
+    {
+      "id": "proj_sabir_portfolio",
+      "userId": "usr_admin_01",
+      "userEmail": "sabirusmani159@gmail.com",
+      "userName": "Sabir Usmani",
+      "projectName": "Sabir Usmani Portfolio",
+      "slug": "sabir-usmani-portfolio",
+      "description": "Personal design portfolio, software engineering capabilities, and web showcase by Sabir Usmani.",
+      "visibility": "public",
+      "deploymentUrl": "https://sabirusmani077.github.io/Self-Portfolio-/",
+      "deploymentStatus": "live",
+      "thumbnail": "/images/project-portfolio.jpg",
+      "storageUsedBytes": 420000,
+      "totalDeployments": 1,
+      "viewCount": 2310,
+      "createdAt": "2024-07-01T00:00:00.000Z",
+      "updatedAt": "2026-11-20T12:37:34.621Z"
+    }
+  ],
+  "hostedDeployments": [
+    {
+      "id": "dep_0159cb53-3",
+      "projectId": "proj_0364d63f-d",
+      "userId": "usr_c5322c59-a",
+      "deploymentStatus": "live",
+      "deploymentUrl": "/sites/solar-intro",
+      "storagePath": "D:\\3. Project\\MDK Enterpriceses\\data\\hosted-sites\\usr_c5322c59-a\\solar-intro",
+      "fileCount": 94,
+      "totalSize": 3761177,
+      "entryFile": "index.html",
+      "logs": [
+        "[2026-11-20T12:41:29.538Z] Archive verified: 94 files, 3673.0 KB",
+        "[2026-11-20T12:41:29.538Z] Entry file detected: index.html",
+        "[2026-11-20T12:41:29.538Z] Deployed successfully to /sites/solar-intro"
+      ],
+      "createdAt": "2026-11-20T12:41:29.538Z",
+      "publishedAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "dep_efff124d-7",
+      "projectId": "proj_2ea2f5ce-3",
+      "userId": "usr_4639423a-2",
+      "deploymentStatus": "live",
+      "deploymentUrl": "/sites/automated-test-platform-1",
+      "storagePath": "D:\\3. Project\\MDK Enterpriceses\\data\\hosted-sites\\usr_4639423a-2\\automated-test-platform-1",
+      "fileCount": 2,
+      "totalSize": 309,
+      "entryFile": "index.html",
+      "logs": [
+        "[2026-11-20T11:38:22.671Z] Archive verified: 2 files, 0.3 KB",
+        "[2026-11-20T11:38:22.671Z] Entry file detected: index.html",
+        "[2026-11-20T11:38:22.671Z] Deployed successfully to /sites/automated-test-platform-1"
+      ],
+      "createdAt": "2026-11-20T11:38:22.671Z",
+      "publishedAt": "2026-11-20T11:38:22.671Z"
+    },
+    {
+      "id": "dep_c614184e-c",
+      "projectId": "proj_c32afa5f-6",
+      "userId": "usr_73c8de56-3",
+      "deploymentStatus": "live",
+      "deploymentUrl": "/sites/automated-test-platform",
+      "storagePath": "D:\\3. Project\\MDK Enterpriceses\\data\\hosted-sites\\usr_73c8de56-3\\automated-test-platform",
+      "fileCount": 2,
+      "totalSize": 309,
+      "entryFile": "index.html",
+      "logs": [
+        "[2026-11-20T11:37:08.310Z] Archive verified: 2 files, 0.3 KB",
+        "[2026-11-20T11:37:08.310Z] Entry file detected: index.html",
+        "[2026-11-20T11:37:08.310Z] Deployed successfully to /sites/automated-test-platform"
+      ],
+      "createdAt": "2026-11-20T11:37:08.310Z",
+      "publishedAt": "2026-11-20T11:37:08.310Z"
+    }
+  ],
+  "hostedProjectFiles": [
+    {
+      "id": "file_a13c1911-0",
+      "projectId": "proj_c32afa5f-6",
+      "deploymentId": "dep_c614184e-c",
+      "fileName": "index.html",
+      "filePath": "index.html",
+      "fileSize": 207,
+      "contentType": "text/html; charset=utf-8",
+      "createdAt": "2026-11-20T11:37:08.310Z"
+    },
+    {
+      "id": "file_ea67d3a9-4",
+      "projectId": "proj_c32afa5f-6",
+      "deploymentId": "dep_c614184e-c",
+      "fileName": "style.css",
+      "filePath": "style.css",
+      "fileSize": 102,
+      "contentType": "text/css; charset=utf-8",
+      "createdAt": "2026-11-20T11:37:08.310Z"
+    },
+    {
+      "id": "file_3322cee0-4",
+      "projectId": "proj_2ea2f5ce-3",
+      "deploymentId": "dep_efff124d-7",
+      "fileName": "index.html",
+      "filePath": "index.html",
+      "fileSize": 207,
+      "contentType": "text/html; charset=utf-8",
+      "createdAt": "2026-11-20T11:38:22.671Z"
+    },
+    {
+      "id": "file_bfbe9f3b-2",
+      "projectId": "proj_2ea2f5ce-3",
+      "deploymentId": "dep_efff124d-7",
+      "fileName": "style.css",
+      "filePath": "style.css",
+      "fileSize": 102,
+      "contentType": "text/css; charset=utf-8",
+      "createdAt": "2026-11-20T11:38:22.671Z"
+    },
+    {
+      "id": "file_706d6622-e",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "devcontainer.json",
+      "filePath": ".devcontainer/devcontainer.json",
+      "fileSize": 151,
+      "contentType": "application/json; charset=utf-8",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_7379125d-c",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "COMMIT_EDITMSG",
+      "filePath": ".git/COMMIT_EDITMSG",
+      "fileSize": 42,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_c23fba4d-4",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "config",
+      "filePath": ".git/config",
+      "fileSize": 320,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_ab56bbf7-b",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "description",
+      "filePath": ".git/description",
+      "fileSize": 73,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_d7fde6b1-b",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "FETCH_HEAD",
+      "filePath": ".git/FETCH_HEAD",
+      "fileSize": 117,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_44093d10-c",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "HEAD",
+      "filePath": ".git/HEAD",
+      "fileSize": 21,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_5b239909-2",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "applypatch-msg.sample",
+      "filePath": ".git/hooks/applypatch-msg.sample",
+      "fileSize": 478,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_dba757e8-b",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "commit-msg.sample",
+      "filePath": ".git/hooks/commit-msg.sample",
+      "fileSize": 1972,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_08446e22-9",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "fsmonitor-watchman.sample",
+      "filePath": ".git/hooks/fsmonitor-watchman.sample",
+      "fileSize": 4611,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_18feaaf5-8",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "post-update.sample",
+      "filePath": ".git/hooks/post-update.sample",
+      "fileSize": 189,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_20194947-b",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "pre-applypatch.sample",
+      "filePath": ".git/hooks/pre-applypatch.sample",
+      "fileSize": 424,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_2af9b8d3-a",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "pre-commit.sample",
+      "filePath": ".git/hooks/pre-commit.sample",
+      "fileSize": 1649,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_3d323686-e",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "pre-merge-commit.sample",
+      "filePath": ".git/hooks/pre-merge-commit.sample",
+      "fileSize": 416,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_1cd73479-5",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "pre-push.sample",
+      "filePath": ".git/hooks/pre-push.sample",
+      "fileSize": 1374,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_1a02cf08-1",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "pre-rebase.sample",
+      "filePath": ".git/hooks/pre-rebase.sample",
+      "fileSize": 4898,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_819d782a-c",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "pre-receive.sample",
+      "filePath": ".git/hooks/pre-receive.sample",
+      "fileSize": 544,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_8f05f4ad-2",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "prepare-commit-msg.sample",
+      "filePath": ".git/hooks/prepare-commit-msg.sample",
+      "fileSize": 1492,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_d6fde770-e",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "push-to-checkout.sample",
+      "filePath": ".git/hooks/push-to-checkout.sample",
+      "fileSize": 2783,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_164d4a11-7",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "sendemail-validate.sample",
+      "filePath": ".git/hooks/sendemail-validate.sample",
+      "fileSize": 2308,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_a85eb683-0",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "update.sample",
+      "filePath": ".git/hooks/update.sample",
+      "fileSize": 3650,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_90ca0338-3",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "index",
+      "filePath": ".git/index",
+      "fileSize": 1366,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_192cd9c5-4",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "exclude",
+      "filePath": ".git/info/exclude",
+      "fileSize": 240,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_1f6bdd78-9",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "HEAD",
+      "filePath": ".git/logs/HEAD",
+      "fileSize": 2385,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_85bc1c5f-d",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "main",
+      "filePath": ".git/logs/refs/heads/main",
+      "fileSize": 1356,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_3e712640-7",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "main",
+      "filePath": ".git/logs/refs/remotes/origin/main",
+      "fileSize": 828,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_294bff54-6",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "9f3f2567bc29afd09698630e9190207485f127",
+      "filePath": ".git/objects/04/9f3f2567bc29afd09698630e9190207485f127",
+      "fileSize": 196,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_39867b31-9",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "6baa59c31bcdf5fac7610d24cb7e7a53ffe1c9",
+      "filePath": ".git/objects/06/6baa59c31bcdf5fac7610d24cb7e7a53ffe1c9",
+      "fileSize": 187,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_4a5bc821-d",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "4a60b75b0cdd384ecdedff131eb0a43495f998",
+      "filePath": ".git/objects/07/4a60b75b0cdd384ecdedff131eb0a43495f998",
+      "fileSize": 320,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_fa015ad4-8",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "0f946752667889677560f2f25cffa1a69daa5e",
+      "filePath": ".git/objects/08/0f946752667889677560f2f25cffa1a69daa5e",
+      "fileSize": 54,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_2967bd04-5",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "8e9ede7614f71092965d7d0442523a1480608b",
+      "filePath": ".git/objects/08/8e9ede7614f71092965d7d0442523a1480608b",
+      "fileSize": 318,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_6e2e667c-2",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "ba20d66a234efc59d5c091c8a0c3fe79ffe10f",
+      "filePath": ".git/objects/14/ba20d66a234efc59d5c091c8a0c3fe79ffe10f",
+      "fileSize": 9476,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_73dc4dd8-3",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "533b2fe857737d3fffd149cdd754c5b9288fe7",
+      "filePath": ".git/objects/16/533b2fe857737d3fffd149cdd754c5b9288fe7",
+      "fileSize": 96,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_b3f5f346-8",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "264907b1e53babf847edbf66c82046c379c9ff",
+      "filePath": ".git/objects/1b/264907b1e53babf847edbf66c82046c379c9ff",
+      "fileSize": 279,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_409d8557-d",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "dc96d4311f46a3a355f88c5bfe8b391c426848",
+      "filePath": ".git/objects/1c/dc96d4311f46a3a355f88c5bfe8b391c426848",
+      "fileSize": 224,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_865430ab-a",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "16fd4356ab6b1cf417bcdff6d0a0861e165e98",
+      "filePath": ".git/objects/21/16fd4356ab6b1cf417bcdff6d0a0861e165e98",
+      "fileSize": 148,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_2b407137-7",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "453dca29ae1f2e3baaac860a0f8622f161293e",
+      "filePath": ".git/objects/3b/453dca29ae1f2e3baaac860a0f8622f161293e",
+      "fileSize": 100976,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_4cf8f573-2",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "d6ca0a033afcce0ce6fff3e0059fa6cf82606f",
+      "filePath": ".git/objects/3b/d6ca0a033afcce0ce6fff3e0059fa6cf82606f",
+      "fileSize": 286,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_127cfd10-3",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "0d4bbc5d7a44cbb09d6bc6a1c3726adc37d5c4",
+      "filePath": ".git/objects/4d/0d4bbc5d7a44cbb09d6bc6a1c3726adc37d5c4",
+      "fileSize": 1480,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_5a003935-b",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "aa8d50420526b42335a9756bbd4787fc089877",
+      "filePath": ".git/objects/4f/aa8d50420526b42335a9756bbd4787fc089877",
+      "fileSize": 62,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_531ea8b9-8",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "dba53439c01f7f53f6e2516147f492d6c7a4d9",
+      "filePath": ".git/objects/51/dba53439c01f7f53f6e2516147f492d6c7a4d9",
+      "fileSize": 124266,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_ae3c5be8-6",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "f7f650b80fef281199e7d1c6bf53c6a5280802",
+      "filePath": ".git/objects/5d/f7f650b80fef281199e7d1c6bf53c6a5280802",
+      "fileSize": 54,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_f824b9a2-c",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "db83b77bdd5f4e4c296cc8c5991bee16da279a",
+      "filePath": ".git/objects/6a/db83b77bdd5f4e4c296cc8c5991bee16da279a",
+      "fileSize": 96,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_2643c1c5-d",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "a1afda9e7018c581c7bb325b6298e31398490a",
+      "filePath": ".git/objects/78/a1afda9e7018c581c7bb325b6298e31398490a",
+      "fileSize": 838,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_51aa133a-0",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "8c2a08313ddf3ef90c69e7d5846c0bab652a1f",
+      "filePath": ".git/objects/7e/8c2a08313ddf3ef90c69e7d5846c0bab652a1f",
+      "fileSize": 36983,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_f6cf571d-2",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "5fa018e63dff373c30c749e4cd69af7b75955d",
+      "filePath": ".git/objects/81/5fa018e63dff373c30c749e4cd69af7b75955d",
+      "fileSize": 153,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_2fe60822-3",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "fbfa4b87fe219dfc242fa01dafbb7d9d91ad12",
+      "filePath": ".git/objects/86/fbfa4b87fe219dfc242fa01dafbb7d9d91ad12",
+      "fileSize": 822,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_ccd7873d-b",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "921c07ea0541917419bd7a0196004fd404f3da",
+      "filePath": ".git/objects/87/921c07ea0541917419bd7a0196004fd404f3da",
+      "fileSize": 9721,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_59b203d1-3",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "137891791fe96927ad78e64b0aad7bded08bdc",
+      "filePath": ".git/objects/8b/137891791fe96927ad78e64b0aad7bded08bdc",
+      "fileSize": 16,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_6ff05d5f-7",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "317728f9f9565840d25facd5b62942ca255738",
+      "filePath": ".git/objects/8b/317728f9f9565840d25facd5b62942ca255738",
+      "fileSize": 2468,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_67ddf089-c",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "860eba4d7d185f995924dee79954e16e123b71",
+      "filePath": ".git/objects/91/860eba4d7d185f995924dee79954e16e123b71",
+      "fileSize": 825,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_0c471767-a",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "c7cebb048414794b25d0ec0a9076adc9918dc9",
+      "filePath": ".git/objects/91/c7cebb048414794b25d0ec0a9076adc9918dc9",
+      "fileSize": 185,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_91a95d33-6",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "5060bfcb608d7e69870047c3be43b3097acd30",
+      "filePath": ".git/objects/92/5060bfcb608d7e69870047c3be43b3097acd30",
+      "fileSize": 204967,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_d0e4b341-f",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "2e1318c0c1a98c51835c6775c2c6a5861ddae6",
+      "filePath": ".git/objects/95/2e1318c0c1a98c51835c6775c2c6a5861ddae6",
+      "fileSize": 120,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_15c03ef9-e",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "c74031cf7ec982209ecaf0f921e7db74799965",
+      "filePath": ".git/objects/96/c74031cf7ec982209ecaf0f921e7db74799965",
+      "fileSize": 205,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_3715b575-9",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "19731c26372432d8203f435d6a1f9ccceac9b5",
+      "filePath": ".git/objects/97/19731c26372432d8203f435d6a1f9ccceac9b5",
+      "fileSize": 784,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_36c1662b-d",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "4243bf30f9f323eb694cd14276d1d7895e0828",
+      "filePath": ".git/objects/97/4243bf30f9f323eb694cd14276d1d7895e0828",
+      "fileSize": 211008,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_aae8f91b-1",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "5969bf630b8df0601f81b0633cc4ba5637ea21",
+      "filePath": ".git/objects/97/5969bf630b8df0601f81b0633cc4ba5637ea21",
+      "fileSize": 186,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_dd0e7d5c-d",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "69475143ce84de39763db0248912740d795053",
+      "filePath": ".git/objects/9a/69475143ce84de39763db0248912740d795053",
+      "fileSize": 834,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_26c4d076-d",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "f7eb9174e513533c1e509bddbc3ab85a68f788",
+      "filePath": ".git/objects/9c/f7eb9174e513533c1e509bddbc3ab85a68f788",
+      "fileSize": 9403,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_127aa200-5",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "610084f43a59f9a33f3c86c8a7a88449a2e7b6",
+      "filePath": ".git/objects/a0/610084f43a59f9a33f3c86c8a7a88449a2e7b6",
+      "fileSize": 217912,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_b9b1aaf4-e",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "ee1ade82e583687038ce1eac6f43567c259531",
+      "filePath": ".git/objects/b4/ee1ade82e583687038ce1eac6f43567c259531",
+      "fileSize": 10162,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_cf74b645-b",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "9d86c1d008a6b11bb1f1959b64b09ba7244f68",
+      "filePath": ".git/objects/c2/9d86c1d008a6b11bb1f1959b64b09ba7244f68",
+      "fileSize": 10032,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_8b033600-e",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "185b390f1e7e59a22b851c5b530df163671434",
+      "filePath": ".git/objects/c3/185b390f1e7e59a22b851c5b530df163671434",
+      "fileSize": 48,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_ea244f2c-5",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "93251118ba9d3fd579e999461fe3e499009d42",
+      "filePath": ".git/objects/c4/93251118ba9d3fd579e999461fe3e499009d42",
+      "fileSize": 97,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_04445383-b",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "6b935cf32860ca7910546e85425ad1c04c6f4f",
+      "filePath": ".git/objects/c7/6b935cf32860ca7910546e85425ad1c04c6f4f",
+      "fileSize": 268216,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_e449738a-9",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "94e23848e6aae580c96e1478178201b1566780",
+      "filePath": ".git/objects/ca/94e23848e6aae580c96e1478178201b1566780",
+      "fileSize": 48,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_6602b4a9-7",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "42491ab674fe1e7c2b0c268b0bb92838900333",
+      "filePath": ".git/objects/cd/42491ab674fe1e7c2b0c268b0bb92838900333",
+      "fileSize": 224,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_46c0a3ce-6",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "ebc912c4aa021ee5e71d68e7dfef2da919bbae",
+      "filePath": ".git/objects/cf/ebc912c4aa021ee5e71d68e7dfef2da919bbae",
+      "fileSize": 827,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_f136b075-5",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "668ff328c558048102c042b6e28116a182f90d",
+      "filePath": ".git/objects/d5/668ff328c558048102c042b6e28116a182f90d",
+      "fileSize": 131,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_d4d380ea-6",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "d3248e5c7dcd3b694376b8a7e5437adb2fd580",
+      "filePath": ".git/objects/d7/d3248e5c7dcd3b694376b8a7e5437adb2fd580",
+      "fileSize": 197,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_15a63a60-3",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "f7a82c8e77461f7dabe4ec8f6b50782c0a9d28",
+      "filePath": ".git/objects/d8/f7a82c8e77461f7dabe4ec8f6b50782c0a9d28",
+      "fileSize": 540262,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_d91d7617-5",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "c68ff132c4b43ca342e198fad9dd036aa165a7",
+      "filePath": ".git/objects/e5/c68ff132c4b43ca342e198fad9dd036aa165a7",
+      "fileSize": 179746,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_ea67db88-4",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "33c7e613c685a4a7ce8b016b1080df7a1198d8",
+      "filePath": ".git/objects/e6/33c7e613c685a4a7ce8b016b1080df7a1198d8",
+      "fileSize": 10065,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_51d2f250-7",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "811e8abe0e07ab2f7da3b7c120c8bde16e2861",
+      "filePath": ".git/objects/e6/811e8abe0e07ab2f7da3b7c120c8bde16e2861",
+      "fileSize": 154,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_37a5b7e0-d",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "17a8cd1662a17be2c8613ddc9f463f2dc944f7",
+      "filePath": ".git/objects/f1/17a8cd1662a17be2c8613ddc9f463f2dc944f7",
+      "fileSize": 62,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_b7b88198-0",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "1e02d7d710aeb3199b0612d88c344ec13733d4",
+      "filePath": ".git/objects/f2/1e02d7d710aeb3199b0612d88c344ec13733d4",
+      "fileSize": 49,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_09e68480-f",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "457fff3b554bb6858a2369a032897d346980c9",
+      "filePath": ".git/objects/f8/457fff3b554bb6858a2369a032897d346980c9",
+      "fileSize": 187,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_0d6f7068-f",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "9bf17feb9c5cd854f98eec551293e517041f79",
+      "filePath": ".git/objects/fe/9bf17feb9c5cd854f98eec551293e517041f79",
+      "fileSize": 186,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_860095ff-a",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "18fe3ee309b6fcb9be607b1e6640e9d0b5ed60",
+      "filePath": ".git/objects/ff/18fe3ee309b6fcb9be607b1e6640e9d0b5ed60",
+      "fileSize": 201,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_319dadd9-9",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "ORIG_HEAD",
+      "filePath": ".git/ORIG_HEAD",
+      "fileSize": 41,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_027f988a-e",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "main",
+      "filePath": ".git/refs/heads/main",
+      "fileSize": 41,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_0c63bd6e-f",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "main",
+      "filePath": ".git/refs/remotes/origin/main",
+      "fileSize": 41,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_d28f44eb-4",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "about-technicians.jpg",
+      "filePath": "assets/images/about-technicians.jpg",
+      "fileSize": 207346,
+      "contentType": "image/jpeg",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_b9e7b7ef-4",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "benefits-sunrise.jpg",
+      "filePath": "assets/images/benefits-sunrise.jpg",
+      "fileSize": 105501,
+      "contentType": "image/jpeg",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_3191ff5d-6",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "hero-solar.jpg",
+      "filePath": "assets/images/hero-solar.jpg",
+      "fileSize": 540371,
+      "contentType": "image/jpeg",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_740849c3-c",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "logo.png",
+      "filePath": "assets/images/logo.png",
+      "fileSize": 37027,
+      "contentType": "image/png",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_d7f95368-8",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "project-agriculture.jpg",
+      "filePath": "assets/images/project-agriculture.jpg",
+      "fileSize": 217940,
+      "contentType": "image/jpeg",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_2379c993-d",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "project-commercial.jpg",
+      "filePath": "assets/images/project-commercial.jpg",
+      "fileSize": 268191,
+      "contentType": "image/jpeg",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_4f8d5612-8",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "project-residential.jpg",
+      "filePath": "assets/images/project-residential.jpg",
+      "fileSize": 124924,
+      "contentType": "image/jpeg",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_8b9ee9b8-0",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "project-solar-farm.jpg",
+      "filePath": "assets/images/project-solar-farm.jpg",
+      "fileSize": 180222,
+      "contentType": "image/jpeg",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_13fc27b2-a",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "index.html",
+      "filePath": "index.html",
+      "fileSize": 43150,
+      "contentType": "text/html; charset=utf-8",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_72915e79-6",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "README.md",
+      "filePath": "README.md",
+      "fileSize": 2,
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_9eaa264a-0",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "script.js",
+      "filePath": "script.js",
+      "fileSize": 7430,
+      "contentType": "application/javascript; charset=utf-8",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    },
+    {
+      "id": "file_980e3436-6",
+      "projectId": "proj_0364d63f-d",
+      "deploymentId": "dep_0159cb53-3",
+      "fileName": "style.css",
+      "filePath": "style.css",
+      "fileSize": 38421,
+      "contentType": "text/css; charset=utf-8",
+      "createdAt": "2026-11-20T12:41:29.538Z"
+    }
+  ]
+}
