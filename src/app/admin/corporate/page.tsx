@@ -2,6 +2,7 @@ import { readDb } from "@/lib/db";
 import Link from "next/link";
 import Image from "next/image";
 import { AdminPieCharts } from "@/components/admin/AdminPieCharts";
+import { AdminLogoutButton } from "@/components/admin/AdminLogoutButton";
 import {
   Building2,
   Globe,
@@ -204,6 +205,8 @@ export default function CorporateAdminDashboard() {
               <ExternalLink className="w-3.5 h-3.5 text-slate-500" />
               <span>View Website</span>
             </Link>
+
+            <AdminLogoutButton variant="header" />
           </div>
         </div>
       </header>

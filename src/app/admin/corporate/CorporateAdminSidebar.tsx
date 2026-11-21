@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { AdminLogoutButton } from "@/components/admin/AdminLogoutButton";
 import {
   Activity,
   BarChart3,
@@ -107,7 +108,7 @@ export function CorporateAdminSidebar() {
           ))}
         </nav>
 
-        <div className="mt-auto space-y-2 pt-4">
+        <div className="mt-auto space-y-2 pt-4 border-t border-white/10">
           <a
             href="/api/admin/export-excel?type=all"
             download
@@ -123,10 +124,12 @@ export function CorporateAdminSidebar() {
           >
             ← Back to website
           </Link>
+
+          <AdminLogoutButton variant="sidebar" />
         </div>
       </aside>
 
-      <nav aria-label="Corporate admin sections" className="flex gap-2 overflow-x-auto border-b border-slate-200 bg-white p-3 lg:hidden">
+      <nav aria-label="Corporate admin sections" className="flex items-center gap-2 overflow-x-auto border-b border-slate-200 bg-white p-3 lg:hidden">
         {groups.flatMap((group) => group.items).map(({ label, href }) => {
           const active = isActive(pathname, href);
           return (
@@ -140,6 +143,9 @@ export function CorporateAdminSidebar() {
             </Link>
           );
         })}
+        <div className="shrink-0 ml-auto pl-2">
+          <AdminLogoutButton variant="header" />
+        </div>
       </nav>
     </>
   );
