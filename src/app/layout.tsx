@@ -73,6 +73,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${manrope.variable} ${inter.variable}`} style={brandStyles}>
       <head>
+        <meta name="google-site-verification" content="j7N4EKQjh9NpQFnXBGQopLmSeJ8lLXxYPD2E3pndgNA" />
         <link rel="icon" href={companyProfile.favicon || "/images/primary-logo.png"} />
       </head>
       <body data-site-theme="premium" className="relative min-h-screen flex flex-col bg-slate-50 text-slate-900 antialiased font-sans">
