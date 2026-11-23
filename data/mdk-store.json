@@ -223,13 +223,13 @@
       "name": "QA Tester",
       "email": "qa_1795240154458@test.com",
       "phone": "",
-      "passwordHash": "05c19ba57bee8c3ddd75334c8c21b68f:a6847419afbcf0b475ee2aae3a7eb9598d260554a6ae5c9e4aef908ffeb22572c6c67ee67cf6f3dca93e2714f437eb4e84fa743d6faff7ca0816d921f8e63ccf",
+      "passwordHash": "pbkdf2:100000:137aead05f9c882a68334294f92d98eb:18b31624b3f080de9dbb081d644f08ac681f6b5520219fa5a8aef784c91b74b19121a0ac54f63e01ab755a3cfbc2f198657e6f9c79fcc9c5141c0f0a6a6df62d",
       "role": "customer",
       "emailVerified": true,
       "privacyConsent": true,
       "savedAddresses": [],
       "createdAt": "2026-11-21T05:49:16.163Z",
-      "updatedAt": "2026-11-21T05:49:16.163Z"
+      "updatedAt": "2026-11-23T04:22:46.858Z"
     },
     {
       "id": "usr_4729b675-b",
@@ -4781,6 +4781,33 @@
       "referrerHost": null,
       "id": "50f14f86b5d659081bb977ec",
       "createdAt": "2026-11-21T06:58:23.224Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "d9b17c4d4bf6c156d1155485",
+      "createdAt": "2026-11-22T04:34:47.491Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "5d8b21e7c106bff5d654bdbb",
+      "createdAt": "2026-11-22T04:35:02.188Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "450cfd59f075b17d2ba836d4",
+      "createdAt": "2026-11-23T04:20:30.752Z"
     }
   ],
   "hostedProjects": [

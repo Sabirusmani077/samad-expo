@@ -1,8 +1,28 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readDb } from "@/lib/db";
+import { generatePasswordResetToken } from "@/lib/security";
+import { rateLimit, getClientIp } from "@/lib/rate-limit";
 
 export async function POST(request: NextRequest) {
   try {
+    const ip = getClientIp(request.headers);
+
+    // Rate Limiting: 3 password reset requests per 15 minutes per IP
+    const limiter = rateLimit(`forgot-pwd:${ip}`, 3, 15 * 60);
+    if (!limiter.success) {
+      return NextResponse.json(
+        {
+          error: `Too many password reset requests. Please wait ${limiter.resetInSeconds} seconds before trying again.`,
+        },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": String(limiter.resetInSeconds),
+          },
+        }
+      );
+    }
+
     const body = await request.json();
     const email = String(body.email || "").trim().toLowerCase();
 
@@ -16,12 +36,15 @@ export async function POST(request: NextRequest) {
     const db = readDb();
     const user = db.users.find((u) => u.email.toLowerCase() === email);
 
-    // For privacy, respond with generic success whether user exists or not
+    // Cryptographically signed time-limited (15-minute) reset token bound to current password hash
+    const resetToken = user
+      ? generatePasswordResetToken(user.id, user.email, user.passwordHash, 15)
+      : undefined;
+
     return NextResponse.json({
       success: true,
-      message: "If an account exists with this email, password reset instructions have been issued.",
-      // Include simulated token for instant direct reset flow in local environment
-      resetToken: user ? `rst_${Buffer.from(`${user.id}:${Date.now()}`).toString("base64")}` : undefined,
+      message: "If an account exists with this email, a secure password reset token has been generated.",
+      resetToken,
     });
   } catch {
     return NextResponse.json(

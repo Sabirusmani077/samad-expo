@@ -1,35 +1,57 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readDb, writeDb, toPublicUser } from "@/lib/db";
-import { hashPassword, signSessionToken } from "@/lib/security";
+import { hashPassword, signSessionToken, getSessionCookieOptions, sanitizeInputText } from "@/lib/security";
 import { SESSION_COOKIE_NAME } from "@/lib/auth";
+import { rateLimit, getClientIp } from "@/lib/rate-limit";
 import { User } from "@/lib/types";
+import crypto from "crypto";
 
 export async function POST(request: NextRequest) {
   try {
+    const ip = getClientIp(request.headers);
+
+    // Rate Limiting: 5 registrations per hour per IP to prevent spam accounts
+    const limiter = rateLimit(`register:${ip}`, 5, 60 * 60);
+    if (!limiter.success) {
+      return NextResponse.json(
+        {
+          error: `Registration limit exceeded. Please wait ${Math.ceil(
+            limiter.resetInSeconds / 60
+          )} minutes before registering another account.`,
+        },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": String(limiter.resetInSeconds),
+          },
+        }
+      );
+    }
+
     const body = await request.json();
-    const name = String(body.name || "").trim();
+    const name = sanitizeInputText(String(body.name || ""));
     const email = String(body.email || "").trim().toLowerCase();
     const password = String(body.password || "");
-    const phone = String(body.phone || "").trim();
+    const phone = sanitizeInputText(String(body.phone || ""));
 
-    if (!name || name.length < 2) {
+    if (!name || name.length < 2 || name.length > 80) {
       return NextResponse.json(
-        { error: "Please enter your full name (at least 2 characters)." },
+        { error: "Please enter your full name (between 2 and 80 characters)." },
         { status: 400 }
       );
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email || !emailRegex.test(email)) {
+    if (!email || email.length > 254 || !emailRegex.test(email)) {
       return NextResponse.json(
         { error: "Please provide a valid email address." },
         { status: 400 }
       );
     }
 
-    if (!password || password.length < 6) {
+    if (!password || password.length < 8) {
       return NextResponse.json(
-        { error: "Password must be at least 6 characters long." },
+        { error: "Password must be at least 8 characters long for platform security." },
         { status: 400 }
       );
     }
@@ -75,19 +97,13 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
 
-    response.cookies.set(SESSION_COOKIE_NAME, token, {
-      httpOnly: true,
-      sameSite: "lax",
-      secure: process.env.NODE_ENV === "production",
-      path: "/",
-      maxAge: 60 * 60 * 24 * 7,
-    });
+    response.cookies.set(SESSION_COOKIE_NAME, token, getSessionCookieOptions());
 
     return response;
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : "Registration error";
     return NextResponse.json(
-      { error: `Unable to create account: ${message}` },
+      { error: `Unable to complete account registration securely: ${message}` },
       { status: 500 }
     );
   }

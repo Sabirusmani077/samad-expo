@@ -1,10 +1,29 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readDb, toPublicUser } from "@/lib/db";
-import { signSessionToken, verifyPassword } from "@/lib/security";
+import { signSessionToken, verifyPassword, getSessionCookieOptions } from "@/lib/security";
 import { SESSION_COOKIE_NAME } from "@/lib/auth";
+import { rateLimit, resetRateLimit, getClientIp } from "@/lib/rate-limit";
 
 export async function POST(request: NextRequest) {
   try {
+    const ip = getClientIp(request.headers);
+    
+    // Strict Rate Limiting: 5 attempts per 15 minutes per IP
+    const limiter = rateLimit(`login:${ip}`, 5, 15 * 60);
+    if (!limiter.success) {
+      return NextResponse.json(
+        {
+          error: `Too many login attempts. For your security, this account access is temporarily paused. Please try again in ${limiter.resetInSeconds} seconds.`,
+        },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": String(limiter.resetInSeconds),
+          },
+        }
+      );
+    }
+
     const body = await request.json();
     const email = String(body.email || "")
       .trim()
@@ -28,6 +47,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Reset rate limiter on successful authentication
+    resetRateLimit(`login:${ip}`);
+
     const token = signSessionToken({
       userId: user.id,
       email: user.email,
@@ -38,20 +60,15 @@ export async function POST(request: NextRequest) {
 
     const response = NextResponse.json({
       user: toPublicUser(user),
+      message: "Login successful.",
     });
 
-    response.cookies.set(SESSION_COOKIE_NAME, token, {
-      httpOnly: true,
-      sameSite: "lax",
-      secure: process.env.NODE_ENV === "production",
-      path: "/",
-      maxAge: 60 * 60 * 24 * 7,
-    });
+    response.cookies.set(SESSION_COOKIE_NAME, token, getSessionCookieOptions());
 
     return response;
   } catch {
     return NextResponse.json(
-      { error: "Unable to process login request." },
+      { error: "Unable to process login request securely." },
       { status: 400 }
     );
   }

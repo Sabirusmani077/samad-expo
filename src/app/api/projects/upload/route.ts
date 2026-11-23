@@ -1,15 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCurrentUser } from "@/lib/auth";
-import { extractAndStoreProjectZip, getMimeType, HOSTED_SITES_ROOT } from "@/lib/storage";
+import { extractAndStoreProjectZip, getMimeType, HOSTED_SITES_ROOT, FORBIDDEN_EXTENSIONS } from "@/lib/storage";
 import { createHostedProject, getUniqueSlug, generateSlug, recordDeployment } from "@/lib/hosting";
 import { readDb, writeDb } from "@/lib/db";
+import { sanitizeInputText } from "@/lib/security";
+import { rateLimit, getClientIp } from "@/lib/rate-limit";
 import fs from "fs";
 import path from "path";
-
-// Disallowed executable extensions
-const FORBIDDEN_EXTENSIONS = new Set([
-  ".exe", ".bat", ".cmd", ".sh", ".php", ".phtml", ".py", ".rb", ".pl", ".cgi", ".jsp", ".dll"
-]);
 
 export async function POST(request: NextRequest) {
   try {
@@ -21,11 +18,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const ip = getClientIp(request.headers);
+    const limiter = rateLimit(`upload:${user.id}:${ip}`, 15, 15 * 60);
+    if (!limiter.success) {
+      return NextResponse.json(
+        { error: `Upload rate limit reached. Please wait ${limiter.resetInSeconds} seconds before uploading another website.` },
+        { status: 429 }
+      );
+    }
+
     const formData = await request.formData();
-    const projectName = String(formData.get("projectName") || "").trim();
-    const description = String(formData.get("description") || "").trim();
+    const rawProjectName = String(formData.get("projectName") || "");
+    const projectName = sanitizeInputText(rawProjectName);
+    const description = sanitizeInputText(String(formData.get("description") || ""));
     const visibility = (formData.get("visibility") as "public" | "private") || "public";
-    const customSlugInput = String(formData.get("slug") || "").trim();
+    const customSlugInput = sanitizeInputText(String(formData.get("slug") || ""));
 
     if (!projectName || projectName.length < 2) {
       return NextResponse.json(
