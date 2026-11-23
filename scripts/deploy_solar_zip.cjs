@@ -67,7 +67,7 @@ const deploymentId = `dep_solar_${Date.now().toString(36)}`;
 const projectData = {
   id: projectId,
   userId: adminId,
-  userEmail: 'sabirusmani159@gmail.com',
+  userEmail: 'officialaadhakh@gmail.com',
   userName: 'Sabir Usmani',
   projectName: 'Solar Intro Page',
   slug: slug,

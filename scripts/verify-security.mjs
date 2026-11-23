@@ -65,7 +65,7 @@ async function runTests() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        email: "sabirusmani159@gmail.com",
+        email: "officialaadhakh@gmail.com",
         token: "forged_malicious_token_12345",
         newPassword: "HackedPassword123!",
       }),

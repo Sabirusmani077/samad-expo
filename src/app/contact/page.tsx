@@ -95,13 +95,13 @@ export default function ContactPage() {
               <h2 className="text-lg font-black text-slate-950">Direct Contact Details</h2>
               <div className="space-y-4 text-sm text-slate-700">
                 <a
-                  href="mailto:sabirusmani159@gmail.com"
+                  href="mailto:officialaadhakh@gmail.com"
                   className="flex items-start gap-3 hover:text-black hover:underline transition-colors"
                 >
                   <Mail className="w-5 h-5 text-black mt-0.5 shrink-0" />
                   <div>
                     <p className="font-bold text-slate-900">Email</p>
-                    <p className="text-slate-600">sabirusmani159@gmail.com</p>
+                    <p className="text-slate-600">officialaadhakh@gmail.com</p>
                   </div>
                 </a>
 

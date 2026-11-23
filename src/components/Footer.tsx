@@ -58,7 +58,7 @@ export function Footer() {
               </div>
 
               <div className="space-y-2.5 text-xs text-zinc-400">
-                <a href="mailto:sabirusmani159@gmail.com" className="flex items-center gap-2 transition hover:text-[#FFF33D]"><Mail className="h-3.5 w-3.5 text-[#FFF33D] shrink-0" /> sabirusmani159@gmail.com</a>
+                <a href="mailto:officialaadhakh@gmail.com" className="flex items-center gap-2 transition hover:text-[#FFF33D]"><Mail className="h-3.5 w-3.5 text-[#FFF33D] shrink-0" /> officialaadhakh@gmail.com</a>
                 <a href="tel:+919458204216" className="flex items-center gap-2 transition hover:text-[#FFF33D]"><Phone className="h-3.5 w-3.5 text-[#FFF33D] shrink-0" /> +91 94582 04216</a>
                 <a href="https://maps.app.goo.gl/UnzqY6kZ3i2BRieKA" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 transition hover:text-[#FFF33D] group" title="Open Google Maps Location">
                   <MapPin className="h-3.5 w-3.5 text-[#FFF33D] shrink-0 group-hover:scale-110 transition-transform" />

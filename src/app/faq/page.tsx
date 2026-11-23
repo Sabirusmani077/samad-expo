@@ -45,7 +45,7 @@ const CORPORATE_FAQS = [
     category: "Careers & Support",
     question: "How can I reach Samad Expo directly?",
     answer:
-      "You can email us at sabirusmani159@gmail.com, call +91 94582 04216, or submit an inquiry via the Contact page.",
+      "You can email us at officialaadhakh@gmail.com, call +91 94582 04216, or submit an inquiry via the Contact page.",
   },
 ];
 

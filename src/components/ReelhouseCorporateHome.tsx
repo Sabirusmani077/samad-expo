@@ -1023,7 +1023,7 @@ export function ReelhouseCorporateHome({
                       profile?.contactEmail || "contact@mdenterprises.in"
                     }`}
                   >
-                    {profile?.contactEmail || "sabirusmani159@gmail.com"}{" "}
+                    {profile?.contactEmail || "officialaadhakh@gmail.com"}{" "}
                     <ArrowUpRight className="w-[23px] h-[23px]" />
                   </a>
 

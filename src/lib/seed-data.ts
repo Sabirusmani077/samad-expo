@@ -1575,7 +1575,7 @@ export function getInitialSeedData(): DatabaseSchema {
     settings: {
       businessName: "Samad Expo",
       tagline: "Quality Products. Trusted Service. Smarter Shopping.",
-      supportEmail: "sabirusmani159@gmail.com",
+      supportEmail: "officialaadhakh@gmail.com",
       supportPhone: "+91 94582 04216",
       businessAddress:
         "Samad Expo Retail Operations — Sector 62, Noida, Uttar Pradesh 201309",
@@ -1723,7 +1723,7 @@ export function getInitialSeedData(): DatabaseSchema {
       founderMessage: "",
       achievements: [],
       futureRoadmap: "",
-      contactEmail: "sabirusmani159@gmail.com",
+      contactEmail: "officialaadhakh@gmail.com",
       contactPhone: "+91 94582 04216",
       contactAddress: "Agra, Uttar Pradesh, India",
       socialLinks: {

@@ -286,7 +286,7 @@ export default function CorporateAdminDashboard() {
                 </a>
                 <div className="flex items-center gap-2 truncate">
                   <Mail className="w-4 h-4 text-[#FFF33D] shrink-0" />
-                  <span className="truncate">{profile.contactEmail || "sabirusmani159@gmail.com"}</span>
+                  <span className="truncate">{profile.contactEmail || "officialaadhakh@gmail.com"}</span>
                 </div>
                 <div className="flex items-center gap-2 truncate">
                   <Phone className="w-4 h-4 text-[#FFF33D] shrink-0" />
@@ -758,7 +758,7 @@ export default function CorporateAdminDashboard() {
                 <div className="flex justify-between">
                   <span className="text-slate-500">Admin Account</span>
                   <span className="font-bold text-white truncate max-w-[150px]">
-                    sabirusmani159@gmail.com
+                    officialaadhakh@gmail.com
                   </span>
                 </div>
               </div>

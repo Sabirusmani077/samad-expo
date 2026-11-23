@@ -232,8 +232,8 @@ async function executeTool(name: string, args: Record<string, unknown>) {
           status: "Official Corporate Headquarters",
         },
         contact: {
-          email: profile.contactEmail || "contact@samadexpo.com",
-          phone: profile.contactPhone || "+91 98765 43210",
+          email: profile.contactEmail || "officialaadhakh@gmail.com",
+          phone: profile.contactPhone || "+91 94582 04216",
         },
         socialLinks: profile.socialLinks || {},
         officialWebsite: baseUrl,

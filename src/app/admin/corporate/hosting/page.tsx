@@ -151,7 +151,7 @@ export default function AdminHostingPage() {
                     <td className="py-3.5 px-4 text-slate-600">
                       <div>
                         <span className="font-semibold text-slate-800">{p.userName || "Sabir Usmani"}</span>
-                        <p className="text-[11px] text-slate-400">{p.userEmail || "sabirusmani159@gmail.com"}</p>
+                        <p className="text-[11px] text-slate-400">{p.userEmail || "officialaadhakh@gmail.com"}</p>
                       </div>
                     </td>
                     <td className="py-3.5 px-4">

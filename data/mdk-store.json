@@ -3,7 +3,7 @@
     {
       "id": "usr_admin_01",
       "name": "Sabir Usmani (Store Administrator)",
-      "email": "sabirusmani159@gmail.com",
+      "email": "officialaadhakh@gmail.com",
       "phone": "+91 94582 04216",
       "passwordHash": "9745328908d338819b0942321bbebb15:8fd1d119092baa837c98d8b9a96b05fa19e9174401c624c17ee2262cc6342bca8f588ca25db255e6de4a67c1e21cecdfdebbf94fd4dd9b009200fc53621d9db2",
       "role": "admin",
@@ -223,13 +223,13 @@
       "name": "QA Tester",
       "email": "qa_1795240154458@test.com",
       "phone": "",
-      "passwordHash": "pbkdf2:100000:137aead05f9c882a68334294f92d98eb:18b31624b3f080de9dbb081d644f08ac681f6b5520219fa5a8aef784c91b74b19121a0ac54f63e01ab755a3cfbc2f198657e6f9c79fcc9c5141c0f0a6a6df62d",
+      "passwordHash": "pbkdf2:100000:81f540d7701960ed80ae5b7b1114c045:5edb557ca503a15b9aaf197e5c11c4cf655c7e1c6214f3c0036a72a3755f7de0b843097bc46b233ca1830bc2698e529462585d45f917ec305769e34ec2a1efb1",
       "role": "customer",
       "emailVerified": true,
       "privacyConsent": true,
       "savedAddresses": [],
       "createdAt": "2026-11-21T05:49:16.163Z",
-      "updatedAt": "2026-11-23T04:22:46.858Z"
+      "updatedAt": "2026-11-23T05:29:15.276Z"
     },
     {
       "id": "usr_4729b675-b",
@@ -320,7 +320,7 @@
     {
       "id": "inq_71dbbe189e7f",
       "name": "SABIR",
-      "email": "sabirusmani159@gmail.com",
+      "email": "officialaadhakh@gmail.com",
       "phone": "+919458204216",
       "subject": "[Cancellation] Support Inquiry",
       "message": "Category: Cancellation\nOrder ID: N/A\nPhone: +919458204216\n\ngegrsgser",
@@ -426,7 +426,7 @@
   "settings": {
     "businessName": "Samad Expo",
     "tagline": "Quality Products. Trusted Service. Smarter Shopping.",
-    "supportEmail": "sabirusmani159@gmail.com",
+    "supportEmail": "officialaadhakh@gmail.com",
     "supportPhone": "+91 94582 04216",
     "businessAddress": "Samad Expo Retail Operations — Update Registered Office Address in Admin Dashboard before launch",
     "businessHours": "Monday – Saturday, 9:30 AM – 6:30 PM IST",
@@ -740,7 +740,7 @@
         "instagram": "",
         "facebook": "https://www.facebook.com/profile.php?id=61595047961100",
         "website": "https://mdenterprises.in",
-        "email": "sabirusmani159@gmail.com"
+        "email": "officialaadhakh@gmail.com"
       },
       "sortOrder": 1,
       "isActive": true,
@@ -905,7 +905,7 @@
       }
     ],
     "futureRoadmap": "Continuously expanding our deployment engine with custom domain mapping, automated SSL certificates, advanced visitor analytics, and adding new developer utility tools.",
-    "contactEmail": "sabirusmani159@gmail.com",
+    "contactEmail": "officialaadhakh@gmail.com",
     "contactPhone": "+91 94582 04216",
     "contactAddress": "Bodla, Agra, Uttar Pradesh 282010, India",
     "socialLinks": {
@@ -1016,7 +1016,7 @@
     {
       "id": "cinq_a0a492979e070060",
       "name": "SABIR",
-      "email": "sabirusmani159@gmail.com",
+      "email": "officialaadhakh@gmail.com",
       "phone": "",
       "company": "Signature Enterprices",
       "subject": "General inquiry",
@@ -1032,7 +1032,7 @@
     {
       "id": "cinq_256fd0dae5465092",
       "name": "SABIR",
-      "email": "sabirusmani159@gmail.com",
+      "email": "officialaadhakh@gmail.com",
       "phone": "",
       "company": "Signature Enterprices",
       "subject": "Web Platform & Full-Stack Engineering",
@@ -4808,6 +4808,24 @@
       "referrerHost": null,
       "id": "450cfd59f075b17d2ba836d4",
       "createdAt": "2026-11-23T04:20:30.752Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-chrono-age-calculator",
+      "websiteId": "website_sabir_age_calculator",
+      "source": "internal",
+      "referrerHost": null,
+      "id": "da718d7cd83cadceda9f18fb",
+      "createdAt": "2026-11-23T05:04:24.725Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "1ac813454e8fd0736ec17816",
+      "createdAt": "2026-11-23T05:04:27.313Z"
     }
   ],
   "hostedProjects": [
@@ -4868,7 +4886,7 @@
     {
       "id": "proj_age_calculator",
       "userId": "usr_admin_01",
-      "userEmail": "sabirusmani159@gmail.com",
+      "userEmail": "officialaadhakh@gmail.com",
       "userName": "Sabir Usmani",
       "projectName": "MDK Chrono Age Calculator",
       "slug": "mdk-chrono-age-calculator",
@@ -4886,7 +4904,7 @@
     {
       "id": "proj_mdk_convertor",
       "userId": "usr_admin_01",
-      "userEmail": "sabirusmani159@gmail.com",
+      "userEmail": "officialaadhakh@gmail.com",
       "userName": "Sabir Usmani",
       "projectName": "MDK Unit & Media Convertor",
       "slug": "mdk-convertor",
@@ -4904,7 +4922,7 @@
     {
       "id": "proj_sabir_portfolio",
       "userId": "usr_admin_01",
-      "userEmail": "sabirusmani159@gmail.com",
+      "userEmail": "officialaadhakh@gmail.com",
       "userName": "Sabir Usmani",
       "projectName": "Sabir Usmani Portfolio",
       "slug": "sabir-usmani-portfolio",
@@ -4922,7 +4940,7 @@
     {
       "id": "proj_google_calculator",
       "userId": "usr_c5322c59-a",
-      "userEmail": "sabirusmani159@gmail.com",
+      "userEmail": "officialaadhakh@gmail.com",
       "userName": "Sabir Usmani",
       "projectName": "Google Calculator",
       "slug": "google-calculator",

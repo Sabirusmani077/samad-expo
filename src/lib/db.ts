@@ -305,7 +305,7 @@ function ensureDatabaseInitialized(): DatabaseSchema {
         founderMessage: "",
         achievements: [],
         futureRoadmap: "We are actively expanding our digital ecosystem with new platforms, products, and services. Our roadmap includes launching new e-commerce verticals, digital tools, educational platforms, and technology solutions across multiple industries.",
-        contactEmail: "sabirusmani159@gmail.com",
+        contactEmail: "officialaadhakh@gmail.com",
         contactPhone: "+91 94582 04216",
         contactAddress: "Agra, Uttar Pradesh, India",
         socialLinks: {
@@ -336,7 +336,7 @@ function ensureDatabaseInitialized(): DatabaseSchema {
       mutated = true;
     }
     if (!profile.contactEmail?.trim() || profile.contactEmail === "contact@mdenterprises.in") {
-      profile.contactEmail = "sabirusmani159@gmail.com";
+      profile.contactEmail = "officialaadhakh@gmail.com";
       mutated = true;
     }
     if (!profile.contactPhone?.trim()) {
@@ -370,7 +370,7 @@ function ensureDatabaseInitialized(): DatabaseSchema {
           twitter: member.socialLinks?.twitter || "",
           instagram: member.socialLinks?.instagram || "",
           website: member.socialLinks?.website || "",
-          email: "sabirusmani159@gmail.com",
+          email: "officialaadhakh@gmail.com",
         };
         mutated = true;
       }
@@ -405,7 +405,7 @@ function ensureDatabaseInitialized(): DatabaseSchema {
       {
         id: "proj_age_calculator",
         userId: "usr_admin_01",
-        userEmail: "sabirusmani159@gmail.com",
+        userEmail: "officialaadhakh@gmail.com",
         userName: "Sabir Usmani",
         projectName: "MDK Chrono Age Calculator",
         slug: "mdk-chrono-age-calculator",
@@ -423,7 +423,7 @@ function ensureDatabaseInitialized(): DatabaseSchema {
       {
         id: "proj_mdk_convertor",
         userId: "usr_admin_01",
-        userEmail: "sabirusmani159@gmail.com",
+        userEmail: "officialaadhakh@gmail.com",
         userName: "Sabir Usmani",
         projectName: "MDK Unit & Media Convertor",
         slug: "mdk-convertor",
@@ -441,7 +441,7 @@ function ensureDatabaseInitialized(): DatabaseSchema {
       {
         id: "proj_sabir_portfolio",
         userId: "usr_admin_01",
-        userEmail: "sabirusmani159@gmail.com",
+        userEmail: "officialaadhakh@gmail.com",
         userName: "Sabir Usmani",
         projectName: "Sabir Usmani Portfolio",
         slug: "sabir-usmani-portfolio",
