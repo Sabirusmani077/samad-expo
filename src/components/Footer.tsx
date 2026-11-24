@@ -2,23 +2,30 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { ReactNode } from "react";
-import { ArrowUpRight, Facebook, Github, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react";
+import {
+  ArrowUpRight,
+  Facebook,
+  Github,
+  Instagram,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+  Youtube,
+  ShieldCheck,
+  Sparkles,
+  ExternalLink,
+  Award,
+} from "lucide-react";
 import { Logo } from "@/components/Logo";
 
-const projects = [
-  { label: "Age Calculator", href: "https://sabirusmani077.github.io/Age-calculator/" },
-  { label: "MDK Convertor", href: "https://sabirusmani077.github.io/MDK-Convertor/" },
-  { label: "Sabir's Portfolio", href: "https://sabirusmani077.github.io/Self-Portfolio-/" },
-];
-
 const socialLinks = [
-  { label: "X", href: "https://x.com/Mrsabirusmani07", icon: "x" },
-  { label: "Instagram", href: "https://www.instagram.com/sabir_usmani_077/", icon: "instagram" },
-  { label: "Facebook", href: "https://www.facebook.com/share/18oqDsbATK/", icon: "facebook" },
-  { label: "YouTube", href: "https://www.youtube.com/@Sabirusmani07", icon: "youtube" },
-  { label: "GitHub", href: "https://github.com/Sabirusmani077", icon: "github" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/sabir-usmani-753195397", icon: "linkedin" },
+  { label: "Instagram", href: "https://www.instagram.com/sabir_usmani_077/", icon: "instagram" },
+  { label: "X / Twitter", href: "https://x.com/Mrsabirusmani07", icon: "x" },
+  { label: "GitHub", href: "https://github.com/Sabirusmani077", icon: "github" },
+  { label: "YouTube", href: "https://www.youtube.com/@Sabirusmani07", icon: "youtube" },
+  { label: "Facebook", href: "https://www.facebook.com/share/18oqDsbATK/", icon: "facebook" },
 ];
 
 function SocialIcon({ icon }: { icon: string }) {
@@ -27,96 +34,199 @@ function SocialIcon({ icon }: { icon: string }) {
   if (icon === "youtube") return <Youtube className="h-4 w-4" aria-hidden="true" />;
   if (icon === "github") return <Github className="h-4 w-4" aria-hidden="true" />;
   if (icon === "linkedin") return <Linkedin className="h-4 w-4" aria-hidden="true" />;
-  return <span className="text-base font-bold leading-none" aria-hidden="true">𝕏</span>;
+  return <span className="text-sm font-bold leading-none" aria-hidden="true">𝕏</span>;
 }
 
 export function Footer() {
   const pathname = usePathname();
 
-  if (pathname?.startsWith("/admin") || pathname?.startsWith("/dashboard")) return null;
+  // Exclude admin pages
+  if (pathname?.startsWith("/admin")) return null;
 
   return (
-    <footer data-site-theme="premium" className="site-footer relative isolate overflow-hidden">
-      <div className="footer-glow pointer-events-none absolute inset-0 -z-10" />
-      <div className="footer-inner mx-auto max-w-7xl px-5 pb-6 pt-14 sm:px-8 sm:pt-16 lg:px-10">
-        <div className="footer-panel rounded-[30px] border border-zinc-800 bg-[#0A0A0A]/95 p-6 shadow-[0_24px_80px_rgba(0,0,0,.6)] backdrop-blur-2xl text-white sm:p-9 lg:p-10">
-          <div className="grid gap-10 border-b border-zinc-800 pb-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
-            <div className="footer-brand space-y-6 lg:col-span-4">
-              <div>
-                <Logo size="md" showTagline inverted />
-                <p className="mt-4 max-w-sm text-sm leading-6 text-zinc-400">
-                  A home for digital products, useful web applications, and new ventures led by Sabir Usmani.
-                </p>
-              </div>
+    <footer className="relative isolate overflow-hidden bg-[#071317] text-white pt-16 pb-10 border-t border-teal-900/40">
+      {/* Subtle background glow */}
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(32,169,187,0.15),rgba(0,0,0,0))]" />
 
-              <div className="flex flex-wrap gap-2.5" aria-label="Social profiles">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* 5-Column Athenura Footer Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/10">
+          
+          {/* Column 1: Brand & Identity (Span 4) */}
+          <div className="lg:col-span-4 space-y-6">
+            <Logo size="md" showTagline inverted />
+            <p className="max-w-sm text-xs sm:text-sm text-zinc-400 leading-relaxed">
+              Next-gen software engineering, instant web hosting, and corporate digital ecosystem for modern enterprises. We build and operate systems that power the digital world.
+            </p>
+
+            {/* Social Pill Links */}
+            <div>
+              <div className="text-[11px] font-bold uppercase tracking-wider text-teal-400/90 mb-3">
+                Connect With Headquarters
+              </div>
+              <div className="flex flex-wrap gap-2.5">
                 {socialLinks.map((item) => (
-                  <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" aria-label={item.label} className="footer-social-link flex h-10 w-10 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 text-zinc-300 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#FFF33D] hover:bg-[#FFF33D] hover:text-black">
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={item.label}
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-zinc-300 transition-all duration-300 hover:-translate-y-1 hover:border-[#20A9BB] hover:bg-[#20A9BB] hover:text-white shadow-xs"
+                  >
                     <SocialIcon icon={item.icon} />
                   </a>
                 ))}
               </div>
-
-              <div className="space-y-2.5 text-xs text-zinc-400">
-                <a href="mailto:officialaadhakh@gmail.com" className="flex items-center gap-2 transition hover:text-[#FFF33D]"><Mail className="h-3.5 w-3.5 text-[#FFF33D] shrink-0" /> officialaadhakh@gmail.com</a>
-                <a href="tel:+919458204216" className="flex items-center gap-2 transition hover:text-[#FFF33D]"><Phone className="h-3.5 w-3.5 text-[#FFF33D] shrink-0" /> +91 94582 04216</a>
-                <a href="https://maps.app.goo.gl/UnzqY6kZ3i2BRieKA" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 transition hover:text-[#FFF33D] group" title="Open Google Maps Location">
-                  <MapPin className="h-3.5 w-3.5 text-[#FFF33D] shrink-0 group-hover:scale-110 transition-transform" />
-                  <span>Bodla, Agra, Uttar Pradesh 282010, India</span>
-                  <ArrowUpRight className="h-3 w-3 text-slate-400 opacity-60 group-hover:opacity-100 transition-opacity" />
-                </a>
-              </div>
             </div>
 
-            <FooterColumn title="Projects &amp; Tools">
-              {projects.map((project) => <FooterExternalLink key={project.href} href={project.href}>{project.label}</FooterExternalLink>)}
-            </FooterColumn>
-
-            <FooterColumn title="Hosting Platform">
-              <FooterLink href="/websites">Public directory</FooterLink>
-              <FooterLink href="/dashboard?action=upload">Upload website</FooterLink>
-              <FooterLink href="/dashboard">Hosting console</FooterLink>
-              <FooterLink href="/ecosystem-search">Ecosystem search</FooterLink>
-            </FooterColumn>
-
-            <FooterColumn title="Company">
-              <FooterLink href="/about-company">About Samad Expo</FooterLink>
-              <FooterLink href="/founder">Founder &amp; owner</FooterLink>
-              <FooterLink href="/corporate-services">Services &amp; solutions</FooterLink>
-              <FooterLink href="/contact">Contact us</FooterLink>
-            </FooterColumn>
-
-            <FooterColumn title="Resources">
-              <FooterLink href="/faq">Frequently asked questions</FooterLink>
-              <FooterLink href="/privacy-policy">Privacy policy</FooterLink>
-              <FooterLink href="/terms">Terms of service</FooterLink>
-              <FooterLink href="/disclaimer">Disclaimer</FooterLink>
-            </FooterColumn>
+            {/* Verified Security Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-teal-500/20 bg-teal-950/40 text-[11px] text-teal-300">
+              <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
+              <span>Enterprise Grade Security &amp; Audit Certified</span>
+            </div>
           </div>
 
-          <div className="flex flex-col gap-4 pt-6 text-[11px] text-zinc-400 sm:flex-row sm:items-center sm:justify-between">
-            <span>© {new Date().getFullYear()} Samad Expo · Bodla, Agra, India</span>
-            <Link href="/disclaimer" className="transition hover:text-[#FFF33D]">Disclaimer</Link>
+          {/* Column 2: Company Links (Span 2) */}
+          <div className="lg:col-span-2 space-y-4">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-teal-400">
+              Company
+            </h4>
+            <ul className="space-y-2.5 text-xs text-zinc-400">
+              <li>
+                <Link href="/about-company" className="hover:text-white transition">About Us</Link>
+              </li>
+              <li>
+                <Link href="/founder" className="hover:text-white transition">Founder &amp; Leadership</Link>
+              </li>
+              <li>
+                <Link href="/businesses" className="hover:text-white transition">Ventures &amp; Brands</Link>
+              </li>
+              <li>
+                <Link href="/careers" className="hover:text-white transition">Careers &amp; Opportunities</Link>
+              </li>
+              <li>
+                <Link href="/partnerships" className="hover:text-white transition">Partnerships</Link>
+              </li>
+              <li>
+                <Link href="/faq" className="hover:text-white transition">Frequently Asked</Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Services (Span 2) */}
+          <div className="lg:col-span-2 space-y-4">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-teal-400">
+              Services
+            </h4>
+            <ul className="space-y-2.5 text-xs text-zinc-400">
+              <li>
+                <Link href="/corporate-services" className="hover:text-white transition">Custom Software</Link>
+              </li>
+              <li>
+                <Link href="/dashboard" className="hover:text-white transition">Instant Web Hosting</Link>
+              </li>
+              <li>
+                <Link href="/websites" className="hover:text-white transition">Live Web Tools</Link>
+              </li>
+              <li>
+                <Link href="/ecosystem-search?q=api" className="hover:text-white transition">MCP Protocol API</Link>
+              </li>
+              <li>
+                <Link href="/corporate-services" className="hover:text-white transition">Cloud Architecture</Link>
+              </li>
+              <li>
+                <Link href="/dashboard" className="hover:text-white transition">Developer Console</Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 4: Contact & Government Trust (Span 2) */}
+          <div className="lg:col-span-2 space-y-4">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-teal-400">
+              Contact Us
+            </h4>
+            <div className="space-y-3 text-xs">
+              <a
+                href="mailto:officialaadhakh@gmail.com"
+                className="group flex items-start gap-2.5 text-zinc-300 hover:text-white transition"
+              >
+                <div className="w-7 h-7 rounded-full bg-teal-900/60 border border-teal-500/30 flex items-center justify-center shrink-0 group-hover:bg-teal-600 transition">
+                  <Mail className="w-3.5 h-3.5 text-teal-300 group-hover:text-white" />
+                </div>
+                <div>
+                  <div className="text-[10px] uppercase font-bold text-teal-400">Email</div>
+                  <div className="font-medium break-all">officialaadhakh@gmail.com</div>
+                </div>
+              </a>
+
+              <a
+                href="tel:+919170230159"
+                className="group flex items-start gap-2.5 text-zinc-300 hover:text-white transition"
+              >
+                <div className="w-7 h-7 rounded-full bg-emerald-900/60 border border-emerald-500/30 flex items-center justify-center shrink-0 group-hover:bg-emerald-600 transition">
+                  <Phone className="w-3.5 h-3.5 text-emerald-300 group-hover:text-white" />
+                </div>
+                <div>
+                  <div className="text-[10px] uppercase font-bold text-emerald-400">Phone</div>
+                  <div className="font-medium">+91 91702 30159</div>
+                </div>
+              </a>
+            </div>
+
+            {/* Trust Certification Badges */}
+            <div className="pt-2 flex flex-col gap-1.5">
+              <div className="flex items-center gap-2 p-2 rounded-xl bg-white/5 border border-white/10 text-[10px] text-zinc-300">
+                <Award className="w-4 h-4 text-[#FFF33D] shrink-0" />
+                <span>Startup India Recognized Initiative</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Column 5: Central Headquarters Location (Span 2) */}
+          <div className="lg:col-span-2 space-y-4">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-teal-400">
+              Location
+            </h4>
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 space-y-2.5">
+              <div className="flex items-center gap-2 text-xs font-bold text-white">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span>Central HQ Node</span>
+              </div>
+              <p className="text-[11px] text-zinc-400 leading-relaxed">
+                Samad Expo Digital Hub<br />
+                Technology Ecosystem, India
+              </p>
+              <div className="pt-1">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-1 text-[11px] font-bold text-teal-400 hover:text-teal-300 transition"
+                >
+                  <span>Open Interactive Map</span>
+                  <ArrowUpRight className="w-3 h-3" />
+                </Link>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Bottom Bar: Copyright & Legal */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400">
+          <div>
+            &copy; {new Date().getFullYear()} Samad Expo. All rights reserved.
+          </div>
+          <div className="flex flex-wrap items-center gap-5 text-xs">
+            <Link href="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-white transition">Terms of Service</Link>
+            <Link href="/disclaimer" className="hover:text-white transition">Disclaimer</Link>
+            <Link href="/contact" className="hover:text-white transition">Help &amp; Support</Link>
           </div>
         </div>
       </div>
     </footer>
   );
-}
-
-function FooterColumn({ title, children }: { title: string; children: ReactNode }) {
-  return (
-    <div className="footer-column space-y-4 lg:col-span-2">
-      <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FFF33D]">{title}</h3>
-      <nav aria-label={title} className="flex flex-col items-start gap-3 text-sm text-zinc-400">{children}</nav>
-    </div>
-  );
-}
-
-function FooterLink({ href, children }: { href: string; children: ReactNode }) {
-  return <Link href={href} className="transition duration-200 hover:translate-x-1 hover:text-[#FFF33D]">{children}</Link>;
-}
-
-function FooterExternalLink({ href, children }: { href: string; children: ReactNode }) {
-  return <a href={href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center transition duration-200 hover:translate-x-1 hover:text-[#FFF33D]">{children}<ArrowUpRight className="ml-1 h-3 w-3" /></a>;
 }

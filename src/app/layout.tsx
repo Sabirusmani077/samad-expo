@@ -5,7 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ClickFeedback } from "@/components/ClickFeedback";
 import { PageViewTracker } from "@/components/PageViewTracker";
-import { MehndiSiteFrame } from "@/components/MehndiSiteFrame";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import type { CSSProperties } from "react";
 import { readDb } from "@/lib/db";
 
@@ -76,8 +76,8 @@ export default function RootLayout({
         <meta name="google-site-verification" content="j7N4EKQjh9NpQFnXBGQopLmSeJ8lLXxYPD2E3pndgNA" />
         <link rel="icon" href={companyProfile.favicon || "/images/primary-logo.png"} />
       </head>
-      <body data-site-theme="premium" className="relative min-h-screen flex flex-col bg-slate-50 text-slate-900 antialiased font-sans">
-        <MehndiSiteFrame />
+      <body data-site-theme="premium" className="relative min-h-screen flex flex-col bg-[#F8FAFC] text-slate-900 antialiased font-sans selection:bg-teal-500 selection:text-white">
+        <SmoothScroll />
         <PageViewTracker />
         <Header />
         <div className="page-shell flex-1 w-full min-h-screen">{children}</div>

@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { FileText, CheckCircle2 } from "lucide-react";
 
 export const metadata = {
   title: "Terms and Conditions | Samad Expo",
@@ -9,82 +10,79 @@ export const metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="bg-slate-50 min-h-screen py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <div className="bg-[#F8FAFC] min-h-screen py-14 sm:py-20 text-slate-900">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        
+        {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
           className="text-xs text-slate-500 flex items-center gap-2"
         >
-          <Link href="/" className="hover:text-slate-900 font-medium">
+          <Link href="/" className="hover:text-teal-700 font-semibold transition">
             Home
           </Link>
           <span>/</span>
           <span className="text-slate-900 font-bold">Terms &amp; Conditions</span>
         </nav>
 
-        <div className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 shadow-sm space-y-2">
-          <span className="inline-block px-3 py-1 rounded-full bg-[#FFF33D]/25 text-black font-extrabold text-[11px] uppercase border border-black/15">
-            Legal Agreement
-          </span>
-          <h1 className="text-2xl sm:text-4xl font-black text-slate-950">
+        {/* Header */}
+        <div className="space-y-3">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-cyan-50 text-teal-800 text-xs font-bold uppercase tracking-wider border border-cyan-100">
+            <FileText className="w-3.5 h-3.5 text-teal-600" />
+            <span>Legal Agreement</span>
+          </div>
+
+          <h1 className="text-4xl sm:text-5xl font-black text-slate-950 tracking-tight">
             Terms and Conditions
           </h1>
-          <p className="text-xs text-slate-600">
-            Effective Date: November 2026 • Samad Expo
+
+          <p className="text-xs text-slate-500 font-medium">
+            Effective Date: November 2026 &bull; Samad Expo
           </p>
         </div>
 
-        <div className="rounded-3xl border border-slate-200 p-6 sm:p-8 bg-white space-y-6 text-xs sm:text-sm text-slate-700 leading-relaxed shadow-sm">
-          <section className="space-y-2">
-            <h2 className="text-base font-black text-slate-950">
+        {/* Content Card */}
+        <div className="athenura-card p-8 sm:p-12 space-y-8 text-xs sm:text-sm text-slate-600 leading-relaxed">
+          <section className="space-y-3">
+            <h2 className="text-base sm:text-lg font-bold text-slate-950">
               1. General Use of the Corporate Website
             </h2>
             <p>
-              By accessing the Samad Expo corporate website and digital
-              ecosystem directory, you agree to use this website lawfully and
-              provide accurate information when submitting business inquiries or
-              partnership requests.
+              By accessing the Samad Expo corporate gateway, instant hosting portal, and digital directory, you agree to use the services lawfully and provide accurate credentials when establishing a developer account or deploying web tools.
             </p>
           </section>
 
-          <section className="space-y-2">
-            <h2 className="text-base font-black text-slate-950">
+          <section className="space-y-3 pt-6 border-t border-slate-100">
+            <h2 className="text-base sm:text-lg font-bold text-slate-950">
               2. Intellectual Property &amp; Brand Ownership
             </h2>
             <p>
-              All trademarks, brand identities, copy, designs, and original
-              materials published on this site are owned by or licensed to MD
-              Enterprises. Individual websites and web applications listed in
-              our ecosystem maintain their own independent branding and terms of
-              use.
+              All trademarks, trade dress, original logos, and proprietary architecture published on this site are owned by Samad Expo. Individual tools and web applications hosted in our ecosystem retain their own independent rights and licenses.
             </p>
           </section>
 
-          <section className="space-y-2">
-            <h2 className="text-base font-black text-slate-950">
-              3. Ecosystem Directory &amp; External Platforms
+          <section className="space-y-3 pt-6 border-t border-slate-100">
+            <h2 className="text-base sm:text-lg font-bold text-slate-950">
+              3. Instant Hosting Acceptable Use Policy
             </h2>
             <p>
-              This website provides direct links to independent web applications
-              and platforms owned or operated under Samad Expo. Usage of
-              each individual platform is governed by that platform&apos;s own
-              published terms and policies.
+              Users deploying websites or applications via Samad Expo agree not to upload malicious software, phishing payloads, unauthorized proxy networks, or content violating regional or international cyber laws.
             </p>
           </section>
 
-          <section className="space-y-2">
-            <h2 className="text-base font-black text-slate-950">
-              4. Contact &amp; Inquiries
+          <section className="space-y-3 pt-6 border-t border-slate-100">
+            <h2 className="text-base sm:text-lg font-bold text-slate-950">
+              4. Contact Legal Desk
             </h2>
             <p>
-              For questions regarding these terms, please reach out through our{" "}
-              <Link href="/contact" className="font-bold text-black underline font-bold">
-                Contact Us
-              </Link>{" "}
-              page.
+              For legal inquiries regarding these terms, please contact executive administration at{" "}
+              <a href="mailto:officialaadhakh@gmail.com" className="text-teal-700 font-bold hover:underline">
+                officialaadhakh@gmail.com
+              </a>.
             </p>
           </section>
         </div>
+
       </div>
     </div>
   );

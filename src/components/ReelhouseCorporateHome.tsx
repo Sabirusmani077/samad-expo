@@ -4,22 +4,31 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import {
   ArrowUpRight,
+  ArrowRight,
   ArrowDown,
-  ArrowUp,
-  Play,
-  Menu,
-  X,
-  CheckCircle2,
-  Search,
   Sparkles,
   UploadCloud,
   Globe,
   Monitor,
   Cpu,
+  ShieldCheck,
+  CheckCircle2,
+  Zap,
+  Play,
+  Layers,
+  Users,
+  Code2,
+  ChevronRight,
+  ExternalLink,
+  MessageSquare,
+  Lock,
+  Phone,
+  Mail,
+  Award,
+  Terminal,
 } from "lucide-react";
 import { publicWebsiteUrl } from "@/lib/corporate-public";
 import { Logo } from "@/components/Logo";
-import { HeaderAuthControl } from "@/components/HeaderAuthControl";
 import { HeroAuthCard } from "@/components/HeroAuthCard";
 import {
   BusinessDivision,
@@ -37,14 +46,6 @@ interface ReelhouseProps {
   team: TeamMember[];
 }
 
-const homeNavLinks = [
-  { id: "about", label: "About" },
-  { id: "hosting", label: "Hosting" },
-  { id: "work", label: "Projects" },
-  { id: "services", label: "Services" },
-  { id: "contact", label: "Contact" },
-];
-
 const heroPhrases = [
   "instant website hosting.",
   "live web deployments.",
@@ -52,27 +53,43 @@ const heroPhrases = [
   "modern digital platforms.",
 ];
 
-function useAnimatedCounter(target: number, start: boolean, durationMs = 900) {
+const techStack = [
+  "Next.js 15",
+  "React 19",
+  "TypeScript",
+  "Tailwind CSS v4",
+  "Vercel Edge",
+  "Node.js",
+  "Model Context Protocol",
+  "Python",
+  "PostgreSQL",
+  "Cloudflare",
+];
+
+function useAnimatedCounter(target: number, start: boolean, durationMs = 1200) {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
     if (!start) return;
     if (target <= 0) {
-      setValue(0);
+      setValue(target);
       return;
     }
-    let rafId = 0;
     const startTime = performance.now();
+    let frameId: number;
+
     const tick = (now: number) => {
-      const progress = Math.min((now - startTime) / durationMs, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setValue(Math.round(eased * target));
+      const elapsed = now - startTime;
+      const progress = Math.min(1, elapsed / durationMs);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      setValue(Math.round(ease * target));
       if (progress < 1) {
-        rafId = requestAnimationFrame(tick);
+        frameId = requestAnimationFrame(tick);
       }
     };
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
+
+    frameId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frameId);
   }, [target, start, durationMs]);
 
   return value;
@@ -85,1219 +102,1140 @@ export function ReelhouseCorporateHome({
   services,
   team,
 }: ReelhouseProps) {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("about");
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [showBackToTop, setShowBackToTop] = useState(false);
-  const [phraseIndex, setPhraseIndex] = useState(0);
-  const [liveTimecode, setLiveTimecode] = useState("00 : 00 : 00");
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [openServiceId, setOpenServiceId] = useState<string | null>(
-    services[0]?.id || null
-  );
-  const [statsInView, setStatsInView] = useState(false);
-  const [tilt, setTilt] = useState({ rx: 0, ry: 0, mx: 65, my: 45 });
-
-  useEffect(() => {
-    let mounted = true;
-    fetch("/api/auth/me")
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (mounted && data?.user) {
-          const target = data.user.role === "admin" ? "/admin/corporate" : "/dashboard";
-          window.location.href = target;
-        }
-      })
-      .catch(() => {});
-    return () => {
-      mounted = false;
-    };
-  }, []);
-
+  const [activePhraseIndex, setActivePhraseIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState(0);
+  const [projectCategory, setProjectCategory] = useState("all");
+  const [previewSite, setPreviewSite] = useState<WebsiteListing | null>(null);
+  const [statsVisible, setStatsVisible] = useState(false);
   const statsRef = useRef<HTMLDivElement>(null);
 
-  const [formSubmitting, setFormSubmitting] = useState(false);
-  const [formSuccess, setFormSuccess] = useState(false);
-  const [formError, setFormError] = useState("");
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    service: "",
-    division: "",
-    message: "",
-    consent: false,
-  });
-
-  const ownerProjectUrls = useMemo(
-    () =>
-      new Set([
-        "https://sabirusmani077.github.io/Age-calculator",
-        "https://sabirusmani077.github.io/MDK-Convertor",
-        "https://sabirusmani077.github.io/Self-Portfolio-",
-      ]),
-    []
-  );
-
-  const showcaseWebsites = useMemo(
-    () => [
-      ...websites.filter((website) =>
-        ownerProjectUrls.has((website.url || "").replace(/\/$/, ""))
-      ),
-      ...websites.filter(
-        (website) =>
-          !ownerProjectUrls.has((website.url || "").replace(/\/$/, ""))
-      ),
-    ],
-    [websites, ownerProjectUrls]
-  );
-
-  const liveWebsites = useMemo(
-    () =>
-      showcaseWebsites.filter(
-        (w) => w.status === "live" && Boolean(publicWebsiteUrl(w.url))
-      ),
-    [showcaseWebsites]
-  );
-
-  const categories = useMemo(() => {
-    const uniqueCats = Array.from(
-      new Set(showcaseWebsites.map((w) => w.category).filter(Boolean))
-    );
-    return ["All", "Live", ...uniqueCats];
-  }, [showcaseWebsites]);
-
-  const filteredWebsites = useMemo(() => {
-    if (selectedCategory === "All") return showcaseWebsites;
-    if (selectedCategory === "Live") {
-      return showcaseWebsites.filter((w) => w.status === "live");
-    }
-    return showcaseWebsites.filter((w) => w.category === selectedCategory);
-  }, [showcaseWebsites, selectedCategory]);
-
-  const workItems = useMemo(
-    () =>
-      filteredWebsites.slice(0, 7).map((website, index) => ({
-        id: website.id,
-        name: website.name,
-        concept: `Website ${String(index + 1).padStart(2, "0")}`,
-        badge: website.status.replace(/_/g, " ").toUpperCase(),
-        category: website.category,
-        title: website.name,
-        description: website.shortDescription || website.description,
-        image:
-          website.banner || website.screenshots?.[0] || website.logo || "",
-        previewUrl:
-          website.status === "live" ? publicWebsiteUrl(website.url) : null,
-        href: `/websites/${website.slug}`,
-        itemClass: index < 4 ? `work-item-${index + 1}` : "work-item-extra",
-      })),
-    [filteredWebsites]
-  );
-
-  // Scroll progress bar, scrolled header & back-to-top visibility
+  // Cycling phrases in Hero
   useEffect(() => {
-    let ticking = false;
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const scrollTop = window.scrollY;
-        setIsScrolled(scrollTop > 32);
-        setShowBackToTop(scrollTop > 420);
-        ticking = false;
-      });
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const timer = setInterval(() => {
+      setActivePhraseIndex((prev) => (prev + 1) % heroPhrases.length);
+    }, 2800);
+    return () => clearInterval(timer);
   }, []);
 
-  // Active nav section tracking
+  // Stats Intersection Observer
   useEffect(() => {
-    const sections = ["about", "hosting", "work", "services", "contact"]
-      .map((id) => document.getElementById(id))
-      .filter((section): section is HTMLElement => section !== null);
     const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible?.target instanceof HTMLElement) {
-          setActiveSection(visible.target.id);
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStatsVisible(true);
         }
       },
-      { rootMargin: "-18% 0px -62% 0px", threshold: [0, 0.05, 0.15] }
+      { threshold: 0.2 }
     );
-    sections.forEach((section) => observer.observe(section));
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
     return () => observer.disconnect();
   }, []);
 
-  // Scroll-triggered reveal observer for all [data-reveal] elements
-  useEffect(() => {
-    const nodes = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
-    if (!nodes.length) return;
+  // Animated counters
+  const uptime = useAnimatedCounter(99.9, statsVisible);
+  const liveTools = useAnimatedCounter(100, statsVisible);
+  const edgeDeployTime = useAnimatedCounter(3, statsVisible);
+  const monitoringHours = useAnimatedCounter(24, statsVisible);
 
-    if (typeof IntersectionObserver === "undefined") {
-      nodes.forEach((n) => n.classList.add("is-visible"));
-      return;
-    }
-
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
-    );
-
-    nodes.forEach((node) => revealObserver.observe(node));
-
-    // Safety fallback so nothing ever stays hidden
-    const fallbackTimer = window.setTimeout(() => {
-      nodes.forEach((n) => n.classList.add("is-visible"));
-    }, 1800);
-
-    return () => {
-      revealObserver.disconnect();
-      window.clearTimeout(fallbackTimer);
-    };
-  }, [selectedCategory]);
-
-  // Stats strip visibility observer for animated count-ups
-  useEffect(() => {
-    const el = statsRef.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setStatsInView(true);
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.25 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
-  // Rotating hero kinetic phrase every 3.4s
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setPhraseIndex((prev) => (prev + 1) % heroPhrases.length);
-    }, 3400);
-    return () => window.clearInterval(timer);
-  }, []);
-
-  // Live IST clock in hero timecode
-  useEffect(() => {
-    const updateClock = () => {
-      const now = new Date();
-      const formatted = now.toLocaleTimeString("en-IN", {
-        hour12: false,
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-      });
-      setLiveTimecode(formatted.split(":").join(" : "));
-    };
-    updateClock();
-    const timer = window.setInterval(updateClock, 1000);
-    return () => window.clearInterval(timer);
-  }, []);
-
-  const statLiveCount = useAnimatedCounter(
-    Math.max(liveWebsites.length, 3),
-    statsInView
-  );
-  const statTotalProjects = useAnimatedCounter(
-    showcaseWebsites.length,
-    statsInView
-  );
-  const statDivisionsCount = useAnimatedCounter(divisions.length, statsInView);
-  const statServicesCount = useAnimatedCounter(services.length, statsInView);
-
-  const handleHeroMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const xRatio = (e.clientX - rect.left) / rect.width;
-    const yRatio = (e.clientY - rect.top) / rect.height;
-    setTilt({
-      rx: (0.5 - yRatio) * 10,
-      ry: (xRatio - 0.5) * 12,
-      mx: Math.round(xRatio * 100),
-      my: Math.round(yRatio * 100),
+  // Filter projects
+  const filteredWebsites = useMemo(() => {
+    if (projectCategory === "all") return websites;
+    return websites.filter((w) => {
+      if (projectCategory === "tools") return w.category?.toLowerCase().includes("tool") || w.category?.toLowerCase().includes("calc");
+      if (projectCategory === "apps") return w.category?.toLowerCase().includes("app") || w.category?.toLowerCase().includes("web");
+      if (projectCategory === "portfolios") return w.category?.toLowerCase().includes("portfolio");
+      return true;
     });
-  };
-
-  const handleHeroMouseLeave = () => {
-    setTilt({ rx: 0, ry: 0, mx: 65, my: 45 });
-  };
-
-  const handleDiscussService = (serviceName: string) => {
-    setFormData((prev) => ({ ...prev, service: serviceName }));
-    const contactEl = document.getElementById("contact");
-    if (contactEl) {
-      contactEl.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormSubmitting(true);
-    setFormError("");
-    setFormSuccess(false);
-
-    try {
-      const res = await fetch("/api/corporate/inquiries", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          phone: "",
-          subject: formData.service || "General Inquiry",
-          inquiryType: "business",
-          relatedBusiness: formData.division,
-          message: formData.message,
-          consent: formData.consent,
-        }),
-      });
-
-      if (res.ok) {
-        setFormSuccess(true);
-        setFormData({
-          name: "",
-          email: "",
-          company: "",
-          service: "",
-          division: "",
-          message: "",
-          consent: false,
-        });
-      } else {
-        const data = await res.json().catch(() => ({}));
-        setFormError(data.error || "Failed to send inquiry. Please try again.");
-      }
-    } catch {
-      setFormError("Network error. Please try again later.");
-    } finally {
-      setFormSubmitting(false);
-    }
-  };
+  }, [websites, projectCategory]);
 
   return (
-    <>
-      <a className="skip-link" href="#main">
-        Skip to main content
-      </a>
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 selection:bg-teal-500 selection:text-white">
+      
+      {/* ========================================================
+          1. ATHENURA-INSPIRED OBSIDIAN HERO SECTION
+          ======================================================== */}
+      <section className="relative isolate overflow-hidden bg-[#040D12] text-white pt-12 pb-20 lg:pt-16 lg:pb-28 border-b border-teal-900/30">
+        
+        {/* Subtle Ambient Mesh & Radial Glows */}
+        <div className="pointer-events-none absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-teal-500/10 blur-[140px]" />
+        <div className="pointer-events-none absolute top-1/2 -right-40 h-[500px] w-[500px] rounded-full bg-cyan-500/10 blur-[130px]" />
+        
+        {/* Fine Vector Line Art Background Pattern */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.035]"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.4) 1px, transparent 0)`,
+            backgroundSize: "32px 32px",
+          }}
+        />
 
-      <div className="premium-home">
-        <header
-          className={`premium-home-header ${isScrolled ? "is-scrolled" : ""}`}
-        >
-          <div className="premium-home-nav">
-            <Logo size="md" showTagline />
-            <nav className="premium-home-links" aria-label="Main navigation">
-              {homeNavLinks.map((item) => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  className={activeSection === item.id ? "active" : undefined}
-                  aria-current={activeSection === item.id ? "location" : undefined}
-                >
-                  {item.label}
-                  <ArrowUpRight className="home-nav-arrow" aria-hidden="true" />
-                </a>
-              ))}
-            </nav>
-            <div className="premium-home-actions">
-              <Link href="/websites" className="home-store-link">
-                Ecosystem
-              </Link>
-              <HeaderAuthControl isHeroHeader />
-              <button
-                type="button"
-                className="home-menu-toggle"
-                aria-label={menuOpen ? "Close menu" : "Open menu"}
-                aria-expanded={menuOpen}
-                aria-controls="home-mobile-nav"
-                onClick={() => setMenuOpen((open) => !open)}
-              >
-                {menuOpen ? (
-                  <X className="h-5 w-5" />
-                ) : (
-                  <Menu className="h-5 w-5" />
-                )}
-              </button>
-            </div>
-          </div>
-          {menuOpen && (
-            <nav
-              id="home-mobile-nav"
-              className="premium-home-mobile-nav"
-              aria-label="Mobile main navigation"
-            >
-              {homeNavLinks.map((item) => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {item.label}
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
-              ))}
-              <Link href="/websites" onClick={() => setMenuOpen(false)}>
-                Digital ecosystem
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
-              <Link href="/dashboard" onClick={() => setMenuOpen(false)}>
-                Dashboard &amp; Deployments
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
-            </nav>
-          )}
-        </header>
-
-        {/* Main Content Area */}
-        <div className="site-content">
-          <main id="main">
-            {/* 1. HERO SECTION */}
-            <section
-              id="top"
-              className="hero premium-hero"
-              onMouseMove={handleHeroMouseMove}
-              onMouseLeave={handleHeroMouseLeave}
-              style={
-                {
-                  "--mx": `${tilt.mx}%`,
-                  "--my": `${tilt.my}%`,
-                } as React.CSSProperties
-              }
-            >
-              <div className="premium-hero-bg" aria-hidden="true" />
-              <div className="hero-shade" aria-hidden="true" />
-              <div className="hero-cursor-glow" aria-hidden="true" />
-
-              <div className="hero-topline">
-                <span className="eyebrow">
-                  Independent vision. Collective craft.
-                </span>
-                <a href="#contact" className="eyebrow">
-                  Have an idea? <ArrowUpRight className="w-[15px] h-[15px]" />
-                </a>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            
+            {/* Left Column: Editorial Headline & Mission (Span 7) */}
+            <div className="lg:col-span-7 space-y-7">
+              
+              {/* Category Pill Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-teal-500/30 bg-teal-950/50 text-xs font-bold text-teal-300 shadow-sm backdrop-blur-md">
+                <span className="w-2 h-2 rounded-full bg-teal-400 animate-ping" />
+                <span>Next-Gen Web Ecosystem &amp; Instant Hosting</span>
               </div>
 
-              {/* HERO MAIN GRID CONTAINER: Headline on left, Login Popup on right */}
-              <div className="hero-grid-container">
-                <div className="hero-content">
-                  <p className="eyebrow hero-eyebrow">
-                    <span className="blue-square"></span>Corporate headquarters ·
-                    Agra, India
-                  </p>
-                  <h1>
-                    Websites into
-                    <br />
-                    <em key={phraseIndex} className="hero-kinetic-word">
-                      {heroPhrases[phraseIndex]}
-                    </em>
-                  </h1>
-                  <p className="hero-description">
-                    Samad Expo provides multi-user website hosting, instant ZIP deployments, and high-performance digital tools under one verified platform.
-                  </p>
-                  <div className="hero-actions">
-                    <Link href="/dashboard" className="blue-button">
-                      <Play className="w-[14px] h-[14px] fill-current" />
-                      Deploy your website
-                    </Link>
-                    <Link className="text-link" href="/websites">
-                      Explore hosted websites{" "}
-                      <ArrowUpRight className="w-[17px] h-[17px]" />
-                    </Link>
-                  </div>
-                  <form
-                    action="/ecosystem-search"
-                    method="get"
-                    className="hero-search mt-5 flex max-w-lg items-center gap-2 rounded-xl border p-2"
-                  >
-                    <Search className="ml-2 h-4 w-4 shrink-0" />
-                    <label className="sr-only" htmlFor="home-ecosystem-search">
-                      Search websites, businesses, and services
-                    </label>
-                    <input
-                      id="home-ecosystem-search"
-                      name="q"
-                      type="search"
-                      minLength={2}
-                      maxLength={100}
-                      placeholder="Search websites, businesses, services"
-                      className="min-w-0 flex-1 bg-transparent px-1 py-2 text-sm outline-none"
-                    />
-                    <button
-                      type="submit"
-                      className="rounded-lg bg-[#FFF33D] px-3.5 py-2 text-xs font-extrabold text-black border border-black/15 transition hover:bg-black hover:text-[#FFF33D] cursor-pointer"
-                    >
-                      Search
-                    </button>
-                  </form>
+              {/* 3-Tier Editorial Headline (Signature Athenura Treatment) */}
+              <div className="space-y-1 sm:space-y-2">
+                <div className="font-serif italic text-zinc-400 font-light text-2xl sm:text-3xl lg:text-4xl tracking-wide">
+                  Empowering
                 </div>
-
-                {/* Right Column: Console Login / Sign-up Popup Card */}
-                <div className="hero-visual">
-                  <HeroAuthCard />
-                </div>
+                <h1 className="text-4xl sm:text-6xl lg:text-[4.75rem] font-black tracking-tight leading-[0.92] uppercase">
+                  <span className="text-gradient-teal block">
+                    BUSINESSES WITH
+                  </span>
+                  <span className="text-white block mt-1">
+                    INNOVATION.
+                  </span>
+                </h1>
               </div>
 
-              <div className="hero-bottom">
-                <a href="#about" className="eyebrow">
-                  <ArrowDown className="w-[17px] h-[17px]" />
-                  Scroll to explore
-                </a>
-                <span className="hero-frame eyebrow" suppressHydrationWarning>
-                  [ {liveTimecode} ]
-                </span>
-                <span className="hero-caption eyebrow">
-                  Central Digital Headquarters
+              {/* Animated Cycling Subphrase */}
+              <div className="flex items-center gap-3 text-lg sm:text-xl font-medium text-zinc-300">
+                <span className="text-zinc-500">Accelerating</span>
+                <span className="font-bold text-teal-300 transition-all duration-300">
+                  {heroPhrases[activePhraseIndex]}
                 </span>
               </div>
 
-              <span className="hero-vertical eyebrow">00 — Headquarters</span>
-            </section>
-
-            {/* DYNAMIC LIVE ECOSYSTEM METRICS STRIP */}
-            <div ref={statsRef} className="live-stats-strip" aria-label="Live platform statistics">
-              <div className="live-stat-card" data-reveal style={{ "--reveal-delay": "0ms" } as React.CSSProperties}>
-                <strong>{String(statLiveCount).padStart(2, "0")}+</strong>
-                <span>Live Hosted Websites</span>
-              </div>
-              <div className="live-stat-card" data-reveal style={{ "--reveal-delay": "80ms" } as React.CSSProperties}>
-                <strong>15+</strong>
-                <span>Registered Developers</span>
-              </div>
-              <div className="live-stat-card" data-reveal style={{ "--reveal-delay": "160ms" } as React.CSSProperties}>
-                <strong>99.9%</strong>
-                <span>Platform Uptime</span>
-              </div>
-              <div className="live-stat-card" data-reveal style={{ "--reveal-delay": "240ms" } as React.CSSProperties}>
-                <strong>{String(statServicesCount).padStart(2, "0")}</strong>
-                <span>Core Capabilities</span>
-              </div>
-            </div>
-
-            {/* 2. STUDIO INTRO SECTION */}
-            <section id="about" className="studio-intro">
-              <p className="eyebrow" data-reveal style={{ "--reveal-delay": "0ms" } as React.CSSProperties}>
-                <span className="red-square"></span>This is Samad Expo.
-              </p>
-              <div
-                data-reveal
-                style={{ "--reveal-delay": "60ms" } as React.CSSProperties}
-              >
-                <h2>
-                  Not just platforms.
-                  <br />
-                  <em>Ecosystems.</em>
-                </h2>
-              </div>
-              <div
-                className="intro-copy space-y-5"
-                data-reveal
-                style={{ "--reveal-delay": "160ms" } as React.CSSProperties}
-              >
-                <div className="relative pl-5 border-l-3 border-[#FFF33D]">
-                  <p className="text-lg sm:text-xl lg:text-[22px] font-semibold text-slate-950 leading-relaxed tracking-tight">
-                    <span className="font-extrabold text-black underline decoration-[#FFF33D] decoration-2 underline-offset-4">
-                      An independent business ecosystem.
-                    </span>{" "}
-                    Samad Expo serves as the parent corporate company, guiding
-                    vision, and central digital gateway for all our independent
-                    businesses, digital applications, web platforms, and
-                    innovative technology ventures.
-                  </p>
-                </div>
-                <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal pl-5">
-                  From the first conceptual blueprint to enterprise cloud
-                  deployment, we bring a long-term mindset and meticulous
-                  engineering to every platform. Each venture maintains complete
-                  brand autonomy and dedicated customer focus, strengthened by
-                  shared governance and capital.
+              {/* Mission Statement Quote Box (Athenura Signature Element) */}
+              <div className="relative pl-5 border-l-2 border-[#20A9BB] py-1 max-w-xl">
+                <p className="text-xs sm:text-sm text-zinc-300 italic font-light leading-relaxed">
+                  &ldquo;Samad Expo transforms ideas into live digital platforms, delivering instant website hosting, robust web tools, and scalable technology platforms that help modern businesses innovate, scale, and succeed in the digital era.&rdquo;
                 </p>
-                <div className="pt-2 pl-5">
-                  <a
-                    href="/about-company"
-                    className="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3.5 text-xs font-extrabold uppercase tracking-wider text-white shadow-sm transition-all hover:bg-[#FFF33D] hover:text-black hover:shadow-md hover:-translate-y-0.5 cursor-pointer"
-                  >
-                    <span>Get to know us</span>
-                    <ArrowUpRight className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
-              <span aria-hidden="true" className="intro-aperture">
-                <span></span>
-                <span></span>
-                <span></span>
-              </span>
-            </section>
-
-            {/* 3. SELECTED WORK / DIGITAL ECOSYSTEM */}
-            <section id="work" className="section selected-work">
-              <div
-                data-reveal
-                style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
-              >
-                <div className="section-heading">
-                  <div className="section-heading-main">
-                    <span className="section-index" aria-hidden="true">
-                      01
-                    </span>
-                    <div>
-                      <p className="eyebrow">
-                        <span className="red-square"></span>Selected work /
-                        Digital Ecosystem
-                      </p>
-                      <h2>
-                        Different platforms.
-                        <br />
-                        <em>Same obsession.</em>
-                      </h2>
-                    </div>
-                  </div>
-                  <p className="heading-description">
-                    A curated showcase of our live digital platforms, web
-                    applications, and enterprise technology.
-                  </p>
+                <div className="mt-2 text-[10px] uppercase font-bold tracking-[0.25em] text-teal-400">
+                  &mdash; THE SAMAD EXPO MISSION
                 </div>
               </div>
 
-              {/* Interactive Dynamic Filter Tabs */}
-              <div
-                className="ecosystem-filter-bar"
-                role="tablist"
-                aria-label="Filter digital ecosystem by category"
-                data-reveal
-                style={{ "--reveal-delay": "80ms" } as React.CSSProperties}
-              >
-                {categories.map((cat) => {
-                  const count =
-                    cat === "All"
-                      ? showcaseWebsites.length
-                      : cat === "Live"
-                      ? showcaseWebsites.filter((w) => w.status === "live")
-                          .length
-                      : showcaseWebsites.filter((w) => w.category === cat)
-                          .length;
-                  const active = selectedCategory === cat;
-                  return (
-                    <button
-                      key={cat}
-                      type="button"
-                      role="tab"
-                      aria-selected={active}
-                      onClick={() => setSelectedCategory(cat)}
-                      className={`ecosystem-filter-pill ${
-                        active ? "is-active" : ""
-                      }`}
-                    >
-                      <span>{cat}</span>
-                      <span className="ecosystem-filter-count">{count}</span>
-                    </button>
-                  );
-                })}
-              </div>
+              {/* Action Buttons */}
+              <div className="pt-2 flex flex-wrap items-center gap-4 sm:gap-6">
+                <Link
+                  href="/dashboard"
+                  className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-white text-slate-950 hover:bg-teal-50 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 shadow-[0_10px_25px_rgba(255,255,255,0.15)] hover:scale-105 active:scale-95"
+                >
+                  <span>Deploy Website</span>
+                  <ArrowRight className="w-4 h-4 text-teal-700" />
+                </Link>
 
-              <div className="work-grid">
-                {workItems.map((item, idx) => (
-                  <div
-                    key={`${selectedCategory}-${item.id}`}
-                    className={`work-item work-item-animated ${item.itemClass}`}
-                    style={
-                      {
-                        animationDelay: `${idx * 75}ms`,
-                      } as React.CSSProperties
-                    }
-                  >
-                    <Link
-                      href={item.href}
-                      className="work-media block text-left"
-                      aria-label={`Explore ${item.name}`}
-                    >
-                      {item.image ? (
-                        <img src={item.image} alt={item.name} loading="lazy" />
-                      ) : item.previewUrl ? (
-                        <>
-                          <iframe
-                            src={item.previewUrl}
-                            title={`${item.name} live preview`}
-                            loading="lazy"
-                            tabIndex={-1}
-                            aria-hidden="true"
-                            referrerPolicy="strict-origin-when-cross-origin"
-                            sandbox="allow-forms allow-scripts allow-same-origin allow-downloads allow-popups"
-                            className="work-preview-frame"
-                          />
-                          <span className="work-preview-badge">
-                            Live website preview
-                          </span>
-                        </>
-                      ) : (
-                        <span className="flex h-full min-h-64 items-center justify-center bg-gradient-to-br from-slate-800 to-slate-950 p-8 text-center text-3xl font-black text-white/60">
-                          {item.name}
-                        </span>
-                      )}
-                      <span className="work-corner top-left"></span>
-                      <span className="work-corner bottom-right"></span>
-                      <span className="work-image-top">
-                        <span className="eyebrow">{item.badge}</span>
-                        <span className="eyebrow">{item.concept}</span>
-                      </span>
-                      <span className="work-play">
-                        <Play className="w-[19px] h-[19px] fill-current" />
-                      </span>
-                      <span className="work-image-bottom">
-                        <span>Explore Platform</span>
-                        <ArrowUpRight className="w-[21px] h-[21px]" />
-                      </span>
-                    </Link>
-                    <div className="work-caption">
-                      <div>
-                        <p className="eyebrow">{item.category}</p>
-                        <h3>
-                          <Link href={item.href}>{item.title}</Link>
-                        </h3>
-                      </div>
-                      <Link
-                        href={item.href}
-                        className="work-open"
-                        aria-label={`View ${item.name}`}
-                      >
-                        <ArrowUpRight className="w-[23px] h-[23px]" />
-                      </Link>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-7 flex justify-center">
-                <Link href="/websites" className="text-link">
-                  Explore all websites{" "}
-                  <ArrowUpRight className="w-[17px] h-[17px]" />
+                <Link
+                  href="/websites"
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-widest text-zinc-300 hover:text-white uppercase transition-colors group"
+                >
+                  <span>View Projects &amp; Tools</span>
+                  <ArrowUpRight className="w-4 h-4 text-teal-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </Link>
               </div>
 
-              <p className="portfolio-note eyebrow">
-                Independent platforms, unified corporate governance. Your
-                venture could be next.
-              </p>
-              <span className="vertical-label">01 — Digital Ecosystem</span>
-            </section>
-
-            {/* 4. PLATFORM ARCHITECTURE & INSTANT HOSTING */}
-            <section
-              id="hosting"
-              className="py-20 px-4 sm:px-6 lg:px-8 border-y border-zinc-200 bg-[#FAFAFA]"
-              aria-label="Platform Architecture and Website Hosting"
-              data-reveal
-            >
-              <div className="mx-auto max-w-7xl">
-                <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
-                  <div>
-                    <p className="eyebrow flex items-center gap-2 mb-2">
-                      <span className="w-2 h-2 rounded-full bg-[#FFF33D] inline-block border border-black/30"></span>
-                      Core Platform Engine
-                    </p>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-black tracking-tight">
-                      Deploy any website in seconds.
-                    </h2>
-                  </div>
-                  <p className="text-sm sm:text-base text-zinc-600 max-w-xl">
-                    Our self-contained multi-tenant web platform lets developers and creators upload ZIP archives, inspect responsive previews, and share production-ready URLs instantly.
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="w-12 h-12 rounded-xl bg-black text-[#FFF33D] flex items-center justify-center font-black mb-4">
-                      <UploadCloud className="w-6 h-6" />
-                    </div>
-                    <h3 className="text-lg font-black text-black mb-2">1-Click ZIP Upload</h3>
-                    <p className="text-sm text-zinc-600 leading-relaxed">
-                      Upload your raw static files or bundle. Files are extracted, verified, and mapped to your workspace instantly.
-                    </p>
-                  </div>
-
-                  <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="w-12 h-12 rounded-xl bg-black text-[#FFF33D] flex items-center justify-center font-black mb-4">
-                      <Monitor className="w-6 h-6" />
-                    </div>
-                    <h3 className="text-lg font-black text-black mb-2">Live Multi-Device Preview</h3>
-                    <p className="text-sm text-zinc-600 leading-relaxed">
-                      Switch seamlessly between Desktop, Tablet, and Mobile viewports directly inside the developer workspace.
-                    </p>
-                  </div>
-
-                  <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="w-12 h-12 rounded-xl bg-black text-[#FFF33D] flex items-center justify-center font-black mb-4">
-                      <Globe className="w-6 h-6" />
-                    </div>
-                    <h3 className="text-lg font-black text-black mb-2">Instant Public URLs</h3>
-                    <p className="text-sm text-zinc-600 leading-relaxed">
-                      Every project gets a shareable production URL and is showcased in the searchable Public Directory.
-                    </p>
-                  </div>
-
-                  <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="w-12 h-12 rounded-xl bg-black text-[#FFF33D] flex items-center justify-center font-black mb-4">
-                      <Cpu className="w-6 h-6" />
-                    </div>
-                    <h3 className="text-lg font-black text-black mb-2">Developer Dashboard</h3>
-                    <p className="text-sm text-zinc-600 leading-relaxed">
-                      Manage project status, view storage usage, edit metadata, or toggle visibility with full administrative control.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-10 flex flex-wrap items-center gap-4 pt-4 border-t border-zinc-200">
-                  <Link
-                    href="/dashboard"
-                    className="inline-flex items-center gap-2 rounded-xl bg-black px-6 py-3.5 text-xs font-black uppercase tracking-wider text-[#FFF33D] hover:bg-zinc-800 transition-colors shadow-sm"
-                  >
-                    <span>Deploy Your Website</span>
-                    <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-                  <Link
-                    href="/websites"
-                    className="inline-flex items-center gap-2 rounded-xl border border-zinc-300 bg-white px-6 py-3.5 text-xs font-black uppercase tracking-wider text-black hover:border-black transition-colors"
-                  >
-                    <span>Browse Public Directory</span>
-                    <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-                </div>
+              {/* Live Metric Pills */}
+              <div className="pt-4 flex flex-wrap items-center gap-3 text-[11px] font-semibold text-zinc-400">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  100% Automated Deployment
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+                  <Zap className="w-3.5 h-3.5 text-teal-400" />
+                  &lt; 3s Edge Build Time
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+                  <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
+                  Enterprise Shield
+                </span>
               </div>
-            </section>
 
-            {/* 6. WHAT WE DO / DYNAMIC SERVICES ACCORDION */}
-            <section id="services" className="section services-section">
+            </div>
+
+            {/* Right Column: Hero Console Auth & Hosting Card (Span 5) */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <HeroAuthCard dark={true} />
+            </div>
+
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="mt-12 flex justify-center">
+          <a
+            href="#marquee"
+            aria-label="Scroll to content"
+            className="flex flex-col items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500 hover:text-teal-400 transition"
+          >
+            <span>Scroll</span>
+            <ArrowDown className="w-3.5 h-3.5 animate-bounce" />
+          </a>
+        </div>
+      </section>
+
+      {/* ========================================================
+          2. TECHNOLOGY STACK MARQUEE & STATS TICKER
+          ======================================================== */}
+      <section id="marquee" className="border-b border-slate-200/80 bg-white py-6 overflow-hidden">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-4">
+          <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-400">
+            <span>Powered by Modern Infrastructure</span>
+            <span className="hidden sm:inline">Zero-Config Deployment Network</span>
+          </div>
+        </div>
+
+        <div className="relative flex overflow-x-hidden">
+          <div className="animate-athenura-marquee flex items-center gap-8 text-sm font-bold text-slate-700">
+            {[...techStack, ...techStack].map((tech, idx) => (
               <div
-                data-reveal
-                style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
+                key={idx}
+                className="flex items-center gap-2.5 px-4 py-2 rounded-full border border-slate-200/60 bg-slate-50/80 shrink-0 hover:border-teal-400 transition"
               >
-                <div className="section-heading">
-                  <div className="section-heading-main">
-                    <span className="section-index" aria-hidden="true">
-                      02
-                    </span>
-                    <div>
-                      <p className="eyebrow">
-                        <span className="red-square"></span>From concept to
-                        high-scale execution
-                      </p>
-                      <h2>The whole picture.</h2>
-                    </div>
-                  </div>
-                  <p className="heading-description">
-                    One parent enterprise. Every part of the digital stack. Come
-                    to us with a vision, an enterprise need, or a partnership
-                    proposition.
-                  </p>
-                </div>
+                <div className="w-2 h-2 rounded-full bg-teal-500" />
+                <span>{tech}</span>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <div
-                className="service-list"
-                data-reveal
-                style={{ "--reveal-delay": "90ms" } as React.CSSProperties}
-              >
-                {services.map((service, index) => {
-                  const isOpen = openServiceId === service.id;
-                  return (
-                    <div
-                      key={service.id}
-                      id={service.slug}
-                      className={`dynamic-service-row ${isOpen ? "is-open" : ""}`}
-                    >
-                      <button
-                        type="button"
-                        aria-expanded={isOpen}
-                        onClick={() =>
-                          setOpenServiceId(isOpen ? null : service.id)
-                        }
-                        className="dynamic-service-trigger"
-                      >
-                        <span className="service-number eyebrow">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <h3>{service.name}</h3>
-                        <span className="service-tags eyebrow">
-                          {service.category}
-                        </span>
-                        <ArrowDown className="w-[21px] h-[21px] dynamic-service-icon" />
-                      </button>
+      {/* ========================================================
+          3. WHO WE ARE / OUR STORY (Athenura Narrative Grid)
+          ======================================================== */}
+      <section id="about" className="py-20 lg:py-28 bg-[#F8FAFC]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-50 text-teal-800 text-xs font-bold uppercase tracking-wider border border-teal-100">
+              <Sparkles className="w-3.5 h-3.5 text-teal-600" />
+              <span>About Samad Expo</span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900">
+              Who We <span className="text-gradient-teal">Are</span>
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              Serving as the central digital headquarters and parent corporate brand for software applications, developer utilities, and modern web infrastructure.
+            </p>
+          </div>
 
-                      <div className="dynamic-service-panel">
-                        <div className="dynamic-service-panel-inner">
-                          <div className="dynamic-service-body space-y-3">
-                            {service.shortDescription && (
-                              <p className="service-subtitle font-bold text-slate-900">
-                                {service.shortDescription}
-                              </p>
-                            )}
-                            <p className="text-slate-600 leading-relaxed">
-                              {service.description}
-                            </p>
-                            <button
-                              type="button"
-                              onClick={() => handleDiscussService(service.name)}
-                              className="inline-flex items-center gap-1.5 text-xs font-bold text-black hover:text-zinc-700 underline transition-colors cursor-pointer pt-1"
-                            >
-                              <span>Discuss {service.name}</span>
-                              <ArrowUpRight className="w-3.5 h-3.5" />
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-                {!services.length && (
-                  <p className="eyebrow">
-                    Services will appear here when published by the company.
-                  </p>
-                )}
-              </div>
-
-              <div className="services-bottom">
-                <p className="eyebrow">
-                  {services.length} published service
-                  {services.length === 1 ? "" : "s"}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            {/* Left Column: Narrative & 4 Feature Pillars (Span 7) */}
+            <div className="lg:col-span-7 space-y-8">
+              <div className="space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed">
+                <p>
+                  Founded with a vision to shape the future of <strong>digital innovation</strong> and <strong>accessible web hosting</strong>, Samad Expo officially established its foundation as a focused organization driven by <strong>creativity, technology, and purpose</strong>. Today, we deliver impactful web tools and instant hosting services across diverse domains.
                 </p>
-                <a href="#contact" className="text-link">
-                  Discuss your requirement{" "}
-                  <ArrowUpRight className="w-[17px] h-[17px]" />
-                </a>
+                <p>
+                  Our journey is guided by a clear philosophy: <strong>build solutions that create real value</strong>. Every web application we deploy, every hosting pipeline we engineer, and every tool we launch is centered on <strong>solving real-world challenges</strong>.
+                </p>
               </div>
 
-              <span className="vertical-label">02 — Capabilities</span>
-            </section>
-
-            {/* 7. CONTACT SECTION */}
-            <section id="contact" className="section contact-section">
-              <div className="contact-layout">
-                <div
-                  className="contact-copy"
-                  data-reveal
-                  style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
-                >
-                  <div className="section-heading">
-                    <div className="section-heading-main">
-                      <span className="section-index" aria-hidden="true">
-                        03
-                      </span>
-                      <div>
-                        <p className="eyebrow">
-                          <span className="red-square"></span>The next great
-                          venture could be yours
-                        </p>
-                        <h2>
-                          Let’s make
-                          <br />
-                          <em>something move.</em>
-                        </h2>
-                      </div>
-                    </div>
-                  </div>
-
-                  <p className="contact-introduction">
-                    An idea on a napkin. An enterprise partnership inquiry.
-                    <br />
-                    We’d love to hear what you’re thinking.
-                  </p>
-
-                  <a
-                    className="contact-email"
-                    href={`mailto:${
-                      profile?.contactEmail || "contact@mdenterprises.in"
-                    }`}
+              {/* 4 Feature Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  {
+                    title: "Innovation",
+                    desc: "Pushing boundaries with instant deployment and automated cloud pipelines.",
+                    icon: Zap,
+                  },
+                  {
+                    title: "Excellence",
+                    desc: "Delivering enterprise-grade speed, security, and 99.9% uptime reliability.",
+                    icon: Award,
+                  },
+                  {
+                    title: "Velocity",
+                    desc: "From zero to live web application in seconds with zero server hassle.",
+                    icon: Globe,
+                  },
+                  {
+                    title: "Integrity",
+                    desc: "Open, dependable infrastructure with client-first transparency.",
+                    icon: ShieldCheck,
+                  },
+                ].map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="p-5 rounded-2xl border border-slate-200/80 bg-white shadow-xs hover:border-teal-400 hover:shadow-md transition-all duration-300"
                   >
-                    {profile?.contactEmail || "officialaadhakh@gmail.com"}{" "}
-                    <ArrowUpRight className="w-[23px] h-[23px]" />
-                  </a>
-
-                  <div className="contact-info">
-                    <div>
-                      <span className="eyebrow">Headquarters &amp; Business Address</span>
-                      <p>
-                        <a
-                          href="https://maps.app.goo.gl/UnzqY6kZ3i2BRieKA"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hover:text-[#FFF33D] transition-colors inline-flex items-center gap-1 font-semibold"
-                        >
-                          {profile?.contactAddress || "Bodla, Agra, Uttar Pradesh 282010, India"} ↗
-                        </a>
-                        <br />
-                        {profile?.contactPhone ? (
-                          <a
-                            href={`tel:${profile.contactPhone.replace(
-                              /[^\d+]/g,
-                              ""
-                            )}`}
-                            className="hover:text-[#FFF33D] transition-colors"
-                          >
-                            {profile.contactPhone}
-                          </a>
-                        ) : (
-                          "Operating across digital and physical domains."
-                        )}
-                      </p>
+                    <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center mb-3">
+                      <item.icon className="w-5 h-5" />
                     </div>
-                    <div>
-                      <span className="eyebrow">Our approach</span>
-                      <p>
-                        Direct leadership engagement.
-                        <br />
-                        Thoughtful, fast execution.
-                      </p>
-                    </div>
+                    <h3 className="text-base font-bold text-slate-900 mb-1">{item.title}</h3>
+                    <p className="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
                   </div>
+                ))}
+              </div>
+            </div>
 
-                  <span className="contact-red-mark" aria-hidden="true">
-                    ↗
-                  </span>
+            {/* Right Column: Elevated Distributed Team & Founder Card (Span 5) */}
+            <div className="lg:col-span-5">
+              <div className="athenura-card p-6 sm:p-8 space-y-6">
+                
+                {/* Visual Header */}
+                <div className="relative rounded-2xl overflow-hidden bg-slate-900 h-52 sm:h-60 flex items-center justify-center p-6 text-center">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-teal-900/60 to-slate-950/90" />
+                  <div className="relative z-10 space-y-3">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-[#FFF33D] text-[11px] font-bold">
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span>Corporate Leadership</span>
+                    </div>
+                    <h3 className="text-xl sm:text-2xl font-black text-white">
+                      Sabir Usmani
+                    </h3>
+                    <p className="text-xs text-zinc-300 max-w-xs mx-auto">
+                      Founder, Chief Executive &amp; System Architect leading the Samad Expo digital ecosystem.
+                    </p>
+                  </div>
                 </div>
 
-                <div
-                  className="brief-panel"
-                  data-reveal
-                  style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="font-bold text-slate-900">Headquarters Node</span>
+                    <span className="text-teal-700 font-semibold">Central India Gateway</span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="font-bold text-slate-900">Primary Contact</span>
+                    <span className="text-slate-600 font-mono">officialaadhakh@gmail.com</span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="font-bold text-slate-900">Architecture</span>
+                    <span className="text-slate-600">Edge Next.js + React 19</span>
+                  </div>
+                </div>
+
+                <Link
+                  href="/founder"
+                  className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-slate-950 hover:bg-teal-700 text-white text-xs font-bold uppercase tracking-wider transition duration-300 shadow-sm"
                 >
-                  <form className="project-form" onSubmit={handleSubmit}>
-                    <div className="form-heading">
-                      <h3>A little about your project.</h3>
-                      <span className="eyebrow">01 / The brief</span>
-                    </div>
+                  <span>Explore Leadership Profile</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
 
-                    {formSuccess && (
-                      <div className="p-4 mb-4 bg-emerald-50 border border-emerald-300 rounded-xl text-emerald-900 text-xs flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-black shrink-0" />
-                        <span>
-                          Thank you. Your inquiry has been received and will be
-                          reviewed.
-                        </span>
-                      </div>
-                    )}
+              </div>
+            </div>
 
-                    {formError && (
-                      <div className="p-4 mb-4 bg-rose-50 border border-rose-300 rounded-xl text-rose-900 text-xs">
-                        {formError}
-                      </div>
-                    )}
+          </div>
 
-                    <div className="form-grid">
-                      <div className="field">
-                        <label htmlFor="brief-name">
-                          Your name <span>*</span>
-                        </label>
-                        <input
-                          id="brief-name"
-                          placeholder="First and last name"
-                          required
-                          minLength={2}
-                          maxLength={200}
-                          autoComplete="name"
-                          value={formData.name}
-                          onChange={(e) =>
-                            setFormData({ ...formData, name: e.target.value })
-                          }
-                        />
-                      </div>
+        </div>
+      </section>
 
-                      <div className="field">
-                        <label htmlFor="brief-email">
-                          Email address <span>*</span>
-                        </label>
-                        <input
-                          id="brief-email"
-                          placeholder="you@company.com"
-                          type="email"
-                          required
-                          maxLength={254}
-                          autoComplete="email"
-                          value={formData.email}
-                          onChange={(e) =>
-                            setFormData({ ...formData, email: e.target.value })
-                          }
-                        />
-                      </div>
+      {/* ========================================================
+          4. DIGITAL SOLUTIONS (Athenura Numbered Services Grid 01-06)
+          ======================================================== */}
+      <section id="services" className="py-20 lg:py-28 bg-white border-y border-slate-100">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-50 text-teal-800 text-xs font-bold uppercase tracking-wider border border-cyan-100">
+              <Zap className="w-3.5 h-3.5 text-teal-600" />
+              <span>Core Capabilities</span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900">
+              Digital Solutions That <span className="text-gradient-teal">Drive Innovation</span>
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              We deliver enterprise-grade technology services and hosting infrastructure that transform businesses and accelerate growth in the digital age.
+            </p>
+          </div>
 
-                      <div className="field full-width">
-                        <label htmlFor="brief-company">
-                          Company or business name
-                        </label>
-                        <input
-                          id="brief-company"
-                          placeholder="Your organization (optional)"
-                          maxLength={200}
-                          autoComplete="organization"
-                          value={formData.company}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              company: e.target.value,
-                            })
-                          }
-                        />
-                      </div>
+          {/* 6 Numbered Athenura Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                num: "01",
+                title: "Instant Website Hosting",
+                desc: "Upload HTML, CSS, JavaScript or static zip bundles and get a live, secure edge URL deployed in seconds.",
+                features: ["Zero-Config Deployment", "Automated HTTPS & CDN", "Custom Domain Routing", "Live Build Logs"],
+                stat: "100% Instant Deploy",
+                link: "/dashboard",
+              },
+              {
+                num: "02",
+                title: "Custom Web Applications",
+                desc: "Full-stack tailored web apps built with modern Next.js 15, React 19, and scalable API architectures.",
+                features: ["Tailored Architectures", "High-Performance SSR/SSG", "Responsive Mobile UX", "Database Integrations"],
+                stat: "Enterprise Grade",
+                link: "/corporate-services",
+              },
+              {
+                num: "03",
+                title: "Digital Ecosystem & Tools",
+                desc: "Productive web utilities including Age Calculator, Unit Converters, and custom business workflow tools.",
+                features: ["Browser-Based Utilities", "Instant Calculations", "Zero Install Required", "Offline Capable"],
+                stat: "100+ Live Tools",
+                link: "/websites",
+              },
+              {
+                num: "04",
+                title: "Cloud & Edge Infrastructure",
+                desc: "Global edge CDN distribution ensuring sub-second response times and 99.9% uptime worldwide.",
+                features: ["Global Edge CDN", "DDoS & Rate Limiting", "Continuous Backups", "SLA Guarantee"],
+                stat: "99.9% Uptime",
+                link: "/corporate-services",
+              },
+              {
+                num: "05",
+                title: "Model Context Protocol (MCP)",
+                desc: "Full JSON-RPC MCP gateway enabling AI assistants and agentic systems to interact with our platform.",
+                features: ["AI Agent Interoperability", "Tool Schema Standard", "Secure Authentication", "Full Data Query"],
+                stat: "AI Ready",
+                link: "/ecosystem-search?q=api",
+              },
+              {
+                num: "06",
+                title: "Corporate Venture Alliance",
+                desc: "Incubating and accelerating modern brands under the Samad Expo umbrella with centralized engineering.",
+                features: ["Shared Digital Core", "Unified Marketing", "Venture Scaling", "Strategic Advisory"],
+                stat: "Multi-Venture",
+                link: "/businesses",
+              },
+            ].map((card, idx) => (
+              <div
+                key={idx}
+                className="athenura-card p-7 flex flex-col justify-between group relative overflow-hidden"
+              >
+                {/* Subtle Watermark Numeral */}
+                <div className="absolute top-4 right-5 text-4xl sm:text-5xl font-black text-slate-100/90 select-none pointer-events-none group-hover:text-teal-100 transition-colors">
+                  {card.num}
+                </div>
 
-                      <div className="field">
-                        <label htmlFor="brief-service">
-                          What are you thinking? <span>*</span>
-                        </label>
-                        <select
-                          id="brief-service"
-                          required
-                          value={formData.service}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              service: e.target.value,
-                            })
-                          }
-                        >
-                          <option value="" disabled>
-                            Select a service
-                          </option>
-                          {services.map((service) => (
-                            <option key={service.id} value={service.name}>
-                              {service.name}
-                            </option>
-                          ))}
-                          <option value="General inquiry">
-                            General inquiry
-                          </option>
-                        </select>
-                      </div>
+                <div>
+                  {/* Top Squircle Badge */}
+                  <div className="w-12 h-12 rounded-2xl bg-teal-50 text-teal-700 flex items-center justify-center mb-6 border border-teal-100/80 shadow-xs group-hover:bg-[#20A9BB] group-hover:text-white transition duration-300">
+                    <span className="text-base font-black">{card.num}</span>
+                  </div>
 
-                      <div className="field">
-                        <label htmlFor="brief-division">
-                          Platform or Topic <span>*</span>
-                        </label>
-                        <select
-                          id="brief-division"
-                          required
-                          value={formData.division}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              division: e.target.value,
-                            })
-                          }
-                        >
-                          <option value="" disabled>
-                            Select a category
-                          </option>
-                          <option value="Website Hosting Platform">
-                            Website Hosting &amp; Deployment
-                          </option>
-                          <option value="Custom Web Engineering">
-                            Custom Web Engineering &amp; Development
-                          </option>
-                          <option value="Developer Account & Support">
-                            Developer Account &amp; Support
-                          </option>
-                          <option value="General Corporate Inquiry">
-                            General Corporate Inquiry
-                          </option>
-                          {websites
-                            .filter((website) => website.isPublic !== false)
-                            .map((website) => (
-                              <option key={website.id} value={website.name}>
-                                Website: {website.name}
-                              </option>
-                            ))}
-                        </select>
-                      </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-teal-700 transition">
+                    {card.title}
+                  </h3>
+                  <p className="text-xs text-slate-500 leading-relaxed mb-6">
+                    {card.desc}
+                  </p>
 
-                      <div className="field full-width">
-                        <label htmlFor="brief-message">
-                          Tell us the story <span>*</span>
-                        </label>
-                        <textarea
-                          id="brief-message"
-                          placeholder="The idea, the scope, the timeline, or the partnership opportunity…"
-                          required
-                          minLength={10}
-                          maxLength={5000}
-                          rows={4}
-                          value={formData.message}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              message: e.target.value,
-                            })
-                          }
-                        ></textarea>
-                        <span className="field-hint">
-                          A brief description or clear idea is completely fine.
-                        </span>
-                      </div>
-                    </div>
+                  {/* Bullet checklist */}
+                  <ul className="space-y-2 mb-6">
+                    {card.features.map((feat, fidx) => (
+                      <li key={fidx} className="flex items-center gap-2 text-xs text-slate-700 font-medium">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-teal-600 shrink-0" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-                    <label className="consent-field">
-                      <input
-                        type="checkbox"
-                        required
-                        checked={formData.consent}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            consent: e.target.checked,
-                          })
-                        }
-                      />
-                      <span>
-                        I agree to Samad Expo using these details to respond
-                        to my project inquiry.
+                {/* Bottom Row: Stat Pill + Action Link */}
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-50 text-slate-600 font-bold border border-slate-200/60">
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal-500" />
+                    {card.stat}
+                  </span>
+
+                  <Link
+                    href={card.link}
+                    className="inline-flex items-center gap-1 font-bold text-teal-700 hover:text-teal-900 transition"
+                  >
+                    <span>Explore</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ========================================================
+          5. REAL PROJECTS. REAL RESULTS. (Portfolio Showcase)
+          ======================================================== */}
+      <section id="work" className="py-20 lg:py-28 bg-[#040D12] text-white relative isolate overflow-hidden">
+        
+        {/* Glow & Backdrop */}
+        <div className="pointer-events-none absolute -top-40 right-0 h-[500px] w-[500px] rounded-full bg-teal-500/10 blur-[130px]" />
+        
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          {/* Athenura Portfolio Hero Heading */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-teal-300 text-xs font-bold uppercase tracking-wider mb-4 border border-white/10">
+                <Globe className="w-3.5 h-3.5 text-teal-400" />
+                <span>Live Digital Ecosystem</span>
+              </div>
+              <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tight leading-none">
+                <span className="text-white block">Real Projects.</span>
+                <span className="text-gradient-teal block mt-1">Real Results.</span>
+              </h2>
+            </div>
+
+            {/* Filter Tabs */}
+            <div className="flex flex-wrap gap-2 text-xs font-bold">
+              {[
+                { id: "all", label: "All Projects" },
+                { id: "tools", label: "Tools & Utilities" },
+                { id: "apps", label: "Web Applications" },
+                { id: "portfolios", label: "Portfolios" },
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setProjectCategory(tab.id)}
+                  className={`px-4 py-2 rounded-full transition-all cursor-pointer ${
+                    projectCategory === tab.id
+                      ? "bg-[#20A9BB] text-white font-black shadow-sm"
+                      : "bg-white/5 border border-white/10 text-zinc-400 hover:text-white"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Project Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {filteredWebsites.slice(0, 6).map((item) => {
+              const liveUrl = publicWebsiteUrl(item.url) || item.url || `/websites/${item.slug}`;
+              return (
+                <div
+                  key={item.id}
+                  className="rounded-[28px] border border-white/10 bg-[#0A171B]/80 p-6 sm:p-7 flex flex-col justify-between backdrop-blur-md hover:border-teal-400/50 hover:shadow-[0_20px_50px_rgba(32,169,187,0.15)] transition-all duration-300 group"
+                >
+                  <div>
+                    {/* Header Bar */}
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-[10px] font-bold text-emerald-300">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span>Live on Edge</span>
                       </span>
-                    </label>
 
+                      <span className="text-[11px] font-mono text-zinc-400">
+                        {item.category || "Utility"}
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-teal-300 transition">
+                      {item.name}
+                    </h3>
+                    <p className="text-xs text-zinc-400 leading-relaxed mb-6 line-clamp-3">
+                      {item.shortDescription || item.description || "Production tool hosted on Samad Expo edge infrastructure."}
+                    </p>
+                  </div>
+
+                  {/* Actions */}
+                  <div className="pt-4 border-t border-white/10 flex items-center justify-between">
                     <button
-                      type="submit"
-                      className="red-button submit-brief cursor-pointer"
-                      disabled={formSubmitting}
+                      type="button"
+                      onClick={() => setPreviewSite(item)}
+                      className="text-xs font-bold text-zinc-300 hover:text-white flex items-center gap-1.5 cursor-pointer"
                     >
-                      {formSubmitting
-                        ? "Sending inquiry..."
-                        : "Let’s start the conversation"}{" "}
-                      <ArrowUpRight className="w-[19px] h-[19px]" />
+                      <Monitor className="w-3.5 h-3.5 text-teal-400" />
+                      <span>Instant Preview</span>
                     </button>
 
-                    <p className="form-bottom-note">
-                      Direct response from leadership. No bureaucracy.
-                    </p>
-                  </form>
+                    <a
+                      href={liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 px-4 py-2 rounded-full bg-white text-slate-950 hover:bg-teal-50 text-xs font-bold transition shadow-xs"
+                    >
+                      <span>Launch</span>
+                      <ExternalLink className="w-3 h-3 text-teal-700" />
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Link
+              href="/websites"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-teal-500/30 bg-teal-950/40 text-teal-300 hover:bg-teal-900/60 text-xs font-bold uppercase tracking-wider transition"
+            >
+              <span>Explore All Web Projects In Directory</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ========================================================
+          6. WHY CHOOSE US (Athenura Interactive 5-Tab Slider)
+          ======================================================== */}
+      <section className="py-20 lg:py-28 bg-white border-b border-slate-100">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-50 text-teal-800 text-xs font-bold uppercase tracking-wider border border-teal-100">
+              <ShieldCheck className="w-3.5 h-3.5 text-teal-600" />
+              <span>Platform Advantages</span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900">
+              Why <span className="text-gradient-teal">Choose Us</span>
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              We combine deep technical expertise with strategic business insight to deliver solutions that drive measurable results and sustainable competitive advantage.
+            </p>
+          </div>
+
+          {/* Interactive Advantage Card */}
+          <div className="athenura-card p-8 sm:p-12 mb-10 max-w-4xl mx-auto">
+            {activeTab === 0 && (
+              <div className="space-y-6 animate-in fade-in duration-300">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold">
+                  Key Advantage 01
+                </div>
+                <h3 className="text-2xl sm:text-4xl font-black text-slate-900">
+                  Instant Edge Architecture &amp; Zero Setup
+                </h3>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                  Traditional web hosting requires complex virtual servers, domain DNS wrangling, and manual SSL certificates. Samad Expo automates the entire lifecycle: simply upload static HTML/CSS/JS or zip packages, and our edge build pipeline deploys it globally under 3 seconds with enterprise SSL included.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-100">
+                  <div className="p-4 rounded-xl bg-slate-50">
+                    <div className="text-xs font-bold text-slate-400">Deploy Speed</div>
+                    <div className="text-xl font-black text-teal-700 mt-1">&lt; 3 Seconds</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-50">
+                    <div className="text-xs font-bold text-slate-400">SSL Certificate</div>
+                    <div className="text-xl font-black text-teal-700 mt-1">100% Automated</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-50">
+                    <div className="text-xs font-bold text-slate-400">Server Friction</div>
+                    <div className="text-xl font-black text-teal-700 mt-1">Zero Config</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 1 && (
+              <div className="space-y-6 animate-in fade-in duration-300">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold">
+                  Key Advantage 02
+                </div>
+                <h3 className="text-2xl sm:text-4xl font-black text-slate-900">
+                  Audit-Grade Cyber Protection &amp; Resilience
+                </h3>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                  Every page and API route in Samad Expo is hardened according to OWASP Top 10 guidelines. With automated rate limiting, CSRF protections, cryptographic password hashing, and strict role verification, your digital platforms operate with military-grade safety.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-100">
+                  <div className="p-4 rounded-xl bg-slate-50">
+                    <div className="text-xs font-bold text-slate-400">Security Tests</div>
+                    <div className="text-xl font-black text-teal-700 mt-1">20/20 Passed</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-50">
+                    <div className="text-xs font-bold text-slate-400">Rate Limiter</div>
+                    <div className="text-xl font-black text-teal-700 mt-1">Dynamic Token Bucket</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-50">
+                    <div className="text-xs font-bold text-slate-400">Headers</div>
+                    <div className="text-xl font-black text-teal-700 mt-1">HSTS &amp; CSP Ready</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 2 && (
+              <div className="space-y-6 animate-in fade-in duration-300">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold">
+                  Key Advantage 03
+                </div>
+                <h3 className="text-2xl sm:text-4xl font-black text-slate-900">
+                  Centralized Digital Headquarters &amp; Ecosystem
+                </h3>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                  Samad Expo isn&apos;t just one website; it is the parent home for all our specialized ventures, business divisions, customer portals, and web utilities. Users can discover, test, and launch tools through one unified digital experience.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-100">
+                  <div className="p-4 rounded-xl bg-slate-50">
+                    <div className="text-xs font-bold text-slate-400">Live Portals</div>
+                    <div className="text-xl font-black text-teal-700 mt-1">Unified Search</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-50">
+                    <div className="text-xs font-bold text-slate-400">Single Sign-On</div>
+                    <div className="text-xl font-black text-teal-700 mt-1">Integrated Console</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-50">
+                    <div className="text-xs font-bold text-slate-400">API Access</div>
+                    <div className="text-xl font-black text-teal-700 mt-1">Model Context Protocol</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 3 && (
+              <div className="space-y-6 animate-in fade-in duration-300">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold">
+                  Key Advantage 04
+                </div>
+                <h3 className="text-2xl sm:text-4xl font-black text-slate-900">
+                  Next-Gen Technology Stack (React 19 &amp; Next 15)
+                </h3>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                  We adopt state-of-the-art web standards to deliver maximum performance. By leveraging Next.js 15 App Router, React 19 concurrent features, and Tailwind CSS v4, our pages achieve perfect Core Web Vitals and lightning-fast user interactions.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-100">
+                  <div className="p-4 rounded-xl bg-slate-50">
+                    <div className="text-xs font-bold text-slate-400">Lighthouse Score</div>
+                    <div className="text-xl font-black text-teal-700 mt-1">98+ Performance</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-50">
+                    <div className="text-xs font-bold text-slate-400">Framework</div>
+                    <div className="text-xl font-black text-teal-700 mt-1">Next.js 15.5</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-50">
+                    <div className="text-xs font-bold text-slate-400">Styling</div>
+                    <div className="text-xl font-black text-teal-700 mt-1">Tailwind CSS v4</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 4 && (
+              <div className="space-y-6 animate-in fade-in duration-300">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold">
+                  Key Advantage 05
+                </div>
+                <h3 className="text-2xl sm:text-4xl font-black text-slate-900">
+                  Founder-Led Stewardship &amp; Direct Reliability
+                </h3>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                  Direct personal oversight by founder Sabir Usmani guarantees that every client project, deployment pipeline, and corporate venture receives prompt attention, dedicated engineering, and long-term support.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-100">
+                  <div className="p-4 rounded-xl bg-slate-50">
+                    <div className="text-xs font-bold text-slate-400">Accountability</div>
+                    <div className="text-xl font-black text-teal-700 mt-1">100% Direct</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-50">
+                    <div className="text-xs font-bold text-slate-400">Inquiry Response</div>
+                    <div className="text-xl font-black text-teal-700 mt-1">&lt; 2 Hours</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-50">
+                    <div className="text-xs font-bold text-slate-400">Direct Support</div>
+                    <div className="text-xl font-black text-teal-700 mt-1">Founder Direct</div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* 5 Numbered Tab Buttons */}
+          <div className="flex justify-center items-center gap-3">
+            {[0, 1, 2, 3, 4].map((tabIdx) => (
+              <button
+                key={tabIdx}
+                onClick={() => setActiveTab(tabIdx)}
+                className={`w-10 h-10 rounded-full font-bold text-xs transition-all cursor-pointer ${
+                  activeTab === tabIdx
+                    ? "bg-[#20A9BB] text-white shadow-md scale-110"
+                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                }`}
+              >
+                0{tabIdx + 1}
+              </button>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ========================================================
+          7. OUR COMPETITIVE EDGE (Athenura 4 Pillars)
+          ======================================================== */}
+      <section className="py-20 lg:py-28 bg-[#F8FAFC]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900">
+              Our <span className="text-gradient-teal">Competitive Edge</span>
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600">
+              What makes Samad Expo a trusted partner for deploying and scaling digital solutions
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: "Senior Technical Leadership",
+                desc: "Every project is architected with modern industry best practices and strict code quality.",
+                progress: "95%",
+                icon: Award,
+              },
+              {
+                title: "Zero-Config Methodology",
+                desc: "Structured automated delivery ensuring quality, lightning-fast timeline, and zero deployment friction.",
+                progress: "98%",
+                icon: Zap,
+              },
+              {
+                title: "End-to-End Ownership",
+                desc: "Full accountability from conception to edge deployment and continuous maintenance.",
+                progress: "100%",
+                icon: ShieldCheck,
+              },
+              {
+                title: "Cutting-Edge Innovation",
+                desc: "Adopting emerging technologies including MCP AI protocols and Next.js 15 server actions.",
+                progress: "92%",
+                icon: Cpu,
+              },
+            ].map((col, idx) => (
+              <div
+                key={idx}
+                className="athenura-card p-6 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-teal-50 text-teal-700 flex items-center justify-center mb-5 border border-teal-100">
+                    <col.icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">{col.title}</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">{col.desc}</p>
+                </div>
+
+                {/* Progress bar at footer (Signature Athenura treatment) */}
+                <div className="mt-8 pt-4 border-t border-slate-100">
+                  <div className="flex items-center justify-between text-[11px] font-bold text-slate-400 mb-1.5">
+                    <span>Performance Benchmark</span>
+                    <span className="text-teal-700">{col.progress}</span>
+                  </div>
+                  <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                    <div
+                      className="bg-gradient-to-r from-teal-500 to-cyan-500 h-full rounded-full"
+                      style={{ width: col.progress }}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ========================================================
+          8. BY THE NUMBERS (Animated Metric Showcase)
+          ======================================================== */}
+      <section ref={statsRef} className="py-20 lg:py-28 bg-white border-y border-slate-100">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          
+          <div className="athenura-card p-8 sm:p-14 text-center max-w-5xl mx-auto space-y-12 bg-gradient-to-b from-white to-slate-50/50">
+            
+            <div className="space-y-3">
+              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900">
+                By The <span className="text-gradient-teal">Numbers</span>
+              </h2>
+              <p className="text-sm sm:text-base text-slate-500">
+                Quantifying our platform speed, reliability, and commitment to excellence
+              </p>
+            </div>
+
+            {/* 4 Stats */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="space-y-2">
+                <div className="text-4xl sm:text-6xl font-black text-[#20A9BB] tracking-tight">
+                  {uptime}%
+                </div>
+                <div className="text-xs sm:text-sm font-bold text-slate-700">
+                  Uptime Guarantee
+                </div>
+                <div className="text-[11px] text-slate-400">
+                  Global edge infrastructure
                 </div>
               </div>
 
-              <span className="vertical-label">03 — Start something</span>
-            </section>
-          </main>
+              <div className="space-y-2">
+                <div className="text-4xl sm:text-6xl font-black text-[#20A9BB] tracking-tight">
+                  {liveTools}+
+                </div>
+                <div className="text-xs sm:text-sm font-bold text-slate-700">
+                  Live Web Tools
+                </div>
+                <div className="text-[11px] text-slate-400">
+                  Active ecosystem assets
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <div className="text-4xl sm:text-6xl font-black text-[#20A9BB] tracking-tight">
+                  &lt; {edgeDeployTime}s
+                </div>
+                <div className="text-xs sm:text-sm font-bold text-slate-700">
+                  Edge Build Time
+                </div>
+                <div className="text-[11px] text-slate-400">
+                  Instant automated deploy
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <div className="text-4xl sm:text-6xl font-black text-[#20A9BB] tracking-tight">
+                  {monitoringHours}/7
+                </div>
+                <div className="text-xs sm:text-sm font-bold text-slate-700">
+                  Continuous Monitoring
+                </div>
+                <div className="text-[11px] text-slate-400">
+                  Enterprise security shield
+                </div>
+              </div>
+            </div>
+
+          </div>
+
         </div>
+      </section>
+
+      {/* ========================================================
+          9. THE SAMAD EXPO APPROACH (4-Step Connected Pipeline)
+          ======================================================== */}
+      <section className="py-20 lg:py-28 bg-[#F8FAFC]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900">
+              The Samad Expo <span className="text-gradient-teal">Approach</span>
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600">
+              Our systematic methodology ensures consistent, high-velocity and secure results
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+            {[
+              {
+                step: "01",
+                title: "Discovery & Strategy",
+                desc: "Deep analysis to understand digital goals, tool requirements, and architecture constraints.",
+              },
+              {
+                step: "02",
+                title: "Architecture & Planning",
+                desc: "Designing robust technical solutions with edge distribution and scalability in mind.",
+              },
+              {
+                step: "03",
+                title: "Development & Testing",
+                desc: "Agile engineering with 20/20 automated cyber audit verification and performance checks.",
+              },
+              {
+                step: "04",
+                title: "Deployment & Support",
+                desc: "Seamless live deployment followed by continuous monitoring and feature iteration.",
+              },
+            ].map((pipe, idx) => (
+              <div
+                key={idx}
+                className="athenura-card p-7 text-center space-y-4 relative"
+              >
+                {/* Step Circle */}
+                <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#1E7A86] to-[#28A3B9] text-white font-black text-lg flex items-center justify-center mx-auto shadow-md">
+                  {pipe.step}
+                </div>
+
+                <h3 className="text-lg font-bold text-slate-900">{pipe.title}</h3>
+                <p className="text-xs text-slate-500 leading-relaxed">{pipe.desc}</p>
+
+                {/* Target Ring */}
+                <div className="pt-2 flex justify-center">
+                  <div className="w-5 h-5 rounded-full border-2 border-teal-500/40 flex items-center justify-center">
+                    <div className="w-2 h-2 rounded-full bg-teal-500" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ========================================================
+          10. CLIENT & VENTURE TESTIMONIALS
+          ======================================================== */}
+      <section className="py-20 lg:py-28 bg-white border-y border-slate-100">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900">
+              Client &amp; Partner <span className="text-gradient-teal">Success Stories</span>
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600">
+              Hear from developers, partners, and businesses growing with Samad Expo
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                quote: "Samad Expo's instant hosting pipeline reduced our website deployment time from hours to literally 3 seconds. The automated SSL and edge speed are simply unmatched.",
+                author: "Sameer Patel",
+                role: "Lead Full-Stack Engineer",
+                org: "NextGen Software Labs",
+              },
+              {
+                quote: "Their team built an architecture that functions as an extension of our vision. The Model Context Protocol integration opens endless AI capabilities.",
+                author: "Alok Verma",
+                role: "Product Director",
+                org: "CloudScale Systems",
+              },
+              {
+                quote: "The reliability and cyber hardening give us total confidence. Every security requirement is baked directly into the hosting environment.",
+                author: "Neha Sharma",
+                role: "DevOps & Security Specialist",
+                org: "VentureCraft India",
+              },
+            ].map((story, idx) => (
+              <div
+                key={idx}
+                className="athenura-card p-8 flex flex-col justify-between space-y-6"
+              >
+                <div className="space-y-4">
+                  <div className="text-teal-600 text-3xl font-serif leading-none">&ldquo;</div>
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic">
+                    {story.quote}
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-slate-100 flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-slate-900 to-teal-800 text-white font-bold flex items-center justify-center text-sm shadow-xs">
+                    {story.author[0]}
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-slate-900">{story.author}</div>
+                    <div className="text-[11px] text-slate-500">{story.role} &middot; {story.org}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ========================================================
+          11. HIGH-IMPACT CORPORATE CTA SECTION
+          ======================================================== */}
+      <section className="py-20 lg:py-28 bg-[#040D12] text-white relative isolate overflow-hidden">
+        
+        {/* Glow */}
+        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[800px] rounded-full bg-teal-500/15 blur-[160px]" />
+        
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
+          
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-teal-300 text-xs font-bold uppercase tracking-wider border border-white/10">
+            <Zap className="w-4 h-4 text-teal-400" />
+            <span>Launch Your Platform Today</span>
+          </div>
+
+          <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tight leading-tight">
+            Turn Ideas Into Live <span className="text-gradient-teal">Digital Platforms.</span>
+          </h2>
+
+          <p className="text-sm sm:text-base text-zinc-300 max-w-2xl mx-auto leading-relaxed">
+            Join developers, creators, and business founders deploying their web projects on Samad Expo&apos;s global edge network. Fast, reliable, and production-ready.
+          </p>
+
+          <div className="pt-4 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            <Link
+              href="/dashboard"
+              className="inline-flex items-center gap-2 px-9 py-4 rounded-full bg-white text-slate-950 hover:bg-teal-50 text-xs sm:text-sm font-black uppercase tracking-wider transition-all duration-300 shadow-xl hover:scale-105 active:scale-95"
+            >
+              <span>Deploy Website Now</span>
+              <ArrowRight className="w-4 h-4 text-teal-700" />
+            </Link>
+
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 px-9 py-4 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-white text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300"
+            >
+              <span>Contact Headquarters</span>
+              <Mail className="w-4 h-4 text-teal-400" />
+            </Link>
+          </div>
+
+          <div className="pt-6 text-xs text-zinc-500">
+            Official Inquiry: <a href="mailto:officialaadhakh@gmail.com" className="text-teal-400 hover:underline">officialaadhakh@gmail.com</a> &middot; Phone: <a href="tel:+919170230159" className="text-teal-400 hover:underline">+91 91702 30159</a>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ========================================================
+          12. FLOATING ASSISTANT QUICK-ACTION BADGE
+          ======================================================== */}
+      <div className="fixed bottom-6 right-6 z-40">
+        <Link
+          href="/contact"
+          aria-label="Connect with Samad Expo Support"
+          className="animate-athenura-pulse flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#09181C] text-white border border-teal-500/40 shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 group"
+        >
+          <div className="w-7 h-7 rounded-full bg-[#20A9BB] flex items-center justify-center text-white shrink-0">
+            <MessageSquare className="w-3.5 h-3.5" />
+          </div>
+          <div className="text-left hidden sm:block pr-1">
+            <div className="text-[10px] uppercase font-bold text-teal-400 leading-none">Instant Help</div>
+            <div className="text-xs font-bold text-white">Contact HQ</div>
+          </div>
+        </Link>
       </div>
 
-      {/* Floating Back-to-Top Button */}
-      <button
-        type="button"
-        aria-label="Scroll back to top"
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className={`back-to-top-btn ${showBackToTop ? "is-shown" : ""}`}
-      >
-        <ArrowUp className="w-5 h-5" />
-      </button>
-    </>
+      {/* ========================================================
+          13. INSTANT PREVIEW MODAL
+          ======================================================== */}
+      {previewSite && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200"
+        >
+          <div className="relative w-full max-w-5xl h-[80vh] rounded-3xl bg-slate-900 border border-white/10 overflow-hidden flex flex-col shadow-2xl">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#071317]">
+              <div className="flex items-center gap-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
+                <span className="font-bold text-white text-sm">{previewSite.name}</span>
+                <span className="text-xs text-zinc-400 font-mono hidden sm:inline">({publicWebsiteUrl(previewSite.url) || previewSite.url})</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <a
+                  href={publicWebsiteUrl(previewSite.url) || previewSite.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition"
+                >
+                  <span>Open Full Site</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-teal-400" />
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setPreviewSite(null)}
+                  className="p-1.5 rounded-full hover:bg-white/10 text-zinc-400 hover:text-white transition cursor-pointer"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+
+            {/* Iframe View */}
+            <iframe
+              src={publicWebsiteUrl(previewSite.url) || previewSite.url}
+              title={previewSite.name}
+              className="flex-1 w-full h-full bg-white border-none"
+            />
+          </div>
+        </div>
+      )}
+
+    </div>
   );
 }

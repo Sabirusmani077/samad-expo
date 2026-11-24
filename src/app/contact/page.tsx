@@ -9,6 +9,11 @@ import {
   MapPin,
   Phone,
   Send,
+  Sparkles,
+  ShieldCheck,
+  ArrowRight,
+  MessageSquare,
+  Award,
 } from "lucide-react";
 
 export default function ContactPage() {
@@ -64,106 +69,144 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen py-12">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+    <div className="bg-[#F8FAFC] min-h-screen py-14 sm:py-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        {/* Breadcrumb Navigation */}
         <nav
           aria-label="Breadcrumb"
           className="text-xs text-slate-500 flex items-center gap-2"
         >
-          <Link href="/" className="hover:text-slate-900 font-medium">
+          <Link href="/" className="hover:text-teal-700 font-semibold transition">
             Home
           </Link>
           <span>/</span>
-          <span className="text-slate-900 font-bold">Contact Us</span>
+          <span className="text-slate-900 font-bold">Contact Headquarters</span>
         </nav>
 
-        <div className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-10 shadow-sm space-y-3">
-          <span className="inline-block px-3 py-1 rounded-full bg-[#FFF33D]/25 text-black border border-black/10 font-bold text-[11px] uppercase tracking-wider border border-zinc-200">
-            Corporate &amp; Partnership Inquiries
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
-            Connect with Samad Expo
+        {/* Athenura Editorial Header */}
+        <div className="space-y-4 max-w-3xl">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-cyan-50 text-teal-800 text-xs font-bold uppercase tracking-wider border border-cyan-100">
+            <Sparkles className="w-3.5 h-3.5 text-teal-600" />
+            <span>Corporate Communications</span>
+          </div>
+          <h1 className="text-4xl sm:text-6xl font-black text-slate-950 tracking-tight leading-tight">
+            Connect with <span className="text-gradient-teal">Samad Expo</span>
           </h1>
-          <p className="text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed">
-            Reach out for business partnerships, digital platform collaborations, corporate services, or general inquiries.
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Reach out for enterprise partnerships, digital platform collaborations, instant hosting support, or corporate advisory.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-5 space-y-4">
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 space-y-5 shadow-sm">
-              <h2 className="text-lg font-black text-slate-950">Direct Contact Details</h2>
-              <div className="space-y-4 text-sm text-slate-700">
+        {/* 2-Column Athenura Contact Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+          
+          {/* Left Column: Direct Details & Trust Badges (Span 5) */}
+          <div className="lg:col-span-5 space-y-6">
+            
+            <div className="athenura-card p-7 space-y-6">
+              <h2 className="text-lg font-black text-slate-950 tracking-tight">
+                Direct Contact Points
+              </h2>
+
+              <div className="space-y-5 text-sm">
+                {/* Email */}
                 <a
                   href="mailto:officialaadhakh@gmail.com"
-                  className="flex items-start gap-3 hover:text-black hover:underline transition-colors"
+                  className="flex items-start gap-3.5 group p-2 rounded-2xl hover:bg-slate-50 transition"
                 >
-                  <Mail className="w-5 h-5 text-black mt-0.5 shrink-0" />
+                  <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center shrink-0 group-hover:bg-[#20A9BB] group-hover:text-white transition duration-300">
+                    <Mail className="w-5 h-5" />
+                  </div>
                   <div>
-                    <p className="font-bold text-slate-900">Email</p>
-                    <p className="text-slate-600">officialaadhakh@gmail.com</p>
+                    <p className="text-xs uppercase font-bold text-slate-400">Official Email</p>
+                    <p className="font-bold text-slate-900 group-hover:text-teal-700 transition break-all">
+                      officialaadhakh@gmail.com
+                    </p>
                   </div>
                 </a>
 
+                {/* Phone */}
                 <a
-                  href="tel:+919458204216"
-                  className="flex items-start gap-3 hover:text-black hover:underline transition-colors"
+                  href="tel:+919170230159"
+                  className="flex items-start gap-3.5 group p-2 rounded-2xl hover:bg-slate-50 transition"
                 >
-                  <Phone className="w-5 h-5 text-black mt-0.5 shrink-0" />
+                  <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition duration-300">
+                    <Phone className="w-5 h-5" />
+                  </div>
                   <div>
-                    <p className="font-bold text-slate-900">Phone</p>
-                    <p className="text-slate-600">+91 94582 04216</p>
+                    <p className="text-xs uppercase font-bold text-slate-400">Headquarters Phone</p>
+                    <p className="font-bold text-slate-900 group-hover:text-teal-700 transition">
+                      +91 91702 30159
+                    </p>
                   </div>
                 </a>
 
+                {/* Location */}
                 <a
                   href="https://maps.app.goo.gl/UnzqY6kZ3i2BRieKA"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-3 hover:text-black hover:underline transition-colors group"
+                  className="flex items-start gap-3.5 group p-2 rounded-2xl hover:bg-slate-50 transition"
                 >
-                  <MapPin className="w-5 h-5 text-black mt-0.5 shrink-0 group-hover:scale-110 transition-transform" />
+                  <div className="w-10 h-10 rounded-xl bg-cyan-50 text-cyan-700 flex items-center justify-center shrink-0 group-hover:bg-cyan-600 group-hover:text-white transition duration-300">
+                    <MapPin className="w-5 h-5" />
+                  </div>
                   <div>
-                    <p className="font-bold text-slate-900 group-hover:text-black hover:underline transition-colors">Headquarters &amp; Business Address</p>
-                    <p className="text-slate-600">Bodla, Agra, Uttar Pradesh 282010, India</p>
-                    <span className="text-xs text-black font-semibold inline-flex items-center gap-1 mt-0.5">
-                      View on Google Maps ↗
-                    </span>
+                    <p className="text-xs uppercase font-bold text-slate-400">Central Node</p>
+                    <p className="font-bold text-slate-900 group-hover:text-teal-700 transition">
+                      Samad Expo Digital Hub, India
+                    </p>
                   </div>
                 </a>
+              </div>
 
-                <div className="flex items-start gap-3">
-                  <Clock className="w-5 h-5 text-black mt-0.5 shrink-0" />
-                  <div>
-                    <p className="font-bold text-slate-900">Response Hours</p>
-                    <p className="text-slate-600">Monday – Saturday, 10:00 AM – 6:30 PM IST</p>
-                  </div>
-                </div>
+              {/* Operating Hours */}
+              <div className="pt-4 border-t border-slate-100 flex items-center gap-3 text-xs text-slate-500 font-medium">
+                <Clock className="w-4 h-4 text-teal-600 shrink-0" />
+                <span>Typical Response Time: Under 2 Hours (Mon &ndash; Sat)</span>
               </div>
             </div>
+
+            {/* Trust Assurance Card */}
+            <div className="athenura-card p-6 space-y-3 bg-gradient-to-br from-teal-950 to-slate-950 text-white border-none shadow-xl">
+              <div className="flex items-center gap-2 text-teal-300 text-xs font-bold uppercase tracking-wider">
+                <ShieldCheck className="w-4 h-4 text-teal-400" />
+                <span>Enterprise Privacy Commitment</span>
+              </div>
+              <p className="text-xs text-zinc-300 leading-relaxed">
+                All communications and partnership proposals sent to Samad Expo are strictly encrypted and reviewed directly by executive leadership.
+              </p>
+              <div className="pt-2 flex items-center gap-2 text-[10px] text-teal-400 font-semibold">
+                <Award className="w-3.5 h-3.5 text-[#FFF33D]" />
+                <span>Startup India Registered Entity</span>
+              </div>
+            </div>
+
           </div>
 
+          {/* Right Column: High-Converting Form (Span 7) */}
           <div className="lg:col-span-7">
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm space-y-6">
-              <div>
-                <h2 className="text-xl font-black text-slate-950">Send a Message</h2>
-                <p className="text-xs text-slate-600 mt-1">
-                  Your message is delivered directly to the Samad Expo corporate desk.
+            <div className="athenura-card p-7 sm:p-10">
+              
+              <div className="mb-6 space-y-1">
+                <h2 className="text-2xl font-black text-slate-950 tracking-tight">
+                  Send a Direct Message
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-500">
+                  Fill in your details below and our team will get back to you promptly.
                 </p>
               </div>
 
               {submitted && (
-                <div className="rounded-2xl bg-emerald-50 border border-emerald-200 p-4 flex items-start gap-3 text-emerald-900">
-                  <CheckCircle2 className="w-5 h-5 text-black shrink-0 mt-0.5" />
-                  <div className="text-xs space-y-1">
-                    <p className="font-bold">Inquiry Submitted Successfully</p>
-                    <p>Thank you for reaching out to Samad Expo. Our team will review your message and respond shortly.</p>
-                  </div>
+                <div className="mb-6 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-semibold flex items-center gap-3 animate-in fade-in">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                  <span>Thank you! Your message has been received. Our team will contact you shortly.</span>
                 </div>
               )}
 
               {error && (
-                <div className="rounded-2xl bg-red-50 border border-red-200 p-4 text-xs font-bold text-red-900">
+                <div className="mb-6 p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs sm:text-sm font-semibold animate-in fade-in">
                   {error}
                 </div>
               )}
@@ -171,7 +214,7 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="contact-name" className="block text-xs font-bold text-slate-800 mb-1">
+                    <label htmlFor="contact-name" className="block text-xs font-bold text-slate-700 mb-1.5">
                       Full Name *
                     </label>
                     <input
@@ -181,11 +224,11 @@ export default function ContactPage() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Your full name"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm text-slate-900 bg-white focus:border-black focus:ring-2 focus:ring-[#FFF33D] focus:outline-none"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 bg-slate-50/50 focus:bg-white focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 outline-none transition"
                     />
                   </div>
                   <div>
-                    <label htmlFor="contact-email" className="block text-xs font-bold text-slate-800 mb-1">
+                    <label htmlFor="contact-email" className="block text-xs font-bold text-slate-700 mb-1.5">
                       Email Address *
                     </label>
                     <input
@@ -194,27 +237,27 @@ export default function ContactPage() {
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="you@company.com"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm text-slate-900 bg-white focus:border-black focus:ring-2 focus:ring-[#FFF33D] focus:outline-none"
+                      placeholder="name@company.com"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 bg-slate-50/50 focus:bg-white focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 outline-none transition"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="contact-phone" className="block text-xs font-bold text-slate-800 mb-1">
-                      Phone Number
+                    <label htmlFor="contact-phone" className="block text-xs font-bold text-slate-700 mb-1.5">
+                      Phone Number (Optional)
                     </label>
                     <input
                       id="contact-phone"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="+91 ..."
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm text-slate-900 bg-white focus:border-black focus:ring-2 focus:ring-[#FFF33D] focus:outline-none"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 bg-slate-50/50 focus:bg-white focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 outline-none transition"
                     />
                   </div>
                   <div>
-                    <label htmlFor="contact-company" className="block text-xs font-bold text-slate-800 mb-1">
+                    <label htmlFor="contact-company" className="block text-xs font-bold text-slate-700 mb-1.5">
                       Company / Organization
                     </label>
                     <input
@@ -222,28 +265,28 @@ export default function ContactPage() {
                       value={company}
                       onChange={(e) => setCompany(e.target.value)}
                       placeholder="Organization name"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm text-slate-900 bg-white focus:border-black focus:ring-2 focus:ring-[#FFF33D] focus:outline-none"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 bg-slate-50/50 focus:bg-white focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 outline-none transition"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="contact-subject" className="block text-xs font-bold text-slate-800 mb-1">
-                    Subject *
+                  <label htmlFor="contact-subject" className="block text-xs font-bold text-slate-700 mb-1.5">
+                    Subject / Area of Interest *
                   </label>
                   <input
                     id="contact-subject"
                     required
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
-                    placeholder="Partnership, Platform Inquiry, or Services"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm text-slate-900 bg-white focus:border-black focus:ring-2 focus:ring-[#FFF33D] focus:outline-none"
+                    placeholder="Website Hosting, Custom Development, or Venture Partnership"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 bg-slate-50/50 focus:bg-white focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 outline-none transition"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="contact-message" className="block text-xs font-bold text-slate-800 mb-1">
-                    Message *
+                  <label htmlFor="contact-message" className="block text-xs font-bold text-slate-700 mb-1.5">
+                    Project Details or Inquiry *
                   </label>
                   <textarea
                     id="contact-message"
@@ -252,23 +295,25 @@ export default function ContactPage() {
                     rows={5}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Tell us about your project, partnership idea, or inquiry..."
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm text-slate-900 bg-white focus:border-black focus:ring-2 focus:ring-[#FFF33D] focus:outline-none"
+                    placeholder="Tell us about your requirements, project scope, or timeline..."
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 bg-slate-50/50 focus:bg-white focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 outline-none transition resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#FFF33D] hover:bg-black hover:text-[#FFF33D] text-black font-extrabold text-sm border border-black/15 transition-colors disabled:opacity-60"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-slate-950 hover:bg-teal-700 text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg disabled:opacity-60 cursor-pointer"
                 >
                   <Send className="w-4 h-4" />
-                  <span>{submitting ? "Submitting..." : "Send Message"}</span>
+                  <span>{submitting ? "Sending Inquiry..." : "Submit Message"}</span>
                 </button>
               </form>
             </div>
           </div>
+
         </div>
+
       </div>
     </div>
   );

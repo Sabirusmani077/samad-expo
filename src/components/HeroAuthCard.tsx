@@ -6,9 +6,10 @@ import { PublicUser } from "@/lib/types";
 
 interface HeroAuthCardProps {
   onSuccess?: (user: PublicUser) => void;
+  dark?: boolean;
 }
 
-export function HeroAuthCard({ onSuccess }: HeroAuthCardProps) {
+export function HeroAuthCard({ onSuccess, dark = true }: HeroAuthCardProps) {
   const [mode, setMode] = useState<"login" | "register" | "forgot">("login");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -96,88 +97,73 @@ export function HeroAuthCard({ onSuccess }: HeroAuthCardProps) {
   };
 
   return (
-    <div className="hero-auth-card w-full max-w-[425px] ml-auto rounded-3xl border-2 border-black/20 bg-white/95 p-6 sm:p-7 shadow-[0_20px_50px_rgba(0,0,0,0.12)] backdrop-blur-md relative z-10 text-slate-900 transition-all hover:border-black/35 hover:shadow-[0_24px_60px_rgba(0,0,0,0.18)]">
+    <div
+      className={`hero-auth-card w-full max-w-[430px] rounded-[28px] p-6 sm:p-7 relative z-10 transition-all duration-300 ${
+        dark
+          ? "bg-[#091519]/90 backdrop-blur-xl border border-teal-500/20 shadow-[0_24px_70px_rgba(0,0,0,0.6)] text-white hover:border-teal-500/40"
+          : "bg-white/95 backdrop-blur-md border border-slate-200 shadow-[0_20px_50px_rgba(0,0,0,0.12)] text-slate-900"
+      }`}
+    >
       {/* Top Header Badge & Title */}
       <div className="flex items-center justify-between mb-4">
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black text-[#FFF33D] text-[10px] font-extrabold uppercase tracking-wider shadow-xs">
-          <ShieldCheck className="w-3.5 h-3.5" />
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-950/80 border border-teal-500/30 text-teal-300 text-[10px] font-extrabold uppercase tracking-wider shadow-xs">
+          <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
           <span>Console Authentication</span>
         </div>
-        <span className="flex items-center gap-1 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+        <span className="flex items-center gap-1.5 text-[11px] font-bold text-emerald-400 bg-emerald-950/40 px-2.5 py-0.5 rounded-full border border-emerald-500/30">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           <span>Live Auth</span>
         </span>
       </div>
 
       <div className="mb-5">
-        <h3 className="text-xl sm:text-2xl font-black text-slate-950 tracking-tight">
+        <h3 className={`text-xl sm:text-2xl font-black tracking-tight ${dark ? "text-white" : "text-slate-950"}`}>
           {mode === "login" && "Sign In to Workspace"}
           {mode === "register" && "Create Developer Account"}
           {mode === "forgot" && "Reset Password"}
         </h3>
-        <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-          {mode === "login" && "Enter your credentials to access your hosting dashboard and live projects."}
-          {mode === "register" && "Join Samad Expo to host and deploy web applications instantly."}
+        <p className={`text-xs mt-1 leading-relaxed ${dark ? "text-zinc-400" : "text-slate-600"}`}>
+          {mode === "login" && "Enter your credentials to access hosting dashboard and live projects."}
+          {mode === "register" && "Join Samad Expo to deploy and host web applications instantly."}
           {mode === "forgot" && "Enter your registered email to receive account recovery instructions."}
         </p>
       </div>
 
       {/* Mode Switcher Tabs */}
-      {mode !== "forgot" ? (
-        <div className="grid grid-cols-2 p-1 bg-slate-100 rounded-xl mb-5 text-xs font-bold text-slate-600">
-          <button
-            type="button"
-            onClick={() => {
-              setMode("login");
-              setError("");
-            }}
-            className={`py-2 rounded-lg transition-all cursor-pointer ${
-              mode === "login"
-                ? "bg-black text-[#FFF33D] shadow-sm font-extrabold"
-                : "hover:text-black"
-            }`}
-          >
-            Sign In
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setMode("register");
-              setError("");
-            }}
-            className={`py-2 rounded-lg transition-all cursor-pointer ${
-              mode === "register"
-                ? "bg-black text-[#FFF33D] shadow-sm font-extrabold"
-                : "hover:text-black"
-            }`}
-          >
-            Sign Up
-          </button>
-        </div>
-      ) : (
+      <div className={`grid grid-cols-2 gap-1 p-1 rounded-xl mb-5 text-xs font-bold ${dark ? "bg-white/5 border border-white/5" : "bg-slate-100 border border-slate-200"}`}>
         <button
           type="button"
-          onClick={() => {
-            setMode("login");
-            setError("");
-            setSuccessMsg("");
-          }}
-          className="text-xs font-bold text-slate-700 hover:text-black underline mb-4 inline-block cursor-pointer"
+          onClick={() => { setMode("login"); setError(""); setSuccessMsg(""); }}
+          className={`py-2 rounded-lg transition-all cursor-pointer ${
+            mode === "login"
+              ? "bg-[#20A9BB] text-white shadow-xs font-black"
+              : dark ? "text-zinc-400 hover:text-white" : "text-slate-600 hover:text-slate-950"
+          }`}
         >
-          ← Back to Sign In
+          Sign In
         </button>
-      )}
+        <button
+          type="button"
+          onClick={() => { setMode("register"); setError(""); setSuccessMsg(""); }}
+          className={`py-2 rounded-lg transition-all cursor-pointer ${
+            mode === "register"
+              ? "bg-[#20A9BB] text-white shadow-xs font-black"
+              : dark ? "text-zinc-400 hover:text-white" : "text-slate-600 hover:text-slate-950"
+          }`}
+        >
+          Register
+        </button>
+      </div>
 
-      {/* Error / Success Notifications */}
       {error && (
-        <div className="p-3 mb-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-semibold leading-snug animate-shake">
+        <div className="mb-4 p-3 rounded-xl bg-rose-950/60 border border-rose-500/40 text-rose-300 text-xs font-medium animate-in fade-in">
           {error}
         </div>
       )}
+
       {successMsg && (
-        <div className="p-3 mb-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold leading-snug flex items-center gap-2">
-          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-          <span>{successMsg}</span>
+        <div className="mb-4 p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 text-xs font-medium animate-in fade-in">
+          {successMsg}
         </div>
       )}
 
@@ -185,47 +171,52 @@ export function HeroAuthCard({ onSuccess }: HeroAuthCardProps) {
       {mode === "login" && (
         <form onSubmit={handleLogin} className="space-y-3.5">
           <div>
-            <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">
+            <label className={`block text-[11px] font-bold uppercase tracking-wider mb-1 ${dark ? "text-zinc-300" : "text-slate-700"}`}>
               Email Address
             </label>
             <div className="relative">
-              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@example.com"
-                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-xs font-medium text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-black transition"
+                className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl text-xs font-medium outline-none transition ${
+                  dark
+                    ? "bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:border-teal-400 focus:ring-1 focus:ring-teal-400"
+                    : "bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:border-black focus:ring-1 focus:ring-black"
+                }`}
               />
             </div>
           </div>
 
           <div>
             <div className="flex items-center justify-between mb-1">
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700">
+              <label className={`text-[11px] font-bold uppercase tracking-wider ${dark ? "text-zinc-300" : "text-slate-700"}`}>
                 Password
               </label>
               <button
                 type="button"
-                onClick={() => {
-                  setMode("forgot");
-                  setError("");
-                }}
-                className="text-[11px] font-bold text-slate-600 hover:text-black underline cursor-pointer"
+                onClick={() => { setMode("forgot"); setError(""); }}
+                className="text-[11px] text-teal-400 hover:underline cursor-pointer"
               >
                 Forgot?
               </button>
             </div>
             <div className="relative">
-              <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
               <input
                 type="password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-xs font-medium text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-black transition"
+                className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl text-xs font-medium outline-none transition ${
+                  dark
+                    ? "bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:border-teal-400 focus:ring-1 focus:ring-teal-400"
+                    : "bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:border-black focus:ring-1 focus:ring-black"
+                }`}
               />
             </div>
           </div>
@@ -233,7 +224,7 @@ export function HeroAuthCard({ onSuccess }: HeroAuthCardProps) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-black hover:bg-zinc-800 text-[#FFF33D] text-xs font-black uppercase tracking-wider shadow-md hover:shadow-lg transition-all active:scale-[0.98] cursor-pointer disabled:opacity-70 mt-2"
+            className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#20A9BB] hover:bg-[#1A8D9D] text-white text-xs font-black uppercase tracking-wider shadow-md hover:shadow-lg transition-all active:scale-[0.98] cursor-pointer disabled:opacity-70 mt-4"
           >
             {loading ? (
               <>
@@ -242,7 +233,7 @@ export function HeroAuthCard({ onSuccess }: HeroAuthCardProps) {
               </>
             ) : (
               <>
-                <span>Sign In to Dashboard</span>
+                <span>Sign In to Console</span>
                 <ArrowRight className="w-4 h-4" />
               </>
             )}
@@ -254,61 +245,73 @@ export function HeroAuthCard({ onSuccess }: HeroAuthCardProps) {
       {mode === "register" && (
         <form onSubmit={handleRegister} className="space-y-3">
           <div>
-            <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">
+            <label className={`block text-[11px] font-bold uppercase tracking-wider mb-1 ${dark ? "text-zinc-300" : "text-slate-700"}`}>
               Full Name
             </label>
             <div className="relative">
-              <UserIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <UserIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
               <input
                 type="text"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Sabir Usmani"
-                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-xs font-medium text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-black transition"
+                placeholder="Developer Name"
+                className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl text-xs font-medium outline-none transition ${
+                  dark
+                    ? "bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:border-teal-400 focus:ring-1 focus:ring-teal-400"
+                    : "bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:border-black focus:ring-1 focus:ring-black"
+                }`}
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">
+            <label className={`block text-[11px] font-bold uppercase tracking-wider mb-1 ${dark ? "text-zinc-300" : "text-slate-700"}`}>
               Email Address
             </label>
             <div className="relative">
-              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="developer@domain.com"
-                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-xs font-medium text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-black transition"
+                placeholder="name@example.com"
+                className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl text-xs font-medium outline-none transition ${
+                  dark
+                    ? "bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:border-teal-400 focus:ring-1 focus:ring-teal-400"
+                    : "bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:border-black focus:ring-1 focus:ring-black"
+                }`}
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">
+            <label className={`block text-[11px] font-bold uppercase tracking-wider mb-1 ${dark ? "text-zinc-300" : "text-slate-700"}`}>
               Mobile Number (Optional)
             </label>
             <div className="relative">
-              <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
               <input
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="+91 98765 43210"
-                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-xs font-medium text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-black transition"
+                className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl text-xs font-medium outline-none transition ${
+                  dark
+                    ? "bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:border-teal-400 focus:ring-1 focus:ring-teal-400"
+                    : "bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:border-black focus:ring-1 focus:ring-black"
+                }`}
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">
+            <label className={`block text-[11px] font-bold uppercase tracking-wider mb-1 ${dark ? "text-zinc-300" : "text-slate-700"}`}>
               Password (Min 8 Characters)
             </label>
             <div className="relative">
-              <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
               <input
                 type="password"
                 required
@@ -316,7 +319,11 @@ export function HeroAuthCard({ onSuccess }: HeroAuthCardProps) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-xs font-medium text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-black transition"
+                className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl text-xs font-medium outline-none transition ${
+                  dark
+                    ? "bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:border-teal-400 focus:ring-1 focus:ring-teal-400"
+                    : "bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:border-black focus:ring-1 focus:ring-black"
+                }`}
               />
             </div>
           </div>
@@ -324,7 +331,7 @@ export function HeroAuthCard({ onSuccess }: HeroAuthCardProps) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-black hover:bg-zinc-800 text-[#FFF33D] text-xs font-black uppercase tracking-wider shadow-md hover:shadow-lg transition-all active:scale-[0.98] cursor-pointer disabled:opacity-70 mt-3"
+            className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#20A9BB] hover:bg-[#1A8D9D] text-white text-xs font-black uppercase tracking-wider shadow-md hover:shadow-lg transition-all active:scale-[0.98] cursor-pointer disabled:opacity-70 mt-3"
           >
             {loading ? (
               <>
@@ -333,7 +340,7 @@ export function HeroAuthCard({ onSuccess }: HeroAuthCardProps) {
               </>
             ) : (
               <>
-                <span>Create Account & Enter</span>
+                <span>Create Account &amp; Enter</span>
                 <ArrowRight className="w-4 h-4" />
               </>
             )}
@@ -345,18 +352,22 @@ export function HeroAuthCard({ onSuccess }: HeroAuthCardProps) {
       {mode === "forgot" && (
         <form onSubmit={handleForgot} className="space-y-3.5">
           <div>
-            <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">
+            <label className={`block text-[11px] font-bold uppercase tracking-wider mb-1 ${dark ? "text-zinc-300" : "text-slate-700"}`}>
               Enter Registered Email
             </label>
             <div className="relative">
-              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@example.com"
-                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-xs font-medium text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-black transition"
+                className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl text-xs font-medium outline-none transition ${
+                  dark
+                    ? "bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:border-teal-400 focus:ring-1 focus:ring-teal-400"
+                    : "bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:border-black focus:ring-1 focus:ring-black"
+                }`}
               />
             </div>
           </div>
@@ -364,7 +375,7 @@ export function HeroAuthCard({ onSuccess }: HeroAuthCardProps) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-black hover:bg-zinc-800 text-[#FFF33D] text-xs font-black uppercase tracking-wider shadow-md transition-all cursor-pointer disabled:opacity-70"
+            className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#20A9BB] hover:bg-[#1A8D9D] text-white text-xs font-black uppercase tracking-wider shadow-md transition-all cursor-pointer disabled:opacity-70"
           >
             {loading ? (
               <>
@@ -382,12 +393,12 @@ export function HeroAuthCard({ onSuccess }: HeroAuthCardProps) {
       )}
 
       {/* Footer Assurance */}
-      <div className="mt-5 pt-4 border-t border-slate-200/80 flex items-center justify-between text-[10px] text-slate-500">
+      <div className={`mt-5 pt-4 border-t flex items-center justify-between text-[10px] ${dark ? "border-white/10 text-zinc-400" : "border-slate-200 text-slate-500"}`}>
         <span className="flex items-center gap-1">
-          <KeyRound className="w-3 h-3 text-slate-400" />
+          <KeyRound className="w-3 h-3 text-teal-400" />
           <span>Unified Access</span>
         </span>
-        <span className="font-semibold text-slate-600">
+        <span className={`font-semibold ${dark ? "text-teal-300" : "text-slate-700"}`}>
           Instant Redirect to Console
         </span>
       </div>

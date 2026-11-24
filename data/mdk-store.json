@@ -223,13 +223,13 @@
       "name": "QA Tester",
       "email": "qa_1795240154458@test.com",
       "phone": "",
-      "passwordHash": "pbkdf2:100000:81f540d7701960ed80ae5b7b1114c045:5edb557ca503a15b9aaf197e5c11c4cf655c7e1c6214f3c0036a72a3755f7de0b843097bc46b233ca1830bc2698e529462585d45f917ec305769e34ec2a1efb1",
+      "passwordHash": "pbkdf2:100000:60f39d93421dca3cfed7934feb882d2a:0f7ffcb0fe93069e5f93e6c617e6a106f2284002c522913cccdf35dfa3bcd249d4f5e9d6b8829ede21a6b7425b93f5ff1045eaf6f3d45a94eb221d622fa358d7",
       "role": "customer",
       "emailVerified": true,
       "privacyConsent": true,
       "savedAddresses": [],
       "createdAt": "2026-11-21T05:49:16.163Z",
-      "updatedAt": "2026-11-23T05:29:15.276Z"
+      "updatedAt": "2026-11-24T08:43:34.706Z"
     },
     {
       "id": "usr_4729b675-b",
@@ -4826,6 +4826,267 @@
       "referrerHost": null,
       "id": "1ac813454e8fd0736ec17816",
       "createdAt": "2026-11-23T05:04:27.313Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "f828affa9c05eb941f91f47b",
+      "createdAt": "2026-11-24T08:23:18.495Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "144f3a0120d21ec608205e24",
+      "createdAt": "2026-11-24T08:24:59.482Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "fe4938932afd0d74c43a3647",
+      "createdAt": "2026-11-24T08:25:23.806Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "e2ce896e6e6589033183eecf",
+      "createdAt": "2026-11-24T08:25:35.091Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "eb63f564074e61ce6609e32d",
+      "createdAt": "2026-11-24T08:26:39.744Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "dd7e7fa45226ea600959505e",
+      "createdAt": "2026-11-24T08:43:18.453Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "9bde84c302f1f4b0cb5e4246",
+      "createdAt": "2026-11-24T08:43:20.433Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "5400f7b49c938792ccdd14d2",
+      "createdAt": "2026-11-24T08:43:28.137Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "5b1219edbea010372355f260",
+      "createdAt": "2026-11-24T08:43:40.417Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "c081d4771f56e37eb0d5097d",
+      "createdAt": "2026-11-24T08:43:51.574Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "cccc358204f7e6de89955347",
+      "createdAt": "2026-11-24T08:43:57.537Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/dashboard",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "ae376043be1b5e84084207ae",
+      "createdAt": "2026-11-24T08:43:58.382Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "6386d06eeac7f679042ac95e",
+      "createdAt": "2026-11-24T08:44:04.021Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/about-company",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "07db0befb1e3b660f3ed0d4f",
+      "createdAt": "2026-11-24T08:45:44.710Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/corporate-services",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "0643b6d24f23c4980081db93",
+      "createdAt": "2026-11-24T08:45:48.918Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/contact",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "43d96a6bf668ff7791e211ed",
+      "createdAt": "2026-11-24T08:45:54.298Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/corporate-services",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "d9b4a92258b541c6f3e41b92",
+      "createdAt": "2026-11-24T08:45:54.815Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/ecosystem-search",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "1c42b34af8e77d13781df51c",
+      "createdAt": "2026-11-24T08:45:56.136Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "2b9fecdd7eda6861257f13d3",
+      "createdAt": "2026-11-24T08:46:04.046Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "99e323e9ffbcbf7ec5facb87",
+      "createdAt": "2026-11-24T08:46:04.528Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/faq",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "4996d1307da8ef4d10b82da3",
+      "createdAt": "2026-11-24T08:46:06.771Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "30c8b9384a09106611a3f6b3",
+      "createdAt": "2026-11-24T08:46:07.337Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/contact",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "616da58a21ef313d84670f44",
+      "createdAt": "2026-11-24T08:46:09.499Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/faq",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "ac4d0816a02f2eb20c245505",
+      "createdAt": "2026-11-24T08:46:11.337Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/about-company",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "3329bc770065ee1896a6b12f",
+      "createdAt": "2026-11-24T08:46:12.393Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/businesses",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "4e03f2abdfb9d8a513e6e760",
+      "createdAt": "2026-11-24T08:46:14.369Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "c6742a1c283a6c7967da167b",
+      "createdAt": "2026-11-24T08:46:14.758Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/corporate-services",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "ad3a3a98923105d614f6611b",
+      "createdAt": "2026-11-24T08:46:16.915Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "a73448c2699b3027412c013f",
+      "createdAt": "2026-11-24T08:46:20.384Z"
     }
   ],
   "hostedProjects": [
