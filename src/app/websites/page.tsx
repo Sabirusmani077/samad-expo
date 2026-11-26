@@ -22,14 +22,21 @@ export default function WebsitesPage() {
       !w.slug.includes("sabir") &&
       !w.name.toLowerCase().includes("sabir")
   );
-  const hostedProjects = (db.hostedProjects || []).filter(
-    (p) =>
-      p.visibility === "public" &&
-      p.deploymentStatus === "live" &&
-      !p.projectName.toLowerCase().includes("automated test platform") &&
-      !p.projectName.toLowerCase().includes("sabir") &&
-      !p.slug.includes("sabir")
-  );
+  const hostedProjects = (db.hostedProjects || [])
+    .filter(
+      (p) =>
+        p.visibility === "public" &&
+        p.deploymentStatus === "live" &&
+        !p.projectName.toLowerCase().includes("automated test platform") &&
+        !p.projectName.toLowerCase().includes("sabir") &&
+        !p.slug.includes("sabir")
+    )
+    .map((p) => ({
+      ...p,
+      userId: "",
+      userEmail: "",
+      userName: "Samad Expo Studio",
+    }));
 
   return (
     <div className="bg-white min-h-screen text-[#1D1C1C]">

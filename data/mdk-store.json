@@ -795,7 +795,7 @@
       "slug": "central-digital-headquarters",
       "category": "Corporate Systems",
       "shortDescription": "The unified holding company website and digital ecosystem gateway uniting 100+ decentralized web properties under one umbrella.",
-      "description": "Engineered to serve as the master brand identity of Samad Expo, supporting dynamic directory listings, business divisions architecture, founder/leadership showcases, and centralized API analytics.",
+      "description": "Engineered to serve as the master brand identity of Samad Expo, supporting dynamic directory listings, business divisions architecture, platform showcases, and centralized API analytics.",
       "images": [],
       "url": "http://localhost:3000",
       "businessDivisionId": "bdiv_tech",
@@ -847,7 +847,7 @@
         "Scalability",
         "Tech Strategy"
       ],
-      "author": "MD, Founder & Owner",
+      "author": "Samad Expo Editorial",
       "status": "published",
       "featured": true,
       "publishedAt": "2026-11-17T06:00:25.605Z",

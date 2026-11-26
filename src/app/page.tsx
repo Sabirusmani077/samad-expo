@@ -23,14 +23,43 @@ export default async function CorporateHeadquartersHome() {
   }
 
   const db = readDb();
-  const profile = db.companyProfile || null;
-  const divisions = (db.businessDivisions || []).filter((d) => d.status === "active").sort((a, b) => a.sortOrder - b.sortOrder);
-  const websites = (db.websiteListings || []).filter((w) => w.isPublic !== false).sort((a, b) => a.sortOrder - b.sortOrder);
+  const profile = db.companyProfile
+    ? {
+        ...db.companyProfile,
+        founderName: "",
+        founderDesignation: "",
+        founderPhoto: "",
+        founderBio: "",
+        founderMessage: "",
+      }
+    : null;
+  const divisions = (db.businessDivisions || [])
+    .filter((d) => d.status === "active")
+    .sort((a, b) => a.sortOrder - b.sortOrder);
+  const websites = (db.websiteListings || [])
+    .filter(
+      (w) =>
+        w.isPublic !== false &&
+        !w.slug.includes("sabir") &&
+        !w.name.toLowerCase().includes("sabir")
+    )
+    .sort((a, b) => a.sortOrder - b.sortOrder);
   const services = (db.corporateServices || []).filter((s) => s.status === "active");
-  const team = (db.teamMembers || []).filter((m) => m.isActive !== false);
-  const hostedProjects = (db.hostedProjects || []).filter(
-    (p) => p.visibility === "public" && p.deploymentStatus === "live"
-  );
+  const hostedProjects = (db.hostedProjects || [])
+    .filter(
+      (p) =>
+        p.visibility === "public" &&
+        p.deploymentStatus === "live" &&
+        !p.projectName.toLowerCase().includes("automated test platform") &&
+        !p.projectName.toLowerCase().includes("sabir") &&
+        !p.slug.includes("sabir")
+    )
+    .map((p) => ({
+      ...p,
+      userId: "",
+      userEmail: "",
+      userName: "Samad Expo Studio",
+    }));
 
   return (
     <ReelhouseCorporateHome
@@ -38,7 +67,7 @@ export default async function CorporateHeadquartersHome() {
       websites={websites}
       divisions={divisions}
       services={services}
-      team={team}
+      team={[]}
       hostedProjects={hostedProjects}
     />
   );

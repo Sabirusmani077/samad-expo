@@ -9,7 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "",
     "/about-company",
-    "/founder",
     "/businesses",
     "/websites",
     "/corporate-services",
@@ -31,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const websiteRoutes = (db.websiteListings || [])
-    .filter((w) => w.isPublic !== false)
+    .filter((w) => w.isPublic !== false && !w.slug.includes("sabir"))
     .map((w) => ({
       url: `${baseUrl}/websites/${w.slug}`,
       lastModified: new Date(w.updatedAt || Date.now()),
