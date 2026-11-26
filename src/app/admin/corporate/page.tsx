@@ -79,7 +79,7 @@ export default function CorporateAdminDashboard() {
       value: (db.users || []).length,
       icon: Users,
       href: "/admin/corporate/users",
-      color: "bg-blue-500/10 text-blue-700 border-blue-200",
+      color: "bg-blue-500/15 text-blue-300 border-blue-500/30",
       description: "Platform accounts & sign-up audit",
       badge: `${(db.users || []).filter((u) => u.role !== "admin" && u.role !== "vendor").length} Developers`,
     },
@@ -88,7 +88,7 @@ export default function CorporateAdminDashboard() {
       value: divisions.length,
       icon: Building2,
       href: "/admin/corporate/businesses",
-      color: "bg-[#FFF33D]/20 text-black border-[#FFF33D]/40",
+      color: "bg-[#FFF33D]/20 text-[#FFF33D] border-[#FFF33D]/40",
       description: "Core corporate sectors",
     },
     {
@@ -96,7 +96,7 @@ export default function CorporateAdminDashboard() {
       value: websites.length,
       icon: Globe,
       href: "/admin/corporate/websites",
-      color: "bg-emerald-500/10 text-black border-emerald-200",
+      color: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
       description: `${websites.filter((w) => w.status === "live").length} Live in ecosystem`,
     },
     {
@@ -104,7 +104,7 @@ export default function CorporateAdminDashboard() {
       value: team.length,
       icon: Users,
       href: "/admin/corporate/team",
-      color: "bg-purple-500/10 text-purple-600 border-purple-200",
+      color: "bg-purple-500/15 text-purple-300 border-purple-500/30",
       description: "Executive profiles",
     },
     {
@@ -112,7 +112,7 @@ export default function CorporateAdminDashboard() {
       value: services.length,
       icon: Briefcase,
       href: "/admin/corporate/services",
-      color: "bg-amber-500/10 text-amber-600 border-amber-200",
+      color: "bg-amber-500/15 text-amber-300 border-amber-500/30",
       description: "Active solutions",
     },
     {
@@ -120,7 +120,7 @@ export default function CorporateAdminDashboard() {
       value: portfolio.length,
       icon: FileText,
       href: "/admin/corporate/portfolio",
-      color: "bg-pink-500/10 text-pink-600 border-pink-200",
+      color: "bg-pink-500/15 text-pink-300 border-pink-500/30",
       description: "Flagship deployments",
     },
     {
@@ -128,7 +128,7 @@ export default function CorporateAdminDashboard() {
       value: blog.length,
       icon: BookOpen,
       href: "/admin/corporate/blog",
-      color: "bg-yellow-500/10 text-yellow-600 border-yellow-200",
+      color: "bg-[#FFF33D]/15 text-[#FFF33D] border-[#FFF33D]/30",
       description: "Published updates",
     },
     {
@@ -137,7 +137,7 @@ export default function CorporateAdminDashboard() {
       badge: newInquiries.length > 0 ? `${newInquiries.length} New` : undefined,
       icon: MessageSquare,
       href: "/admin/corporate/inquiries",
-      color: "bg-rose-500/10 text-rose-600 border-rose-200",
+      color: "bg-rose-500/15 text-rose-300 border-rose-500/30",
       description: "Customer & business reachouts",
     },
     {
@@ -145,7 +145,7 @@ export default function CorporateAdminDashboard() {
       value: jobs.length,
       icon: GraduationCap,
       href: "/admin/corporate/jobs",
-      color: "bg-indigo-500/10 text-indigo-600 border-indigo-200",
+      color: "bg-indigo-500/15 text-indigo-300 border-indigo-500/30",
       description: "Active hiring positions",
     },
     {
@@ -153,7 +153,7 @@ export default function CorporateAdminDashboard() {
       value: partnerships.length,
       icon: Handshake,
       href: "/admin/corporate/partnerships",
-      color: "bg-teal-500/10 text-teal-600 border-teal-200",
+      color: "bg-teal-500/15 text-teal-300 border-teal-500/30",
       description: "Collaborations & alliances",
     },
   ];

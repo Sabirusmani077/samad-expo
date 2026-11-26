@@ -2,7 +2,16 @@
 
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { X, Lock, Mail, User as UserIcon, Phone, ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
+import {
+  X,
+  Lock,
+  Mail,
+  User as UserIcon,
+  Phone,
+  ArrowRight,
+  Loader2,
+  CheckCircle2,
+} from "lucide-react";
 import { PublicUser } from "@/lib/types";
 
 interface AuthModalProps {
@@ -52,7 +61,8 @@ export function AuthModal({
       }
       if (onSuccess) onSuccess(data.user);
       onClose();
-      const targetUrl = data.user?.role === "admin" ? "/admin/corporate" : "/dashboard";
+      const targetUrl =
+        data.user?.role === "admin" ? "/admin/corporate" : "/dashboard";
       window.location.href = targetUrl;
     } catch {
       setError("Network error. Please try again.");
@@ -79,7 +89,8 @@ export function AuthModal({
       }
       if (onSuccess) onSuccess(data.user);
       onClose();
-      const targetUrl = data.user?.role === "admin" ? "/admin/corporate" : "/dashboard";
+      const targetUrl =
+        data.user?.role === "admin" ? "/admin/corporate" : "/dashboard";
       window.location.href = targetUrl;
     } catch {
       setError("Network error. Please try again.");
@@ -108,58 +119,63 @@ export function AuthModal({
     }
   };
 
+  const inputClass =
+    "w-full rounded-xl bg-zinc-900/90 border border-zinc-800 pl-10 pr-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-[#FFF33D] focus:ring-2 focus:ring-[#FFF33D]/25 transition";
+
   return createPortal(
-    <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-      <div className="relative w-full max-w-md rounded-2xl bg-zinc-950 border border-zinc-800 p-6 sm:p-8 text-white shadow-2xl">
-        {/* Close Button */}
+    <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+      <div className="relative w-full max-w-md rounded-3xl bg-gradient-to-b from-[#15151A] to-[#09090C] border border-[#FFF33D]/30 p-6 sm:p-8 text-white shadow-[0_30px_80px_rgba(0,0,0,0.9),0_0_40px_rgba(255,243,61,0.12)] overflow-hidden">
+        <div className="absolute inset-x-0 top-0 h-1.5 bg-[#FFF33D]" />
+
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 p-2 text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800"
+          className="absolute right-4 top-4 p-2 text-zinc-400 hover:text-[#FFF33D] transition rounded-full hover:bg-white/5 cursor-pointer"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
         </button>
 
-        {/* Header */}
-        <div className="mb-6 text-center">
+        <div className="mb-6 text-center pt-1">
           <div className="mb-3 flex justify-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/primary-logo.png"
               alt="Samad Expo Logo"
-              className="h-14 w-14 rounded-2xl object-cover border border-zinc-700/80 shadow-lg shadow-[#FFF33D]/10 select-none"
+              className="h-14 w-14 rounded-2xl object-cover border border-[#FFF33D]/50 shadow-[0_8px_24px_rgba(255,243,61,0.2)] select-none"
             />
           </div>
-          <h2 className="text-2xl font-bold tracking-tight">
+          <h2 className="text-2xl font-black tracking-tight text-white">
             {mode === "login" && "Welcome to Samad Expo"}
-            {mode === "register" && "Create Developer Account"}
+            {mode === "register" && "Create Free Account"}
             {mode === "forgot" && "Reset Your Password"}
           </h2>
-          <p className="mt-1 text-sm text-zinc-400">
-            {mode === "login" && "Sign in to deploy & manage your hosted websites"}
-            {mode === "register" && "Deploy websites instantly with public URLs"}
-            {mode === "forgot" && "Enter your email to receive recovery instructions"}
+          <p className="mt-1 text-xs sm:text-sm text-zinc-400">
+            {mode === "login" &&
+              "Sign in to deploy & manage your hosted websites"}
+            {mode === "register" &&
+              "Deploy websites instantly with public URLs"}
+            {mode === "forgot" &&
+              "Enter your email to receive recovery instructions"}
           </p>
         </div>
 
         {error && (
-          <div className="mb-4 rounded-xl border border-red-500/30 bg-red-950/40 p-3 text-sm text-red-200">
+          <div className="mb-4 rounded-xl border border-rose-500/40 bg-rose-950/60 p-3 text-xs font-semibold text-rose-200">
             {error}
           </div>
         )}
 
         {successMsg && (
-          <div className="mb-4 rounded-xl border border-emerald-500/30 bg-emerald-950/40 p-3 text-sm text-emerald-200 flex items-center gap-2">
+          <div className="mb-4 rounded-xl border border-emerald-500/40 bg-emerald-950/60 p-3 text-xs font-semibold text-emerald-200 flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
             <span>{successMsg}</span>
           </div>
         )}
 
-        {/* Login Form */}
         {mode === "login" && (
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1">
+              <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-1">
                 Email Address
               </label>
               <div className="relative">
@@ -169,15 +185,15 @@ export function AuthModal({
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="developer@example.com"
-                  className="w-full rounded-xl bg-zinc-900 border border-zinc-800 pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#FFF33D] transition-colors"
+                  placeholder="you@example.com"
+                  className={inputClass}
                 />
               </div>
             </div>
 
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
+                <label className="text-xs font-bold uppercase tracking-wider text-zinc-300">
                   Password
                 </label>
                 <button
@@ -187,7 +203,7 @@ export function AuthModal({
                     setSuccessMsg("");
                     setMode("forgot");
                   }}
-                  className="text-xs text-[#FFF33D] hover:underline"
+                  className="text-xs font-bold text-[#FFF33D] hover:underline cursor-pointer"
                 >
                   Forgot?
                 </button>
@@ -200,7 +216,7 @@ export function AuthModal({
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full rounded-xl bg-zinc-900 border border-zinc-800 pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#FFF33D] transition-colors"
+                  className={inputClass}
                 />
               </div>
             </div>
@@ -208,7 +224,7 @@ export function AuthModal({
             <button
               type="submit"
               disabled={loading}
-              className="w-full mt-2 inline-flex items-center justify-center gap-2 rounded-xl bg-[#FFF33D] px-4 py-3 text-sm font-bold text-black transition-transform hover:brightness-105 active:scale-[0.99] disabled:opacity-50"
+              className="btn-3d-yellow w-full mt-2 inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-xs font-extrabold uppercase tracking-wider disabled:opacity-50 cursor-pointer"
             >
               {loading ? (
                 <>
@@ -232,7 +248,7 @@ export function AuthModal({
                   setSuccessMsg("");
                   setMode("register");
                 }}
-                className="font-bold text-[#FFF33D] hover:underline"
+                className="font-extrabold text-[#FFF33D] hover:underline cursor-pointer"
               >
                 Sign Up Free
               </button>
@@ -240,11 +256,10 @@ export function AuthModal({
           </form>
         )}
 
-        {/* Register Form */}
         {mode === "register" && (
           <form onSubmit={handleRegister} className="space-y-3.5">
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1">
+              <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-1">
                 Full Name
               </label>
               <div className="relative">
@@ -254,14 +269,14 @@ export function AuthModal({
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="Sabir Usmani"
-                  className="w-full rounded-xl bg-zinc-900 border border-zinc-800 pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#FFF33D] transition-colors"
+                  placeholder="Your Full Name"
+                  className={inputClass}
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1">
+              <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-1">
                 Email Address
               </label>
               <div className="relative">
@@ -271,14 +286,14 @@ export function AuthModal({
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="developer@example.com"
-                  className="w-full rounded-xl bg-zinc-900 border border-zinc-800 pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#FFF33D] transition-colors"
+                  placeholder="you@example.com"
+                  className={inputClass}
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1">
+              <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-1">
                 Phone Number (Optional)
               </label>
               <div className="relative">
@@ -288,25 +303,25 @@ export function AuthModal({
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="+91 98765 43210"
-                  className="w-full rounded-xl bg-zinc-900 border border-zinc-800 pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#FFF33D] transition-colors"
+                  className={inputClass}
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1">
-                Password (min 6 characters)
+              <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-1">
+                Password (min 8 characters)
               </label>
               <div className="relative">
                 <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
                 <input
                   type="password"
                   required
-                  minLength={6}
+                  minLength={8}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full rounded-xl bg-zinc-900 border border-zinc-800 pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#FFF33D] transition-colors"
+                  className={inputClass}
                 />
               </div>
             </div>
@@ -314,7 +329,7 @@ export function AuthModal({
             <button
               type="submit"
               disabled={loading}
-              className="w-full mt-2 inline-flex items-center justify-center gap-2 rounded-xl bg-[#FFF33D] px-4 py-3 text-sm font-bold text-black transition-transform hover:brightness-105 active:scale-[0.99] disabled:opacity-50"
+              className="btn-3d-yellow w-full mt-2 inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-xs font-extrabold uppercase tracking-wider disabled:opacity-50 cursor-pointer"
             >
               {loading ? (
                 <>
@@ -323,7 +338,7 @@ export function AuthModal({
                 </>
               ) : (
                 <>
-                  <span>Create Account &amp; Start Hosting</span>
+                  <span>Create Account &amp; Host</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
@@ -338,7 +353,7 @@ export function AuthModal({
                   setSuccessMsg("");
                   setMode("login");
                 }}
-                className="font-bold text-[#FFF33D] hover:underline"
+                className="font-extrabold text-[#FFF33D] hover:underline cursor-pointer"
               >
                 Sign In
               </button>
@@ -346,11 +361,10 @@ export function AuthModal({
           </form>
         )}
 
-        {/* Forgot Password */}
         {mode === "forgot" && (
           <form onSubmit={handleForgotPassword} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1">
+              <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-1">
                 Account Email
               </label>
               <div className="relative">
@@ -360,8 +374,8 @@ export function AuthModal({
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="developer@example.com"
-                  className="w-full rounded-xl bg-zinc-900 border border-zinc-800 pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#FFF33D] transition-colors"
+                  placeholder="you@example.com"
+                  className={inputClass}
                 />
               </div>
             </div>
@@ -369,7 +383,7 @@ export function AuthModal({
             <button
               type="submit"
               disabled={loading}
-              className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#FFF33D] px-4 py-3 text-sm font-bold text-black transition-transform hover:brightness-105 active:scale-[0.99] disabled:opacity-50"
+              className="btn-3d-yellow w-full inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-xs font-extrabold uppercase tracking-wider disabled:opacity-50 cursor-pointer"
             >
               {loading ? "Sending..." : "Send Reset Link"}
             </button>
@@ -383,7 +397,7 @@ export function AuthModal({
                   setSuccessMsg("");
                   setMode("login");
                 }}
-                className="font-bold text-[#FFF33D] hover:underline"
+                className="font-extrabold text-[#FFF33D] hover:underline cursor-pointer"
               >
                 Back to Sign In
               </button>

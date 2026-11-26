@@ -162,7 +162,7 @@ export function DashboardSidebar({
 
       {/* Vertical Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-72 flex-col border-r border-zinc-800/80 bg-[#0c0c0c] text-white p-5 transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 w-72 flex-col border-r border-[#FFF33D]/15 bg-[#08080B]/95 backdrop-blur-xl text-white p-5 transition-transform duration-300 ease-in-out lg:translate-x-0 ${
           mobileSidebarOpen ? "translate-x-0 flex" : "-translate-x-full hidden lg:flex"
         }`}
       >
@@ -246,7 +246,7 @@ export function DashboardSidebar({
           <button
             type="button"
             onClick={handleUploadAction}
-            className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#FFF33D] text-black text-xs font-black shadow-md hover:bg-white hover:shadow-lg transition-all active:scale-95 cursor-pointer"
+            className="btn-3d-yellow w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-black cursor-pointer"
           >
             <Plus className="w-4 h-4 stroke-[3]" />
             <span>Upload New Website</span>
@@ -398,19 +398,19 @@ export function DashboardSidebar({
         {/* Quota & Storage Widget */}
         <div className="mt-auto pt-4 border-t border-zinc-800/80 space-y-3">
           {user && (
-            <div className="p-3 rounded-xl border border-zinc-800 bg-zinc-900/50 text-xs">
+            <div className="p-3 rounded-xl border border-[#FFF33D]/20 bg-zinc-900/70 text-xs">
               <div className="flex items-center justify-between text-zinc-400 font-bold mb-1.5">
                 <span className="flex items-center gap-1.5 text-[11px]">
-                  <HardDrive className="w-3.5 h-3.5 text-cyan-400" />
+                  <HardDrive className="w-3.5 h-3.5 text-[#FFF33D]" />
                   <span>Storage Allocation</span>
                 </span>
-                <span className="text-white text-[11px]">
+                <span className="text-[#FFF33D] text-[11px]">
                   {(totalStorageBytes / (1024 * 1024)).toFixed(1)} / 500 MB
                 </span>
               </div>
               <div className="w-full bg-zinc-800 h-1.5 rounded-full overflow-hidden">
                 <div
-                  className="bg-cyan-400 h-full rounded-full transition-all duration-500"
+                  className="bg-[#FFF33D] h-full rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(255,243,61,0.5)]"
                   style={{
                     width: `${Math.min(
                       Math.max(

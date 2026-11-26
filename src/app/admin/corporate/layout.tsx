@@ -8,9 +8,9 @@ export default async function CorporateAdminLayout({ children }: { children: Rea
   if (!admin) redirect("/login?next=%2Fadmin%2Fcorporate");
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
+    <div className="min-h-screen bg-[#060608] samad-hero-grid text-white">
       <CorporateAdminSidebar />
-      <div className="lg:pl-72">
+      <div className="lg:pl-72 admin-dark-shell">
         {children}
       </div>
     </div>

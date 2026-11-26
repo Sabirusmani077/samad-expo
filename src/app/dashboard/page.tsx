@@ -36,6 +36,8 @@ import {
 } from "lucide-react";
 import { HostedProject, PublicUser, ProjectVisibility } from "@/lib/types";
 import { DashboardSidebar } from "@/components/DashboardSidebar";
+import { Card3D } from "@/components/Card3D";
+import { ThreeHeroCanvas } from "@/components/ThreeHeroCanvas";
 
 function DashboardContent() {
   const router = useRouter();
@@ -345,10 +347,13 @@ function DashboardContent() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center">
-        <div className="flex flex-col items-center gap-3">
+      <div className="min-h-screen bg-[#060608] samad-hero-grid text-white flex items-center justify-center relative overflow-hidden">
+        <ThreeHeroCanvas variant="dark" />
+        <div className="flex flex-col items-center gap-3 relative z-10">
           <div className="w-10 h-10 border-4 border-[#FFF33D] border-t-transparent rounded-full animate-spin" />
-          <p className="text-xs font-bold uppercase tracking-wider text-zinc-400">Loading Developer Workspace...</p>
+          <p className="text-xs font-bold uppercase tracking-wider text-[#FFF33D]">
+            Loading Developer Workspace...
+          </p>
         </div>
       </div>
     );
@@ -357,43 +362,56 @@ function DashboardContent() {
   // Not logged in view
   if (!user) {
     return (
-      <div className="min-h-[85vh] bg-slate-950 text-white flex items-center justify-center p-4">
-        <div className="max-w-md w-full text-center space-y-6 rounded-3xl border border-zinc-800 bg-zinc-900/90 p-8 shadow-2xl">
-          <div className="mb-4 flex justify-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/primary-logo.png"
-              alt="Samad Expo Logo"
-              className="h-16 w-16 rounded-2xl object-cover border border-zinc-700/80 shadow-lg shadow-[#FFF33D]/10 select-none"
-            />
-          </div>
-          <div>
-            <h1 className="text-2xl font-bold">Authentication Required</h1>
-            <p className="mt-2 text-sm text-zinc-400">
-              Please sign in with your developer account to manage your hosted websites and deployments.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-3 pt-2">
-            <Link
-              href="/login?next=/dashboard"
-              className="flex-1 py-3 rounded-xl bg-[#FFF33D] text-black font-extrabold text-xs uppercase tracking-wider hover:bg-white transition-colors"
-            >
-              Sign In
-            </Link>
-            <Link
-              href="/register"
-              className="flex-1 py-3 rounded-xl border border-zinc-700 bg-zinc-800 text-white font-extrabold text-xs uppercase tracking-wider hover:bg-zinc-700 transition-colors"
-            >
-              Create Account
-            </Link>
-          </div>
+      <div className="min-h-[85vh] bg-[#060608] samad-hero-grid text-white flex items-center justify-center p-4 relative overflow-hidden">
+        <ThreeHeroCanvas variant="dark" />
+        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-[#FFF33D]/15 blur-[130px]" />
+
+        <div className="max-w-md w-full relative z-10">
+          <Card3D intensity={8}>
+            <div className="samad-card text-center space-y-6 p-8 border-[#FFF33D]/35">
+              <div className="mb-4 flex justify-center">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/primary-logo.png"
+                  alt="Samad Expo Logo"
+                  className="h-16 w-16 rounded-2xl object-cover border border-[#FFF33D]/40 shadow-lg shadow-[#FFF33D]/15 select-none"
+                />
+              </div>
+              <div>
+                <h1 className="text-2xl font-black text-white">
+                  Authentication Required
+                </h1>
+                <p className="mt-2 text-sm text-zinc-400">
+                  Please sign in with your developer account to manage your hosted websites and deployments.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                <Link
+                  href="/login?next=/dashboard"
+                  className="btn-3d-yellow flex-1 py-3 rounded-full text-xs uppercase tracking-wider"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/register"
+                  className="btn-3d-black flex-1 py-3 rounded-full text-xs uppercase tracking-wider"
+                >
+                  Create Account
+                </Link>
+              </div>
+            </div>
+          </Card3D>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#080808] text-white flex flex-col lg:flex-row">
+    <div className="relative min-h-screen bg-[#060608] samad-hero-grid text-white flex flex-col lg:flex-row">
+      <ThreeHeroCanvas
+        variant="dark"
+        className="fixed inset-0 w-full h-full z-0 opacity-40 pointer-events-none"
+      />
       <DashboardSidebar
         currentTab={activeTab}
         onTabChange={setActiveTab}
@@ -402,7 +420,7 @@ function DashboardContent() {
       />
 
       {/* Main Content Area (Offset for sidebar on desktop) */}
-      <div className="flex-1 lg:pl-72 flex flex-col min-w-0">
+      <div className="relative z-10 flex-1 lg:pl-72 flex flex-col min-w-0">
         {actionMessage && (
           <div className="bg-[#FFF33D] text-black px-4 py-2 text-center text-xs font-bold animate-fade-in sticky top-0 z-20">
             {actionMessage}
@@ -817,12 +835,12 @@ function DashboardContent() {
                 <div className="lg:col-span-5 space-y-6">
                   {/* Storage Quota Card */}
                   <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-6 space-y-5">
-                    <div className="flex items-center justify-between pb-3 border-b border-zinc-850">
+                      <div className="flex items-center justify-between pb-3 border-b border-zinc-850">
                       <div className="flex items-center gap-2 text-sm font-extrabold text-white">
-                        <HardDrive className="w-4 h-4 text-cyan-400" />
+                        <HardDrive className="w-4 h-4 text-[#FFF33D]" />
                         <span>Cloud Storage Quota</span>
                       </div>
-                      <span className="text-xs font-bold text-cyan-400">
+                      <span className="text-xs font-bold text-[#FFF33D]">
                         {((projects.reduce((acc, p) => acc + (p.storageUsedBytes || 0), 0) / (1024 * 1024))).toFixed(1)} / 500 MB
                       </span>
                     </div>
@@ -830,7 +848,7 @@ function DashboardContent() {
                     <div className="space-y-2">
                       <div className="w-full bg-zinc-850 h-2 rounded-full overflow-hidden">
                         <div
-                          className="bg-cyan-400 h-full rounded-full transition-all duration-500"
+                          className="bg-[#FFF33D] h-full rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(255,243,61,0.5)]"
                           style={{
                             width: `${Math.min(
                               Math.max(
@@ -896,51 +914,51 @@ function DashboardContent() {
             </div>
           ) : (
             <>
-              {/* Metric Cards */}
+              {/* 3D Metric Cards */}
               <section className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="rounded-2xl border border-zinc-800/80 bg-zinc-950 p-4 sm:p-5">
+                <Card3D intensity={5} className="samad-card p-4 sm:p-5">
                   <div className="flex items-center justify-between text-zinc-400">
                     <span className="text-xs font-bold uppercase tracking-wider">Total Websites</span>
                     <Layers className="w-4 h-4 text-[#FFF33D]" />
                   </div>
                   <p className="mt-3 text-2xl sm:text-3xl font-black text-white">{projects.length}</p>
                   <p className="mt-1 text-[11px] text-zinc-500">Under your account</p>
-                </div>
+                </Card3D>
 
-                <div className="rounded-2xl border border-zinc-800/80 bg-zinc-950 p-4 sm:p-5">
+                <Card3D intensity={5} className="samad-card p-4 sm:p-5">
                   <div className="flex items-center justify-between text-zinc-400">
                     <span className="text-xs font-bold uppercase tracking-wider">Active Deployments</span>
                     <Globe className="w-4 h-4 text-emerald-400" />
                   </div>
                   <p className="mt-3 text-2xl sm:text-3xl font-black text-emerald-400">{liveCount}</p>
                   <p className="mt-1 text-[11px] text-zinc-500">Publicly accessible</p>
-                </div>
+                </Card3D>
 
-                <div className="rounded-2xl border border-zinc-800/80 bg-zinc-950 p-4 sm:p-5">
+                <Card3D intensity={5} className="samad-card p-4 sm:p-5">
                   <div className="flex items-center justify-between text-zinc-400">
                     <span className="text-xs font-bold uppercase tracking-wider">Storage Usage</span>
-                    <HardDrive className="w-4 h-4 text-cyan-400" />
+                    <HardDrive className="w-4 h-4 text-[#FFF33D]" />
                   </div>
                   <p className="mt-3 text-2xl sm:text-3xl font-black text-white">
                     {(totalStorageBytes / (1024 * 1024)).toFixed(2)} <span className="text-sm font-normal text-zinc-400">MB</span>
                   </p>
                   <p className="mt-1 text-[11px] text-zinc-500">Of 500 MB included</p>
-                </div>
+                </Card3D>
 
-                <div className="rounded-2xl border border-zinc-800/80 bg-zinc-950 p-4 sm:p-5">
+                <Card3D intensity={5} className="samad-card p-4 sm:p-5">
                   <div className="flex items-center justify-between text-zinc-400">
                     <span className="text-xs font-bold uppercase tracking-wider">Total Traffic</span>
-                    <Eye className="w-4 h-4 text-amber-400" />
+                    <Eye className="w-4 h-4 text-[#FFF33D]" />
                   </div>
                   <p className="mt-3 text-2xl sm:text-3xl font-black text-white">{totalViews.toLocaleString()}</p>
                   <p className="mt-1 text-[11px] text-zinc-500">Cumulative website views</p>
-                </div>
+                </Card3D>
               </section>
 
               {/* Quick Upload Action Banner */}
-              <div className="rounded-2xl border border-zinc-800 bg-gradient-to-r from-zinc-900/90 via-zinc-900/50 to-zinc-950 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg">
+              <Card3D intensity={3} className="samad-card p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#FFF33D]/10 border border-[#FFF33D]/30 flex items-center justify-center text-[#FFF33D] shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-[#FFF33D]/15 border border-[#FFF33D]/35 flex items-center justify-center text-[#FFF33D] shrink-0">
                     <Upload className="w-6 h-6" />
                   </div>
                   <div>
@@ -953,12 +971,12 @@ function DashboardContent() {
                 <button
                   type="button"
                   onClick={() => setActiveTab("upload")}
-                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#FFF33D] text-black font-black text-xs hover:bg-white transition-all shadow-md active:scale-95 shrink-0 cursor-pointer"
+                  className="btn-3d-yellow inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-black text-xs shrink-0 cursor-pointer"
                 >
                   <Upload className="w-4 h-4" />
                   <span>Upload File (ZIP)</span>
                 </button>
-              </div>
+              </Card3D>
 
               {/* Section Header & Search */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
@@ -1025,9 +1043,10 @@ function DashboardContent() {
               const isCopied = copiedId === project.id;
 
               return (
-                <div
+                <Card3D
                   key={project.id}
-                  className="rounded-2xl border border-zinc-800 bg-zinc-950/80 p-5 flex flex-col justify-between hover:border-zinc-700 transition-all shadow-md group"
+                  intensity={5}
+                  className="samad-card p-5 flex flex-col justify-between group"
                 >
                   <div className="space-y-3">
                     {/* Top Status & Visibility */}
@@ -1133,14 +1152,14 @@ function DashboardContent() {
                       <button
                         type="button"
                         onClick={() => handleRedeploy(project.id)}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#FFF33D] text-black text-xs font-bold hover:bg-white transition-colors"
+                        className="btn-3d-yellow inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-extrabold cursor-pointer"
                       >
                         <RefreshCw className="w-3 h-3" />
                         <span>Redeploy</span>
                       </button>
                     </div>
                   </div>
-                </div>
+                </Card3D>
               );
             })}
           </div>

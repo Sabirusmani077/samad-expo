@@ -1,87 +1,106 @@
 import React from "react";
 import Link from "next/link";
 import { readDb } from "@/lib/db";
+import { ThreeHeroCanvas } from "@/components/ThreeHeroCanvas";
+import { Card3D } from "@/components/Card3D";
+import {
+  ArrowRight,
+  ExternalLink,
+  Globe,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
+import { publicWebsiteUrl } from "@/lib/corporate-public";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Samad Expo — Corporate",
+  title: "Samad Expo — Corporate Overview",
   description:
-    "Samad Expo is a diversified corporate group with ventures spanning web platforms, technology, and digital services.",
+    "Corporate overview of Samad Expo: website hosting engine, live digital utilities, engineering services, and leadership.",
 };
 
 export default function CorporateHomePage() {
   const db = readDb();
   const profile = db.companyProfile;
-  const divisions = (db.businessDivisions ?? []).filter(
-    (d) => d.status === "active"
-  );
-  const websites = (db.websiteListings ?? []).filter((w) => w.isPublic);
-  const team = (db.teamMembers ?? []).filter((m) => m.isActive);
+  const websites = (db.websiteListings ?? []).filter((w) => w.isPublic !== false);
+  const team = (db.teamMembers ?? []).filter((m) => m.isActive !== false);
   const services = (db.corporateServices ?? []).filter(
     (s) => s.status === "active"
   );
+  const hostedCount = (db.hostedProjects ?? []).filter(
+    (p) =>
+      p.visibility === "public" &&
+      p.deploymentStatus === "live" &&
+      !p.projectName.toLowerCase().includes("automated test platform")
+  ).length;
 
   return (
-    <div className="bg-white min-h-screen">
-      {/* Breadcrumb */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <nav className="text-xs text-slate-500 flex items-center gap-2">
-          <Link href="/" className="hover:text-slate-900 font-medium">
-            Home
-          </Link>
-          <span>/</span>
-          <span className="text-slate-900 font-bold">Corporate</span>
-        </nav>
-      </div>
+    <div className="bg-[#060608] min-h-screen text-white">
+      {/* Header */}
+      <section className="samad-hero-grid border-b border-zinc-800/80 pt-10 pb-14 sm:pt-16 sm:pb-20 relative overflow-hidden">
+        <ThreeHeroCanvas variant="dark" />
+        <div className="pointer-events-none absolute -top-24 right-0 h-80 w-80 rounded-full bg-[#FFF33D]/15 blur-[120px]" />
 
-      {/* Hero */}
-      <section className="bg-white border-b-2 border-slate-900 py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <span className="inline-block px-3 py-1 rounded-md bg-[#FFF33D] text-black font-extrabold font-extrabold text-[11px] uppercase border border-slate-900/20 mb-4">
-              MDK Group of Companies
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
+          <nav className="text-xs text-zinc-400 flex items-center gap-2">
+            <Link href="/" className="hover:text-[#FFF33D] font-semibold transition">
+              Home
+            </Link>
+            <span>/</span>
+            <span className="text-[#FFF33D] font-bold">Corporate Overview</span>
+          </nav>
+
+          <div className="max-w-3xl space-y-4">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FFF33D]/10 border border-[#FFF33D]/30 text-[#FFF33D] font-bold text-xs uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Corporate Gateway</span>
             </span>
-            <h1 className="text-4xl sm:text-6xl font-black text-slate-950 leading-tight mb-6">
-              {profile?.businessName ?? "Samad Expo"}
+
+            <h1 className="text-4xl sm:text-6xl font-black text-white leading-tight tracking-tight">
+              <span className="samad-highlight">
+                {profile?.businessName ?? "Samad Expo"}
+              </span>
             </h1>
-            <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-2xl">
+
+            <p className="text-base sm:text-lg text-zinc-300 leading-relaxed">
               {profile?.tagline ??
-                "A diversified corporate group building tomorrow's businesses today."}
+                "Modern Website Hosting, Developer Tools & Digital Solutions"}
             </p>
-            <div className="flex flex-wrap gap-4">
+
+            <div className="pt-2 flex flex-wrap gap-3.5">
               <Link
                 href="/about-company"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white font-bold border-2 border-slate-900 shadow-[4px_4px_0px_#FFF33D] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all text-sm"
+                className="btn-3d-yellow inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs uppercase tracking-wider"
               >
-                Our Story
+                <span>Company Story</span>
+                <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                href="/businesses"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#FFF33D] text-slate-900 font-bold border-2 border-slate-900 shadow-[4px_4px_0px_#1e293b] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all text-sm"
+                href="/websites"
+                className="btn-3d-black inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs uppercase tracking-wider"
               >
-                Our Businesses
+                <Globe className="w-4 h-4 text-[#FFF33D]" />
+                <span>Public Directory</span>
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Row */}
-      <section className="border-b-2 border-slate-900 bg-[#FFF33D]">
+      {/* Verified Metrics Strip */}
+      <section className="bg-[#FFF33D] border-b border-black/15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x-2 divide-slate-900">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/15">
             {[
-              { label: "Business Divisions", value: divisions.length || "5+" },
-              { label: "Digital Properties", value: websites.length || "10+" },
-              { label: "Team Members", value: team.length || "50+" },
-              { label: "Services Offered", value: services.length || "20+" },
+              { label: "Public Web Tools", value: websites.length },
+              { label: "Hosted Deployments", value: hostedCount },
+              { label: "Leadership", value: team.length || 1 },
+              { label: "Active Services", value: services.length },
             ].map((stat) => (
-              <div key={stat.label} className="p-6 md:p-8 text-center">
-                <div className="text-3xl md:text-4xl font-black text-slate-950">
-                  {stat.value}
-                </div>
-                <div className="text-xs font-bold text-slate-700 uppercase tracking-wide mt-1">
+              <div key={stat.label} className="p-6 text-center">
+                <div className="text-3xl font-black text-black">{stat.value}</div>
+                <div className="text-[11px] font-extrabold text-zinc-900 uppercase tracking-wider mt-1">
                   {stat.label}
                 </div>
               </div>
@@ -90,405 +109,133 @@ export default function CorporateHomePage() {
         </div>
       </section>
 
-      {/* Who We Are */}
-      <section className="py-16 border-b-2 border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="inline-block px-3 py-1 rounded-md bg-[#FFF33D] text-black font-extrabold font-extrabold text-[11px] uppercase border border-slate-900/20 mb-4">
-                Who We Are
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-slate-950 mb-6">
-                Building a Diversified Business Empire
+      {/* Story + Core Values */}
+      <section className="bg-[#0B0B0F] py-16 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+          <div className="grid md:grid-cols-2 gap-10 items-start">
+            <div className="space-y-4">
+              <h2 className="text-3xl font-black text-white tracking-tight">
+                Digital Engineering &amp;{" "}
+                <span className="samad-highlight">Hosting Platform</span>
               </h2>
-              <p className="text-slate-600 leading-relaxed mb-4">
-                {profile?.about ??
-                  "Samad Expo is a forward-thinking corporate group committed to innovation, excellence, and sustainable growth across multiple sectors."}
+              <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
+                {profile?.about}
               </p>
-              <p className="text-slate-600 leading-relaxed">
-                {profile?.mission ??
-                  "Our mission is to create lasting value for our customers, partners, and communities through cutting-edge solutions and principled business practices."}
+              <p className="text-sm text-zinc-400 leading-relaxed">
+                {profile?.mission}
               </p>
+              <div className="pt-2">
+                <Link
+                  href="/founder"
+                  className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#FFF33D] hover:text-white transition"
+                >
+                  <span>Meet Founder {profile?.founderName || "Sabir Usmani"}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {(profile?.coreValues ?? []).slice(0, 4).map((val, i) => (
+                <Card3D key={i} intensity={10}>
+                  <div className="samad-card p-5 space-y-2 h-full">
+                    <div className="w-8 h-8 rounded-lg bg-[#FFF33D] text-black font-black text-xs flex items-center justify-center shadow-sm shadow-[#FFF33D]/20">
+                      0{i + 1}
+                    </div>
+                    <h3 className="text-sm font-extrabold text-white">
+                      {val.title}
+                    </h3>
+                    <p className="text-xs text-zinc-400 leading-relaxed">
+                      {val.description}
+                    </p>
+                  </div>
+                </Card3D>
+              ))}
+            </div>
+          </div>
+
+          {/* Featured Live Platforms */}
+          {websites.length > 0 && (
+            <div className="space-y-6">
+              <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
+                <h2 className="text-2xl font-black text-white">
+                  Featured Digital Platforms
+                </h2>
+                <Link
+                  href="/websites"
+                  className="text-xs font-extrabold text-[#FFF33D] hover:text-white inline-flex items-center gap-1 transition"
+                >
+                  <span>View All</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {websites.slice(0, 6).map((site) => {
+                  const ext = publicWebsiteUrl(site.url);
+                  return (
+                    <Card3D key={site.id} intensity={9}>
+                      <div className="samad-card p-6 flex flex-col justify-between h-full">
+                        <div className="space-y-2 mb-5">
+                          <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#FFF33D]/10 border border-[#FFF33D]/30 text-[10px] font-bold text-[#FFF33D]">
+                            {site.category}
+                          </span>
+                          <h3 className="text-lg font-extrabold text-white">
+                            {site.name}
+                          </h3>
+                          <p className="text-xs text-zinc-400 line-clamp-3">
+                            {site.shortDescription}
+                          </p>
+                        </div>
+
+                        <div className="pt-3 border-t border-zinc-800 flex items-center justify-between">
+                          <Link
+                            href={`/websites/${site.slug}`}
+                            className="text-xs font-bold text-zinc-300 hover:text-[#FFF33D] transition"
+                          >
+                            Details
+                          </Link>
+                          {ext && (
+                            <a
+                              href={ext}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="btn-3d-yellow inline-flex items-center gap-1 px-4 py-1.5 rounded-full text-xs font-extrabold"
+                            >
+                              <span>Open</span>
+                              <ExternalLink className="w-3 h-3" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </Card3D>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Security Commitment */}
+          <Card3D intensity={5}>
+            <div className="samad-card p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border-[#FFF33D]/35">
+              <div className="space-y-1.5">
+                <div className="inline-flex items-center gap-1.5 text-[#FFF33D] text-xs font-extrabold uppercase tracking-wider">
+                  <ShieldCheck className="w-4 h-4" />
+                  <span>Ready to Deploy</span>
+                </div>
+                <h2 className="text-2xl font-black text-white">
+                  Host Your Static Website with Zero Setup
+                </h2>
+              </div>
+
               <Link
-                href="/about-company"
-                className="inline-block mt-6 px-5 py-2.5 bg-white text-slate-900 font-bold border-2 border-slate-900 shadow-[4px_4px_0px_#FFF33D] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all text-sm"
+                href="/dashboard"
+                className="btn-3d-yellow px-6 py-3 rounded-full text-xs uppercase tracking-wider shrink-0"
               >
-                Read Our Full Story →
+                Open Console →
               </Link>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              {(profile?.coreValues ?? []).slice(0, 4).map((val, i) => (
-                <div
-                  key={i}
-                  className="p-5 border-2 border-slate-900 shadow-[4px_4px_0px_#FFF33D] bg-white"
-                >
-                  <div className="text-2xl mb-2">{val.icon || "✦"}</div>
-                  <h3 className="font-black text-slate-900 text-sm mb-1">
-                    {val.title}
-                  </h3>
-                  <p className="text-xs text-slate-500">{val.description}</p>
-                </div>
-              ))}
-              {(profile?.coreValues ?? []).length === 0 &&
-                ["Innovation", "Integrity", "Excellence", "Impact"].map(
-                  (v) => (
-                    <div
-                      key={v}
-                      className="p-5 border-2 border-slate-900 shadow-[4px_4px_0px_#FFF33D] bg-white"
-                    >
-                      <div className="text-2xl mb-2">✦</div>
-                      <h3 className="font-black text-slate-900 text-sm">
-                        {v}
-                      </h3>
-                    </div>
-                  )
-                )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Business Divisions */}
-      <section className="py-16 border-b-2 border-slate-200 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <span className="inline-block px-3 py-1 rounded-md bg-[#FFF33D] text-black font-extrabold font-extrabold text-[11px] uppercase border border-slate-900/20 mb-3">
-                Our Businesses
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-slate-950">
-                Business Divisions
-              </h2>
-            </div>
-            <Link
-              href="/businesses"
-              className="hidden md:inline-block px-5 py-2.5 bg-slate-900 text-white font-bold border-2 border-slate-900 shadow-[4px_4px_0px_#FFF33D] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all text-sm"
-            >
-              View All →
-            </Link>
-          </div>
-          {divisions.length === 0 ? (
-            <div className="text-center py-16 border-2 border-slate-900 shadow-[8px_8px_0px_#FFF33D] bg-white">
-              <p className="text-4xl mb-3">🏗️</p>
-              <h3 className="font-black text-slate-900 text-xl mb-2">
-                Coming Soon
-              </h3>
-              <p className="text-slate-500 text-sm">
-                Our business divisions are being set up. Stay tuned!
-              </p>
-            </div>
-          ) : (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {divisions.slice(0, 6).map((div) => (
-                <div
-                  key={div.id}
-                  className="border-2 border-slate-900 shadow-[6px_6px_0px_#FFF33D] bg-white p-6 hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all"
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <span className="text-3xl">
-                      {div.logo ? (
-                        <img
-                          src={div.logo}
-                          alt={div.name}
-                          className="w-10 h-10 object-contain"
-                        />
-                      ) : (
-                        "🏢"
-                      )}
-                    </span>
-                    <span className="px-2 py-0.5 text-[10px] font-bold uppercase bg-[#FFF33D] border border-slate-900">
-                      {div.category}
-                    </span>
-                  </div>
-                  <h3 className="font-black text-slate-900 text-lg mb-2">
-                    {div.name}
-                  </h3>
-                  <p className="text-xs text-slate-500 leading-relaxed mb-4">
-                    {div.shortDescription}
-                  </p>
-                  <Link
-                    href={`/businesses/${div.slug}`}
-                    className="text-xs font-bold text-slate-900 underline hover:text-slate-600"
-                  >
-                    View Details →
-                  </Link>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Digital Ecosystem Preview */}
-      <section className="py-16 border-b-2 border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <span className="inline-block px-3 py-1 rounded-md bg-[#FFF33D] text-black font-extrabold font-extrabold text-[11px] uppercase border border-slate-900/20 mb-3">
-                Digital Ecosystem
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-slate-950">
-                Our Digital Properties
-              </h2>
-            </div>
-            <Link
-              href="/websites"
-              className="hidden md:inline-block px-5 py-2.5 bg-slate-900 text-white font-bold border-2 border-slate-900 shadow-[4px_4px_0px_#FFF33D] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all text-sm"
-            >
-              Explore All →
-            </Link>
-          </div>
-          {websites.length === 0 ? (
-            <div className="text-center py-16 border-2 border-slate-900 shadow-[8px_8px_0px_#FFF33D] bg-white">
-              <p className="text-4xl mb-3">🌐</p>
-              <h3 className="font-black text-slate-900 text-xl mb-2">
-                Coming Soon
-              </h3>
-              <p className="text-slate-500 text-sm">
-                Our digital properties are launching soon!
-              </p>
-            </div>
-          ) : (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {websites.slice(0, 4).map((site) => (
-                <div
-                  key={site.id}
-                  className="border-2 border-slate-900 shadow-[4px_4px_0px_#FFF33D] bg-white p-5"
-                >
-                  <div className="mb-3">
-                    <span
-                      className={`px-2 py-0.5 text-[10px] font-bold uppercase border border-slate-900 ${
-                        site.status === "live"
-                          ? "bg-green-100 text-green-800"
-                          : site.status === "under_development"
-                          ? "bg-yellow-100 text-yellow-800"
-                          : "bg-zinc-100 text-zinc-900 border border-zinc-300"
-                      }`}
-                    >
-                      {site.status.replace(/_/g, " ")}
-                    </span>
-                  </div>
-                  <h3 className="font-black text-slate-900 text-sm mb-1">
-                    {site.name}
-                  </h3>
-                  <p className="text-xs text-slate-500 leading-relaxed mb-3">
-                    {site.shortDescription}
-                  </p>
-                  {site.status === "live" && site.url && (
-                    <a
-                      href={site.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-bold text-slate-900 underline"
-                    >
-                      Visit →
-                    </a>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Services */}
-      <section className="py-16 border-b-2 border-slate-200 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <span className="inline-block px-3 py-1 rounded-md bg-[#FFF33D] text-black font-extrabold font-extrabold text-[11px] uppercase border border-slate-900/20 mb-3">
-                What We Offer
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-slate-950">
-                Corporate Services
-              </h2>
-            </div>
-            <Link
-              href="/corporate-services"
-              className="hidden md:inline-block px-5 py-2.5 bg-slate-900 text-white font-bold border-2 border-slate-900 shadow-[4px_4px_0px_#FFF33D] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all text-sm"
-            >
-              All Services →
-            </Link>
-          </div>
-          {services.length === 0 ? (
-            <div className="text-center py-16 border-2 border-slate-900 shadow-[8px_8px_0px_#FFF33D] bg-white">
-              <p className="text-4xl mb-3">⚙️</p>
-              <h3 className="font-black text-slate-900 text-xl mb-2">
-                Services Coming Soon
-              </h3>
-            </div>
-          ) : (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {services.slice(0, 6).map((svc) => (
-                <div
-                  key={svc.id}
-                  className="border-2 border-slate-900 shadow-[4px_4px_0px_#FFF33D] bg-white p-6"
-                >
-                  <div className="text-2xl mb-3">{svc.icon || "⚙️"}</div>
-                  <span className="inline-block mb-2 px-2 py-0.5 text-[10px] font-bold uppercase bg-[#FFF33D] border border-slate-900">
-                    {svc.category}
-                  </span>
-                  <h3 className="font-black text-slate-900 text-base mb-2">
-                    {svc.name}
-                  </h3>
-                  <p className="text-xs text-slate-500">{svc.shortDescription}</p>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Team Preview */}
-      <section className="py-16 border-b-2 border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <span className="inline-block px-3 py-1 rounded-md bg-[#FFF33D] text-black font-extrabold font-extrabold text-[11px] uppercase border border-slate-900/20 mb-3">
-                Our People
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-slate-950">
-                Leadership Team
-              </h2>
-            </div>
-            <Link
-              href="/founder"
-              className="hidden md:inline-block px-5 py-2.5 bg-slate-900 text-white font-bold border-2 border-slate-900 shadow-[4px_4px_0px_#FFF33D] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all text-sm"
-            >
-              Meet the Team →
-            </Link>
-          </div>
-          {team.length === 0 ? (
-            <div className="text-center py-16 border-2 border-slate-900 shadow-[8px_8px_0px_#FFF33D] bg-white">
-              <p className="text-4xl mb-3">👥</p>
-              <h3 className="font-black text-slate-900 text-xl mb-2">
-                Team Profiles Coming Soon
-              </h3>
-            </div>
-          ) : (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {team.slice(0, 4).map((member) => (
-                <div
-                  key={member.id}
-                  className="border-2 border-slate-900 shadow-[4px_4px_0px_#FFF33D] bg-white text-center p-6"
-                >
-                  {member.photo ? (
-                    <img
-                      src={member.photo}
-                      alt={member.name}
-                      className="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-2 border-slate-900"
-                    />
-                  ) : (
-                    <div className="w-20 h-20 rounded-full bg-[#FFF33D] border-2 border-slate-900 mx-auto mb-4 flex items-center justify-center text-2xl font-black text-slate-900">
-                      {member.name[0]}
-                    </div>
-                  )}
-                  <h3 className="font-black text-slate-900 text-sm">
-                    {member.name}
-                  </h3>
-                  <p className="text-xs text-slate-500 mt-1">
-                    {member.designation}
-                  </p>
-                  {member.isFounder && (
-                    <span className="mt-2 inline-block px-2 py-0.5 text-[10px] font-bold bg-[#FFF33D] border border-slate-900">
-                      Founder
-                    </span>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-16 border-b-2 border-slate-200 bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <span className="inline-block px-3 py-1 rounded-md bg-[#FFF33D] text-black font-extrabold font-extrabold text-[11px] uppercase border border-slate-900/20 mb-3">
-              Why MDK
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-white">
-              Why Choose Us
-            </h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                icon: "🚀",
-                title: "Innovation First",
-                desc: "We embrace emerging technologies and innovative approaches to solve real problems.",
-              },
-              {
-                icon: "🤝",
-                title: "Trusted Partner",
-                desc: "Built on trust and transparency, we forge long-lasting partnerships.",
-              },
-              {
-                icon: "🌐",
-                title: "Digital Native",
-                desc: "Born in the digital era, we leverage technology for exponential growth.",
-              },
-              {
-                icon: "📈",
-                title: "Growth Oriented",
-                desc: "Every decision is made with sustainable, long-term growth in mind.",
-              },
-              {
-                icon: "🎯",
-                title: "Focused Execution",
-                desc: "We set ambitious goals and execute with precision and dedication.",
-              },
-              {
-                icon: "💡",
-                title: "Creative Solutions",
-                desc: "Creative thinking drives our approach to every challenge we face.",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="border-2 border-[#FFF33D] p-6 bg-transparent"
-              >
-                <div className="text-3xl mb-3">{item.icon}</div>
-                <h3 className="font-black text-white text-base mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-slate-400 text-xs leading-relaxed">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact CTA */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-block px-3 py-1 rounded-md bg-[#FFF33D] text-black font-extrabold font-extrabold text-[11px] uppercase border border-slate-900/20 mb-4">
-            Get In Touch
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-950 mb-4">
-            Ready to Work Together?
-          </h2>
-          <p className="text-slate-600 max-w-xl mx-auto mb-8 text-sm leading-relaxed">
-            Whether you&apos;re looking to partner, invest, or explore
-            opportunities, we&apos;d love to hear from you.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white font-black border-2 border-slate-900 shadow-[6px_6px_0px_#FFF33D] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all"
-            >
-              Contact Us
-            </Link>
-            <Link
-              href="/partnerships"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#FFF33D] text-slate-900 font-black border-2 border-slate-900 shadow-[6px_6px_0px_#1e293b] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all"
-            >
-              Partnerships
-            </Link>
-          </div>
+          </Card3D>
         </div>
       </section>
     </div>

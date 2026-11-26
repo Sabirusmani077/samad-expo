@@ -28,6 +28,9 @@ export default async function CorporateHeadquartersHome() {
   const websites = (db.websiteListings || []).filter((w) => w.isPublic !== false).sort((a, b) => a.sortOrder - b.sortOrder);
   const services = (db.corporateServices || []).filter((s) => s.status === "active");
   const team = (db.teamMembers || []).filter((m) => m.isActive !== false);
+  const hostedProjects = (db.hostedProjects || []).filter(
+    (p) => p.visibility === "public" && p.deploymentStatus === "live"
+  );
 
   return (
     <ReelhouseCorporateHome
@@ -36,6 +39,7 @@ export default async function CorporateHeadquartersHome() {
       divisions={divisions}
       services={services}
       team={team}
+      hostedProjects={hostedProjects}
     />
   );
 }

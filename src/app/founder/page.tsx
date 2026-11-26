@@ -1,230 +1,283 @@
 import React from "react";
 import Link from "next/link";
 import { readDb } from "@/lib/db";
-import { Sparkles, Users, Award, ShieldCheck, Mail, Linkedin, Twitter, Globe, ArrowRight, Quote, CheckCircle2 } from "lucide-react";
+import { ThreeHeroCanvas } from "@/components/ThreeHeroCanvas";
+import { Card3D } from "@/components/Card3D";
+import {
+  Sparkles,
+  Mail,
+  Linkedin,
+  Twitter,
+  Quote,
+  MapPin,
+  ArrowRight,
+  Phone,
+} from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Founder & Leadership | Samad Expo",
   description:
-    "Meet the founder and leadership of Samad Expo. Read the founder's message, business philosophy, and corporate vision.",
+    "Meet Sabir Usmani, founder of Samad Expo. Read the founder's message, engineering philosophy, and vision.",
 };
 
 export default function FounderPage() {
   const db = readDb();
   const profile = db.companyProfile;
-  const founderMember = db.teamMembers?.find((m) => m.isFounder && m.isActive !== false);
-  const leadership = (db.teamMembers || []).filter((m) => !m.isFounder && m.isActive !== false);
+  const founderMember = db.teamMembers?.find(
+    (m) => m.isFounder && m.isActive !== false
+  );
+  const leadership = (db.teamMembers || []).filter(
+    (m) => !m.isFounder && m.isActive !== false
+  );
 
-  const founderName = founderMember?.name || profile?.founderName || "Sabir Usmani";
-  const founderTitle = founderMember?.designation || profile?.founderDesignation || "Founder & Chief Executive";
-  const founderPhoto = founderMember?.photo || profile?.founderPhoto || "";
-  const founderBio = founderMember?.bio || profile?.founderBio || "System architect and entrepreneur driving digital platform development and cloud edge hosting at Samad Expo.";
+  const founderName =
+    founderMember?.name || profile?.founderName || "Sabir Usmani";
+  const founderTitle =
+    founderMember?.designation || profile?.founderDesignation || "Founder & Owner";
+  const founderPhoto =
+    founderMember?.photo || profile?.founderPhoto || "/images/founder-portrait.jpg";
+  const founderBio =
+    founderMember?.bio ||
+    profile?.founderBio ||
+    "Entrepreneur and systems architect behind Samad Expo.";
   const founderBackground = founderMember?.professionalBackground || "";
   const founderPhilosophy = founderMember?.leadershipPhilosophy || "";
   const founderMessage =
     founderMember?.founderMessage ||
     profile?.founderMessage ||
-    "At Samad Expo, our purpose is simple yet uncompromising: to engineer web technologies and instant hosting platforms that remove complexity, deliver world-class performance, and empower digital entrepreneurs globally.";
+    "Welcome to Samad Expo. Our journey began with a fundamental belief: great digital platforms are built on robust architecture, continuous technological innovation, and exceptional user value.";
 
   const socialLinks = founderMember?.socialLinks || {
-    linkedin: profile?.socialLinks?.linkedin || "https://www.linkedin.com/in/sabir-usmani-753195397",
-    twitter: profile?.socialLinks?.twitter || "https://x.com/Mrsabirusmani07",
-    instagram: profile?.socialLinks?.instagram || "https://www.instagram.com/sabir_usmani_077/",
+    linkedin: profile?.socialLinks?.linkedin || "",
+    twitter: profile?.socialLinks?.twitter || "",
+    instagram: profile?.socialLinks?.instagram || "",
     website: profile?.socialLinks?.website || "",
-    email: "officialaadhakh@gmail.com",
+    email: profile?.contactEmail || "officialaadhakh@gmail.com",
   };
 
   return (
-    <div className="bg-[#F8FAFC] min-h-screen text-slate-900">
-      
-      {/* Athenura Obsidian Hero */}
-      <section className="bg-[#040D12] text-white pt-14 pb-20 sm:pt-20 sm:pb-24 border-b border-teal-900/30 relative isolate overflow-hidden">
-        <div className="pointer-events-none absolute -top-40 right-0 h-[500px] w-[500px] rounded-full bg-teal-500/10 blur-[140px]" />
-        
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
-          <nav aria-label="Breadcrumb" className="text-xs text-zinc-400 flex items-center gap-2">
-            <Link href="/" className="hover:text-teal-400 transition">Home</Link>
+    <div className="bg-[#060608] min-h-screen text-white">
+      {/* 3D Yellow & Black Hero */}
+      <section className="samad-hero-grid border-b border-zinc-800/80 pt-10 pb-14 sm:pt-16 sm:pb-20 relative overflow-hidden">
+        <ThreeHeroCanvas variant="dark" />
+        <div className="pointer-events-none absolute -top-24 right-0 h-80 w-80 rounded-full bg-[#FFF33D]/15 blur-[120px]" />
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-5">
+          <nav
+            aria-label="Breadcrumb"
+            className="text-xs text-zinc-400 flex items-center gap-2"
+          >
+            <Link href="/" className="hover:text-[#FFF33D] font-semibold transition">
+              Home
+            </Link>
             <span>/</span>
-            <span className="text-white font-bold">Leadership &amp; Founder</span>
+            <span className="text-[#FFF33D] font-bold">Founder &amp; Leadership</span>
           </nav>
 
-          <div className="space-y-4 max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-teal-500/30 bg-teal-950/50 text-xs font-bold text-teal-300">
-              <Sparkles className="w-3.5 h-3.5 text-teal-400" />
-              <span>Executive Stewardship</span>
+          <div className="space-y-3 max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF33D]/10 border border-[#FFF33D]/30 text-xs font-bold text-[#FFF33D]">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Leadership &amp; Engineering</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight leading-tight">
-              Leadership &amp; <span className="text-gradient-teal">Vision.</span>
+            <h1 className="text-4xl sm:text-5xl font-black tracking-tight leading-tight text-white">
+              Founder &amp; <span className="samad-highlight">Vision</span>
             </h1>
 
-            <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-light">
-              Guided by founder Sabir Usmani, Samad Expo connects software engineering with enterprise digital hosting to build systems that scale effortlessly.
+            <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
+              Guided by founder Sabir Usmani from Agra, India — uniting instant website hosting with practical everyday web tools.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Main Content Sections */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 space-y-16">
-        
-        {/* Founder Profile Hero Card */}
-        <section className="athenura-card p-8 sm:p-12 space-y-8">
-          <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
-            <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-3xl bg-slate-900 overflow-hidden shrink-0 flex items-center justify-center shadow-lg border border-teal-500/20">
-              {founderPhoto ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={founderPhoto} alt={founderName} className="w-full h-full object-cover" />
-              ) : (
-                <div className="w-full h-full bg-gradient-to-tr from-slate-900 to-teal-950 flex flex-col items-center justify-center p-4 text-center">
-                  <span className="text-5xl font-black text-white">{founderName.charAt(0)}</span>
-                  <span className="text-[10px] uppercase font-bold text-teal-400 mt-2">Executive Desk</span>
+      {/* Main Content */}
+      <div className="bg-[#0B0B0F] py-16 sm:py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          {/* Founder Profile Card */}
+          <Card3D intensity={6}>
+            <section className="samad-card p-8 sm:p-10 space-y-8 relative overflow-hidden">
+              <div className="absolute inset-x-0 top-0 h-1.5 bg-[#FFF33D]" />
+
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-8 pt-2">
+                <div className="w-40 h-40 sm:w-44 sm:h-44 rounded-3xl bg-[#141419] overflow-hidden shrink-0 flex items-center justify-center border-4 border-[#FFF33D] shadow-[0_15px_40px_rgba(255,243,61,0.18)]">
+                  {founderPhoto ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={founderPhoto}
+                      alt={founderName}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <span className="text-5xl font-black text-[#FFF33D]">
+                      {founderName.charAt(0)}
+                    </span>
+                  )}
                 </div>
-              )}
-            </div>
 
-            <div className="space-y-4 flex-1 text-center md:text-left">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-50 text-teal-800 text-xs font-bold uppercase tracking-wider border border-teal-100">
-                <span>{founderTitle}</span>
-              </div>
-              
-              <h2 className="text-3xl sm:text-4xl font-black text-slate-950 tracking-tight">
-                {founderName}
-              </h2>
+                <div className="space-y-4 flex-1 text-center md:text-left">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF33D] text-black text-xs font-extrabold uppercase tracking-wider">
+                    <span>{founderTitle}</span>
+                  </div>
 
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                {founderBio}
-              </p>
+                  <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
+                    {founderName}
+                  </h2>
 
-              {/* Social and Profile links */}
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
-                <a
-                  href={`mailto:${socialLinks.email || "officialaadhakh@gmail.com"}`}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-800 text-slate-800 text-xs font-bold transition"
-                >
-                  <Mail className="w-3.5 h-3.5 text-teal-600" />
-                  <span>Email Desk</span>
-                </a>
-                
-                {socialLinks.linkedin && (
-                  <a
-                    href={socialLinks.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-800 text-slate-800 text-xs font-bold transition"
-                  >
-                    <Linkedin className="w-3.5 h-3.5 text-teal-600" />
-                    <span>LinkedIn Profile</span>
-                  </a>
-                )}
-
-                {socialLinks.twitter && (
-                  <a
-                    href={socialLinks.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-800 text-slate-800 text-xs font-bold transition"
-                  >
-                    <Twitter className="w-3.5 h-3.5 text-teal-600" />
-                    <span>X / Twitter</span>
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-
-          {(founderBackground || founderPhilosophy) && (
-            <div className="pt-8 border-t border-slate-100 grid grid-cols-1 md:grid-cols-2 gap-8">
-              {founderBackground && (
-                <div className="space-y-2">
-                  <h3 className="text-base font-bold text-slate-950">Professional Background</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed whitespace-pre-line">
-                    {founderBackground}
+                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
+                    {founderBio}
                   </p>
-                </div>
-              )}
-              {founderPhilosophy && (
-                <div className="space-y-2">
-                  <h3 className="text-base font-bold text-slate-950">Leadership Philosophy</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed whitespace-pre-line">
-                    {founderPhilosophy}
-                  </p>
-                </div>
-              )}
-            </div>
-          )}
-        </section>
 
-        {/* Message from the Founder (Athenura Quote Layout) */}
-        {founderMessage && (
-          <section className="athenura-card p-8 sm:p-12 space-y-6 bg-gradient-to-br from-slate-950 to-teal-950 text-white border-none shadow-xl relative overflow-hidden">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-white/10 text-teal-300 flex items-center justify-center">
-                <Quote className="w-5 h-5" />
-              </div>
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-teal-400">
-                  Official Statement
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-black text-white">
-                  Message from the Founder
-                </h2>
-              </div>
-            </div>
+                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 pt-1 text-xs">
+                    <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#18181F] border border-zinc-800 text-zinc-200 font-semibold">
+                      <MapPin className="w-3.5 h-3.5 text-[#FFF33D]" />
+                      <span>{profile?.headquarters || "Bodla, Agra, UP"}</span>
+                    </span>
 
-            <div className="space-y-4 text-sm sm:text-base text-zinc-300 leading-relaxed italic font-light">
-              <p className="whitespace-pre-line">{founderMessage}</p>
-            </div>
+                    <a
+                      href={`mailto:${socialLinks.email || "officialaadhakh@gmail.com"}`}
+                      className="btn-3d-yellow inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-bold text-xs"
+                    >
+                      <Mail className="w-3.5 h-3.5" />
+                      <span>{socialLinks.email || "officialaadhakh@gmail.com"}</span>
+                    </a>
 
-            <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-zinc-400">
-              <div>
-                <span className="font-bold text-white">{founderName}</span> &mdash; {founderTitle}
-              </div>
-              <span className="font-semibold text-teal-300">Samad Expo</span>
-            </div>
-          </section>
-        )}
+                    <a
+                      href={`tel:${(profile?.contactPhone || "+919458204216").replace(/\s+/g, "")}`}
+                      className="btn-3d-black inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-bold text-xs"
+                    >
+                      <Phone className="w-3.5 h-3.5 text-[#FFF33D]" />
+                      <span>{profile?.contactPhone || "+91 94582 04216"}</span>
+                    </a>
 
-        {/* Leadership Team Grid */}
-        <section className="space-y-6">
-          <div className="space-y-1">
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
-              Executive &amp; Operational Leadership
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-500">
-              The engineers and operational leads driving digital excellence across Samad Expo.
-            </p>
-          </div>
+                    {socialLinks.linkedin && (
+                      <a
+                        href={socialLinks.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-3d-black inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-bold text-xs"
+                      >
+                        <Linkedin className="w-3.5 h-3.5 text-[#FFF33D]" />
+                        <span>LinkedIn</span>
+                      </a>
+                    )}
 
-          {leadership.length === 0 ? (
-            <div className="athenura-card p-8 text-center text-xs text-slate-500">
-              Additional executive appointments will be announced as divisions expand.
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {leadership.map((member) => (
-                <div
-                  key={member.id}
-                  className="athenura-card p-6 flex flex-col justify-between space-y-4"
-                >
-                  <div className="space-y-3">
-                    <div className="w-14 h-14 rounded-2xl bg-teal-50 text-teal-700 font-black text-lg flex items-center justify-center">
-                      {member.name.charAt(0)}
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-slate-950">{member.name}</h3>
-                      <div className="text-xs font-bold text-teal-700">{member.designation}</div>
-                    </div>
-                    <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">{member.bio}</p>
+                    {socialLinks.twitter && (
+                      <a
+                        href={socialLinks.twitter}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-3d-black inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-bold text-xs"
+                      >
+                        <Twitter className="w-3.5 h-3.5 text-[#FFF33D]" />
+                        <span>X / Twitter</span>
+                      </a>
+                    )}
                   </div>
                 </div>
-              ))}
-            </div>
-          )}
-        </section>
+              </div>
 
+              {(founderBackground || founderPhilosophy) && (
+                <div className="pt-8 border-t border-zinc-800 grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {founderBackground && (
+                    <div className="space-y-2">
+                      <h3 className="text-base font-extrabold text-[#FFF33D]">
+                        Professional Background
+                      </h3>
+                      <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed whitespace-pre-line">
+                        {founderBackground}
+                      </p>
+                    </div>
+                  )}
+                  {founderPhilosophy && (
+                    <div className="space-y-2">
+                      <h3 className="text-base font-extrabold text-[#FFF33D]">
+                        Leadership Philosophy
+                      </h3>
+                      <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed whitespace-pre-line">
+                        {founderPhilosophy}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
+            </section>
+          </Card3D>
+
+          {/* Message from Founder */}
+          {founderMessage && (
+            <Card3D intensity={6}>
+              <section className="samad-card p-8 sm:p-10 space-y-5 border-[#FFF33D]/30 relative overflow-hidden">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#FFF33D] text-black flex items-center justify-center shadow-md shadow-[#FFF33D]/20">
+                    <Quote className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#FFF33D]">
+                      Official Statement
+                    </span>
+                    <h2 className="text-2xl font-black text-white">
+                      Message from the Founder
+                    </h2>
+                  </div>
+                </div>
+
+                <p className="text-sm sm:text-base text-zinc-300 leading-relaxed italic whitespace-pre-line">
+                  &ldquo;{founderMessage}&rdquo;
+                </p>
+
+                <div className="pt-4 border-t border-zinc-800 flex items-center justify-between text-xs text-zinc-400">
+                  <div>
+                    <span className="font-bold text-white">{founderName}</span> &mdash;{" "}
+                    {founderTitle}
+                  </div>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-1 text-[#FFF33D] font-bold hover:underline"
+                  >
+                    <span>Connect</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </section>
+            </Card3D>
+          )}
+
+          {/* Additional Leadership */}
+          {leadership.length > 0 && (
+            <section className="space-y-6">
+              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                Leadership <span className="samad-highlight">Team</span>
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {leadership.map((member) => (
+                  <Card3D key={member.id} intensity={9}>
+                    <div className="samad-card p-6 flex flex-col justify-between space-y-4 h-full">
+                      <div className="space-y-3">
+                        <div className="w-12 h-12 rounded-2xl bg-[#FFF33D] text-black font-black text-lg flex items-center justify-center shadow-md shadow-[#FFF33D]/20">
+                          {member.name.charAt(0)}
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-extrabold text-white">
+                            {member.name}
+                          </h3>
+                          <div className="text-xs font-bold text-[#FFF33D]">
+                            {member.designation}
+                          </div>
+                        </div>
+                        <p className="text-xs text-zinc-400 leading-relaxed line-clamp-3">
+                          {member.bio}
+                        </p>
+                      </div>
+                    </div>
+                  </Card3D>
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
       </div>
     </div>
   );

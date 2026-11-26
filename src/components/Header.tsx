@@ -9,14 +9,12 @@ import {
   Search,
   X,
   ArrowUpRight,
-  Sparkles,
   Globe,
-  Layers,
   Cpu,
-  ShieldCheck,
-  Phone,
   Mail,
   Zap,
+  Calculator,
+  FileCode2,
 } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { HeaderAuthControl } from "@/components/HeaderAuthControl";
@@ -28,22 +26,20 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [servicesDropdown, setServicesDropdown] = useState(false);
+  const [toolsDropdown, setToolsDropdown] = useState(false);
   const [aboutDropdown, setAboutDropdown] = useState(false);
 
-  // Exclude admin pages only
-  if (pathname?.startsWith("/admin")) {
-    return null;
-  }
-
-  // Handle scroll detection for dynamic shadow and blur
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 16);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  if (pathname?.startsWith("/admin") || pathname?.startsWith("/dashboard")) {
+    return null;
+  }
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,99 +55,136 @@ export function Header() {
 
   const isHome = pathname === "/";
 
+  const navPillClass = (active: boolean) =>
+    `whitespace-nowrap px-3.5 py-2 rounded-full text-[13px] font-bold transition-all duration-200 inline-flex items-center gap-1 ${
+      active
+        ? "bg-[#FFF33D] text-zinc-950 font-extrabold shadow-[0_0_20px_rgba(255,243,61,0.35)]"
+        : "text-zinc-300 hover:text-[#FFF33D] hover:bg-white/5"
+    }`;
+
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+      className={`sticky top-0 z-50 w-full transition-all duration-300 border-t-[3px] border-t-[#FFF33D] ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-[0_4px_24px_rgba(15,23,42,0.06)] border-b border-slate-100 py-2.5"
-          : "bg-white/90 backdrop-blur-sm border-b border-slate-100/80 py-3.5"
+          ? "bg-[#060608]/95 backdrop-blur-xl shadow-[0_12px_40px_rgba(0,0,0,0.85)] border-b border-zinc-800/90 py-2.5"
+          : "bg-[#060608]/90 backdrop-blur-md border-b border-zinc-800/60 py-3"
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-4">
           {/* Brand Logo */}
-          <Logo size="md" showTagline />
+          <div className="shrink-0">
+            <Logo size="md" showTagline inverted />
+          </div>
 
-          {/* Desktop Navigation - Athenura Style */}
+          {/* Desktop Navigation — Single-Line Precision */}
           <nav
             aria-label="Main Navigation"
-            className="hidden lg:flex items-center gap-1 xl:gap-2 text-sm font-semibold text-slate-700"
+            className="hidden lg:flex items-center gap-1"
           >
-            {/* Home */}
-            <Link
-              href="/"
-              className={`px-3.5 py-2 rounded-full transition-all duration-200 ${
-                isHome
-                  ? "bg-cyan-50 text-teal-800 font-bold shadow-xs"
-                  : "hover:text-teal-700 hover:bg-slate-50"
-              }`}
-            >
+            <Link href="/" className={navPillClass(isHome)}>
               Home
             </Link>
 
-            {/* Services Dropdown */}
+            {/* Live Tools Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => setServicesDropdown(true)}
-              onMouseLeave={() => setServicesDropdown(false)}
+              onMouseEnter={() => setToolsDropdown(true)}
+              onMouseLeave={() => setToolsDropdown(false)}
             >
               <Link
-                href="/corporate-services"
-                className={`inline-flex items-center gap-1 px-3.5 py-2 rounded-full transition-all duration-200 ${
-                  pathname?.startsWith("/corporate-services") || pathname?.startsWith("/services")
-                    ? "bg-cyan-50 text-teal-800 font-bold shadow-xs"
-                    : "hover:text-teal-700 hover:bg-slate-50"
-                }`}
+                href="/websites"
+                className={navPillClass(
+                  Boolean(
+                    pathname?.startsWith("/websites") ||
+                      pathname?.startsWith("/portfolio")
+                  )
+                )}
               >
-                <span>Services</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesDropdown ? "rotate-180 text-teal-600" : "text-slate-400"}`} />
+                <span>Live Tools</span>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                    toolsDropdown ? "rotate-180 text-[#FFF33D]" : "text-zinc-400"
+                  }`}
+                />
               </Link>
 
-              {servicesDropdown && (
-                <div className="absolute top-full left-0 pt-2 w-80 z-50 animate-in fade-in zoom-in-95 duration-150">
-                  <div className="rounded-2xl border border-slate-100 bg-white p-3 shadow-[0_20px_50px_rgba(15,23,42,0.12)]">
-                    <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-3 py-1.5">
-                      Enterprise Solutions
+              {toolsDropdown && (
+                <div className="absolute top-full left-0 pt-2 w-80 z-50">
+                  <div className="rounded-2xl border border-[#FFF33D]/25 bg-[#0C0C10]/98 backdrop-blur-xl p-2.5 shadow-[0_24px_60px_rgba(0,0,0,0.9)]">
+                    <div className="text-[10px] font-extrabold uppercase tracking-widest text-[#FFF33D]/70 px-3 py-1.5">
+                      Directory &amp; Instant Hosting
                     </div>
+
                     <Link
-                      href="/corporate-services"
-                      onClick={() => setServicesDropdown(false)}
-                      className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition group"
+                      href="/websites"
+                      onClick={() => setToolsDropdown(false)}
+                      className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition group"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center shrink-0 group-hover:bg-teal-600 group-hover:text-white transition">
-                        <Zap className="w-4 h-4" />
+                      <div className="w-8 h-8 rounded-lg bg-[#FFF33D] text-zinc-950 flex items-center justify-center shrink-0">
+                        <Globe className="w-4 h-4" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-slate-900 group-hover:text-teal-700">Custom Software & Web Apps</div>
-                        <div className="text-[11px] text-slate-500">Tailored digital systems & modern architectures</div>
+                        <div className="text-xs font-bold text-white group-hover:text-[#FFF33D]">
+                          Public Websites Directory
+                        </div>
+                        <div className="text-[11px] text-zinc-400">
+                          Browse all live platforms &amp; hosted sites
+                        </div>
                       </div>
                     </Link>
 
                     <Link
-                      href="/dashboard"
-                      onClick={() => setServicesDropdown(false)}
-                      className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition group"
+                      href="/websites/mdk-chrono-age-calculator"
+                      onClick={() => setToolsDropdown(false)}
+                      className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition group"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-cyan-50 text-cyan-700 flex items-center justify-center shrink-0 group-hover:bg-cyan-600 group-hover:text-white transition">
-                        <Globe className="w-4 h-4" />
+                      <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 text-[#FFF33D] flex items-center justify-center shrink-0 group-hover:bg-[#FFF33D] group-hover:text-black">
+                        <Calculator className="w-4 h-4" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-slate-900 group-hover:text-cyan-700">Instant Website Hosting</div>
-                        <div className="text-[11px] text-slate-500">Automated Git & zip edge deployment in &lt; 3s</div>
+                        <div className="text-xs font-bold text-white group-hover:text-[#FFF33D]">
+                          MDK Chrono Age Calculator
+                        </div>
+                        <div className="text-[11px] text-zinc-400">
+                          Exact chronological age &amp; milestone engine
+                        </div>
+                      </div>
+                    </Link>
+
+                    <Link
+                      href="/websites/mdk-convertor"
+                      onClick={() => setToolsDropdown(false)}
+                      className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition group"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 text-[#FFF33D] flex items-center justify-center shrink-0 group-hover:bg-[#FFF33D] group-hover:text-black">
+                        <FileCode2 className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <div className="text-xs font-bold text-white group-hover:text-[#FFF33D]">
+                          MDK Unit &amp; Media Convertor
+                        </div>
+                        <div className="text-[11px] text-zinc-400">
+                          Browser-based conversion utility
+                        </div>
                       </div>
                     </Link>
 
                     <Link
                       href="/ecosystem-search?q=api"
-                      onClick={() => setServicesDropdown(false)}
-                      className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition group"
+                      onClick={() => setToolsDropdown(false)}
+                      className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition group"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 group-hover:bg-amber-600 group-hover:text-white transition">
+                      <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 text-[#FFF33D] flex items-center justify-center shrink-0 group-hover:bg-[#FFF33D] group-hover:text-black">
                         <Cpu className="w-4 h-4" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-slate-900 group-hover:text-amber-700">MCP Protocol & AI API</div>
-                        <div className="text-[11px] text-slate-500">Model Context Protocol for AI integrations</div>
+                        <div className="text-xs font-bold text-white group-hover:text-[#FFF33D]">
+                          Search Ecosystem &amp; MCP API
+                        </div>
+                        <div className="text-[11px] text-zinc-400">
+                          Find tools, services &amp; AI endpoints
+                        </div>
                       </div>
                     </Link>
                   </div>
@@ -159,28 +192,24 @@ export function Header() {
               )}
             </div>
 
-            {/* Portfolio / Projects */}
             <Link
-              href="/websites"
-              className={`px-3.5 py-2 rounded-full transition-all duration-200 ${
-                pathname === "/websites" || pathname?.startsWith("/portfolio")
-                  ? "bg-cyan-50 text-teal-800 font-bold shadow-xs"
-                  : "hover:text-teal-700 hover:bg-slate-50"
-              }`}
+              href="/dashboard"
+              className={navPillClass(Boolean(pathname?.startsWith("/dashboard")))}
             >
-              Projects &amp; Tools
+              <Zap className="w-3.5 h-3.5 text-[#FFF33D]" />
+              <span>Hosting</span>
             </Link>
 
-            {/* Businesses */}
             <Link
-              href="/businesses"
-              className={`px-3.5 py-2 rounded-full transition-all duration-200 ${
-                pathname?.startsWith("/businesses") || pathname?.startsWith("/corporate")
-                  ? "bg-cyan-50 text-teal-800 font-bold shadow-xs"
-                  : "hover:text-teal-700 hover:bg-slate-50"
-              }`}
+              href="/corporate-services"
+              className={navPillClass(
+                Boolean(
+                  pathname?.startsWith("/corporate-services") ||
+                    pathname?.startsWith("/services")
+                )
+              )}
             >
-              Ventures
+              Services
             </Link>
 
             {/* About Dropdown */}
@@ -191,133 +220,120 @@ export function Header() {
             >
               <Link
                 href="/about-company"
-                className={`inline-flex items-center gap-1 px-3.5 py-2 rounded-full transition-all duration-200 ${
-                  pathname?.startsWith("/about") || pathname?.startsWith("/founder") || pathname?.startsWith("/careers")
-                    ? "bg-cyan-50 text-teal-800 font-bold shadow-xs"
-                    : "hover:text-teal-700 hover:bg-slate-50"
-                }`}
+                className={navPillClass(
+                  Boolean(
+                    pathname?.startsWith("/about") ||
+                      pathname?.startsWith("/founder") ||
+                      pathname?.startsWith("/careers") ||
+                      pathname?.startsWith("/partnerships")
+                  )
+                )}
               >
                 <span>About</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${aboutDropdown ? "rotate-180 text-teal-600" : "text-slate-400"}`} />
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                    aboutDropdown ? "rotate-180 text-[#FFF33D]" : "text-zinc-400"
+                  }`}
+                />
               </Link>
 
               {aboutDropdown && (
-                <div className="absolute top-full left-0 pt-2 w-64 z-50 animate-in fade-in zoom-in-95 duration-150">
-                  <div className="rounded-2xl border border-slate-100 bg-white p-2.5 shadow-[0_20px_50px_rgba(15,23,42,0.12)]">
+                <div className="absolute top-full left-0 pt-2 w-60 z-50">
+                  <div className="rounded-2xl border border-[#FFF33D]/25 bg-[#0C0C10]/98 backdrop-blur-xl p-2 shadow-[0_24px_60px_rgba(0,0,0,0.9)]">
                     <Link
                       href="/about-company"
                       onClick={() => setAboutDropdown(false)}
-                      className="block px-3.5 py-2 rounded-xl text-xs font-bold text-slate-800 hover:bg-slate-50 hover:text-teal-700 transition"
+                      className="block px-3.5 py-2.5 rounded-xl text-xs font-bold text-zinc-300 hover:bg-white/5 hover:text-[#FFF33D] transition"
                     >
-                      Corporate Profile &amp; Mission
+                      Company Profile &amp; Vision
                     </Link>
                     <Link
                       href="/founder"
                       onClick={() => setAboutDropdown(false)}
-                      className="block px-3.5 py-2 rounded-xl text-xs font-bold text-slate-800 hover:bg-slate-50 hover:text-teal-700 transition"
+                      className="block px-3.5 py-2.5 rounded-xl text-xs font-bold text-zinc-300 hover:bg-white/5 hover:text-[#FFF33D] transition"
                     >
-                      Founder &amp; Leadership
+                      Founder &mdash; Sabir Usmani
                     </Link>
                     <Link
                       href="/careers"
                       onClick={() => setAboutDropdown(false)}
-                      className="block px-3.5 py-2 rounded-xl text-xs font-bold text-slate-800 hover:bg-slate-50 hover:text-teal-700 transition"
+                      className="block px-3.5 py-2.5 rounded-xl text-xs font-bold text-zinc-300 hover:bg-white/5 hover:text-[#FFF33D] transition"
                     >
                       Careers &amp; Opportunities
                     </Link>
                     <Link
                       href="/partnerships"
                       onClick={() => setAboutDropdown(false)}
-                      className="block px-3.5 py-2 rounded-xl text-xs font-bold text-slate-800 hover:bg-slate-50 hover:text-teal-700 transition"
+                      className="block px-3.5 py-2.5 rounded-xl text-xs font-bold text-zinc-300 hover:bg-white/5 hover:text-[#FFF33D] transition"
                     >
-                      Partnership Ecosystem
+                      Partnerships &amp; Alliances
                     </Link>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* FAQ */}
-            <Link
-              href="/faq"
-              className={`px-3.5 py-2 rounded-full transition-all duration-200 ${
-                pathname === "/faq"
-                  ? "bg-cyan-50 text-teal-800 font-bold shadow-xs"
-                  : "hover:text-teal-700 hover:bg-slate-50"
-              }`}
-            >
-              FAQs
-            </Link>
-
-            {/* Direct Contact */}
-            <Link
-              href="/contact"
-              className={`px-3.5 py-2 rounded-full transition-all duration-200 ${
-                pathname === "/contact"
-                  ? "bg-cyan-50 text-teal-800 font-bold shadow-xs"
-                  : "hover:text-teal-700 hover:bg-slate-50"
-              }`}
-            >
-              Contact
+            <Link href="/faq" className={navPillClass(pathname === "/faq")}>
+              FAQ
             </Link>
           </nav>
 
           {/* Right Action Controls */}
-          <div className="flex items-center gap-2.5 sm:gap-3">
-            {/* Quick Search */}
+          <div className="flex items-center gap-2 shrink-0">
             <button
               type="button"
               onClick={() => setSearchOpen((prev) => !prev)}
               aria-label="Search Ecosystem"
-              className="p-2.5 rounded-full border border-slate-200 bg-slate-50/80 text-slate-600 hover:text-teal-700 hover:bg-white hover:border-teal-300 transition-all duration-200 shadow-xs cursor-pointer"
+              className="w-9 h-9 rounded-full border border-zinc-800 bg-zinc-900/80 text-zinc-300 hover:text-[#FFF33D] hover:border-[#FFF33D]/60 flex items-center justify-center transition-all cursor-pointer shrink-0"
             >
               <Search className="w-4 h-4" />
             </button>
 
-            {/* Authentication Control */}
             <HeaderAuthControl />
 
-            {/* High-Contrast Athenura Contact Pill Button */}
             <Link
               href="/contact"
-              className="hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-slate-950 hover:bg-teal-700 text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98]"
+              className="btn-3d-black hidden sm:inline-flex items-center gap-1.5 whitespace-nowrap px-4 py-2 rounded-full text-xs font-extrabold tracking-wide shrink-0"
             >
-              <span>Contact Us</span>
+              <span>Contact</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
 
-            {/* Mobile Hamburger Toggle */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
-              className="lg:hidden p-2.5 rounded-full border border-slate-200 bg-white text-slate-800 hover:bg-slate-50 transition cursor-pointer"
+              className="lg:hidden w-9 h-9 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-200 hover:text-[#FFF33D] flex items-center justify-center transition cursor-pointer shrink-0"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? (
+                <X className="w-4 h-4" />
+              ) : (
+                <Menu className="w-4 h-4" />
+              )}
             </button>
           </div>
         </div>
 
-        {/* Expandable Instant Search Bar */}
+        {/* Expandable Search Bar */}
         {searchOpen && (
-          <div className="pt-3 pb-2 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="pt-3 pb-1">
             <form
               onSubmit={handleSearchSubmit}
-              className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-white p-2 shadow-xl max-w-2xl mx-auto"
+              className="flex items-center gap-2 rounded-2xl border border-[#FFF33D]/30 bg-zinc-950 p-1.5 shadow-2xl max-w-2xl mx-auto"
             >
-              <Search className="w-4 h-4 text-teal-600 ml-2 shrink-0" />
+              <Search className="w-4 h-4 text-[#FFF33D] ml-2.5 shrink-0" />
               <input
                 type="search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search websites, tools, business divisions, APIs..."
-                className="flex-1 bg-transparent px-2 py-1.5 text-sm text-slate-900 outline-none placeholder:text-slate-400"
+                placeholder="Search websites, live tools, hosting, or services..."
+                className="flex-1 bg-transparent px-2 py-1.5 text-sm text-white outline-none placeholder:text-zinc-500"
                 autoFocus
               />
               <button
                 type="submit"
-                className="px-4 py-2 rounded-xl bg-slate-950 text-white hover:bg-teal-700 text-xs font-bold tracking-wider uppercase transition cursor-pointer"
+                className="btn-3d-yellow px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider cursor-pointer"
               >
                 Search
               </button>
@@ -328,48 +344,48 @@ export function Header() {
 
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-slate-100 bg-white/98 backdrop-blur-xl px-5 py-6 shadow-2xl animate-in slide-in-from-top-4 duration-200">
-          <nav aria-label="Mobile Navigation" className="grid gap-2">
+        <div className="lg:hidden border-t border-zinc-800 bg-[#08080B] px-5 py-6 shadow-2xl">
+          <nav aria-label="Mobile Navigation" className="grid gap-1.5">
             {[
               { label: "Home", href: "/" },
-              { label: "Corporate Services", href: "/corporate-services" },
-              { label: "Instant Hosting & Deploy", href: "/dashboard" },
-              { label: "Projects & Tools Showcase", href: "/websites" },
-              { label: "Business Divisions", href: "/businesses" },
+              { label: "Instant Website Hosting", href: "/dashboard" },
+              { label: "Live Tools & Directory", href: "/websites" },
+              { label: "Services & Capabilities", href: "/corporate-services" },
               { label: "About Samad Expo", href: "/about-company" },
-              { label: "Founder & Leadership", href: "/founder" },
-              { label: "Careers & Culture", href: "/careers" },
+              { label: "Founder — Sabir Usmani", href: "/founder" },
+              { label: "Careers", href: "/careers" },
+              { label: "Partnerships", href: "/partnerships" },
               { label: "Ecosystem Search", href: "/ecosystem-search" },
-              { label: "Frequently Asked Questions", href: "/faq" },
-              { label: "Contact Central Headquarters", href: "/contact" },
+              { label: "FAQ", href: "/faq" },
+              { label: "Contact Us", href: "/contact" },
             ].map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition ${
+                className={`flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-bold transition ${
                   pathname === item.href
-                    ? "bg-cyan-50 text-teal-800 font-bold"
-                    : "text-slate-800 hover:bg-slate-50 hover:text-teal-700"
+                    ? "bg-[#FFF33D] text-zinc-950"
+                    : "text-zinc-300 hover:bg-white/5 hover:text-[#FFF33D]"
                 }`}
               >
                 <span>{item.label}</span>
-                <ArrowUpRight className="w-4 h-4 text-slate-400" />
+                <ArrowUpRight className="w-4 h-4 opacity-60" />
               </Link>
             ))}
           </nav>
 
-          <div className="mt-6 pt-5 border-t border-slate-100 space-y-3">
+          <div className="mt-5 pt-4 border-t border-zinc-800 space-y-3">
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-slate-950 hover:bg-teal-700 text-white text-xs font-bold uppercase tracking-wider transition shadow-sm"
+              className="btn-3d-yellow w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-extrabold uppercase tracking-wider"
             >
-              <span>Get In Touch</span>
+              <span>Contact Headquarters</span>
               <ArrowUpRight className="w-4 h-4" />
             </Link>
-            <div className="flex items-center justify-center gap-2 text-xs text-slate-500 font-medium">
-              <Mail className="w-3.5 h-3.5 text-teal-600" />
+            <div className="flex items-center justify-center gap-2 text-xs text-zinc-400 font-medium">
+              <Mail className="w-3.5 h-3.5 text-[#FFF33D]" />
               <span>officialaadhakh@gmail.com</span>
             </div>
           </div>

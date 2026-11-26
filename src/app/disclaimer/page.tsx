@@ -1,114 +1,86 @@
 import React from "react";
 import Link from "next/link";
-import { ShieldCheck, Info } from "lucide-react";
+import { ThreeHeroCanvas } from "@/components/ThreeHeroCanvas";
+import { Card3D } from "@/components/Card3D";
+import { Info } from "lucide-react";
 
 export const metadata = {
   title: "Corporate Disclaimer | Samad Expo",
   description:
-    "Legal disclaimer, brand ownership disclosure, and terms of digital ecosystem participation for Samad Expo.",
+    "Legal disclaimer and ecosystem disclosures for Samad Expo.",
 };
 
 export default function DisclaimerPage() {
   return (
-    <div className="bg-[#F8FAFC] min-h-screen py-14 sm:py-20 text-slate-900">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-        
-        {/* Breadcrumb */}
+    <div className="bg-[#060608] samad-hero-grid min-h-screen py-14 sm:py-20 text-white relative overflow-hidden">
+      <ThreeHeroCanvas variant="dark" />
+      <div className="pointer-events-none absolute -top-24 right-0 h-80 w-80 rounded-full bg-[#FFF33D]/15 blur-[120px]" />
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 relative z-10">
         <nav
           aria-label="Breadcrumb"
-          className="text-xs text-slate-500 flex items-center gap-2"
+          className="text-xs text-zinc-400 flex items-center gap-2"
         >
-          <Link href="/" className="hover:text-teal-700 font-semibold transition">
+          <Link href="/" className="hover:text-[#FFF33D] font-semibold transition">
             Home
           </Link>
           <span>/</span>
-          <span className="text-slate-900 font-bold">Corporate Disclaimer</span>
+          <span className="text-[#FFF33D] font-bold">Corporate Disclaimer</span>
         </nav>
 
-        {/* Header */}
         <div className="space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-cyan-50 text-teal-800 text-xs font-bold uppercase tracking-wider border border-cyan-100">
-            <Info className="w-3.5 h-3.5 text-teal-600" />
-            <span>Legal &amp; Regulatory Disclosures</span>
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FFF33D]/10 border border-[#FFF33D]/30 text-[#FFF33D] text-xs font-bold uppercase tracking-wider">
+            <Info className="w-3.5 h-3.5" />
+            <span>Legal &amp; Disclosures</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl font-black text-slate-950 tracking-tight">
-            Corporate Disclaimer
+          <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight">
+            Corporate <span className="samad-highlight">Disclaimer</span>
           </h1>
 
-          <p className="text-xs text-slate-500 font-medium">
-            Effective Date: November 2026 &bull; Samad Expo Digital Ecosystem
+          <p className="text-xs text-zinc-400 font-medium">
+            Effective Date: November 2026 &bull; Samad Expo
           </p>
         </div>
 
-        {/* Content Card */}
-        <div className="athenura-card p-8 sm:p-12 space-y-8 text-xs sm:text-sm text-slate-600 leading-relaxed">
-          <section className="space-y-3">
-            <h2 className="text-base sm:text-lg font-bold text-slate-950">
-              1. Corporate Brand &amp; Ecosystem Ownership
-            </h2>
-            <p>
-              Samad Expo is the parent corporate brand and the central ownership identity of all associated
-              websites, web applications, digital platforms, products, and services listed within this website
-              or its digital directory.
-            </p>
-            <p>
-              While Samad Expo provides strategic guidance, administrative oversight, and shared
-              governance, each individual platform, independent website, and business division maintains its
-              own domain, specialized terms of service, and operational branding.
-            </p>
-          </section>
+        <Card3D intensity={4}>
+          <div className="samad-card p-8 sm:p-10 space-y-8 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t-4 border-t-[#FFF33D]">
+            <section className="space-y-3">
+              <h2 className="text-base sm:text-lg font-extrabold text-[#FFF33D]">
+                1. Ecosystem Ownership
+              </h2>
+              <p>
+                Samad Expo is the parent brand behind our digital utilities, hosted portals, and cloud services. Individual community-uploaded websites under `/sites/` reflect the work of their respective creators.
+              </p>
+            </section>
 
-          <section className="space-y-3 pt-6 border-t border-slate-100">
-            <h2 className="text-base sm:text-lg font-bold text-slate-950">
-              2. External Links &amp; Independent Platforms
-            </h2>
-            <p>
-              This corporate website provides links and directory profiles enabling visitors to navigate
-              directly to independent websites and web applications operating under Samad Expo. Users are
-              advised that usage and engagements executed on individual platforms are subject to the specific
-              terms and policies of those respective platforms.
-            </p>
-          </section>
+            <section className="space-y-3 pt-6 border-t border-zinc-800">
+              <h2 className="text-base sm:text-lg font-extrabold text-[#FFF33D]">
+                2. External Platforms
+              </h2>
+              <p>
+                Links to external platforms and GitHub Pages tools are provided for convenience and open in isolated tabs subject to each platform&apos;s own operating terms.
+              </p>
+            </section>
 
-          <section className="space-y-3 pt-6 border-t border-slate-100">
-            <h2 className="text-base sm:text-lg font-bold text-slate-950">
-              3. Information Accuracy &amp; Dynamic Listings
-            </h2>
-            <p>
-              All information provided on Samad Expo is published in good faith for general informational
-              and corporate representation purposes. Product specifications, operational statuses (Live, Under
-              Development, Coming Soon), and service offerings are subject to dynamic updates and changes as
-              platforms evolve.
-            </p>
-          </section>
-
-          <section className="space-y-3 pt-6 border-t border-slate-100">
-            <h2 className="text-base sm:text-lg font-bold text-slate-950">
-              4. Limitation of Liability
-            </h2>
-            <p>
-              Under no circumstances shall Samad Expo, its founder, officers, or affiliates be liable for
-              any indirect, incidental, or consequential damages resulting from the use of or inability to use
-              any of the external platforms or third-party links referenced on this directory.
-            </p>
-          </section>
-
-          <section className="space-y-3 pt-6 border-t border-slate-100">
-            <h2 className="text-base sm:text-lg font-bold text-slate-950">
-              5. Contact Information
-            </h2>
-            <p>
-              For legal inquiries, brand usage permissions, or corporate disclosures, please contact:
-            </p>
-            <p className="font-semibold text-slate-900">
-              Samad Expo Corporate Legal Desk
-              <br />
-              Email: <a href="mailto:officialaadhakh@gmail.com" className="text-teal-700 hover:underline">officialaadhakh@gmail.com</a>
-            </p>
-          </section>
-        </div>
-
+            <section className="space-y-3 pt-6 border-t border-zinc-800">
+              <h2 className="text-base sm:text-lg font-extrabold text-[#FFF33D]">
+                3. Contact Information
+              </h2>
+              <p className="font-semibold text-zinc-200">
+                Samad Expo &mdash; Bodla, Agra, Uttar Pradesh 282010
+                <br />
+                Email:{" "}
+                <a
+                  href="mailto:officialaadhakh@gmail.com"
+                  className="text-[#FFF33D] underline decoration-[#FFF33D]/60 decoration-2 hover:text-white"
+                >
+                  officialaadhakh@gmail.com
+                </a>
+              </p>
+            </section>
+          </div>
+        </Card3D>
       </div>
     </div>
   );

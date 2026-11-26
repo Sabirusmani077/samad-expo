@@ -66,7 +66,7 @@ export function CorporateAdminSidebar() {
 
   return (
     <>
-      <aside className="fixed inset-y-0 left-0 z-40 hidden w-72 flex-col border-r border-white/10 bg-slate-950 px-4 py-6 text-white lg:flex">
+      <aside className="fixed inset-y-0 left-0 z-40 hidden w-72 flex-col border-r border-[#FFF33D]/20 bg-[#08080B]/95 backdrop-blur-xl px-4 py-6 text-white lg:flex">
         <Link href="/admin/corporate" className="mb-7 flex items-center gap-3 rounded-2xl px-3 py-3 transition hover:bg-white/5">
           <span className="shrink-0 overflow-hidden rounded-lg">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -129,7 +129,7 @@ export function CorporateAdminSidebar() {
         </div>
       </aside>
 
-      <nav aria-label="Corporate admin sections" className="flex items-center gap-2 overflow-x-auto border-b border-slate-200 bg-white p-3 lg:hidden">
+      <nav aria-label="Corporate admin sections" className="flex items-center gap-2 overflow-x-auto border-b border-zinc-800 bg-[#08080B] p-3 lg:hidden">
         {groups.flatMap((group) => group.items).map(({ label, href }) => {
           const active = isActive(pathname, href);
           return (
@@ -137,7 +137,7 @@ export function CorporateAdminSidebar() {
               key={href}
               href={href}
               aria-current={active ? "page" : undefined}
-              className={`shrink-0 rounded-lg px-3 py-2 text-xs font-semibold transition ${active ? "bg-black text-[#FFF33D] font-bold" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}
+              className={`shrink-0 rounded-lg px-3 py-2 text-xs font-semibold transition ${active ? "bg-[#FFF33D] text-black font-extrabold" : "bg-zinc-900 text-zinc-300 hover:bg-zinc-800"}`}
             >
               {label}
             </Link>

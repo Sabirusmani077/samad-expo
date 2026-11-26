@@ -83,7 +83,7 @@ export function HeaderAuthControl({ className = "", isHeroHeader = false }: Head
         <button
           type="button"
           onClick={() => setDropdownOpen((prev) => !prev)}
-          className="group inline-flex items-center gap-2 rounded-full border border-black/10 bg-[#FFF33D] px-3.5 py-1.5 text-xs font-bold text-black shadow-sm transition-all hover:bg-black hover:text-[#FFF33D] active:scale-95"
+          className="group inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-black/15 bg-[#FFF33D] px-3.5 py-2 text-xs font-extrabold text-zinc-950 shadow-xs transition-all hover:bg-zinc-950 hover:text-[#FFF33D] active:scale-95 cursor-pointer"
           aria-expanded={dropdownOpen}
           aria-haspopup="true"
         >
@@ -165,13 +165,13 @@ export function HeaderAuthControl({ className = "", isHeroHeader = false }: Head
         }}
         className={
           isHeroHeader
-            ? "home-nav-cta"
-            : `inline-flex items-center gap-1.5 rounded-full bg-[#FFF33D] px-4 py-2 text-xs font-extrabold text-black border border-black/15 shadow-sm transition-transform hover:bg-black hover:text-[#FFF33D] active:scale-95 ${className}`
+            ? "home-nav-cta whitespace-nowrap"
+            : `btn-3d-yellow inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-4 py-2 text-xs font-extrabold cursor-pointer shrink-0 ${className}`
         }
-        aria-label="Login or Sign Up to Deploy Websites"
+        aria-label="Sign In or Create Account"
       >
-        <span>Login / Sign Up</span>
-        <ArrowUpRight className="h-4 w-4" />
+        <span>Sign In</span>
+        <ArrowUpRight className="h-3.5 w-3.5" />
       </button>
 
       <AuthModal

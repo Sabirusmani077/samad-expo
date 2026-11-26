@@ -29,22 +29,22 @@
   --display-font: var(--font-heading);
   --body-font: var(--font-body);
   --md-brand-font-family: var(--font-body);
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 110px;
-  background: #FFFFFF;
-  color: var(--brand-ink);
+  background: #060608;
+  color: #FFFFFF;
   font-family: var(--md-brand-font-family);
 }
 
 body {
   min-height: 100vh;
   margin: 0;
-  background: #FFFFFF;
-  color: var(--brand-ink);
+  background: #060608;
+  color: #FFFFFF;
   font-family: var(--md-brand-font-family);
   letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
@@ -1498,97 +1498,213 @@ body[data-site-theme="premium"] .skip-link:focus-visible {
 }
 
 /* ============================================================
-   ATHENURA-INSPIRED HIGH-END DESIGN SYSTEM & ANIMATIONS
+   SAMAD EXPO — LUXURY 3D YELLOW & BLACK DESIGN SYSTEM
    ============================================================ */
 
-@keyframes athenuraPulse {
-  0% { box-shadow: 0 0 0 0 rgba(40, 163, 185, 0.45); }
-  70% { box-shadow: 0 0 0 16px rgba(40, 163, 185, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(40, 163, 185, 0); }
+@keyframes samadPulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 243, 61, 0.55); }
+  70% { box-shadow: 0 0 0 14px rgba(255, 243, 61, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 243, 61, 0); }
 }
 
-@keyframes athenuraMarquee {
+@keyframes samadMarquee {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
 }
 
-@keyframes athenuraFloat {
+@keyframes samadFloat {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-6px); }
 }
 
-@keyframes athenuraGlow {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.08); }
-}
-
-.animate-athenura-marquee {
+.animate-athenura-marquee,
+.animate-samad-marquee {
   display: flex;
   width: max-content;
-  animation: athenuraMarquee 30s linear infinite;
+  animation: samadMarquee 32s linear infinite;
 }
 
-.animate-athenura-marquee:hover {
+.animate-athenura-marquee:hover,
+.animate-samad-marquee:hover {
   animation-play-state: paused;
 }
 
-.animate-athenura-pulse {
-  animation: athenuraPulse 2.4s infinite cubic-bezier(0.4, 0, 0.6, 1);
+.animate-athenura-pulse,
+.animate-samad-pulse {
+  animation: samadPulse 2.4s infinite cubic-bezier(0.4, 0, 0.6, 1);
 }
 
-.animate-athenura-float {
-  animation: athenuraFloat 6s ease-in-out infinite;
+.animate-samad-float {
+  animation: samadFloat 6s ease-in-out infinite;
 }
 
-.animate-athenura-glow {
-  animation: athenuraGlow 8s ease-in-out infinite;
+/* Signature Samad Expo 3D Obsidian & Gold Luxury Card */
+.samad-card,
+.athenura-card {
+  background: linear-gradient(155deg, #141419 0%, #09090C 100%);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 243, 61, 0.16);
+  color: #FFFFFF;
+  box-shadow:
+    0 20px 44px -12px rgba(0, 0, 0, 0.75),
+    0 6px 16px -4px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 243, 61, 0.14);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
 }
 
-/* Dual tone gradient text */
-.text-gradient-teal {
-  background: linear-gradient(135deg, #1E7A86 0%, #28A3B9 50%, #35B4C7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.samad-card:hover,
+.athenura-card:hover {
+  border-color: rgba(255, 243, 61, 0.55);
+  box-shadow:
+    0 28px 60px -12px rgba(255, 243, 61, 0.2),
+    0 18px 38px -10px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 rgba(255, 243, 61, 0.32);
 }
 
-.text-gradient-cyan {
-  background: linear-gradient(135deg, #2093AB 0%, #2DD4BF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Tactile 3D extruded yellow luxury button */
+.btn-3d-yellow {
+  background: linear-gradient(180deg, #FFF76A 0%, #FFF33D 65%, #EAB308 100%);
+  color: #09090B;
+  border: 1px solid rgba(255, 243, 61, 0.7);
+  box-shadow:
+    0 5px 0 #A16207,
+    0 14px 28px -4px rgba(255, 243, 61, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.85);
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-3d-yellow:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 7px 0 #A16207,
+    0 20px 34px -4px rgba(255, 243, 61, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95);
+}
+
+.btn-3d-yellow:active {
+  transform: translateY(3px);
+  box-shadow:
+    0 2px 0 #A16207,
+    0 6px 12px -2px rgba(255, 243, 61, 0.3);
+}
+
+/* Tactile 3D extruded carbon black button with gold edge */
+.btn-3d-black {
+  background: linear-gradient(180deg, #27272A 0%, #111115 100%);
+  color: #FFF33D;
+  border: 1px solid rgba(255, 243, 61, 0.4);
+  box-shadow:
+    0 5px 0 #000000,
+    0 14px 26px -6px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 243, 61, 0.2);
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.18s ease;
+}
+
+.btn-3d-black:hover {
+  transform: translateY(-2px);
+  border-color: #FFF33D;
+  box-shadow:
+    0 7px 0 #000000,
+    0 18px 32px -4px rgba(255, 243, 61, 0.22),
+    inset 0 1px 0 rgba(255, 243, 61, 0.35);
+}
+
+.btn-3d-black:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #000000;
+}
+
+.translate-z-20 {
+  transform: translateZ(20px);
+}
+
+.translate-z-30 {
+  transform: translateZ(30px);
+}
+
+.samad-surface-warm {
+  background: #0B0B0F;
+}
+
+.samad-highlight {
+  background: linear-gradient(135deg, #FFF33D 0%, #FACC15 100%);
+  color: #09090B;
+  padding: 2px 12px;
+  border-radius: 12px;
+  display: inline-block;
+  box-shadow: 0 6px 20px rgba(255, 243, 61, 0.25);
 }
 
 .text-gradient-gold {
-  background: linear-gradient(135deg, #FFF33D 0%, #F59E0B 100%);
+  background: linear-gradient(135deg, #FFF76A 0%, #FFF33D 50%, #F59E0B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Glassmorphism surfaces */
-.athenura-glass-dark {
-  background: rgba(10, 18, 22, 0.85);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* Subtle architectural gold hairline grid on deep black */
+.samad-hero-grid {
+  background-color: #060608;
+  background-image:
+    linear-gradient(to right, rgba(255, 243, 61, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 243, 61, 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
-.athenura-glass-light {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+/* Unified Luxury 3D Yellow & Black Admin Shell Overrides */
+.admin-dark-shell {
+  background-color: #060608;
+  color: #f4f4f5;
 }
-
-/* Card hover lift & glow */
-.athenura-card {
-  background: #FFFFFF;
-  border-radius: 28px;
-  border: 1px solid rgba(226, 232, 240, 0.85);
-  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.04);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+.admin-dark-shell > div,
+.admin-dark-shell main {
+  background-color: transparent !important;
+  color: #f4f4f5;
 }
-
-.athenura-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(40, 163, 185, 0.35);
-  box-shadow: 0 24px 50px -12px rgba(30, 122, 134, 0.14);
+.admin-dark-shell header {
+  background-color: rgba(10, 10, 14, 0.92) !important;
+  border-color: rgba(255, 243, 61, 0.2) !important;
+  color: #ffffff !important;
+}
+.admin-dark-shell .bg-white,
+.admin-dark-shell .bg-white\/95,
+.admin-dark-shell .bg-slate-50,
+.admin-dark-shell .bg-slate-50\/70,
+.admin-dark-shell .bg-slate-100 {
+  background: linear-gradient(155deg, #141419 0%, #0b0b0f 100%) !important;
+  border-color: rgba(255, 243, 61, 0.16) !important;
+  color: #f4f4f5 !important;
+  box-shadow: 0 18px 40px -14px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 243, 61, 0.08);
+}
+.admin-dark-shell .text-slate-950,
+.admin-dark-shell .text-slate-900,
+.admin-dark-shell .text-slate-800,
+.admin-dark-shell .text-black {
+  color: #ffffff !important;
+}
+.admin-dark-shell .bg-\[\#FFF33D\] .text-black,
+.admin-dark-shell .bg-\[\#FFF33D\] {
+  color: #09090b !important;
+  background: #FFF33D !important;
+}
+.admin-dark-shell .text-slate-700,
+.admin-dark-shell .text-slate-600,
+.admin-dark-shell .text-slate-500 {
+  color: #a1a1aa !important;
+}
+.admin-dark-shell .border-slate-200,
+.admin-dark-shell .border-slate-300,
+.admin-dark-shell .border-slate-100 {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+.admin-dark-shell input,
+.admin-dark-shell textarea,
+.admin-dark-shell select {
+  background-color: #121217 !important;
+  border-color: rgba(255, 243, 61, 0.22) !important;
+  color: #ffffff !important;
 }

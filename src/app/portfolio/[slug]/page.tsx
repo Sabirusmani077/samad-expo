@@ -2,7 +2,9 @@ import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { readDb } from "@/lib/db";
-import { ArrowLeft, ExternalLink, Calendar, Tag } from "lucide-react";
+import { ThreeHeroCanvas } from "@/components/ThreeHeroCanvas";
+import { Card3D } from "@/components/Card3D";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
@@ -13,7 +15,9 @@ interface Props {
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const db = readDb();
-  const project = db.portfolioEntries?.find((p) => p.slug === slug || p.id === slug);
+  const project = db.portfolioEntries?.find(
+    (p) => p.slug === slug || p.id === slug
+  );
   if (!project) return { title: "Project Not Found" };
   return {
     title: `${project.title} — Samad Expo Portfolio`,
@@ -24,35 +28,46 @@ export async function generateMetadata({ params }: Props) {
 export default async function PortfolioDetailPage({ params }: Props) {
   const { slug } = await params;
   const db = readDb();
-  const project = db.portfolioEntries?.find((p) => p.slug === slug || p.id === slug);
+  const project = db.portfolioEntries?.find(
+    (p) => p.slug === slug || p.id === slug
+  );
 
   if (!project) {
     notFound();
   }
 
   return (
-    <div className="bg-white min-h-screen py-10">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <nav aria-label="Breadcrumb" className="text-xs text-slate-500 flex items-center gap-2">
-          <Link href="/" className="hover:text-slate-900 font-medium">
+    <div className="bg-[#060608] samad-hero-grid min-h-screen py-12 text-white relative overflow-hidden">
+      <ThreeHeroCanvas variant="dark" />
+      <div className="pointer-events-none absolute -top-24 right-0 h-80 w-80 rounded-full bg-[#FFF33D]/15 blur-[120px]" />
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 relative z-10">
+        <nav
+          aria-label="Breadcrumb"
+          className="text-xs text-zinc-400 flex items-center gap-2"
+        >
+          <Link href="/" className="hover:text-[#FFF33D] font-medium transition">
             Home
           </Link>
           <span>/</span>
-          <Link href="/portfolio" className="hover:text-slate-900 font-medium">
+          <Link
+            href="/portfolio"
+            className="hover:text-[#FFF33D] font-medium transition"
+          >
             Portfolio
           </Link>
           <span>/</span>
-          <span className="text-slate-900 font-bold">{project.title}</span>
+          <span className="text-[#FFF33D] font-bold">{project.title}</span>
         </nav>
 
         <section className="space-y-4">
-          <span className="inline-block px-3 py-1 rounded-md bg-[#FFF33D] text-black font-extrabold font-extrabold text-xs uppercase tracking-wider border border-slate-900/20">
+          <span className="inline-block px-3 py-1 rounded-full bg-[#FFF33D] text-black font-extrabold text-xs uppercase tracking-wider">
             {project.category}
           </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-slate-950 leading-tight">
+          <h1 className="text-3xl sm:text-5xl font-black text-white leading-tight">
             {project.title}
           </h1>
-          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+          <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
             {project.shortDescription}
           </p>
 
@@ -62,7 +77,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition-colors"
+                className="btn-3d-yellow inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs uppercase tracking-wider"
               >
                 <span>Visit Project Live</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -74,30 +89,56 @@ export default async function PortfolioDetailPage({ params }: Props) {
         {project.images && project.images.length > 0 && (
           <div className="space-y-4">
             {project.images.map((img, idx) => (
-              <div key={idx} className="rounded-2xl border-2 border-slate-900 overflow-hidden shadow-[6px_6px_0px_#FFF33D]">
-                <img src={img} alt={`${project.title} screenshot ${idx + 1}`} className="w-full h-auto object-cover" />
-              </div>
+              <Card3D key={idx} intensity={5}>
+                <div className="samad-card overflow-hidden border-[#FFF33D]/35">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={img}
+                    alt={`${project.title} screenshot ${idx + 1}`}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </Card3D>
             ))}
           </div>
         )}
 
-        <div className="rounded-3xl border border-slate-200 p-8 space-y-4">
-          <h2 className="text-xl font-black text-slate-950">Project Architecture & Overview</h2>
-          <div className="text-sm text-slate-700 leading-relaxed whitespace-pre-line">
-            {project.description || project.shortDescription}
+        <Card3D intensity={4}>
+          <div className="samad-card p-8 space-y-4 border-t-4 border-t-[#FFF33D]">
+            <h2 className="text-xl font-black text-[#FFF33D]">
+              Project Architecture &amp; Overview
+            </h2>
+            <div className="text-sm text-zinc-300 leading-relaxed whitespace-pre-line">
+              {project.description || project.shortDescription}
+            </div>
           </div>
-        </div>
+        </Card3D>
 
         {project.tags && project.tags.length > 0 && (
           <div className="flex items-center gap-2 flex-wrap pt-2">
-            <span className="text-xs font-bold text-slate-400">Technologies & Tags:</span>
+            <span className="text-xs font-bold text-zinc-400">
+              Technologies &amp; Tags:
+            </span>
             {project.tags.map((tag, i) => (
-              <span key={i} className="text-xs bg-slate-100 px-2.5 py-1 rounded-lg text-slate-700 font-medium">
+              <span
+                key={i}
+                className="text-xs bg-[#18181F] border border-zinc-800 px-2.5 py-1 rounded-lg text-[#FFF33D] font-semibold"
+              >
                 #{tag}
               </span>
             ))}
           </div>
         )}
+
+        <div className="pt-4 border-t border-zinc-800">
+          <Link
+            href="/portfolio"
+            className="inline-flex items-center gap-2 text-xs font-bold text-[#FFF33D] hover:text-white transition"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Back to Portfolio</span>
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -76,11 +76,11 @@ export default function RootLayout({
         <meta name="google-site-verification" content="j7N4EKQjh9NpQFnXBGQopLmSeJ8lLXxYPD2E3pndgNA" />
         <link rel="icon" href={companyProfile.favicon || "/images/primary-logo.png"} />
       </head>
-      <body data-site-theme="premium" className="relative min-h-screen flex flex-col bg-[#F8FAFC] text-slate-900 antialiased font-sans selection:bg-teal-500 selection:text-white">
+      <body data-site-theme="premium" className="relative min-h-screen flex flex-col bg-[#060608] text-white antialiased font-sans selection:bg-[#FFF33D] selection:text-black">
         <SmoothScroll />
         <PageViewTracker />
         <Header />
-        <div className="page-shell flex-1 w-full min-h-screen">{children}</div>
+        <div className="page-shell flex-1 w-full bg-[#060608]">{children}</div>
         <Footer />
         <ClickFeedback />
       </body>
