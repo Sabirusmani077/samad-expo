@@ -66,22 +66,22 @@ export function CorporateAdminSidebar() {
 
   return (
     <>
-      <aside className="fixed inset-y-0 left-0 z-40 hidden w-72 flex-col border-r border-[#FFF33D]/20 bg-[#08080B]/95 backdrop-blur-xl px-4 py-6 text-white lg:flex">
+      <aside className="fixed inset-y-0 left-0 z-40 hidden w-72 flex-col border-r border-[#C8A464]/20 bg-[#0B0A0C]/95 backdrop-blur-xl px-4 py-6 text-white lg:flex">
         <Link href="/admin/corporate" className="mb-7 flex items-center gap-3 rounded-2xl px-3 py-3 transition hover:bg-white/5">
           <span className="shrink-0 overflow-hidden rounded-lg">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/images/primary-logo.png" alt="Samad Expo" className="h-9 w-9 object-cover" />
           </span>
           <span>
-            <span className="block text-base font-black tracking-tight">Samad Expo</span>
-            <span className="mt-0.5 block text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">Corporate workspace</span>
+            <span className="block font-editorial-serif italic text-xl tracking-tight text-white">Samad Expo</span>
+            <span className="mt-0.5 block text-[10px] font-semibold uppercase tracking-[0.18em] text-[#C8A464]">Maison Admin</span>
           </span>
         </Link>
 
         <nav aria-label="Corporate administration" className="space-y-6 overflow-y-auto pr-1">
           {groups.map((group) => (
             <div key={group.label}>
-              <h2 className="mb-2 px-3 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">
+              <h2 className="mb-2 px-3 text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-500">
                 {group.label}
               </h2>
               <div className="space-y-1">
@@ -92,14 +92,14 @@ export function CorporateAdminSidebar() {
                       key={href}
                       href={href}
                       aria-current={active ? "page" : undefined}
-                      className={`flex items-center gap-3 rounded-xl border px-3 py-2.5 text-sm font-medium transition ${active
-                        ? "border-[#FFF33D]/40 bg-[#FFF33D]/15 text-[#FFF33D] font-bold"
-                        : "border-transparent text-slate-300 hover:bg-white/10 hover:text-white"
+                      className={`flex items-center gap-3 border px-3 py-2.5 text-sm font-medium transition ${active
+                        ? "border-[#C8A464]/50 bg-[#C10016]/25 text-white font-bold"
+                        : "border-transparent text-zinc-300 hover:bg-white/10 hover:text-white"
                         }`}
                     >
                       <Icon className="h-4 w-4 shrink-0" />
                       <span>{label}</span>
-                      {active && <span className="ml-auto h-1.5 w-1.5 rounded-full bg-[#FFF33D]" aria-hidden="true" />}
+                      {active && <span className="ml-auto h-1.5 w-1.5 rounded-full bg-[#C10016]" aria-hidden="true" />}
                     </Link>
                   );
                 })}
@@ -112,15 +112,15 @@ export function CorporateAdminSidebar() {
           <a
             href="/api/admin/export-excel?type=all"
             download
-            className="flex items-center justify-center gap-2 rounded-xl bg-[#FFF33D] px-3 py-2.5 text-xs font-bold text-black shadow-sm transition hover:bg-white active:scale-95"
+            className="flex items-center justify-center gap-2 bg-[#C10016] px-3 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition hover:bg-[#9E0012]"
             title="Export all database records to Excel (.xlsx)"
           >
-            <span>📥 Export All Data (Excel)</span>
+            <span>Export All Data (.xlsx)</span>
           </a>
 
           <Link
             href="/"
-            className="block text-center rounded-xl border border-white/15 px-3 py-2 text-xs font-semibold text-slate-300 transition hover:bg-white/10 hover:text-white"
+            className="block text-center border border-white/15 px-3 py-2 text-xs font-semibold text-zinc-300 transition hover:bg-white/10 hover:text-white"
           >
             ← Back to website
           </Link>
@@ -129,7 +129,7 @@ export function CorporateAdminSidebar() {
         </div>
       </aside>
 
-      <nav aria-label="Corporate admin sections" className="flex items-center gap-2 overflow-x-auto border-b border-zinc-800 bg-[#08080B] p-3 lg:hidden">
+      <nav aria-label="Corporate admin sections" className="flex items-center gap-2 overflow-x-auto border-b border-zinc-800 bg-[#0B0A0C] p-3 lg:hidden">
         {groups.flatMap((group) => group.items).map(({ label, href }) => {
           const active = isActive(pathname, href);
           return (
@@ -137,7 +137,7 @@ export function CorporateAdminSidebar() {
               key={href}
               href={href}
               aria-current={active ? "page" : undefined}
-              className={`shrink-0 rounded-lg px-3 py-2 text-xs font-semibold transition ${active ? "bg-[#FFF33D] text-black font-extrabold" : "bg-zinc-900 text-zinc-300 hover:bg-zinc-800"}`}
+              className={`shrink-0 px-3 py-2 text-xs font-semibold transition ${active ? "bg-[#C10016] text-white font-bold" : "bg-zinc-900 text-zinc-300 hover:bg-zinc-800"}`}
             >
               {label}
             </Link>

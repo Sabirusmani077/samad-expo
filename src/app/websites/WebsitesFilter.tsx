@@ -13,12 +13,18 @@ interface Props {
 }
 
 const STATUS_BADGES: Record<string, string> = {
-  live: "bg-emerald-950/70 text-emerald-300 border border-emerald-500/30",
-  under_development: "bg-[#FFF33D]/15 text-[#FFF33D] border border-[#FFF33D]/35",
-  coming_soon: "bg-zinc-900 text-zinc-400 border border-zinc-700",
-  temporarily_unavailable: "bg-rose-950/60 text-rose-300 border border-rose-500/30",
-  maintenance: "bg-orange-950/60 text-orange-300 border border-orange-500/30",
+  live: "text-[#1D1C1C] border border-[#C8A464] bg-[#FAF7F2]",
+  under_development: "text-[#C10016] border border-[#C10016]/40 bg-white",
+  coming_soon: "text-[#595959] border border-[#E5DFD7] bg-white",
+  temporarily_unavailable: "text-[#C10016] border border-[#C10016]/50 bg-[#FFF5F5]",
+  maintenance: "text-[#767676] border border-[#D5CEC5] bg-white",
 };
+
+function symmetricCols(count: number): string {
+  if (count <= 1) return "grid-cols-1 max-w-xl";
+  if (count === 2 || count === 4) return "grid-cols-1 md:grid-cols-2";
+  return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
+}
 
 export function WebsitesFilter({ websites, hostedProjects = [] }: Props) {
   const [search, setSearch] = useState("");
@@ -56,14 +62,19 @@ export function WebsitesFilter({ websites, hostedProjects = [] }: Props) {
   const filteredHosted = useMemo(
     () =>
       hostedProjects.filter((p) => {
-        if (websiteSlugs.has(p.slug)) return false;
+        if (
+          websiteSlugs.has(p.slug) ||
+          p.slug.includes("sabir") ||
+          p.projectName.toLowerCase().includes("sabir")
+        ) {
+          return false;
+        }
         if (!search) return true;
         const q = search.toLowerCase();
         return (
           p.projectName.toLowerCase().includes(q) ||
           p.slug.toLowerCase().includes(q) ||
-          (p.description && p.description.toLowerCase().includes(q)) ||
-          (p.userName && p.userName.toLowerCase().includes(q))
+          (p.description && p.description.toLowerCase().includes(q))
         );
       }),
     [hostedProjects, search, websiteSlugs]
@@ -79,28 +90,28 @@ export function WebsitesFilter({ websites, hostedProjects = [] }: Props) {
   }, [filtered]);
 
   return (
-    <div className="space-y-10">
-      {/* Search and Filters Bar */}
-      <div className="flex flex-col sm:flex-row gap-3">
+    <div className="space-y-12">
+      {/* Hairline Search & Select Controls */}
+      <div className="flex flex-col sm:flex-row gap-4 border-b border-[#E5DFD7] pb-6">
         <div className="relative flex-1">
-          <Search className="w-4 h-4 text-[#FFF33D] absolute left-4 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-[#595959] absolute left-1 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder="Search websites, utilities, or hosted sites..."
+            placeholder="Search web creations, utilities, or hosted sites..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-11 pr-4 py-2.5 rounded-full border border-zinc-800 bg-zinc-900/90 text-sm font-medium text-white placeholder-zinc-500 focus:outline-none focus:border-[#FFF33D] focus:ring-2 focus:ring-[#FFF33D]/25 transition"
+            className="w-full pl-7 pr-3 py-2 bg-transparent border-b border-[#D5CEC5] focus:border-[#1D1C1C] font-editorial-serif italic text-base text-[#1D1C1C] placeholder:text-[#888178] outline-none"
           />
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-3">
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="px-4 py-2.5 rounded-full border border-zinc-800 bg-zinc-900 text-xs sm:text-sm font-bold text-white focus:outline-none focus:border-[#FFF33D] cursor-pointer"
+            className="px-4 py-2 border border-[#D5CEC5] bg-white text-[11px] font-bold uppercase tracking-[0.16em] text-[#1D1C1C] focus:outline-none focus:border-[#1D1C1C] cursor-pointer"
           >
             {categories.map((c) => (
-              <option key={c} value={c} className="bg-zinc-950 text-white">
+              <option key={c} value={c}>
                 {c === "all" ? "All Categories" : c}
               </option>
             ))}
@@ -109,13 +120,11 @@ export function WebsitesFilter({ websites, hostedProjects = [] }: Props) {
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-            className="px-4 py-2.5 rounded-full border border-zinc-800 bg-zinc-900 text-xs sm:text-sm font-bold text-white focus:outline-none focus:border-[#FFF33D] cursor-pointer"
+            className="px-4 py-2 border border-[#D5CEC5] bg-white text-[11px] font-bold uppercase tracking-[0.16em] text-[#1D1C1C] focus:outline-none focus:border-[#1D1C1C] cursor-pointer"
           >
             {statuses.map((s) => (
-              <option key={s} value={s} className="bg-zinc-950 text-white">
-                {s === "all"
-                  ? "All Statuses"
-                  : s.replace(/_/g, " ").toUpperCase()}
+              <option key={s} value={s}>
+                {s === "all" ? "All Statuses" : s.replace(/_/g, " ").toUpperCase()}
               </option>
             ))}
           </select>
@@ -124,57 +133,55 @@ export function WebsitesFilter({ websites, hostedProjects = [] }: Props) {
 
       {/* 1. Community Hosted Deployments */}
       {filteredHosted.length > 0 && (
-        <div className="space-y-4">
-          <div className="flex items-center gap-2.5">
-            <Rocket className="w-4 h-4 text-[#FFF33D]" />
-            <h2 className="text-lg font-black text-white tracking-tight">
-              Live User-Hosted Deployments
+        <div className="space-y-5">
+          <div className="flex items-center gap-3">
+            <Rocket className="w-4 h-4 text-[#C10016]" />
+            <h2 className="text-base font-bold uppercase tracking-[0.18em] text-[#1D1C1C]">
+              Live Static Cloud Deployments
             </h2>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#FFF33D] text-zinc-950 text-[11px] font-extrabold">
+            <span className="px-2.5 py-0.5 bg-[#1D1C1C] text-white text-[10px] font-bold">
               {filteredHosted.length}
             </span>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className={`grid ${symmetricCols(filteredHosted.length)} gap-6`}>
             {filteredHosted.map((proj) => {
               const liveUrl = `/sites/${proj.slug}`;
               return (
-                <Card3D
-                  key={proj.id}
-                  intensity={6}
-                  className="samad-card p-6 flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="px-2.5 py-0.5 rounded-full bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 text-[10px] font-bold uppercase">
-                        ● Live Site
-                      </span>
-                      <span className="text-[11px] font-mono text-zinc-400">
-                        /sites/{proj.slug}
-                      </span>
+                <Card3D key={proj.id} intensity={5}>
+                  <div className="samad-card p-7 flex flex-col justify-between h-full border-t-2 border-t-[#C10016]">
+                    <div>
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="px-2.5 py-0.5 bg-[#FAF7F2] border border-[#C8A464]/50 text-[#C10016] text-[9px] font-bold uppercase tracking-[0.2em]">
+                          ● Live Site
+                        </span>
+                        <span className="text-[11px] font-mono text-[#767676]">
+                          /sites/{proj.slug}
+                        </span>
+                      </div>
+                      <h3 className="text-base font-bold uppercase tracking-[0.14em] text-[#1D1C1C] mb-2">
+                        {proj.projectName}
+                      </h3>
+                      <p className="font-editorial-serif text-sm text-[#595959] leading-relaxed mb-5">
+                        {proj.description ||
+                          "Live static web deployment hosted on Samad Expo cloud infrastructure."}
+                      </p>
                     </div>
-                    <h3 className="text-lg font-extrabold text-white mb-1.5">
-                      {proj.projectName}
-                    </h3>
-                    <p className="text-xs text-zinc-400 leading-relaxed line-clamp-3 mb-5">
-                      {proj.description ||
-                        `Live static deployment by ${proj.userName || "Creator"}.`}
-                    </p>
-                  </div>
 
-                  <div className="pt-3 border-t border-zinc-800/80 flex items-center justify-between">
-                    <span className="text-[11px] text-zinc-400 font-medium">
-                      By {proj.userName || "Creator"}
-                    </span>
-                    <a
-                      href={liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-3d-yellow px-4 py-1.5 text-xs rounded-full font-extrabold inline-flex items-center gap-1.5"
-                    >
-                      <span>Visit</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
+                    <div className="pt-4 border-t border-[#E5DFD7] flex items-center justify-between">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#767676]">
+                        Samad Cloud
+                      </span>
+                      <a
+                        href={liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-3d-yellow px-5 py-2 text-[10px] font-bold uppercase tracking-[0.2em] inline-flex items-center gap-1.5"
+                      >
+                        <span>Visit</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
                   </div>
                 </Card3D>
               );
@@ -186,88 +193,86 @@ export function WebsitesFilter({ websites, hostedProjects = [] }: Props) {
       {/* 2. Web Applications & Digital Tools */}
       {filtered.length === 0 && filteredHosted.length === 0 ? (
         <div className="samad-card text-center py-16 p-8">
-          <h3 className="font-extrabold text-white text-xl mb-2">
-            No Websites Found
+          <h3 className="font-bold uppercase tracking-[0.18em] text-[#1D1C1C] text-base mb-2">
+            No Creations Found
           </h3>
-          <p className="text-zinc-400 text-sm">
-            Try adjusting your search query or category filters.
+          <p className="font-editorial-serif italic text-[#595959] text-sm">
+            Try clearing or adjusting your search filters above.
           </p>
         </div>
       ) : (
-        <div className="space-y-10">
+        <div className="space-y-12">
           {Object.entries(grouped).map(([cat, sites]) => (
-            <div key={cat} className="space-y-4">
-              <div className="flex items-center gap-3 border-b border-zinc-800 pb-2.5">
-                <span className="inline-block px-3 py-1 bg-[#FFF33D] text-zinc-950 text-xs font-extrabold uppercase tracking-wider rounded-full">
+            <div key={cat} className="space-y-5">
+              <div className="flex items-center gap-3 border-b border-[#E5DFD7] pb-3">
+                <span className="inline-block px-3.5 py-1 bg-[#1D1C1C] text-white text-[10px] font-bold uppercase tracking-[0.2em]">
                   {cat}
                 </span>
-                <span className="text-zinc-400 text-xs font-bold">
-                  {sites.length} platform{sites.length !== 1 ? "s" : ""}
+                <span className="font-editorial-serif italic text-[#595959] text-sm">
+                  {sites.length} creation{sites.length !== 1 ? "s" : ""}
                 </span>
               </div>
 
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              <div className={`grid ${symmetricCols(sites.length)} gap-6`}>
                 {sites.map((site) => (
-                  <Card3D
-                    key={site.id}
-                    intensity={6}
-                    className="samad-card p-6 flex flex-col justify-between group"
-                  >
-                    <div>
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-zinc-900 border border-[#FFF33D]/25 p-1.5 shrink-0">
-                          {site.logo ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img
-                              src={site.logo}
-                              alt={site.name}
-                              className="h-full w-full object-contain"
-                            />
-                          ) : (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img
-                              src="/images/primary-logo.png"
-                              alt={site.name}
-                              className="h-full w-full rounded-md object-cover"
-                            />
-                          )}
+                  <Card3D key={site.id} intensity={5}>
+                    <div className="samad-card p-7 flex flex-col justify-between h-full group">
+                      <div>
+                        <div className="flex items-start justify-between mb-5">
+                          <div className="flex items-center justify-center w-11 h-11 bg-[#FAF7F2] border border-[#E5DFD7] p-1.5 shrink-0">
+                            {site.logo ? (
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img
+                                src={site.logo}
+                                alt={site.name}
+                                className="h-full w-full object-contain"
+                              />
+                            ) : (
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img
+                                src="/images/primary-logo.png"
+                                alt={site.name}
+                                className="h-full w-full object-contain"
+                              />
+                            )}
+                          </div>
+                          <span
+                            className={`px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.18em] ${
+                              STATUS_BADGES[site.status] ??
+                              "text-[#595959] border border-[#E5DFD7] bg-white"
+                            }`}
+                          >
+                            {site.status.replace(/_/g, " ")}
+                          </span>
                         </div>
-                        <span
-                          className={`px-2.5 py-0.5 text-[10px] font-bold uppercase rounded-full ${
-                            STATUS_BADGES[site.status] ??
-                            "bg-zinc-900 text-zinc-400 border border-zinc-700"
-                          }`}
-                        >
-                          ● {site.status.replace(/_/g, " ")}
-                        </span>
+
+                        <h3 className="font-bold uppercase tracking-[0.14em] text-[#1D1C1C] text-sm sm:text-base mb-2 group-hover:text-[#C10016] transition-colors">
+                          {site.name}
+                        </h3>
+                        <p className="font-editorial-serif text-sm text-[#595959] leading-relaxed mb-6">
+                          {site.shortDescription}
+                        </p>
                       </div>
 
-                      <h3 className="font-extrabold text-white text-lg mb-1.5 group-hover:text-[#FFF33D] transition-colors truncate">
-                        {site.name}
-                      </h3>
-                      <p className="text-xs text-zinc-400 leading-relaxed mb-5 line-clamp-3">
-                        {site.shortDescription}
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-2 pt-3 border-t border-zinc-800/80">
-                      <Link
-                        href={`/websites/${site.slug}`}
-                        className="flex-1 text-center px-3.5 py-2 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-200 font-bold text-xs rounded-full transition-colors"
-                      >
-                        View Profile
-                      </Link>
-                      {site.status === "live" && publicWebsiteUrl(site.url) && (
-                        <a
-                          href={publicWebsiteUrl(site.url) || undefined}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="btn-3d-yellow px-4 py-2 text-xs font-extrabold rounded-full inline-flex items-center gap-1"
+                      <div className="flex items-center gap-3 pt-4 border-t border-[#E5DFD7]">
+                        <Link
+                          href={`/websites/${site.slug}`}
+                          className="flex-1 text-center px-3.5 py-2 border border-[#1D1C1C] text-[#1D1C1C] hover:bg-[#1D1C1C] hover:text-white font-bold text-[10px] uppercase tracking-[0.18em] transition-colors"
                         >
-                          <span>Launch</span>
-                          <ExternalLink className="w-3 h-3" />
-                        </a>
-                      )}
+                          View Details
+                        </Link>
+                        {site.status === "live" && publicWebsiteUrl(site.url) && (
+                          <a
+                            href={publicWebsiteUrl(site.url) || undefined}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-3d-yellow px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] inline-flex items-center gap-1"
+                          >
+                            <span>Launch</span>
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </Card3D>
                 ))}

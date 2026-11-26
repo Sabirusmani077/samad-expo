@@ -83,28 +83,28 @@ export function HeaderAuthControl({ className = "", isHeroHeader = false }: Head
         <button
           type="button"
           onClick={() => setDropdownOpen((prev) => !prev)}
-          className="group inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-black/15 bg-[#FFF33D] px-3.5 py-2 text-xs font-extrabold text-zinc-950 shadow-xs transition-all hover:bg-zinc-950 hover:text-[#FFF33D] active:scale-95 cursor-pointer"
+          className="group inline-flex items-center gap-1.5 whitespace-nowrap border border-[#1D1C1C] bg-white px-2.5 sm:px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-[#1D1C1C] transition-all hover:bg-[#1D1C1C] hover:text-white cursor-pointer"
           aria-expanded={dropdownOpen}
           aria-haspopup="true"
         >
-          <UserIcon className="h-3.5 w-3.5 shrink-0" />
-          <span className="max-w-[120px] truncate">{user.name.split(" ")[0]}</span>
+          <UserIcon className="h-3.5 w-3.5 shrink-0 stroke-[1.5]" />
+          <span className="max-w-[78px] sm:max-w-[110px] truncate">{user.name.split(" ")[0]}</span>
           <ChevronDown
-            className={`h-3.5 w-3.5 transition-transform duration-200 ${
+            className={`h-3 w-3 transition-transform duration-200 ${
               dropdownOpen ? "rotate-180" : ""
             }`}
           />
         </button>
 
         {dropdownOpen && (
-          <div className="absolute right-0 top-full mt-2 w-64 origin-top-right rounded-2xl border border-zinc-800 bg-zinc-950 p-2 text-white shadow-2xl backdrop-blur-xl z-50 animate-fade-in">
+          <div className="absolute right-0 top-full mt-2 w-64 origin-top-right border border-[#E5DFD7] bg-white p-2 text-[#1D1C1C] shadow-2xl z-50 animate-fade-in">
             {/* User Info Header */}
-            <div className="border-b border-zinc-800/80 px-3 py-2.5">
-              <p className="text-xs font-extrabold text-white truncate">{user.name}</p>
-              <p className="text-[11px] text-zinc-400 truncate">{user.email}</p>
-              <div className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-[#FFF33D]/10 px-2 py-0.5 text-[10px] font-bold text-[#FFF33D]">
+            <div className="border-b border-[#E5DFD7] px-3 py-2.5">
+              <p className="text-xs font-bold text-[#1D1C1C] truncate">{user.name}</p>
+              <p className="text-[11px] text-[#595959] truncate">{user.email}</p>
+              <div className="mt-1.5 inline-flex items-center gap-1 bg-[#FAF7F2] border border-[#C8A464]/40 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[#C10016]">
                 <Sparkles className="w-2.5 h-2.5" />
-                <span>{user.role === "admin" ? "Platform Administrator" : "Active Developer"}</span>
+                <span>{user.role === "admin" ? "Maison Administrator" : "Developer Account"}</span>
               </div>
             </div>
 
@@ -113,28 +113,28 @@ export function HeaderAuthControl({ className = "", isHeroHeader = false }: Head
               <Link
                 href="/dashboard"
                 onClick={() => setDropdownOpen(false)}
-                className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-semibold text-zinc-300 transition-colors hover:bg-zinc-900 hover:text-white"
+                className="flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-[#1D1C1C] transition-colors hover:bg-[#FAF7F2] hover:text-[#C10016]"
               >
-                <LayoutDashboard className="h-4 w-4 text-[#FFF33D]" />
-                <span>My Projects Dashboard</span>
+                <LayoutDashboard className="h-4 w-4 text-[#C10016] stroke-[1.5]" />
+                <span>Hosting Dashboard</span>
               </Link>
 
               <Link
                 href="/dashboard?action=upload"
                 onClick={() => setDropdownOpen(false)}
-                className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-semibold text-zinc-300 transition-colors hover:bg-zinc-900 hover:text-white"
+                className="flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-[#1D1C1C] transition-colors hover:bg-[#FAF7F2] hover:text-[#C10016]"
               >
-                <Upload className="h-4 w-4 text-emerald-400" />
-                <span>Upload New Website</span>
+                <Upload className="h-4 w-4 text-[#C8A464] stroke-[1.5]" />
+                <span>Deploy Website</span>
               </Link>
 
               {user.role === "admin" && (
                 <Link
                   href="/admin/corporate"
                   onClick={() => setDropdownOpen(false)}
-                  className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-semibold text-zinc-300 transition-colors hover:bg-zinc-900 hover:text-white"
+                  className="flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-[#1D1C1C] transition-colors hover:bg-[#FAF7F2] hover:text-[#C10016]"
                 >
-                  <ShieldCheck className="h-4 w-4 text-amber-400" />
+                  <ShieldCheck className="h-4 w-4 text-[#1D1C1C] stroke-[1.5]" />
                   <span>Admin Management</span>
                 </Link>
               )}
@@ -142,9 +142,9 @@ export function HeaderAuthControl({ className = "", isHeroHeader = false }: Head
               <button
                 type="button"
                 onClick={handleLogout}
-                className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-semibold text-red-400 transition-colors hover:bg-red-950/40 hover:text-red-300"
+                className="flex w-full items-center gap-2.5 px-3 py-2 text-xs font-semibold text-[#C10016] transition-colors hover:bg-[#FFF5F5] cursor-pointer"
               >
-                <LogOut className="h-4 w-4" />
+                <LogOut className="h-4 w-4 stroke-[1.5]" />
                 <span>Sign Out</span>
               </button>
             </div>
@@ -154,7 +154,7 @@ export function HeaderAuthControl({ className = "", isHeroHeader = false }: Head
     );
   }
 
-  // When Logged Out: Show "Login / Sign Up" button that replaces "Start a project"
+  // When Logged Out: Crisp minimal account trigger that fits desktop and mobile cleanly
   return (
     <>
       <button
@@ -166,12 +166,13 @@ export function HeaderAuthControl({ className = "", isHeroHeader = false }: Head
         className={
           isHeroHeader
             ? "home-nav-cta whitespace-nowrap"
-            : `btn-3d-yellow inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-4 py-2 text-xs font-extrabold cursor-pointer shrink-0 ${className}`
+            : `inline-flex items-center gap-1.5 whitespace-nowrap border border-[#1D1C1C] bg-white px-2.5 sm:px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-[#1D1C1C] hover:bg-[#C10016] hover:border-[#C10016] hover:text-white transition-colors cursor-pointer shrink-0 ${className}`
         }
         aria-label="Sign In or Create Account"
       >
-        <span>Sign In</span>
-        <ArrowUpRight className="h-3.5 w-3.5" />
+        <UserIcon className="h-3.5 w-3.5 stroke-[1.5] sm:hidden" />
+        <span className="hidden sm:inline">Sign In</span>
+        <ArrowUpRight className="hidden sm:inline h-3.5 w-3.5" />
       </button>
 
       <AuthModal

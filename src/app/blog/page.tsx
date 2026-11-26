@@ -3,13 +3,13 @@ import Link from "next/link";
 import { readDb } from "@/lib/db";
 import { ThreeHeroCanvas } from "@/components/ThreeHeroCanvas";
 import { Card3D } from "@/components/Card3D";
-import { BookOpen, User, ChevronRight } from "lucide-react";
+import { BookOpen } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Blog & News | Samad Expo",
-  description: "Official platform updates and announcements from Samad Expo.",
+  title: "Maison Dispatch & News | Samad Expo",
+  description: "Official platform releases and editorial announcements from Samad Expo.",
 };
 
 export default function BlogPage() {
@@ -17,57 +17,64 @@ export default function BlogPage() {
   const posts = (db.blogPosts || []).filter((b) => b.status === "published");
 
   return (
-    <div className="bg-[#060608] min-h-screen text-white">
-      <section className="samad-hero-grid border-b border-zinc-800/80 pt-10 pb-14 sm:pt-16 sm:pb-20 relative overflow-hidden">
-        <ThreeHeroCanvas variant="dark" />
-        <div className="pointer-events-none absolute -top-24 right-0 h-80 w-80 rounded-full bg-[#FFF33D]/15 blur-[120px]" />
+    <div className="bg-white min-h-screen text-[#1D1C1C]">
+      <section className="samad-hero-grid border-b border-[#C8A464]/25 pt-14 pb-16 sm:pt-20 sm:pb-24 relative overflow-hidden text-white">
+        <ThreeHeroCanvas variant="dark" className="opacity-80" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0B0A0C] via-[#0B0A0C]/40 to-transparent z-[1]" />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-5">
           <nav
             aria-label="Breadcrumb"
-            className="text-xs text-zinc-400 flex items-center gap-2"
+            className="text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-400 flex items-center gap-2"
           >
-            <Link href="/" className="hover:text-[#FFF33D] font-semibold transition">
+            <Link href="/" className="hover:text-[#C8A464] transition">
               Home
             </Link>
             <span>/</span>
-            <span className="text-[#FFF33D] font-bold">Blog &amp; News</span>
+            <span className="text-[#C8A464]">News &amp; Releases</span>
           </nav>
 
           <div className="space-y-3 max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF33D]/10 border border-[#FFF33D]/30 text-xs font-bold text-[#FFF33D]">
-              <BookOpen className="w-3.5 h-3.5" />
-              <span>Updates &amp; Perspectives</span>
+            <div className="text-[10px] font-bold uppercase tracking-[0.34em] text-[#C8A464]">
+              Editorial Dispatch
             </div>
 
-            <h1 className="text-4xl sm:text-5xl font-black tracking-tight leading-tight text-white">
-              News &amp; <span className="samad-highlight">Announcements</span>
+            <h1 className="text-3xl sm:text-5xl font-bold uppercase tracking-[0.14em] leading-tight text-white">
+              News &amp; <span className="samad-highlight !text-[#E5C78E]">Announcements</span>
             </h1>
 
-            <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-              Platform releases, engineering updates, and announcements from Samad Expo.
+            <p className="font-editorial-serif italic text-base sm:text-xl text-zinc-300 leading-relaxed">
+              Official releases, platform milestones, and engineering notes from Samad Expo.
             </p>
           </div>
         </div>
       </section>
 
-      <div className="bg-[#0B0B0F] py-16 sm:py-20">
+      <div className="bg-[#FAF7F2] py-16 sm:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {posts.length === 0 ? (
-            <Card3D intensity={5}>
+            <Card3D intensity={4}>
               <div className="samad-card p-12 text-center space-y-2">
-                <p className="text-sm font-bold text-white">
-                  No articles published yet.
+                <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#1D1C1C]">
+                  No dispatches published yet
                 </p>
-                <p className="text-xs text-zinc-400 max-w-md mx-auto">
-                  Official announcements and technical write-ups will appear here.
+                <p className="font-editorial-serif italic text-sm text-[#595959] max-w-md mx-auto">
+                  Official platform releases and technical notes will appear here.
                 </p>
               </div>
             </Card3D>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              className={`grid ${
+                posts.length === 1
+                  ? "grid-cols-1 max-w-xl mx-auto"
+                  : posts.length === 2 || posts.length === 4
+                  ? "grid-cols-1 md:grid-cols-2"
+                  : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+              } gap-8`}
+            >
               {posts.map((post) => (
-                <Card3D key={post.id} intensity={9}>
+                <Card3D key={post.id} intensity={5}>
                   <div className="samad-card overflow-hidden flex flex-col justify-between group h-full">
                     <div>
                       {post.coverImage ? (
@@ -75,46 +82,45 @@ export default function BlogPage() {
                         <img
                           src={post.coverImage}
                           alt={post.title}
-                          className="w-full h-48 object-cover border-b border-zinc-800"
+                          className="w-full h-52 object-cover border-b border-[#E5DFD7]"
                         />
                       ) : (
-                        <div className="w-full h-48 bg-[#FFF33D]/10 border-b border-zinc-800 flex items-center justify-center text-[#FFF33D] text-xs font-extrabold uppercase tracking-wider">
-                          Samad Expo Update
+                        <div className="w-full h-52 bg-gradient-to-b from-[#F2EAE0] to-[#E6DACB] border-b border-[#E5DFD7] flex flex-col items-center justify-center p-6">
+                          <div className="w-16 h-16 bg-[#181518] border border-[#C8A464] flex items-center justify-center">
+                            <BookOpen className="w-6 h-6 text-[#C8A464] stroke-[1.4]" />
+                          </div>
+                          <span className="mt-3 text-[9px] font-bold uppercase tracking-[0.26em] text-[#595959]">
+                            Maison Dispatch
+                          </span>
                         </div>
                       )}
 
-                      <div className="p-6 space-y-3">
-                        <div className="flex items-center justify-between text-[11px] font-bold text-[#FFF33D] uppercase tracking-wider">
+                      <div className="p-7 space-y-3 text-center">
+                        <div className="flex items-center justify-center gap-3 text-[10px] font-bold text-[#C10016] uppercase tracking-[0.22em]">
                           <span>{post.category || "News"}</span>
                           {post.publishedAt && (
-                            <span className="text-zinc-500 font-medium">
-                              {new Date(post.publishedAt).toLocaleDateString()}
+                            <span className="text-[#767676]">
+                              &middot; {new Date(post.publishedAt).toLocaleDateString()}
                             </span>
                           )}
                         </div>
 
-                        <h3 className="text-lg font-extrabold text-white leading-snug">
+                        <h3 className="text-base font-bold uppercase tracking-[0.12em] text-[#1D1C1C] leading-snug">
                           {post.title}
                         </h3>
 
-                        <p className="text-xs text-zinc-400 leading-relaxed line-clamp-3">
+                        <p className="font-editorial-serif text-sm text-[#595959] leading-relaxed">
                           {post.excerpt}
                         </p>
                       </div>
                     </div>
 
-                    <div className="p-6 pt-3 border-t border-zinc-800 flex items-center justify-between text-xs">
-                      <span className="text-[11px] text-zinc-400 flex items-center gap-1.5 font-medium">
-                        <User className="w-3.5 h-3.5 text-[#FFF33D]" />
-                        <span>{post.author || "Samad Expo"}</span>
-                      </span>
-
+                    <div className="p-6 pt-4 border-t border-[#E5DFD7] text-center">
                       <Link
                         href={`/blog/${post.slug}`}
-                        className="inline-flex items-center gap-1 font-extrabold text-[#FFF33D] hover:text-white transition"
+                        className="font-editorial-serif italic text-sm text-[#1D1C1C] border-b border-[#1D1C1C] hover:text-[#C10016] hover:border-[#C10016] pb-0.5 transition"
                       >
-                        <span>Read</span>
-                        <ChevronRight className="w-3.5 h-3.5" />
+                        Read Dispatch
                       </Link>
                     </div>
                   </div>

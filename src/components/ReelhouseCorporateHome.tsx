@@ -5,32 +5,21 @@ import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  ArrowUpRight,
   ArrowRight,
   UploadCloud,
   Globe,
   Monitor,
   Cpu,
   ShieldCheck,
-  CheckCircle2,
-  Zap,
-  Layers,
-  ChevronRight,
-  ExternalLink,
-  MessageSquare,
-  Mail,
-  Award,
   Search,
-  MapPin,
-  Sparkles,
-  FileArchive,
-  Rocket,
+  ExternalLink,
   X,
 } from "lucide-react";
 import { publicWebsiteUrl } from "@/lib/corporate-public";
-import { HeroAuthCard } from "@/components/HeroAuthCard";
 import { ThreeHeroCanvas } from "@/components/ThreeHeroCanvas";
 import { Card3D } from "@/components/Card3D";
+import { EntranceExperience } from "@/components/EntranceExperience";
+import { AuthModal } from "@/components/AuthModal";
 import {
   BusinessDivision,
   WebsiteListing,
@@ -60,26 +49,30 @@ interface UnifiedPlatformCard {
   isHostedSite: boolean;
 }
 
-const heroPhrases = [
-  "instant website hosting.",
-  "live web deployments.",
-  "practical web tools.",
-  "modern digital platforms.",
+const showcaseChapters = [
+  {
+    eyebrow: "Chapter I · Cloud Architecture",
+    title: "ZERO-FRICTION DEPLOYMENT",
+    desc: "Upload static HTML packages or ZIP bundles cleanly and publish isolated public links in seconds.",
+  },
+  {
+    eyebrow: "Chapter II · Security Engineering",
+    title: "20/20 HARDENED DEFENSE",
+    desc: "Server-side role validation, PBKDF2 authentication, and rate-limited forms across every edge route.",
+  },
+  {
+    eyebrow: "Chapter III · Browser Utilities",
+    title: "PRACTICAL DIGITAL SUITE",
+    desc: "Chronographs, unit converters, and instant tools engineered for effortless execution inside any browser.",
+  },
+  {
+    eyebrow: "Chapter IV · MCP Protocol v2",
+    title: "AI-NATIVE DISCOVERY API",
+    desc: "Structured JSON-RPC 2.0 gateway connecting ecosystem tools directly with automated agent workflows.",
+  },
 ];
 
-const techStack = [
-  "Next.js 15",
-  "React 19",
-  "Three.js 3D Engine",
-  "TypeScript",
-  "HTML5 & Static ZIP",
-  "Instant /sites/ Routing",
-  "Isolated Previews",
-  "MCP JSON-RPC API",
-  "Rate-Limited Security",
-];
-
-function useAnimatedCounter(target: number, start: boolean, durationMs = 900) {
+function useAnimatedCounter(target: number, start: boolean, durationMs = 1100) {
   const [value, setValue] = useState(target);
 
   useEffect(() => {
@@ -108,97 +101,56 @@ function useAnimatedCounter(target: number, start: boolean, durationMs = 900) {
   return value;
 }
 
+function gridColsClass(count: number): string {
+  if (count <= 1) return "grid-cols-1 max-w-xl mx-auto";
+  if (count === 2 || count === 4) return "grid-cols-1 md:grid-cols-2";
+  return "grid-cols-1 md:grid-cols-2 lg:grid-cols-3";
+}
+
 export function ReelhouseCorporateHome({
   profile,
   websites,
   services,
-  team,
   hostedProjects = [],
 }: ReelhouseProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
-  const [activePhraseIndex, setActivePhraseIndex] = useState(0);
+
   const [toolSearch, setToolSearch] = useState("");
   const [projectCategory, setProjectCategory] = useState("all");
-  const [previewSite, setPreviewSite] = useState<UnifiedPlatformCard | null>(
-    null
-  );
+  const [previewSite, setPreviewSite] = useState<UnifiedPlatformCard | null>(null);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+
   const [statsVisible, setStatsVisible] = useState(false);
+  const [activeChapter, setActiveChapter] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [dragReveal, setDragReveal] = useState(38);
+  const [cursorBrush, setCursorBrush] = useState({ x: 50, y: 50, active: false });
 
-  // Cycling phrases in Hero
   useEffect(() => {
-    if (
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      return;
-    }
-    const timer = setInterval(() => {
-      setActivePhraseIndex((prev) => (prev + 1) % heroPhrases.length);
-    }, 2800);
-    return () => clearInterval(timer);
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const total = doc.scrollHeight - window.innerHeight;
+      if (total > 0) {
+        setScrollProgress(Math.min(1, Math.max(0, window.scrollY / total)));
+      }
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // GSAP 3D perspective entrance & scroll animations
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    gsap.registerPlugin(ScrollTrigger);
-    const ctx = gsap.context(() => {
-      gsap.from(".hero-stagger", {
-        y: 22,
-        opacity: 0,
-        duration: 0.75,
-        stagger: 0.08,
-        ease: "power3.out",
-        clearProps: "transform,opacity",
-      });
-
-      gsap.utils.toArray<HTMLElement>(".reveal-section").forEach((section) => {
-        gsap.from(section, {
-          y: 28,
-          rotationX: 6,
-          scale: 0.985,
-          opacity: 0,
-          duration: 0.75,
-          ease: "power3.out",
-          transformPerspective: 1200,
-          clearProps: "transform,opacity",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 86%",
-            once: true,
-          },
-        });
-      });
-    }, rootRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  // Stats Intersection Observer
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setStatsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (statsRef.current) {
-      observer.observe(statsRef.current);
-    }
-    return () => observer.disconnect();
-  }, []);
-
-  // Deduplicate real websites + clean public hosted projects
+  // Deduplicate real websites + non-personal public hosted projects (zero owner/founder exposure)
   const unifiedPlatforms = useMemo<UnifiedPlatformCard[]>(() => {
     const map = new Map<string, UnifiedPlatformCard>();
 
     for (const w of websites) {
+      if (
+        w.slug.includes("sabir") ||
+        w.name.toLowerCase().includes("sabir")
+      ) {
+        continue;
+      }
       const liveUrl = publicWebsiteUrl(w.url) || `/websites/${w.slug}`;
       map.set(w.slug, {
         id: w.id,
@@ -218,6 +170,8 @@ export function ReelhouseCorporateHome({
     for (const hp of hostedProjects) {
       if (
         hp.projectName.toLowerCase().includes("automated test platform") ||
+        hp.projectName.toLowerCase().includes("sabir") ||
+        hp.slug.includes("sabir") ||
         map.has(hp.slug)
       ) {
         continue;
@@ -229,9 +183,7 @@ export function ReelhouseCorporateHome({
         category: "Hosted Sites",
         description:
           hp.description ||
-          `Live static deployment hosted on Samad Expo by ${
-            hp.userName || "Creator"
-          }.`,
+          "Live static deployment hosted on Samad Expo cloud infrastructure.",
         liveUrl: `/sites/${hp.slug}`,
         profileHref: `/sites/${hp.slug}`,
         isHostedSite: true,
@@ -260,333 +212,399 @@ export function ReelhouseCorporateHome({
     });
   }, [unifiedPlatforms, projectCategory, toolSearch]);
 
+  // Smooth auto-dissolving chapter rotation
+  useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+    const timer = setInterval(() => {
+      setActiveChapter((prev) => (prev + 1) % showcaseChapters.length);
+    }, 4400);
+    return () => clearInterval(timer);
+  }, []);
+
+  // GSAP scroll-reveal choreography
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      gsap.from(".hero-stagger", {
+        y: 26,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.12,
+        ease: "power3.out",
+        clearProps: "transform,opacity",
+      });
+
+      gsap.utils.toArray<HTMLElement>(".reveal-section").forEach((section) => {
+        gsap.from(section, {
+          y: 30,
+          opacity: 0,
+          duration: 0.9,
+          ease: "power2.out",
+          clearProps: "transform,opacity",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 86%",
+            once: true,
+          },
+        });
+      });
+
+      gsap.utils.toArray<HTMLElement>(".photo-reveal").forEach((frame) => {
+        gsap.fromTo(
+          frame,
+          { opacity: 0.3, scale: 0.96, filter: "blur(5px)" },
+          {
+            opacity: 1,
+            scale: 1,
+            filter: "blur(0px)",
+            duration: 1.0,
+            ease: "power2.out",
+            clearProps: "filter,transform",
+            scrollTrigger: {
+              trigger: frame,
+              start: "top 86%",
+              once: true,
+            },
+          }
+        );
+      });
+    }, rootRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  // Stats Counter trigger
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setStatsVisible(true);
+      },
+      { threshold: 0.25 }
+    );
+    if (statsRef.current) observer.observe(statsRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   const livePlatformsCount = useAnimatedCounter(
     unifiedPlatforms.length,
     statsVisible
   );
 
-  const founder = team.find((m) => m.isFounder) || null;
-  const founderName = founder?.name || profile?.founderName || "Sabir Usmani";
-  const founderTitle =
-    founder?.designation || profile?.founderDesignation || "Founder & Owner";
-  const founderPhoto =
-    founder?.photo || profile?.founderPhoto || "/images/founder-portrait.jpg";
-  const founderMessage =
-    founder?.founderMessage ||
-    profile?.founderMessage ||
-    "Welcome to Samad Expo. Our journey began with a fundamental belief: great digital platforms are built on robust architecture, practical utility, and continuous innovation.";
-
   const coreValues =
     profile?.coreValues && profile.coreValues.length > 0
-      ? profile.coreValues
+      ? profile.coreValues.slice(0, 4)
       : [
           {
             title: "Practical Innovation",
             description:
-              "Building web tools and hosting engines that solve real everyday problems with zero friction.",
+              "Precision web utilities and hosting systems solving everyday engineering needs cleanly.",
           },
           {
             title: "Reliability & Uptime",
             description:
-              "Ensuring fast routing, secure isolated sandboxes, and dependable availability.",
+              "Dependable routing, isolated preview containers, and continuous production availability.",
           },
           {
             title: "Simplicity & Speed",
             description:
-              "Eliminating deployment complexity with 1-click ZIP upload and instant URLs.",
+              "Instant HTML & ZIP static cloud publishing without unnecessary setup barriers.",
           },
           {
-            title: "Transparent Governance",
+            title: "Transparent Standards",
             description:
-              "Clear ownership, verified credentials, and honest platform metrics without fluff.",
+              "Verified architectural engineering, clean documentation, and audited platform security.",
           },
         ];
 
-  const capabilityCards = [
-    ...(services.length > 0
-      ? services.map((svc, idx) => ({
-          num: `0${idx + 1}`,
-          title: svc.name,
-          desc: svc.shortDescription || svc.description,
-          features:
-            svc.features && svc.features.length > 0
-              ? svc.features.slice(0, 4)
-              : ["Zero-Config Setup", "Isolated Sandboxes", "Instant Routing"],
-          href: idx === 0 ? "/dashboard" : "/corporate-services",
-          cta: idx === 0 ? "Open Hosting Studio" : "Explore Service",
-          icon: idx === 0 ? UploadCloud : Layers,
-        }))
-      : []),
-    {
-      num: `0${services.length + 1}`,
-      title: "Practical Digital Utilities Suite",
-      desc: "Browser-native calculators, unit & file converters, and fast utility tools built for everyday productivity with zero installation.",
-      features: [
-        "MDK Chrono Age Calculator",
-        "MDK Unit & Media Convertor",
-        "Google Calculator Web App",
-        "Instant Browser Preview",
-      ],
-      href: "/websites",
-      cta: "Browse Live Tools",
-      icon: Globe,
-    },
-    {
-      num: `0${services.length + 2}`,
-      title: "AI-Ready MCP Protocol & Security",
-      desc: "Standardized Model Context Protocol JSON-RPC gateway (/api/mcp) protected by rate limiting, CSRF defense, and verified security audits.",
-      features: [
-        "JSON-RPC 2.0 MCP API",
-        "20/20 Security Audit Verified",
-        "Token-Bucket Rate Limiting",
-        "Server-Side Role Control",
-      ],
-      href: "/ecosystem-search",
-      cta: "Explore Ecosystem API",
-      icon: Cpu,
-    },
-  ];
+  const primaryHostingService = services[0];
+  const currentChapter = showcaseChapters[activeChapter];
 
   return (
-    <div ref={rootRef} className="min-h-screen bg-[#060608] text-white">
+    <div ref={rootRef} className="min-h-screen bg-white text-[#1D1C1C]">
+      {/* Opening Gallery Curtain + Consultation Advisor Modal */}
+      <EntranceExperience onOpenAuth={() => setAuthModalOpen(true)} />
+
+      {/* Cartier Into-The-Wild Left-Edge Scroll Progress Track */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed left-5 top-1/2 -translate-y-1/2 z-30 hidden xl:flex flex-col items-center gap-1.5"
+      >
+        <div className="relative h-44 w-4 flex justify-center">
+          <div className="h-full border-l border-dashed border-[#C8A464]/60" />
+          <div
+            className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full border-[1.5px] border-[#C10016] bg-white shadow-xs transition-all duration-150"
+            style={{ top: `${Math.round(scrollProgress * 100)}%` }}
+          />
+          <span className="absolute top-[25%] left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#C8A464]" />
+          <span className="absolute top-[60%] left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#C8A464]" />
+        </div>
+      </div>
+
       {/* ========================================================
-          1. LUXURY 3D YELLOW & BLACK HERO SECTION
+          1. CARTIER NOCTURNAL CAMPAIGN HERO 1 — INSTANT WEBSITE HOSTING
           ======================================================== */}
-      <section className="relative isolate overflow-hidden samad-hero-grid pt-10 pb-16 sm:pt-14 sm:pb-24 border-b border-zinc-800/80">
-        {/* Live Interactive 3D WebGL Sculpture & Gold Dust Engine */}
+      <section className="relative isolate overflow-hidden samad-hero-grid min-h-[82vh] flex flex-col justify-end pb-14 sm:pb-20 pt-24 text-white text-center">
         <ThreeHeroCanvas
           variant="hero"
           className="absolute inset-0 w-full h-full z-0 opacity-95"
         />
 
-        {/* Ambient Gold Spotlight Glows */}
-        <div className="pointer-events-none absolute -top-36 right-[-10%] h-[540px] w-[540px] rounded-full bg-[#FFF33D]/14 blur-[140px]" />
-        <div className="pointer-events-none absolute bottom-[-10%] left-[-8%] h-[400px] w-[400px] rounded-full bg-[#FFF33D]/10 blur-[120px]" />
+        {/* Nocturnal Velvet Gradient Scrim for Cartier Bottom Typography Contrast */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#09080A] via-[#09080A]/35 to-transparent z-[1]" />
 
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            {/* Left Column: High-Craft Editorial Value Prop & 3D CTAs (Span 7) */}
-            <div className="lg:col-span-7 space-y-6">
-              {/* Top Location & Live Status Pill */}
-              <div className="hero-stagger inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#FFF33D]/40 bg-[#FFF33D]/10 backdrop-blur-md text-xs font-extrabold text-[#FFF33D] shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>
-                  {profile?.businessName || "Samad Expo"} &middot; Bodla, Agra
-                </span>
-              </div>
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-10 space-y-5">
+          <div className="hero-stagger text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.36em] text-[#C8A464]">
+            Maison Samad Expo &middot; Agra, India
+          </div>
 
-              {/* Clean, Authoritative Editorial Headline */}
-              <div className="hero-stagger space-y-2">
-                <h1 className="text-4xl sm:text-5xl xl:text-[3.75rem] font-black tracking-tight leading-[1.06] text-white drop-shadow-[0_6px_24px_rgba(0,0,0,0.85)]">
-                  Launch Websites into{" "}
-                  <span className="samad-highlight mt-1">
-                    {heroPhrases[activePhraseIndex]}
-                  </span>
-                </h1>
-              </div>
+          <h1 className="hero-stagger text-3xl sm:text-5xl lg:text-[3.5rem] font-bold uppercase tracking-[0.16em] leading-tight text-white">
+            Instant Website Hosting
+          </h1>
 
-              {/* Concise Practical Summary */}
-              <p className="hero-stagger text-sm sm:text-base text-zinc-300 leading-relaxed max-w-2xl bg-black/35 backdrop-blur-xs rounded-2xl p-3 border border-white/5">
-                {profile?.about ||
-                  "Samad Expo is a modern website hosting platform and digital ecosystem founded by Sabir Usmani. Upload static HTML or ZIP projects for instant live URLs, or launch practical everyday web tools directly in your browser."}
-              </p>
+          <p className="hero-stagger font-editorial-serif italic text-lg sm:text-xl text-zinc-200 max-w-xl mx-auto leading-relaxed">
+            {profile?.mission ||
+              "Upload static builds, inspect responsive sandboxes, and publish live web platforms with precision architecture."}
+          </p>
 
-              {/* Mission Callout */}
-              <div className="hero-stagger border-l-4 border-[#FFF33D] pl-4 py-2 max-w-xl bg-zinc-900/60 backdrop-blur-md rounded-r-xl pr-4 border-y border-r border-white/5">
-                <p className="text-xs sm:text-sm text-zinc-200 italic leading-relaxed">
-                  &ldquo;
-                  {profile?.mission ||
-                    "To deliver lightning-fast, zero-hassle website deployment alongside beautifully engineered web applications that solve real everyday problems."}
-                  &rdquo;
-                </p>
-              </div>
+          <div className="hero-stagger pt-3 flex flex-wrap items-center justify-center gap-6">
+            <Link
+              href="/dashboard"
+              className="btn-maison-light px-9 py-3.5 text-[11px] font-bold uppercase tracking-[0.24em]"
+            >
+              Discover Hosting
+            </Link>
 
-              {/* Primary & Secondary 3D Action Buttons */}
-              <div className="hero-stagger pt-1 flex flex-wrap items-center gap-4">
-                <Link
-                  href="/dashboard"
-                  className="btn-3d-yellow inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-xs sm:text-sm font-extrabold uppercase tracking-wider"
-                >
-                  <Rocket className="w-4 h-4" />
-                  <span>Host Website Free</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+            <a
+              href="#live-tools"
+              className="font-editorial-serif italic text-base text-white border-b border-white/60 hover:border-[#C8A464] hover:text-[#E5C78E] pb-0.5 transition"
+            >
+              Explore Creations
+            </a>
 
-                <a
-                  href="#live-tools"
-                  className="btn-3d-black inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider"
-                >
-                  <span>Try Live Tools</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#FFF33D]" />
-                </a>
-              </div>
-
-              {/* Verified Capability Micro-Pills */}
-              <div className="hero-stagger pt-2 flex flex-wrap items-center gap-2.5 text-[11px] font-bold text-zinc-300">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900/80 border border-zinc-800 backdrop-blur-md">
-                  <FileArchive className="w-3.5 h-3.5 text-[#FFF33D]" />
-                  HTML &amp; ZIP Upload
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900/80 border border-zinc-800 backdrop-blur-md">
-                  <Globe className="w-3.5 h-3.5 text-[#FFF33D]" />
-                  Instant Public URLs
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900/80 border border-zinc-800 backdrop-blur-md">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  Isolated Preview Sandbox
-                </span>
-              </div>
-            </div>
-
-            {/* Right Column: 3D Obsidian & Gold HeroAuthCard (Span 5) */}
-            <div className="hero-stagger lg:col-span-5 flex justify-center lg:justify-end">
-              <HeroAuthCard dark={true} />
-            </div>
+            <button
+              type="button"
+              onClick={() => setAuthModalOpen(true)}
+              className="font-editorial-serif italic text-base text-zinc-300 border-b border-transparent hover:border-white hover:text-white pb-0.5 transition cursor-pointer"
+            >
+              Console Sign In
+            </button>
           </div>
         </div>
       </section>
 
       {/* ========================================================
-          2. LUXURY GOLD & CARBON INFRASTRUCTURE MARQUEE
+          2. FULL-BLEED EDITORIAL SHOWCASE 2 — BAS-RELIEF CURSOR GOLD REVEAL
           ======================================================== */}
-      <section className="bg-[#0B0B0F] border-b border-zinc-800/80 py-5 overflow-hidden">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-3 flex items-center justify-between text-[11px] font-bold uppercase tracking-widest text-zinc-500">
-          <span className="text-[#FFF33D]">
-            Engineered on Modern 3D Web Standards
-          </span>
-          <span className="hidden sm:inline text-zinc-400">
-            Static Hosting &middot; Live Utilities &middot; MCP Protocol
-          </span>
-        </div>
+      <section
+        onMouseMove={(e) => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          const px = ((e.clientX - rect.left) / rect.width) * 100;
+          const py = ((e.clientY - rect.top) / rect.height) * 100;
+          setCursorBrush({ x: px, y: py, active: true });
+        }}
+        onMouseLeave={() => setCursorBrush((prev) => ({ ...prev, active: false }))}
+        className="reveal-section relative isolate overflow-hidden bg-[#130508] min-h-[68vh] flex flex-col justify-end py-16 sm:py-20 text-white text-center border-t border-[#C8A464]/20"
+      >
+        <ThreeHeroCanvas
+          variant="dark"
+          className="absolute inset-0 w-full h-full z-0 opacity-85"
+        />
 
-        <div className="relative flex overflow-x-hidden">
-          <div className="animate-samad-marquee flex items-center gap-5 text-xs font-bold text-zinc-200">
-            {[...techStack, ...techStack].map((tech, idx) => (
-              <div
-                key={idx}
-                className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#FFF33D]/25 bg-zinc-900/90 shadow-sm shrink-0"
-              >
-                <span className="w-2 h-2 rounded-full bg-[#FFF33D]" />
-                <span>{tech}</span>
-              </div>
+        {/* Cartier Into-The-Wild Interactive Cursor Gold-Leaf Reveal Layer */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-[1] transition-opacity duration-500"
+          style={{
+            opacity: cursorBrush.active ? 1 : 0.35,
+            background: `radial-gradient(280px circle at ${cursorBrush.x}% ${cursorBrush.y}%, rgba(200,164,100,0.28), rgba(193,0,22,0.16) 45%, transparent 72%)`,
+          }}
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-[1] opacity-40"
+          style={{
+            clipPath: `circle(${cursorBrush.active ? 170 : 90}px at ${cursorBrush.x}% ${cursorBrush.y}%)`,
+            backgroundImage:
+              "repeating-conic-gradient(from 0deg at 50% 50%, rgba(229,199,142,0.22) 0deg 12deg, transparent 12deg 24deg)",
+            transition: "clip-path 0.2s ease-out",
+          }}
+        />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(193,0,22,0.18),rgba(10,8,10,0.88)_74%)] z-[1]" />
+
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 relative z-10 space-y-5">
+          <div className="text-[10px] font-bold uppercase tracking-[0.34em] text-[#C8A464]">
+            Curated Web Software &middot; Move Cursor to Reveal
+          </div>
+          <h2 className="text-2xl sm:text-4xl font-bold uppercase tracking-[0.18em] text-white">
+            Precision Digital Utilities
+          </h2>
+          <p className="font-editorial-serif italic text-base sm:text-lg text-zinc-300 leading-relaxed max-w-xl mx-auto">
+            Browser-native calculators, file converters, and fast utility applications built with clean engineering and effortless execution.
+          </p>
+          <div className="pt-2">
+            <Link
+              href="/websites"
+              className="btn-maison-light inline-block px-9 py-3.5 text-[11px] font-bold uppercase tracking-[0.24em]"
+            >
+              Discover Utilities
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================
+          3. PURE GALLERY WHITE BAND — THE MAISON & CORE VALUES
+          ======================================================== */}
+      <section id="about" className="reveal-section py-20 sm:py-28 bg-white border-b border-[#E5DFD7]">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-16">
+          <div className="text-center max-w-2xl mx-auto space-y-4">
+            <div className="text-[10px] font-bold uppercase tracking-[0.32em] text-[#C10016]">
+              La Maison
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-bold uppercase tracking-[0.18em] text-[#1D1C1C]">
+              About Samad Expo
+            </h2>
+            <p className="font-editorial-serif italic text-base sm:text-lg text-[#595959] leading-relaxed">
+              {profile?.story ||
+                "Established in Bodla, Agra, Samad Expo unites agile static website hosting with practical digital utilities and custom software engineering."}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {coreValues.map((val, idx) => (
+              <Card3D key={idx} intensity={5}>
+                <div className="samad-card p-7 h-full flex flex-col justify-between space-y-5 border-t-2 border-t-[#C10016]">
+                  <div className="space-y-3">
+                    <div className="text-[10px] font-bold uppercase tracking-[0.26em] text-[#C8A464]">
+                      0{idx + 1} &middot; Principle
+                    </div>
+                    <h3 className="text-sm font-bold uppercase tracking-[0.14em] text-[#1D1C1C]">
+                      {val.title}
+                    </h3>
+                    <p className="font-editorial-serif text-sm text-[#595959] leading-relaxed">
+                      {val.description}
+                    </p>
+                  </div>
+                  <div className="h-[1px] w-10 bg-[#C8A464]" />
+                </div>
+              </Card3D>
             ))}
           </div>
         </div>
       </section>
 
       {/* ========================================================
-          3. PRACTICAL LIVE TOOLS & HOSTED APPS (#live-tools)
+          4. OUR CREATIONS — BALANCED CARTIER BOUTIQUE SHOWCASE (#live-tools)
           ======================================================== */}
-      <section id="live-tools" className="reveal-section py-16 sm:py-24 bg-[#060608]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
-          {/* Header + Search */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-            <div className="space-y-3 max-w-2xl">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF33D]/10 border border-[#FFF33D]/30 text-[#FFF33D] text-xs font-extrabold uppercase tracking-wider">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Live Digital Ecosystem</span>
-              </div>
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white">
-                Ready-to-Use{" "}
-                <span className="samad-highlight">Web Tools &amp; Apps</span>
-              </h2>
-              <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
-                Launch live web utilities built by Samad Expo or inspect public static sites hosted on our cloud engine.
-              </p>
+      <section id="live-tools" className="reveal-section py-20 sm:py-28 bg-[#FAF7F2] border-b border-[#E5DFD7]">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center max-w-2xl mx-auto space-y-4">
+            <div className="text-[10px] font-bold uppercase tracking-[0.32em] text-[#C10016]">
+              Digital Catalogue
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-bold uppercase tracking-[0.18em] text-[#1D1C1C]">
+              Our Creations
+            </h2>
+            <p className="font-editorial-serif italic text-base sm:text-lg text-[#595959]">
+              Explore live digital tools and public deployments curated across the Samad Expo cloud network.
+            </p>
+          </div>
+
+          {/* Understated Cartier Filter Bar & Underline Search */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-[#E5DFD7] pb-5">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-6">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setProjectCategory(cat)}
+                  className={`pb-1.5 text-[11px] font-bold uppercase tracking-[0.18em] border-b transition-colors cursor-pointer ${
+                    projectCategory === cat
+                      ? "text-[#C10016] border-[#C10016]"
+                      : "text-[#595959] border-transparent hover:text-[#1D1C1C]"
+                  }`}
+                >
+                  {cat === "all" ? "All Creations" : cat}
+                </button>
+              ))}
             </div>
 
-            <div className="w-full lg:w-80 relative">
-              <Search className="w-4 h-4 text-[#FFF33D] absolute left-4 top-1/2 -translate-y-1/2" />
+            <div className="w-full md:w-64 relative">
+              <Search className="w-3.5 h-3.5 text-[#595959] absolute left-1 top-1/2 -translate-y-1/2" />
               <input
                 type="search"
                 value={toolSearch}
                 onChange={(e) => setToolSearch(e.target.value)}
-                placeholder="Filter tools or hosted sites..."
-                className="w-full pl-11 pr-4 py-2.5 rounded-full border border-zinc-800 bg-zinc-900/90 text-xs sm:text-sm font-medium text-white placeholder:text-zinc-500 focus:border-[#FFF33D] focus:ring-2 focus:ring-[#FFF33D]/25 outline-none transition"
+                placeholder="Filter platforms..."
+                className="w-full pl-7 pr-2 py-1.5 bg-transparent border-b border-[#D5CEC5] focus:border-[#1D1C1C] font-editorial-serif italic text-sm text-[#1D1C1C] placeholder:text-[#888178] outline-none"
               />
             </div>
           </div>
 
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setProjectCategory(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-extrabold transition-all cursor-pointer ${
-                  projectCategory === cat
-                    ? "bg-[#FFF33D] text-zinc-950 shadow-[0_0_20px_rgba(255,243,61,0.3)]"
-                    : "bg-zinc-900 text-zinc-300 border border-zinc-800 hover:border-[#FFF33D]/50 hover:text-white"
-                }`}
-              >
-                {cat === "all" ? "All Live Platforms" : cat}
-              </button>
-            ))}
-          </div>
-
-          {/* 3D Practical Platform Cards Grid */}
+          {/* Symmetric Balanced Grid (zero lonely trailing columns) */}
           {filteredPlatforms.length === 0 ? (
-            <div className="samad-card p-10 text-center text-sm text-zinc-400">
-              No matching live tools found. Try clearing your filter.
+            <div className="samad-card p-12 text-center font-editorial-serif italic text-base text-[#595959]">
+              No matching platforms found. Adjust your filter selection above.
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className={`grid ${gridColsClass(filteredPlatforms.length)} gap-8`}>
               {filteredPlatforms.map((item) => (
-                <Card3D
-                  key={item.id}
-                  intensity={6}
-                  className="samad-card p-6 flex flex-col justify-between group"
-                >
-                  <div>
-                    <div className="flex items-center justify-between gap-2 mb-4">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-[11px] font-bold text-emerald-300">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                        <span>Live</span>
-                      </span>
-
-                      <span className="px-2.5 py-1 rounded-full bg-[#FFF33D]/15 border border-[#FFF33D]/30 text-[11px] font-bold text-[#FFF33D]">
-                        {item.category}
+                <Card3D key={item.id} intensity={5}>
+                  <div className="bg-white border border-[#E5DFD7] hover:border-[#C10016] h-full flex flex-col justify-between transition-colors duration-300 group">
+                    {/* Cartier Warm Champagne Showcase Stage Top */}
+                    <div className="photo-reveal h-52 bg-gradient-to-b from-[#F4EDE4] to-[#EAE0D3] relative overflow-hidden flex flex-col items-center justify-center p-6 border-b border-[#E5DFD7]">
+                      <div className="w-20 h-20 rounded-full bg-[#151215] border-2 border-[#C8A464] flex items-center justify-center shadow-[0_14px_30px_rgba(0,0,0,0.22)] group-hover:scale-105 transition-transform duration-500">
+                        {item.isHostedSite ? (
+                          <Globe className="w-7 h-7 text-[#C8A464] stroke-[1.3]" />
+                        ) : (
+                          <Monitor className="w-7 h-7 text-[#C8A464] stroke-[1.3]" />
+                        )}
+                      </div>
+                      {/* Lacquered Crimson Plinth Shadow */}
+                      <div className="mt-3 w-28 h-2.5 bg-gradient-to-r from-[#7A0010] via-[#C10016] to-[#7A0010] rounded-full shadow-md" />
+                      <span className="mt-4 text-[9px] font-bold uppercase tracking-[0.26em] text-[#595959]">
+                        {item.category} &middot; Live Online
                       </span>
                     </div>
 
-                    <h3 className="text-lg font-extrabold text-white mb-2 group-hover:text-[#FFF33D] transition-colors">
-                      {item.name}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-6 line-clamp-3">
-                      {item.description}
-                    </p>
-                  </div>
+                    {/* Centered Classic Typography Body & Underlined Serif Links */}
+                    <div className="p-7 sm:p-8 text-center flex-1 flex flex-col justify-between space-y-5">
+                      <div className="space-y-2.5">
+                        <h3 className="text-sm sm:text-base font-bold uppercase tracking-[0.16em] text-[#1D1C1C]">
+                          {item.name}
+                        </h3>
+                        <p className="font-editorial-serif text-sm text-[#595959] leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
 
-                  {/* Card Footer */}
-                  <div className="pt-4 border-t border-zinc-800/80 flex items-center justify-between gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setPreviewSite(item)}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-zinc-300 hover:text-[#FFF33D] cursor-pointer transition"
-                    >
-                      <Monitor className="w-3.5 h-3.5 text-[#FFF33D]" />
-                      <span>Preview</span>
-                    </button>
-
-                    <div className="flex items-center gap-2">
-                      {!item.isHostedSite && (
-                        <Link
-                          href={item.profileHref}
-                          className="px-3 py-1.5 rounded-full border border-zinc-700 hover:border-[#FFF33D] text-xs font-bold text-zinc-300 hover:text-[#FFF33D] transition"
+                      <div className="flex flex-wrap items-center justify-center gap-6 pt-2">
+                        <button
+                          type="button"
+                          onClick={() => setPreviewSite(item)}
+                          className="font-editorial-serif italic text-sm text-[#1D1C1C] border-b border-[#1D1C1C] hover:text-[#C10016] hover:border-[#C10016] pb-0.5 transition cursor-pointer"
                         >
-                          Details
-                        </Link>
-                      )}
-                      <a
-                        href={item.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-3d-yellow inline-flex items-center gap-1 px-4 py-1.5 rounded-full text-xs font-extrabold"
-                      >
-                        <span>Launch</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
+                          Preview Sandbox
+                        </button>
+
+                        <a
+                          href={item.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-editorial-serif italic text-sm text-[#1D1C1C] border-b border-[#1D1C1C] hover:text-[#C10016] hover:border-[#C10016] pb-0.5 transition inline-flex items-center gap-1"
+                        >
+                          <span>Launch Creation</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </Card3D>
@@ -594,446 +612,275 @@ export function ReelhouseCorporateHome({
             </div>
           )}
 
-          <div className="text-center pt-2">
+          <div className="text-center pt-4">
             <Link
               href="/websites"
-              className="btn-3d-black inline-flex items-center gap-2 px-7 py-3 rounded-full text-xs font-extrabold uppercase tracking-wider"
+              className="btn-3d-black inline-block px-9 py-3.5 text-[11px] font-bold uppercase tracking-[0.22em]"
             >
-              <span>Open Full Public Directory</span>
-              <ArrowRight className="w-4 h-4" />
+              View Full Catalogue
             </Link>
           </div>
         </div>
       </section>
 
       {/* ========================================================
-          4. HOW INSTANT HOSTING WORKS (#hosting — Carbon)
+          5. ATELIER KINETIC SHOWCASE — 4-CHAPTER CAROUSEL & HOSTING PIPELINE
           ======================================================== */}
-      <section
-        id="hosting"
-        className="reveal-section py-16 sm:py-24 bg-[#0B0B0F] border-y border-zinc-800/80"
-      >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div className="space-y-2 max-w-2xl">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF33D] text-zinc-950 text-xs font-extrabold uppercase tracking-wider shadow-sm">
-                <Zap className="w-3.5 h-3.5" />
-                <span>Automated Deployment Engine</span>
+      <section className="reveal-section py-20 sm:py-24 bg-[#0B0A0C] text-white relative overflow-hidden">
+        <ThreeHeroCanvas variant="dark" className="opacity-55" />
+
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 relative z-10 space-y-14">
+          {/* Auto-Dissolving Chapter Spotlight + Cartier Into-The-Wild Drag-to-Reveal Crest */}
+          <div className="border border-[#C8A464]/35 bg-[#120F12]/90 p-8 sm:p-14 text-center space-y-8 max-w-4xl mx-auto">
+            <div className="space-y-4">
+              <div className="text-[10px] font-bold uppercase tracking-[0.34em] text-[#C8A464]">
+                {currentChapter.eyebrow}
               </div>
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white">
-                Publish a Website in{" "}
-                <span className="text-[#FFF33D]">3 Simple Steps</span>
+              <h2 className="text-2xl sm:text-4xl font-bold uppercase tracking-[0.18em] text-white transition-all duration-700">
+                {currentChapter.title}
               </h2>
-              <p className="text-sm sm:text-base text-zinc-400">
-                No server configuration or command-line headaches. Built for students, creators, and teams.
+              <p className="font-editorial-serif italic text-base sm:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed">
+                {currentChapter.desc}
               </p>
-            </div>
-
-            <Link
-              href="/dashboard?action=upload"
-              className="btn-3d-yellow inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs font-extrabold uppercase tracking-wider shrink-0 self-start md:self-auto"
-            >
-              <UploadCloud className="w-4 h-4" />
-              <span>Upload Project Now</span>
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                step: "01",
-                title: "Sign In to Console",
-                desc: "Use the instant authentication panel above or register a free account in seconds.",
-              },
-              {
-                step: "02",
-                title: "Upload HTML or ZIP Package",
-                desc: "Drop your static index.html, CSS/JS assets, or ZIP bundle directly into the hosting uploader.",
-              },
-              {
-                step: "03",
-                title: "Share Your Live /sites/ URL",
-                desc: "Preview your site inside a responsive sandbox and publish a fast public link immediately.",
-              },
-            ].map((item) => (
-              <Card3D
-                key={item.step}
-                intensity={6}
-                className="samad-card p-7 space-y-4"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-[#FFF33D] text-zinc-950 font-black text-base flex items-center justify-center shadow-[0_6px_18px_rgba(255,243,61,0.3)]">
-                  {item.step}
-                </div>
-                <h3 className="text-xl font-extrabold text-white">
-                  {item.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                  {item.desc}
-                </p>
-              </Card3D>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          5. SERVICES & CORE CAPABILITIES (#services — Obsidian)
-          ======================================================== */}
-      <section id="services" className="reveal-section py-16 sm:py-24 bg-[#060608]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
-          <div className="text-center max-w-3xl mx-auto space-y-3">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF33D]/10 border border-[#FFF33D]/30 text-[#FFF33D] text-xs font-extrabold uppercase tracking-wider">
-              <Layers className="w-3.5 h-3.5" />
-              <span>Capabilities &amp; Services</span>
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white">
-              Engineering &amp;{" "}
-              <span className="samad-highlight">Hosting Solutions</span>
-            </h2>
-            <p className="text-sm sm:text-base text-zinc-400">
-              Combining multi-user static hosting with custom software development and utility tools.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            {capabilityCards.map((card) => (
-              <Card3D
-                key={card.num}
-                intensity={5}
-                className="samad-card p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden group"
-              >
-                <div className="absolute top-4 right-6 text-5xl font-black text-white/5 select-none pointer-events-none group-hover:text-[#FFF33D]/25 transition-colors">
-                  {card.num}
-                </div>
-
-                <div>
-                  <div className="w-12 h-12 rounded-2xl bg-[#FFF33D] text-zinc-950 flex items-center justify-center mb-5 shadow-[0_6px_18px_rgba(255,243,61,0.28)]">
-                    <card.icon className="w-5 h-5" />
-                  </div>
-
-                  <h3 className="text-xl font-extrabold text-white mb-2 group-hover:text-[#FFF33D] transition-colors">
-                    {card.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-5">
-                    {card.desc}
-                  </p>
-
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
-                    {card.features.map((feat, fidx) => (
-                      <li
-                        key={fidx}
-                        className="flex items-center gap-2 text-xs text-zinc-200 font-medium"
-                      >
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#FFF33D] shrink-0" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="pt-4 border-t border-zinc-800/80 flex items-center justify-between text-xs">
-                  <Link
-                    href={card.href}
-                    className="inline-flex items-center gap-1.5 font-extrabold text-[#FFF33D] hover:text-white transition"
-                  >
-                    <span>{card.cta}</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </Card3D>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          6. ABOUT SAMAD EXPO & FOUNDER (#about — Carbon)
-          ======================================================== */}
-      <section
-        id="about"
-        className="reveal-section py-16 sm:py-24 bg-[#0B0B0F] border-y border-zinc-800/80"
-      >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            {/* Left: Corporate Story & Core Values (Span 7) */}
-            <div className="lg:col-span-7 space-y-7">
-              <div className="space-y-3">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF33D]/10 border border-[#FFF33D]/30 text-[#FFF33D] text-xs font-extrabold uppercase tracking-wider">
-                  <Award className="w-3.5 h-3.5" />
-                  <span>About Samad Expo</span>
-                </div>
-                <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white">
-                  Built for Speed, Reliability &amp;{" "}
-                  <span className="text-[#FFF33D]">Everyday Utility</span>
-                </h2>
-              </div>
-
-              <div className="space-y-3 text-sm sm:text-base text-zinc-300 leading-relaxed">
-                <p>
-                  {profile?.story ||
-                    "Founded by Sabir Usmani in Bodla, Agra, Samad Expo started as an independent web engineering initiative and has grown into a versatile technology platform providing multi-user static website hosting, digital utilities, and custom software development."}
-                </p>
-                <p className="text-zinc-400 text-sm">
-                  {profile?.vision ||
-                    "To build a fast, reliable, and accessible website hosting platform and developer ecosystem that simplifies web deployment and provides high-utility digital tools to users worldwide."}
-                </p>
-              </div>
-
-              {/* 4 Real Core Values in 3D Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                {coreValues.map((val, idx) => (
-                  <Card3D
-                    key={idx}
-                    intensity={5}
-                    className="samad-card p-5 space-y-2"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-[#FFF33D] text-zinc-950 font-black text-xs flex items-center justify-center mb-2">
-                      0{idx + 1}
-                    </div>
-                    <h3 className="text-sm font-extrabold text-white">
-                      {val.title}
-                    </h3>
-                    <p className="text-xs text-zinc-400 leading-relaxed">
-                      {val.description}
-                    </p>
-                  </Card3D>
+              <div className="flex items-center justify-center gap-2.5 pt-1">
+                {showcaseChapters.map((ch, idx) => (
+                  <button
+                    key={ch.eyebrow}
+                    type="button"
+                    onClick={() => setActiveChapter(idx)}
+                    aria-label={`Select ${ch.eyebrow}`}
+                    className={`h-[2px] transition-all duration-300 cursor-pointer ${
+                      idx === activeChapter
+                        ? "w-8 bg-[#C10016]"
+                        : "w-4 bg-zinc-700 hover:bg-[#C8A464]"
+                    }`}
+                  />
                 ))}
               </div>
             </div>
 
-            {/* Right: Authentic Founder 3D Card with Real Portrait (Span 5) */}
-            <div className="lg:col-span-5">
-              <Card3D
-                intensity={5}
-                className="samad-card p-6 sm:p-7 space-y-6 overflow-hidden relative"
-              >
-                <div className="absolute inset-x-0 top-0 h-1.5 bg-[#FFF33D]" />
-
-                <div className="flex items-center gap-4 pt-1">
-                  <div className="w-20 h-20 rounded-2xl overflow-hidden border-2 border-[#FFF33D] shadow-[0_8px_24px_rgba(255,243,61,0.25)] shrink-0 bg-zinc-900">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={founderPhoto}
-                      alt={founderName}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#FFF33D] text-zinc-950 text-[10px] font-extrabold uppercase tracking-wider mb-1">
-                      {founderTitle}
+            {/* Interactive Drag-to-Reveal Cartier Marquetry Sunburst Dial */}
+            <div className="pt-6 border-t border-white/10 space-y-5 max-w-md mx-auto">
+              <div className="relative w-40 h-28 mx-auto flex items-center justify-center">
+                <div
+                  className="w-24 h-24 rounded-full border border-[#C8A464]/60 flex items-center justify-center transition-transform duration-200"
+                  style={{
+                    transform: `rotate(${dragReveal * 3.6}deg) scale(${0.85 + (dragReveal / 100) * 0.25})`,
+                    background: `conic-gradient(from 0deg, rgba(200,164,100,${0.15 + (dragReveal / 100) * 0.65}) ${dragReveal * 3.6}deg, rgba(255,255,255,0.04) 0deg)`,
+                  }}
+                >
+                  <div className="w-16 h-16 rounded-full bg-[#0B0A0C] border border-[#C10016]/70 flex items-center justify-center">
+                    <span className="font-editorial-serif italic text-xs text-[#E5C78E]">
+                      {dragReveal}%
                     </span>
-                    <h3 className="text-xl font-black text-white">
-                      {founderName}
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <input
+                  type="range"
+                  min={0}
+                  max={100}
+                  value={dragReveal}
+                  onChange={(e) => setDragReveal(Number(e.target.value))}
+                  aria-label="Drag to reveal digital craft"
+                  className="w-full h-[2px] appearance-none bg-[#C8A464]/35 accent-[#C10016] cursor-ew-resize"
+                />
+                <div className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#C8A464]">
+                  Drag to Reveal Craft
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Connected 4-Step Deployment Pipeline */}
+          <div className="relative">
+            <div className="hidden lg:block pointer-events-none absolute top-7 left-10 right-10 h-[1px] bg-[#C8A464]/35" />
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+              {[
+                {
+                  num: "01",
+                  title: "Console Access",
+                  desc: "Authenticate seamlessly inside the hosting studio.",
+                },
+                {
+                  num: "02",
+                  title: "Package Upload",
+                  desc: "Submit static HTML pages or structured ZIP bundles.",
+                },
+                {
+                  num: "03",
+                  title: "Sandbox Review",
+                  desc: "Verify responsive viewports before publishing live.",
+                },
+                {
+                  num: "04",
+                  title: "Edge Activation",
+                  desc: "Receive an instant public deployment URL immediately.",
+                },
+              ].map((step) => (
+                <Card3D key={step.num} intensity={5}>
+                  <div className="samad-card-dark p-6 h-full text-center space-y-3">
+                    <div className="w-12 h-12 mx-auto border border-[#C8A464]/60 bg-[#0B0A0C] text-[#C8A464] flex items-center justify-center text-xs font-bold tracking-widest">
+                      {step.num}
+                    </div>
+                    <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-white">
+                      {step.title}
                     </h3>
-                    <p className="text-xs text-zinc-400 flex items-center gap-1 mt-0.5">
-                      <MapPin className="w-3 h-3 text-[#FFF33D]" />
-                      <span>{profile?.headquarters || "Bodla, Agra, UP"}</span>
+                    <p className="font-editorial-serif text-sm text-zinc-400 leading-relaxed">
+                      {step.desc}
                     </p>
                   </div>
-                </div>
-
-                <blockquote className="text-xs sm:text-sm text-zinc-300 italic leading-relaxed border-l-2 border-[#FFF33D] pl-3.5">
-                  &ldquo;{founderMessage}&rdquo;
-                </blockquote>
-
-                <div className="space-y-2.5 pt-3 border-t border-zinc-800/80 text-xs">
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-zinc-500">Email</span>
-                    <a
-                      href={`mailto:${
-                        profile?.contactEmail || "officialaadhakh@gmail.com"
-                      }`}
-                      className="font-bold text-[#FFF33D] hover:underline"
-                    >
-                      {profile?.contactEmail || "officialaadhakh@gmail.com"}
-                    </a>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-zinc-500">Phone</span>
-                    <a
-                      href={`tel:${(
-                        profile?.contactPhone || "+919458204216"
-                      ).replace(/\s+/g, "")}`}
-                      className="font-bold text-white hover:text-[#FFF33D]"
-                    >
-                      {profile?.contactPhone || "+91 94582 04216"}
-                    </a>
-                  </div>
-                </div>
-
-                <Link
-                  href="/founder"
-                  className="btn-3d-yellow w-full flex items-center justify-center gap-2 py-3 px-4 rounded-full text-xs font-extrabold uppercase tracking-wider"
-                >
-                  <span>Read Founder Profile</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </Card3D>
+                </Card3D>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* ========================================================
-          7. VERIFIED PLATFORM METRICS (100% Real Data — Obsidian)
+          6. OUR SERVICES — CARTIER 2-COLUMN BOUTIQUE PLINTH GRID
           ======================================================== */}
-      <section ref={statsRef} className="reveal-section py-16 sm:py-20 bg-[#060608]">
+      <section id="services" className="reveal-section py-20 sm:py-28 bg-white">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-14">
+          <div className="text-center max-w-xl mx-auto space-y-3">
+            <h2 className="text-2xl sm:text-3xl font-bold uppercase tracking-[0.2em] text-[#1D1C1C]">
+              Our Services
+            </h2>
+            <p className="font-editorial-serif italic text-base text-[#595959] leading-relaxed">
+              Our engineering studio empowers you to host websites, integrate APIs, and launch bespoke web platforms.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+            {/* Service Card 1: Multi-User Website Hosting */}
+            <Card3D intensity={5}>
+              <div className="h-full flex flex-col justify-between bg-white border border-[#E5DFD7] hover:border-[#C10016] transition-colors">
+                <div className="h-64 sm:h-72 bg-gradient-to-b from-[#EFE7DC] to-[#E2D6C8] flex flex-col items-center justify-center p-8 border-b border-[#E5DFD7]">
+                  <div className="w-28 h-28 bg-[#181518] border border-[#C8A464] flex items-center justify-center shadow-xl">
+                    <UploadCloud className="w-9 h-9 text-[#C8A464] stroke-[1.2]" />
+                  </div>
+                  <div className="w-40 h-3.5 bg-gradient-to-r from-[#7A0010] via-[#C10016] to-[#7A0010] mt-3 shadow-md" />
+                </div>
+
+                <div className="p-8 text-center space-y-4">
+                  <h3 className="text-sm sm:text-base font-bold uppercase tracking-[0.18em] text-[#1D1C1C]">
+                    {primaryHostingService?.name || "Website Hosting Studio"}
+                  </h3>
+                  <p className="font-editorial-serif text-sm sm:text-base text-[#595959] leading-relaxed max-w-md mx-auto">
+                    {primaryHostingService?.shortDescription ||
+                      "Deploy static HTML & ZIP packages into isolated preview environments with immediate public URLs."}
+                  </p>
+                  <div className="pt-1">
+                    <Link
+                      href="/dashboard"
+                      className="font-editorial-serif italic text-base text-[#1D1C1C] border-b border-[#1D1C1C] hover:text-[#C10016] hover:border-[#C10016] pb-0.5 transition"
+                    >
+                      Open Hosting Studio
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </Card3D>
+
+            {/* Service Card 2: Contact an Engineering Advisor */}
+            <Card3D intensity={5}>
+              <div className="h-full flex flex-col justify-between bg-white border border-[#E5DFD7] hover:border-[#C10016] transition-colors">
+                <div className="h-64 sm:h-72 bg-gradient-to-b from-[#EFE7DC] to-[#E2D6C8] flex flex-col items-center justify-center p-8 border-b border-[#E5DFD7]">
+                  <div className="w-28 h-28 rounded-full bg-[#181518] border-2 border-[#C8A464] flex items-center justify-center shadow-xl">
+                    <Cpu className="w-9 h-9 text-[#C8A464] stroke-[1.2]" />
+                  </div>
+                  <div className="w-40 h-3.5 bg-gradient-to-r from-[#7A0010] via-[#C10016] to-[#7A0010] mt-3 rounded-full shadow-md" />
+                </div>
+
+                <div className="p-8 text-center space-y-4">
+                  <h3 className="text-sm sm:text-base font-bold uppercase tracking-[0.18em] text-[#1D1C1C]">
+                    Contact an Engineering Advisor
+                  </h3>
+                  <p className="font-editorial-serif text-sm sm:text-base text-[#595959] leading-relaxed max-w-md mx-auto">
+                    Our technical team in Agra is available for custom Next.js engineering, hosting architecture, and MCP API inquiries.
+                  </p>
+                  <div className="pt-1">
+                    <Link
+                      href="/contact"
+                      className="font-editorial-serif italic text-base text-[#1D1C1C] border-b border-[#1D1C1C] hover:text-[#C10016] hover:border-[#C10016] pb-0.5 transition"
+                    >
+                      Contact us
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </Card3D>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================
+          7. VERIFIED MAISON METRICS STRIP (#FAF7F2)
+          ======================================================== */}
+      <section ref={statsRef} className="reveal-section py-16 bg-[#FAF7F2] border-t border-[#E5DFD7]">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <Card3D
-            intensity={4}
-            className="samad-card p-8 sm:p-12 border-t-4 border-t-[#FFF33D]"
-          >
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-              <div className="space-y-1">
-                <div className="text-3xl sm:text-5xl font-black text-[#FFF33D] tracking-tight">
-                  {livePlatformsCount}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            {[
+              { val: `${livePlatformsCount}`, label: "Live Creations" },
+              { val: `${profile?.founded || "2024"}`, label: "Established · Agra" },
+              { val: "20/20", label: "Security Audited" },
+              { val: "MCP v2", label: "JSON-RPC Endpoint" },
+            ].map((stat) => (
+              <div key={stat.label} className="space-y-1.5">
+                <div className="font-editorial-serif italic text-3xl sm:text-4xl text-[#1D1C1C]">
+                  {stat.val}
                 </div>
-                <div className="text-xs font-extrabold uppercase tracking-wider text-white">
-                  Live Platforms
-                </div>
-                <div className="text-[11px] text-zinc-500">
-                  Verified public apps
-                </div>
-              </div>
-
-              <div className="space-y-1">
-                <div className="text-3xl sm:text-5xl font-black text-[#FFF33D] tracking-tight">
-                  {profile?.founded || "2024"}
-                </div>
-                <div className="text-xs font-extrabold uppercase tracking-wider text-white">
-                  Established
-                </div>
-                <div className="text-[11px] text-zinc-500">
-                  Agra, Uttar Pradesh
+                <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#595959] flex items-center justify-center gap-1.5">
+                  <ShieldCheck className="w-3 h-3 text-[#C10016]" />
+                  <span>{stat.label}</span>
                 </div>
               </div>
-
-              <div className="space-y-1">
-                <div className="text-3xl sm:text-5xl font-black text-[#FFF33D] tracking-tight">
-                  ZIP
-                </div>
-                <div className="text-xs font-extrabold uppercase tracking-wider text-white">
-                  Instant Hosting
-                </div>
-                <div className="text-[11px] text-zinc-500">
-                  Zero-config deploy
-                </div>
-              </div>
-
-              <div className="space-y-1">
-                <div className="text-3xl sm:text-5xl font-black text-[#FFF33D] tracking-tight">
-                  20/20
-                </div>
-                <div className="text-xs font-extrabold uppercase tracking-wider text-white">
-                  Security Audited
-                </div>
-                <div className="text-[11px] text-zinc-500">
-                  Hardened edge routes
-                </div>
-              </div>
-            </div>
-          </Card3D>
-        </div>
-      </section>
-
-      {/* ========================================================
-          8. EXECUTIVE 3D BLACK & YELLOW CTA SECTION
-          ======================================================== */}
-      <section className="py-16 sm:py-24 bg-[#0B0B0F] border-t border-zinc-800/80 text-white relative isolate overflow-hidden">
-        <ThreeHeroCanvas
-          variant="dark"
-          className="absolute inset-0 w-full h-full z-0 opacity-85"
-        />
-        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[420px] w-[720px] rounded-full bg-[#FFF33D]/12 blur-[140px]" />
-
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFF33D]/15 text-[#FFF33D] text-xs font-extrabold uppercase tracking-wider border border-[#FFF33D]/35">
-            <Zap className="w-3.5 h-3.5" />
-            <span>Deploy Today</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
-            Ready to Launch Your Next{" "}
-            <span className="text-[#FFF33D]">Website or Tool?</span>
-          </h2>
-
-          <p className="text-sm sm:text-base text-zinc-300 max-w-2xl mx-auto leading-relaxed">
-            Create your free Samad Expo account to deploy static websites instantaneously, or contact our team in Agra for custom web engineering.
-          </p>
-
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/dashboard"
-              className="btn-3d-yellow inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs sm:text-sm font-extrabold uppercase tracking-wider"
-            >
-              <span>Open Hosting Console</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-
-            <Link
-              href="/contact"
-              className="btn-3d-black inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider"
-            >
-              <Mail className="w-4 h-4 text-[#FFF33D]" />
-              <span>Contact Headquarters</span>
-            </Link>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ========================================================
-          9. FLOATING QUICK-CONTACT ACTION PILL
+          MODALS: AUTH MODAL + LIVE SANDBOX IFRAME PREVIEW MODAL
           ======================================================== */}
-      <div className="fixed bottom-5 right-5 z-40">
-        <Link
-          href="/contact"
-          aria-label="Contact Samad Expo"
-          className="animate-samad-pulse flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-zinc-950 text-[#FFF33D] border border-[#FFF33D]/60 shadow-2xl hover:bg-[#FFF33D] hover:text-zinc-950 transition-all duration-200 group"
-        >
-          <div className="w-7 h-7 rounded-full bg-[#FFF33D] text-zinc-950 flex items-center justify-center shrink-0 group-hover:bg-zinc-950 group-hover:text-[#FFF33D] transition-colors">
-            <MessageSquare className="w-3.5 h-3.5" />
-          </div>
-          <span className="hidden sm:inline text-xs font-extrabold pr-1">
-            Contact HQ
-          </span>
-        </Link>
-      </div>
+      <AuthModal
+        isOpen={authModalOpen}
+        onClose={() => setAuthModalOpen(false)}
+        initialMode="login"
+      />
 
-      {/* ========================================================
-          10. INTERACTIVE LIVE PREVIEW MODAL
-          ======================================================== */}
       {previewSite && (
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm"
         >
-          <div className="relative w-full max-w-5xl h-[82vh] rounded-3xl bg-[#0B0B0F] border border-[#FFF33D]/30 overflow-hidden flex flex-col shadow-2xl">
-            <div className="flex items-center justify-between px-5 py-3.5 border-b border-zinc-800 bg-[#060608]">
+          <div className="relative w-full max-w-5xl h-[82vh] bg-white border border-[#C8A464]/60 overflow-hidden flex flex-col shadow-2xl">
+            <div className="flex items-center justify-between px-5 py-3.5 border-b border-[#E5DFD7] bg-[#FAF7F2]">
               <div className="flex items-center gap-3 min-w-0">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0" />
-                <span className="font-extrabold text-white text-sm truncate">
+                <span className="w-2 h-2 rounded-full bg-[#C10016] shrink-0" />
+                <span className="font-bold uppercase tracking-[0.14em] text-[#1D1C1C] text-xs truncate">
                   {previewSite.name}
                 </span>
-                <span className="text-xs text-zinc-400 font-mono hidden sm:inline truncate">
-                  ({previewSite.liveUrl})
-                </span>
               </div>
-              <div className="flex items-center gap-2.5 shrink-0">
+              <div className="flex items-center gap-3 shrink-0">
                 <a
                   href={previewSite.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-3d-yellow inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-extrabold"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#1D1C1C] hover:bg-[#C10016] text-white text-[10px] font-bold uppercase tracking-[0.18em] transition"
                 >
-                  <span>Open Live Site</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Open Live</span>
+                  <ExternalLink className="w-3 h-3" />
                 </a>
                 <button
                   type="button"
                   onClick={() => setPreviewSite(null)}
                   aria-label="Close preview"
-                  className="p-1.5 rounded-full hover:bg-zinc-800 text-zinc-400 hover:text-white transition cursor-pointer"
+                  className="p-1.5 text-[#595959] hover:text-[#C10016] transition cursor-pointer"
                 >
                   <X className="w-4 h-4" />
                 </button>

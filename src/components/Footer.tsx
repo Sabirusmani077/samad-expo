@@ -1,259 +1,281 @@
 "use client";
 
+import React, { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import {
-  ArrowUpRight,
-  Facebook,
-  Github,
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-  Youtube,
-  ShieldCheck,
-} from "lucide-react";
-import { Logo } from "@/components/Logo";
-
-const socialLinks = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/sabir-usmani-753195397", icon: "linkedin" },
-  { label: "Instagram", href: "https://www.instagram.com/sabir_usmani_077/", icon: "instagram" },
-  { label: "X", href: "https://x.com/Mrsabirusmani07", icon: "x" },
-  { label: "GitHub", href: "https://github.com/Sabirusmani077", icon: "github" },
-  { label: "YouTube", href: "https://www.youtube.com/@Sabirusmani07", icon: "youtube" },
-  { label: "Facebook", href: "https://www.facebook.com/share/18oqDsbATK/", icon: "facebook" },
-];
-
-function SocialIcon({ icon }: { icon: string }) {
-  if (icon === "instagram") return <Instagram className="h-4 w-4" aria-hidden="true" />;
-  if (icon === "facebook") return <Facebook className="h-4 w-4" aria-hidden="true" />;
-  if (icon === "youtube") return <Youtube className="h-4 w-4" aria-hidden="true" />;
-  if (icon === "github") return <Github className="h-4 w-4" aria-hidden="true" />;
-  if (icon === "linkedin") return <Linkedin className="h-4 w-4" aria-hidden="true" />;
-  return <span className="text-sm font-bold leading-none" aria-hidden="true">𝕏</span>;
-}
+import { usePathname, useRouter } from "next/navigation";
+import { ArrowUpRight } from "lucide-react";
 
 export function Footer() {
   const pathname = usePathname();
+  const router = useRouter();
+  const [dispatchEmail, setDispatchEmail] = useState("");
 
   if (pathname?.startsWith("/admin") || pathname?.startsWith("/dashboard")) {
     return null;
   }
 
+  const handleDispatch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const target = dispatchEmail.trim();
+    if (!target) {
+      router.push("/contact");
+      return;
+    }
+    router.push(`/contact?email=${encodeURIComponent(target)}`);
+  };
+
   return (
-    <footer className="relative isolate overflow-hidden bg-[#09090B] text-white pt-16 pb-10 border-t-4 border-[#FFF33D]">
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_75%_50%_at_50%_-10%,rgba(255,243,61,0.08),transparent)]" />
+    <footer className="bg-white text-[#1D1C1C] border-t border-[#E5DFD7]">
+      {/* Tier 1: Centered Maison Newsletter / Dispatch Form (Cartier Flush Sharp Style) */}
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-14 text-center space-y-6 border-b border-[#E5DFD7]">
+        <h3 className="text-xs sm:text-sm font-bold uppercase tracking-[0.22em] text-[#1D1C1C]">
+          Subscribe to Our Dispatch
+        </h3>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-zinc-800/80">
-          {/* Column 1: Brand Identity (Span 4) */}
-          <div className="lg:col-span-4 space-y-6">
-            <Logo size="md" showTagline inverted />
-            <p className="max-w-sm text-xs sm:text-sm text-zinc-400 leading-relaxed">
-              Modern website hosting, practical web utilities, and custom digital engineering led by Sabir Usmani from Agra, India.
-            </p>
+        <form
+          onSubmit={handleDispatch}
+          className="mx-auto max-w-md flex flex-col sm:flex-row items-stretch sm:items-end justify-center gap-0"
+        >
+          <input
+            type="email"
+            value={dispatchEmail}
+            onChange={(e) => setDispatchEmail(e.target.value)}
+            placeholder="Email"
+            aria-label="Email address"
+            className="flex-1 py-2.5 px-3 bg-transparent border-b border-[#1D1C1C] font-editorial-serif italic text-base text-[#1D1C1C] placeholder:text-[#767676] focus:border-[#C10016] outline-none"
+          />
+          <button
+            type="submit"
+            className="px-7 py-3 bg-[#1D1C1C] hover:bg-[#C10016] text-white text-[11px] font-bold uppercase tracking-[0.22em] transition-colors cursor-pointer shrink-0"
+          >
+            Subscribe
+          </button>
+        </form>
+      </div>
 
-            <div>
-              <div className="text-[10px] font-bold uppercase tracking-widest text-[#FFF33D] mb-3">
-                Official Channels
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {socialLinks.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={item.label}
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 text-zinc-300 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#FFF33D] hover:bg-[#FFF33D] hover:text-zinc-950"
-                  >
-                    <SocialIcon icon={item.icon} />
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/90 text-[11px] text-zinc-300">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#FFF33D]" />
-              <span>Security-Hardened Hosting &amp; HTTPS</span>
-            </div>
-          </div>
-
-          {/* Column 2: Platform & Tools (Span 2) */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-extrabold uppercase tracking-widest text-[#FFF33D]">
-              Platform
+      {/* Tier 2: 4-Column Architectural Uppercase Directory */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Column 1: Client Care */}
+          <div className="space-y-4">
+            <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-[#1D1C1C]">
+              Client Care
             </h4>
-            <ul className="space-y-2.5 text-xs text-zinc-400">
+            <ul className="space-y-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#595959]">
               <li>
-                <Link href="/dashboard" className="hover:text-[#FFF33D] transition">
-                  Instant Web Hosting
+                <Link href="/contact" className="hover:text-[#C10016] transition">
+                  Contact Us
                 </Link>
               </li>
               <li>
-                <Link href="/websites" className="hover:text-[#FFF33D] transition">
-                  Live Tools Directory
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/websites/mdk-chrono-age-calculator"
-                  className="hover:text-[#FFF33D] transition"
+                <a
+                  href="tel:+919458204216"
+                  className="hover:text-[#C10016] transition"
                 >
-                  Age Calculator
-                </Link>
+                  Call Now: +91 94582 04216
+                </a>
               </li>
               <li>
-                <Link
-                  href="/websites/mdk-convertor"
-                  className="hover:text-[#FFF33D] transition"
+                <a
+                  href="mailto:officialaadhakh@gmail.com"
+                  className="hover:text-[#C10016] transition break-words"
                 >
-                  MDK Convertor
+                  officialaadhakh@gmail.com
+                </a>
+              </li>
+              <li>
+                <Link href="/faq" className="hover:text-[#C10016] transition">
+                  FAQ
                 </Link>
               </li>
               <li>
                 <Link
                   href="/ecosystem-search"
-                  className="hover:text-[#FFF33D] transition"
+                  className="hover:text-[#C10016] transition"
                 >
-                  Ecosystem Search
+                  Ecosystem Index
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Company (Span 2) */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-extrabold uppercase tracking-widest text-[#FFF33D]">
-              Company
+          {/* Column 2: Our Company */}
+          <div className="space-y-4">
+            <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-[#1D1C1C]">
+              Our Company
             </h4>
-            <ul className="space-y-2.5 text-xs text-zinc-400">
+            <ul className="space-y-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#595959]">
               <li>
-                <Link href="/about-company" className="hover:text-[#FFF33D] transition">
-                  About Samad Expo
-                </Link>
-              </li>
-              <li>
-                <Link href="/founder" className="hover:text-[#FFF33D] transition">
-                  Founder Profile
+                <Link
+                  href="/about-company"
+                  className="hover:text-[#C10016] transition inline-flex items-center gap-1"
+                >
+                  <span>About Samad Expo</span>
+                  <ArrowUpRight className="w-3 h-3" />
                 </Link>
               </li>
               <li>
                 <Link
                   href="/corporate-services"
-                  className="hover:text-[#FFF33D] transition"
+                  className="hover:text-[#C10016] transition"
                 >
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/careers" className="hover:text-[#FFF33D] transition">
-                  Careers
+                <Link
+                  href="/careers"
+                  className="hover:text-[#C10016] transition inline-flex items-center gap-1"
+                >
+                  <span>Careers</span>
+                  <ArrowUpRight className="w-3 h-3" />
                 </Link>
               </li>
               <li>
-                <Link href="/partnerships" className="hover:text-[#FFF33D] transition">
+                <Link
+                  href="/partnerships"
+                  className="hover:text-[#C10016] transition"
+                >
                   Partnerships
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="hover:text-[#FFF33D] transition">
-                  FAQ
+                <Link
+                  href="/corporate"
+                  className="hover:text-[#C10016] transition"
+                >
+                  Corporate Overview
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Direct Contact (Span 2) */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-extrabold uppercase tracking-widest text-[#FFF33D]">
-              Contact
+          {/* Column 3: Legal Area */}
+          <div className="space-y-4">
+            <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-[#1D1C1C]">
+              Legal Area
             </h4>
-            <div className="space-y-3 text-xs">
-              <a
-                href="mailto:officialaadhakh@gmail.com"
-                className="group flex items-start gap-2.5 text-zinc-300 hover:text-white transition"
-              >
-                <div className="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0 group-hover:bg-[#FFF33D] group-hover:text-zinc-950 transition">
-                  <Mail className="w-3.5 h-3.5" />
-                </div>
-                <div className="min-w-0">
-                  <div className="text-[10px] uppercase font-bold text-[#FFF33D]">
-                    Email
-                  </div>
-                  <div className="font-medium break-all text-zinc-300 group-hover:text-white">
-                    officialaadhakh@gmail.com
-                  </div>
-                </div>
-              </a>
+            <ul className="space-y-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#595959]">
+              <li>
+                <Link href="/terms" className="hover:text-[#C10016] transition">
+                  Terms of Use
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/privacy-policy"
+                  className="hover:text-[#C10016] transition"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/disclaimer"
+                  className="hover:text-[#C10016] transition"
+                >
+                  Disclaimer
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="https://maps.app.goo.gl/UnzqY6kZ3i2BRieKA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#C10016] transition inline-flex items-center gap-1"
+                >
+                  <span>Bodla, Agra HQ</span>
+                  <ArrowUpRight className="w-3 h-3" />
+                </a>
+              </li>
+            </ul>
+          </div>
 
-              <a
-                href="tel:+919458204216"
-                className="group flex items-start gap-2.5 text-zinc-300 hover:text-white transition"
-              >
-                <div className="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0 group-hover:bg-[#FFF33D] group-hover:text-zinc-950 transition">
-                  <Phone className="w-3.5 h-3.5" />
-                </div>
-                <div>
-                  <div className="text-[10px] uppercase font-bold text-[#FFF33D]">
-                    Phone
-                  </div>
-                  <div className="font-medium text-zinc-300 group-hover:text-white">
-                    +91 94582 04216
-                  </div>
-                </div>
-              </a>
+          {/* Column 4: Live Platforms */}
+          <div className="space-y-4">
+            <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-[#1D1C1C]">
+              Digital Platforms
+            </h4>
+            <ul className="space-y-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#595959]">
+              <li>
+                <Link
+                  href="/dashboard"
+                  className="hover:text-[#C10016] transition"
+                >
+                  Hosting Console
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/websites"
+                  className="hover:text-[#C10016] transition"
+                >
+                  Public Directory
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/portfolio"
+                  className="hover:text-[#C10016] transition"
+                >
+                  Selected Work
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="hover:text-[#C10016] transition">
+                  News &amp; Releases
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Tier 3: Maison Heritage Emblems */}
+      <div className="border-t border-[#E5DFD7] py-10 px-4">
+        <div className="mx-auto max-w-4xl flex flex-wrap items-center justify-center gap-10 sm:gap-16 text-center">
+          <div className="space-y-0.5">
+            <div className="font-editorial-serif italic text-lg text-[#1D1C1C]">
+              Samad Cloud
+            </div>
+            <div className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#767676]">
+              Instant /sites/ Engine
             </div>
           </div>
 
-          {/* Column 5: Headquarters Location (Span 2) */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-extrabold uppercase tracking-widest text-[#FFF33D]">
-              Headquarters
-            </h4>
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-900/70 p-4 space-y-2.5">
-              <div className="flex items-center gap-2 text-xs font-bold text-white">
-                <MapPin className="w-3.5 h-3.5 text-[#FFF33D] shrink-0" />
-                <span>Agra, India</span>
-              </div>
-              <p className="text-[11px] text-zinc-400 leading-relaxed">
-                Bodla, Agra
-                <br />
-                Uttar Pradesh 282010, India
-              </p>
-              <a
-                href="https://maps.app.goo.gl/UnzqY6kZ3i2BRieKA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-[11px] font-bold text-[#FFF33D] hover:underline pt-1"
-              >
-                <span>View on Maps</span>
-                <ArrowUpRight className="w-3 h-3" />
-              </a>
+          <div className="space-y-0.5">
+            <div className="font-editorial-serif italic text-lg text-[#1D1C1C]">
+              MCP Protocol v2
+            </div>
+            <div className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#767676]">
+              JSON-RPC Gateway
+            </div>
+          </div>
+
+          <div className="space-y-0.5">
+            <div className="font-editorial-serif italic text-lg text-[#1D1C1C]">
+              Atelier Security
+            </div>
+            <div className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#767676]">
+              20/20 Audited
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Bottom Legal Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
-          <div>
-            &copy; {new Date().getFullYear()} Samad Expo. All rights reserved.
-          </div>
-          <div className="flex flex-wrap items-center gap-5 text-xs">
-            <Link href="/privacy-policy" className="hover:text-[#FFF33D] transition">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="hover:text-[#FFF33D] transition">
-              Terms of Service
-            </Link>
-            <Link href="/disclaimer" className="hover:text-[#FFF33D] transition">
-              Disclaimer
-            </Link>
-            <Link href="/contact" className="hover:text-[#FFF33D] transition">
-              Contact Desk
+      {/* Tier 4: Signature Cartier Crimson Red Bottom Legal Bar */}
+      <div className="bg-[#C10016] text-white py-5 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] font-bold uppercase tracking-[0.18em]">
+          <div className="flex flex-wrap items-center gap-4">
+            <span>Maison Location: Bodla, Agra, India</span>
+            <Link
+              href="/websites"
+              className="font-editorial-serif italic text-sm normal-case tracking-normal underline underline-offset-4 hover:text-white/80 transition"
+            >
+              Explore Platforms
             </Link>
           </div>
+          <div>Copyright &copy; {new Date().getFullYear()} Samad Expo</div>
         </div>
       </div>
     </footer>

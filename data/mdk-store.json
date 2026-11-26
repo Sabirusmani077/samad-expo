@@ -223,13 +223,13 @@
       "name": "QA Tester",
       "email": "qa_1795240154458@test.com",
       "phone": "",
-      "passwordHash": "pbkdf2:100000:60f39d93421dca3cfed7934feb882d2a:0f7ffcb0fe93069e5f93e6c617e6a106f2284002c522913cccdf35dfa3bcd249d4f5e9d6b8829ede21a6b7425b93f5ff1045eaf6f3d45a94eb221d622fa358d7",
+      "passwordHash": "pbkdf2:100000:5b74e1876e46341c52b84498835387d2:44153fe83786182aaa67499380df754ea65cecb16e7beddcc865dd0df81959dbee6a5ddd0c13dfd38cc15091b162769d8f0ad4f6323131509b93ec5ed71aabf7",
       "role": "customer",
       "emailVerified": true,
       "privacyConsent": true,
       "savedAddresses": [],
       "createdAt": "2026-11-21T05:49:16.163Z",
-      "updatedAt": "2026-11-24T08:43:34.706Z"
+      "updatedAt": "2026-11-26T12:02:40.565Z"
     },
     {
       "id": "usr_4729b675-b",
@@ -682,7 +682,7 @@
       "ownershipType": "other",
       "showOwnershipPublicly": false,
       "analyticsEnabled": false,
-      "isPublic": true,
+      "isPublic": false,
       "sortOrder": 22,
       "createdAt": "2026-10-11T08:00:00.000Z",
       "updatedAt": "2026-10-11T08:00:00.000Z"
@@ -743,7 +743,7 @@
         "email": "officialaadhakh@gmail.com"
       },
       "sortOrder": 1,
-      "isActive": true,
+      "isActive": false,
       "createdAt": "2026-11-17T06:00:25.605Z",
       "updatedAt": "2026-11-20T07:05:35.233Z"
     }
@@ -859,8 +859,8 @@
     "businessName": "Samad Expo",
     "legalName": "Samad Expo",
     "tagline": "Modern Website Hosting, Developer Tools & Digital Solutions",
-    "about": "Samad Expo is a modern digital technology company and automated website hosting platform founded by Sabir Usmani in Agra, India. We empower developers, students, and businesses to upload, preview, and deploy live websites with instant public URLs and high-speed cloud routing.",
-    "story": "Founded by Sabir Usmani in Bodla, Agra, Samad Expo started as an independent web engineering initiative and has grown into a versatile technology platform providing multi-user static website hosting, digital utilities, and custom software development.",
+    "about": "Samad Expo is a modern digital technology company and automated website hosting platform operating from Agra, India. We empower developers, students, and businesses to upload, preview, and deploy live websites with instant public URLs and high-speed cloud routing.",
+    "story": "Established in Bodla, Agra, Samad Expo started as an independent web engineering initiative and has grown into a versatile technology platform providing multi-user static website hosting, digital utilities, and custom software development.",
     "vision": "To build a fast, reliable, and accessible website hosting platform and developer ecosystem that simplifies web deployment and provides high-utility digital tools to users worldwide.",
     "mission": "To deliver lightning-fast, zero-hassle website deployment alongside beautifully engineered web applications that solve real everyday problems.",
     "coreValues": [
@@ -881,17 +881,17 @@
       },
       {
         "title": "Transparent Governance",
-        "description": "Clear ownership, verified credentials, and honest platform metrics without marketing fluff.",
+        "description": "Clear engineering standards, verified credentials, and honest platform metrics without marketing fluff.",
         "icon": "Award"
       }
     ],
     "founded": "2024",
     "headquarters": "Bodla, Agra, Uttar Pradesh",
-    "founderName": "Sabir Usmani",
-    "founderDesignation": "Founder & Owner",
-    "founderPhoto": "/images/founder-portrait.jpg",
-    "founderBio": "Visionary entrepreneur and systems architect behind Samad Expo, leading our strategic expansion across digital platforms, web applications, and software ecosystems.",
-    "founderMessage": "Welcome to Samad Expo. Our journey began with a fundamental belief: that great digital platforms are built on robust architecture, continuous technological innovation, and exceptional user value.",
+    "founderName": "",
+    "founderDesignation": "",
+    "founderPhoto": "",
+    "founderBio": "",
+    "founderMessage": "",
     "achievements": [
       {
         "title": "Multi-User Website Hosting Platform Launch",
@@ -5087,6 +5087,348 @@
       "referrerHost": null,
       "id": "a73448c2699b3027412c013f",
       "createdAt": "2026-11-24T08:46:20.384Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "41f2099a7df81b30288bfeb2",
+      "createdAt": "2026-11-26T11:05:34.496Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "c397ee58d422f599619edab8",
+      "createdAt": "2026-11-26T11:08:10.707Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "4db4edf3f766fe903e929001",
+      "createdAt": "2026-11-26T11:08:32.545Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "b4f68dd9ad9a926cef9c424e",
+      "createdAt": "2026-11-26T11:09:17.347Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/faq",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "9c6369c9e20bba98afe29c0d",
+      "createdAt": "2026-11-26T11:10:03.760Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/corporate-services",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "356bde4f09cb737089c301a6",
+      "createdAt": "2026-11-26T11:10:06.794Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "c8e80edbc4c9100c92620b7e",
+      "createdAt": "2026-11-26T11:10:09.638Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "18ff34677cbbe02664f98d8d",
+      "createdAt": "2026-11-26T11:10:11.428Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "bba85170e759eb18a21d312d",
+      "createdAt": "2026-11-26T11:16:26.707Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "a5d58b37c786eb6ba23007f6",
+      "createdAt": "2026-11-26T11:16:46.121Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites/mdk-chrono-age-calculator",
+      "websiteId": "website_sabir_age_calculator",
+      "source": "internal",
+      "referrerHost": null,
+      "id": "ea2beeadb9ac4e798f3eb476",
+      "createdAt": "2026-11-26T11:17:27.353Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/about-company",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "8f30ed905800175960259293",
+      "createdAt": "2026-11-26T11:17:33.783Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "04ff057ee769a42d60756030",
+      "createdAt": "2026-11-26T11:17:37.332Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "c2cf707a4a5c3ec9bd1fdfaa",
+      "createdAt": "2026-11-26T11:22:21.650Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/about-company",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "c3d6f70e3b3050a7e0217bcb",
+      "createdAt": "2026-11-26T11:22:41.768Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/corporate",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "b8e7c8737351a6b6d78a52b7",
+      "createdAt": "2026-11-26T11:22:42.643Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/contact",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "daa380fc4e53b13d4d73d1f6",
+      "createdAt": "2026-11-26T11:22:42.979Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/faq",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "711a60280a5385299eba4558",
+      "createdAt": "2026-11-26T11:22:43.273Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "72d7f05b9959d86116b78b38",
+      "createdAt": "2026-11-26T11:22:55.260Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "cc11ebc9adc7e0bc8de29986",
+      "createdAt": "2026-11-26T11:26:35.150Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "43867f261b9ba121fffd2f41",
+      "createdAt": "2026-11-26T11:32:11.884Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "92b5724de9854fbbfbac07b8",
+      "createdAt": "2026-11-26T11:33:39.947Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "1dac299433b5a5eb56ad5755",
+      "createdAt": "2026-11-26T11:33:52.810Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "c47ea6cb978c3972e9e310d9",
+      "createdAt": "2026-11-26T11:41:05.812Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "b21d268704b3e5ecdf6bda56",
+      "createdAt": "2026-11-26T11:43:23.845Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "e10fc30a5e10fe155f1b5cf0",
+      "createdAt": "2026-11-26T11:43:29.096Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/corporate-services",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "689ceb1b42d8dcb80d4886ab",
+      "createdAt": "2026-11-26T11:43:31.693Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/about-company",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "0306e86f7c21dc7fbef1661f",
+      "createdAt": "2026-11-26T11:43:35.131Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/about-company",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "6a1183a325cf8bfb8b77448f",
+      "createdAt": "2026-11-26T11:48:24.117Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "396422b38fab78168d1e1614",
+      "createdAt": "2026-11-26T11:48:30.261Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "internal",
+      "referrerHost": null,
+      "id": "77856f32681a3f40101600c7",
+      "createdAt": "2026-11-26T11:48:34.097Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "017b21a520aa75f4335ccf1b",
+      "createdAt": "2026-11-26T12:02:54.917Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/websites",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "919a5487400812e88499dd4f",
+      "createdAt": "2026-11-26T12:04:37.452Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/about-company",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "7e01fd2efc87a8ed5f0b72e8",
+      "createdAt": "2026-11-26T12:04:38.739Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/corporate-services",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "7dbfab6d567647d4ade2ba29",
+      "createdAt": "2026-11-26T12:04:40.040Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/contact",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "6183f2c04808657c13486dfe",
+      "createdAt": "2026-11-26T12:04:52.730Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/faq",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "bae299c409086b9d1621b0c0",
+      "createdAt": "2026-11-26T12:04:53.633Z"
+    },
+    {
+      "kind": "parent",
+      "pagePath": "/",
+      "websiteId": null,
+      "source": "direct",
+      "referrerHost": null,
+      "id": "fe1e9310de2da4cf6fc8213e",
+      "createdAt": "2026-11-26T12:05:08.992Z"
     }
   ],
   "hostedProjects": [
@@ -5184,11 +5526,11 @@
       "id": "proj_sabir_portfolio",
       "userId": "usr_admin_01",
       "userEmail": "officialaadhakh@gmail.com",
-      "userName": "Sabir Usmani",
-      "projectName": "Sabir Usmani Portfolio",
+      "userName": "Samad Cloud",
+      "projectName": "Samad Expo Cloud Showcase",
       "slug": "sabir-usmani-portfolio",
-      "description": "Personal design portfolio, software engineering capabilities, and web showcase by Sabir Usmani.",
-      "visibility": "public",
+      "description": "Private showcase deployment archived under Samad Expo cloud infrastructure.",
+      "visibility": "private",
       "deploymentUrl": "https://sabirusmani077.github.io/Self-Portfolio-/",
       "deploymentStatus": "live",
       "thumbnail": "/images/project-portfolio.jpg",

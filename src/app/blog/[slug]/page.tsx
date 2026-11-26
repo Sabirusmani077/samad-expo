@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const db = readDb();
   const post = db.blogPosts?.find((b) => b.slug === slug || b.id === slug);
-  if (!post) return { title: "Article Not Found" };
+  if (!post) return { title: "Dispatch Not Found" };
   return {
     title: `${post.title} — Samad Expo News`,
     description: post.excerpt,
@@ -33,44 +33,40 @@ export default async function BlogPostPage({ params }: Props) {
   }
 
   return (
-    <div className="bg-[#060608] samad-hero-grid min-h-screen py-12 text-white relative overflow-hidden">
-      <ThreeHeroCanvas variant="dark" />
-      <div className="pointer-events-none absolute -top-24 right-0 h-80 w-80 rounded-full bg-[#FFF33D]/15 blur-[120px]" />
+    <div className="bg-[#FAF7F2] min-h-screen text-[#1D1C1C]">
+      <section className="samad-hero-grid border-b border-[#C8A464]/25 pt-14 pb-16 relative overflow-hidden text-white">
+        <ThreeHeroCanvas variant="dark" className="opacity-75" />
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-5">
+          <nav
+            aria-label="Breadcrumb"
+            className="text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-400 flex items-center gap-2"
+          >
+            <Link href="/" className="hover:text-[#C8A464] transition">
+              Home
+            </Link>
+            <span>/</span>
+            <Link href="/blog" className="hover:text-[#C8A464] transition">
+              News &amp; Dispatches
+            </Link>
+            <span>/</span>
+            <span className="text-[#C8A464] truncate max-w-xs">{post.title}</span>
+          </nav>
 
-      <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 relative z-10">
-        <nav
-          aria-label="Breadcrumb"
-          className="text-xs text-zinc-400 flex items-center gap-2"
-        >
-          <Link href="/" className="hover:text-[#FFF33D] font-medium transition">
-            Home
-          </Link>
-          <span>/</span>
-          <Link href="/blog" className="hover:text-[#FFF33D] font-medium transition">
-            Blog &amp; News
-          </Link>
-          <span>/</span>
-          <span className="text-[#FFF33D] font-bold truncate max-w-xs">
-            {post.title}
+          <span className="inline-block px-3.5 py-1 bg-[#C10016] text-white font-bold text-[10px] uppercase tracking-[0.22em]">
+            {post.category || "Maison News"}
           </span>
-        </nav>
-
-        <header className="space-y-4">
-          <span className="inline-block px-3 py-1 rounded-full bg-[#FFF33D] text-black font-extrabold text-xs uppercase tracking-wider">
-            {post.category || "Corporate News"}
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-white leading-tight">
+          <h1 className="text-3xl sm:text-5xl font-bold uppercase tracking-[0.1em] text-white leading-tight">
             {post.title}
           </h1>
 
-          <div className="flex items-center gap-4 text-xs text-zinc-400 border-y border-zinc-800 py-3">
-            <span className="flex items-center gap-1.5 font-medium text-zinc-200">
-              <User className="w-3.5 h-3.5 text-[#FFF33D]" />
+          <div className="flex items-center gap-5 text-xs text-zinc-300 pt-2">
+            <span className="flex items-center gap-1.5">
+              <User className="w-3.5 h-3.5 text-[#C8A464]" />
               {post.author || "Samad Expo Editorial"}
             </span>
             {post.publishedAt && (
               <span className="flex items-center gap-1.5">
-                <Calendar className="w-3.5 h-3.5 text-[#FFF33D]" />
+                <Calendar className="w-3.5 h-3.5 text-[#C8A464]" />
                 {new Date(post.publishedAt).toLocaleDateString("en-IN", {
                   year: "numeric",
                   month: "long",
@@ -79,11 +75,13 @@ export default async function BlogPostPage({ params }: Props) {
               </span>
             )}
           </div>
-        </header>
+        </div>
+      </section>
 
+      <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-8">
         {post.coverImage && (
-          <Card3D intensity={5}>
-            <div className="samad-card overflow-hidden border-[#FFF33D]/35">
+          <Card3D intensity={4}>
+            <div className="samad-card overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={post.coverImage}
@@ -94,16 +92,16 @@ export default async function BlogPostPage({ params }: Props) {
           </Card3D>
         )}
 
-        <Card3D intensity={4}>
-          <div className="samad-card p-8 sm:p-10 text-sm sm:text-base text-zinc-300 leading-relaxed whitespace-pre-line space-y-4 border-t-4 border-t-[#FFF33D]">
+        <Card3D intensity={3}>
+          <div className="samad-card p-8 sm:p-10 font-editorial-serif text-base sm:text-lg text-[#595959] leading-relaxed whitespace-pre-line border-t-2 border-t-[#C10016]">
             {post.content || post.excerpt}
           </div>
         </Card3D>
 
-        <footer className="pt-8 border-t border-zinc-800 flex items-center justify-between">
+        <footer className="pt-6 border-t border-[#E5DFD7]">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-xs font-bold text-[#FFF33D] hover:text-white transition"
+            className="font-editorial-serif italic text-base text-[#C10016] inline-flex items-center gap-2 hover:underline"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to All News</span>

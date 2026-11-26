@@ -11,7 +11,6 @@ import {
   MapPin,
   Phone,
   Send,
-  Sparkles,
   ShieldCheck,
   ArrowUpRight,
 } from "lucide-react";
@@ -69,252 +68,273 @@ export default function ContactPage() {
   };
 
   const inputClass =
-    "w-full px-4 py-2.5 rounded-xl border border-zinc-800 text-sm text-white bg-zinc-900/90 placeholder:text-zinc-500 focus:border-[#FFF33D] focus:ring-2 focus:ring-[#FFF33D]/25 outline-none transition";
+    "w-full py-2.5 border-b border-[#D5CEC5] bg-transparent text-sm text-[#1D1C1C] placeholder:text-[#9A938A] focus:border-[#1D1C1C] outline-none transition";
 
   return (
-    <div className="bg-[#060608] min-h-screen text-white">
-      <section className="samad-hero-grid border-b border-zinc-800/80 pt-10 pb-14 sm:pt-14 sm:pb-16 relative overflow-hidden">
-        <ThreeHeroCanvas
-          variant="dark"
-          className="absolute inset-0 w-full h-full z-0 opacity-75"
-        />
-        <div className="pointer-events-none absolute -top-24 right-0 h-80 w-80 rounded-full bg-[#FFF33D]/15 blur-[120px]" />
+    <div className="bg-white min-h-screen text-[#1D1C1C]">
+      <section className="samad-hero-grid border-b border-[#C8A464]/25 pt-14 pb-16 relative overflow-hidden text-white">
+        <ThreeHeroCanvas variant="dark" className="opacity-80" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0B0A0C] via-[#0B0A0C]/40 to-transparent z-[1]" />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-5">
           <nav
             aria-label="Breadcrumb"
-            className="text-xs text-zinc-400 flex items-center gap-2"
+            className="text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-400 flex items-center gap-2"
           >
-            <Link href="/" className="hover:text-[#FFF33D] font-semibold transition">
+            <Link href="/" className="hover:text-[#C8A464] transition">
               Home
             </Link>
             <span>/</span>
-            <span className="text-[#FFF33D] font-bold">Contact Us</span>
+            <span className="text-[#C8A464]">Contact Advisor</span>
           </nav>
 
           <div className="space-y-3 max-w-3xl">
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FFF33D]/10 border border-[#FFF33D]/30 text-[#FFF33D] text-xs font-extrabold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Corporate &amp; Support Desk</span>
+            <div className="text-[10px] font-bold uppercase tracking-[0.34em] text-[#C8A464]">
+              Client &amp; Advisory Desk
             </div>
-            <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-              Connect with <span className="samad-highlight">Samad Expo</span>
+            <h1 className="text-3xl sm:text-5xl font-bold uppercase tracking-[0.14em] text-white leading-tight">
+              Connect With{" "}
+              <span className="samad-highlight !text-[#E5C78E]">Samad Expo</span>
             </h1>
-            <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-              Reach out for website hosting assistance, custom full-stack software projects, or corporate partnership inquiries.
+            <p className="font-editorial-serif italic text-base sm:text-xl text-zinc-300 leading-relaxed">
+              Speak directly with our Agra engineering desk for hosting support, bespoke web development, or alliances.
             </p>
           </div>
         </div>
       </section>
 
-      <div className="bg-[#0B0B0F] py-14 sm:py-20">
+      <div className="bg-[#FAF7F2] py-16 sm:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             <div className="lg:col-span-5 space-y-6">
-              <Card3D intensity={5} className="samad-card p-7 space-y-6">
-                <h2 className="text-lg font-black text-white tracking-tight">
-                  Direct Contact Details
-                </h2>
+              <Card3D intensity={4}>
+                <div className="samad-card p-8 space-y-6 border-t-2 border-t-[#C10016]">
+                  <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-[#1D1C1C]">
+                    Direct Client Channels
+                  </h2>
 
-                <div className="space-y-4 text-sm">
-                  <a
-                    href="mailto:officialaadhakh@gmail.com"
-                    className="flex items-start gap-3.5 group p-2.5 rounded-2xl hover:bg-white/5 transition"
-                  >
-                    <div className="w-10 h-10 rounded-xl bg-[#FFF33D] text-zinc-950 flex items-center justify-center shrink-0">
-                      <Mail className="w-5 h-5" />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-[11px] uppercase font-bold text-[#FFF33D]">
-                        Official Email
-                      </p>
-                      <p className="font-bold text-white break-all group-hover:underline">
-                        officialaadhakh@gmail.com
-                      </p>
-                    </div>
-                  </a>
+                  <div className="space-y-4 text-sm">
+                    <a
+                      href="mailto:officialaadhakh@gmail.com"
+                      className="flex items-start gap-3.5 group py-2 hover:text-[#C10016] transition"
+                    >
+                      <div className="w-10 h-10 bg-[#1D1C1C] text-[#C8A464] flex items-center justify-center shrink-0">
+                        <Mail className="w-4 h-4 stroke-[1.5]" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-[#C10016]">
+                          Official Email
+                        </p>
+                        <p className="font-bold text-[#1D1C1C] break-all group-hover:text-[#C10016]">
+                          officialaadhakh@gmail.com
+                        </p>
+                      </div>
+                    </a>
 
-                  <a
-                    href="tel:+919458204216"
-                    className="flex items-start gap-3.5 group p-2.5 rounded-2xl hover:bg-white/5 transition"
-                  >
-                    <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-[#FFF33D]/30 group-hover:bg-[#FFF33D] text-[#FFF33D] group-hover:text-zinc-950 flex items-center justify-center shrink-0 transition">
-                      <Phone className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <p className="text-[11px] uppercase font-bold text-[#FFF33D]">
-                        Phone Number
-                      </p>
-                      <p className="font-bold text-white group-hover:underline">
-                        +91 94582 04216
-                      </p>
-                    </div>
-                  </a>
+                    <a
+                      href="tel:+919458204216"
+                      className="flex items-start gap-3.5 group py-2 transition"
+                    >
+                      <div className="w-10 h-10 border border-[#C8A464] bg-white text-[#1D1C1C] group-hover:bg-[#1D1C1C] group-hover:text-white flex items-center justify-center shrink-0 transition">
+                        <Phone className="w-4 h-4 stroke-[1.5]" />
+                      </div>
+                      <div>
+                        <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-[#C10016]">
+                          Telephone
+                        </p>
+                        <p className="font-bold text-[#1D1C1C] group-hover:text-[#C10016]">
+                          +91 94582 04216
+                        </p>
+                      </div>
+                    </a>
 
-                  <a
-                    href="https://maps.app.goo.gl/UnzqY6kZ3i2BRieKA"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-start gap-3.5 group p-2.5 rounded-2xl hover:bg-white/5 transition"
-                  >
-                    <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-[#FFF33D]/30 group-hover:bg-[#FFF33D] text-[#FFF33D] group-hover:text-zinc-950 flex items-center justify-center shrink-0 transition">
-                      <MapPin className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <p className="text-[11px] uppercase font-bold text-[#FFF33D]">
-                        Headquarters
-                      </p>
-                      <p className="font-bold text-white inline-flex items-center gap-1 group-hover:underline">
-                        <span>Bodla, Agra, Uttar Pradesh 282010</span>
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </p>
-                    </div>
-                  </a>
-                </div>
+                    <a
+                      href="https://maps.app.goo.gl/UnzqY6kZ3i2BRieKA"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-start gap-3.5 group py-2 transition"
+                    >
+                      <div className="w-10 h-10 border border-[#C8A464] bg-white text-[#1D1C1C] group-hover:bg-[#1D1C1C] group-hover:text-white flex items-center justify-center shrink-0 transition">
+                        <MapPin className="w-4 h-4 stroke-[1.5]" />
+                      </div>
+                      <div>
+                        <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-[#C10016]">
+                          Maison HQ
+                        </p>
+                        <p className="font-bold text-[#1D1C1C] inline-flex items-center gap-1 group-hover:text-[#C10016]">
+                          <span>Bodla, Agra, Uttar Pradesh 282010</span>
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                        </p>
+                      </div>
+                    </a>
+                  </div>
 
-                <div className="pt-4 border-t border-zinc-800/80 flex items-center gap-2.5 text-xs text-zinc-400 font-medium">
-                  <Clock className="w-4 h-4 text-[#FFF33D] shrink-0" />
-                  <span>Mon &ndash; Sat &middot; Direct Leadership Review</span>
+                  <div className="pt-4 border-t border-[#E5DFD7] flex items-center gap-2.5 text-xs text-[#595959]">
+                    <Clock className="w-4 h-4 text-[#C10016] shrink-0" />
+                    <span className="font-editorial-serif italic text-sm">
+                      Monday &ndash; Saturday &middot; Dedicated Advisory Review
+                    </span>
+                  </div>
                 </div>
               </Card3D>
 
-              <Card3D intensity={5} className="samad-card p-6 space-y-3 border-t-2 border-t-[#FFF33D]">
-                <div className="flex items-center gap-2 text-[#FFF33D] text-xs font-extrabold uppercase tracking-wider">
-                  <ShieldCheck className="w-4 h-4" />
-                  <span>Verified Executive Desk</span>
+              <Card3D intensity={4}>
+                <div className="samad-card p-7 space-y-3">
+                  <div className="flex items-center gap-2 text-[#C10016] text-[10px] font-bold uppercase tracking-[0.22em]">
+                    <ShieldCheck className="w-4 h-4" />
+                    <span>Verified Engineering Desk</span>
+                  </div>
+                  <p className="font-editorial-serif text-sm text-[#595959] leading-relaxed">
+                    Every submission is logged directly for confidential review by the Samad Expo technical advisory desk.
+                  </p>
                 </div>
-                <p className="text-xs text-zinc-300 leading-relaxed">
-                  All inquiries sent through this form are stored securely and reviewed directly by Samad Expo founder Sabir Usmani.
-                </p>
               </Card3D>
             </div>
 
             <div className="lg:col-span-7">
-              <Card3D intensity={3} className="samad-card p-7 sm:p-10 relative overflow-hidden">
-                <div className="absolute inset-x-0 top-0 h-1.5 bg-[#FFF33D]" />
+              <Card3D intensity={3}>
+                <div className="samad-card p-8 sm:p-10 relative overflow-hidden border-t-2 border-t-[#C10016]">
+                  <div className="mb-8 space-y-1.5">
+                    <h2 className="text-lg font-bold uppercase tracking-[0.18em] text-[#1D1C1C]">
+                      Send an Inquiry
+                    </h2>
+                    <p className="font-editorial-serif italic text-sm text-[#595959]">
+                      Share your project requirements or consultation brief below.
+                    </p>
+                  </div>
 
-                <div className="mb-6 space-y-1 pt-1">
-                  <h2 className="text-2xl font-black text-white tracking-tight">
-                    Send an Inquiry
-                  </h2>
-                  <p className="text-xs sm:text-sm text-zinc-400">
-                    Share your project details or partnership brief below.
-                  </p>
+                  {submitted && (
+                    <div className="mb-6 p-4 border border-emerald-700/30 bg-emerald-50 text-emerald-900 text-xs font-semibold flex items-center gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-700 shrink-0" />
+                      <span>
+                        Thank you. Your inquiry has been received cleanly by our advisory desk.
+                      </span>
+                    </div>
+                  )}
+
+                  {error && (
+                    <div className="mb-6 p-4 border border-[#C10016]/40 bg-[#FFF5F5] text-[#C10016] text-xs font-semibold">
+                      {error}
+                    </div>
+                  )}
+
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div>
+                        <label
+                          htmlFor="contact-name"
+                          className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#595959] mb-1"
+                        >
+                          Full Name *
+                        </label>
+                        <input
+                          id="contact-name"
+                          required
+                          minLength={2}
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          placeholder="Your full name"
+                          className={inputClass}
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="contact-email"
+                          className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#595959] mb-1"
+                        >
+                          Email Address *
+                        </label>
+                        <input
+                          id="contact-email"
+                          type="email"
+                          required
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="you@company.com"
+                          className={inputClass}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div>
+                        <label
+                          htmlFor="contact-phone"
+                          className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#595959] mb-1"
+                        >
+                          Telephone
+                        </label>
+                        <input
+                          id="contact-phone"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          placeholder="+91 ..."
+                          className={inputClass}
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="contact-company"
+                          className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#595959] mb-1"
+                        >
+                          Organization
+                        </label>
+                        <input
+                          id="contact-company"
+                          value={company}
+                          onChange={(e) => setCompany(e.target.value)}
+                          placeholder="Organization name"
+                          className={inputClass}
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="contact-subject"
+                        className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#595959] mb-1"
+                      >
+                        Subject *
+                      </label>
+                      <input
+                        id="contact-subject"
+                        required
+                        value={subject}
+                        onChange={(e) => setSubject(e.target.value)}
+                        placeholder="Website Hosting, Custom Engineering, or Alliance"
+                        className={inputClass}
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="contact-message"
+                        className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#595959] mb-1"
+                      >
+                        Message *
+                      </label>
+                      <textarea
+                        id="contact-message"
+                        required
+                        minLength={10}
+                        rows={4}
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        placeholder="Share project objectives, hosting volume, or inquiry details..."
+                        className={`${inputClass} resize-none`}
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={submitting}
+                      className="btn-3d-yellow w-full sm:w-auto inline-flex items-center justify-center gap-2 px-9 py-3.5 text-[11px] font-bold uppercase tracking-[0.22em] disabled:opacity-60 cursor-pointer"
+                    >
+                      <Send className="w-3.5 h-3.5" />
+                      <span>{submitting ? "Sending..." : "Submit Inquiry"}</span>
+                    </button>
+                  </form>
                 </div>
-
-                {submitted && (
-                  <div className="mb-6 p-4 rounded-2xl bg-emerald-950/60 border border-emerald-500/40 text-emerald-200 text-xs sm:text-sm font-semibold flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                    <span>
-                      Thank you! Your inquiry has been received and logged for review.
-                    </span>
-                  </div>
-                )}
-
-                {error && (
-                  <div className="mb-6 p-4 rounded-2xl bg-rose-950/60 border border-rose-500/40 text-rose-200 text-xs sm:text-sm font-semibold">
-                    {error}
-                  </div>
-                )}
-
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="contact-name" className="block text-xs font-bold text-zinc-300 mb-1.5">
-                        Full Name *
-                      </label>
-                      <input
-                        id="contact-name"
-                        required
-                        minLength={2}
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Your full name"
-                        className={inputClass}
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="contact-email" className="block text-xs font-bold text-zinc-300 mb-1.5">
-                        Email Address *
-                      </label>
-                      <input
-                        id="contact-email"
-                        type="email"
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="you@company.com"
-                        className={inputClass}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="contact-phone" className="block text-xs font-bold text-zinc-300 mb-1.5">
-                        Phone Number
-                      </label>
-                      <input
-                        id="contact-phone"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        placeholder="+91 ..."
-                        className={inputClass}
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="contact-company" className="block text-xs font-bold text-zinc-300 mb-1.5">
-                        Company / Organization
-                      </label>
-                      <input
-                        id="contact-company"
-                        value={company}
-                        onChange={(e) => setCompany(e.target.value)}
-                        placeholder="Organization name"
-                        className={inputClass}
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="contact-subject" className="block text-xs font-bold text-zinc-300 mb-1.5">
-                      Subject *
-                    </label>
-                    <input
-                      id="contact-subject"
-                      required
-                      value={subject}
-                      onChange={(e) => setSubject(e.target.value)}
-                      placeholder="Website Hosting, Custom Software, or Partnership"
-                      className={inputClass}
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="contact-message" className="block text-xs font-bold text-zinc-300 mb-1.5">
-                      Message *
-                    </label>
-                    <textarea
-                      id="contact-message"
-                      required
-                      minLength={10}
-                      rows={5}
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Tell us about your project, partnership idea, or support request..."
-                      className={`${inputClass} resize-none`}
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={submitting}
-                    className="btn-3d-yellow w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-extrabold text-xs uppercase tracking-wider disabled:opacity-60 cursor-pointer"
-                  >
-                    <Send className="w-4 h-4" />
-                    <span>{submitting ? "Sending..." : "Submit Message"}</span>
-                  </button>
-                </form>
               </Card3D>
             </div>
           </div>

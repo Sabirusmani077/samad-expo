@@ -120,54 +120,49 @@ export function AuthModal({
   };
 
   const inputClass =
-    "w-full rounded-xl bg-zinc-900/90 border border-zinc-800 pl-10 pr-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-[#FFF33D] focus:ring-2 focus:ring-[#FFF33D]/25 transition";
+    "w-full border-b border-[#D5CEC5] bg-transparent pl-9 pr-4 py-2.5 text-sm text-[#1D1C1C] placeholder:text-[#9A938A] focus:outline-none focus:border-[#1D1C1C] transition";
 
   return createPortal(
-    <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-      <div className="relative w-full max-w-md rounded-3xl bg-gradient-to-b from-[#15151A] to-[#09090C] border border-[#FFF33D]/30 p-6 sm:p-8 text-white shadow-[0_30px_80px_rgba(0,0,0,0.9),0_0_40px_rgba(255,243,61,0.12)] overflow-hidden">
-        <div className="absolute inset-x-0 top-0 h-1.5 bg-[#FFF33D]" />
+    <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+      <div className="relative w-full max-w-md border border-[#C8A464]/50 bg-white p-7 sm:p-9 text-[#1D1C1C] shadow-2xl overflow-hidden">
+        <div className="absolute inset-x-0 top-0 h-1 bg-[#C10016]" />
 
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 p-2 text-zinc-400 hover:text-[#FFF33D] transition rounded-full hover:bg-white/5 cursor-pointer"
+          className="absolute right-4 top-4 p-2 text-[#595959] hover:text-[#C10016] transition cursor-pointer"
           aria-label="Close modal"
         >
-          <X className="w-5 h-5" />
+          <X className="w-5 h-5 stroke-[1.5]" />
         </button>
 
         <div className="mb-6 text-center pt-1">
-          <div className="mb-3 flex justify-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/primary-logo.png"
-              alt="Samad Expo Logo"
-              className="h-14 w-14 rounded-2xl object-cover border border-[#FFF33D]/50 shadow-[0_8px_24px_rgba(255,243,61,0.2)] select-none"
-            />
+          <div className="font-editorial-serif italic text-3xl text-[#1D1C1C] mb-2">
+            Samad Expo
           </div>
-          <h2 className="text-2xl font-black tracking-tight text-white">
-            {mode === "login" && "Welcome to Samad Expo"}
-            {mode === "register" && "Create Free Account"}
-            {mode === "forgot" && "Reset Your Password"}
+          <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-[#1D1C1C]">
+            {mode === "login" && "Client Console Access"}
+            {mode === "register" && "Create Developer Profile"}
+            {mode === "forgot" && "Password Recovery"}
           </h2>
-          <p className="mt-1 text-xs sm:text-sm text-zinc-400">
+          <p className="mt-1.5 font-editorial-serif italic text-sm text-[#595959]">
             {mode === "login" &&
-              "Sign in to deploy & manage your hosted websites"}
+              "Sign in to manage and deploy live web applications"}
             {mode === "register" &&
-              "Deploy websites instantly with public URLs"}
+              "Deploy static websites with dedicated public links"}
             {mode === "forgot" &&
-              "Enter your email to receive recovery instructions"}
+              "Enter your registered email for recovery guidance"}
           </p>
         </div>
 
         {error && (
-          <div className="mb-4 rounded-xl border border-rose-500/40 bg-rose-950/60 p-3 text-xs font-semibold text-rose-200">
+          <div className="mb-4 border border-[#C10016]/40 bg-[#FFF5F5] p-3 text-xs font-semibold text-[#C10016]">
             {error}
           </div>
         )}
 
         {successMsg && (
-          <div className="mb-4 rounded-xl border border-emerald-500/40 bg-emerald-950/60 p-3 text-xs font-semibold text-emerald-200 flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+          <div className="mb-4 border border-emerald-700/30 bg-emerald-50 p-3 text-xs font-semibold text-emerald-900 flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
             <span>{successMsg}</span>
           </div>
         )}
@@ -175,11 +170,11 @@ export function AuthModal({
         {mode === "login" && (
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-1">
+              <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#595959] mb-1">
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+                <Mail className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 text-[#767676]" />
                 <input
                   type="email"
                   required
@@ -193,7 +188,7 @@ export function AuthModal({
 
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="text-xs font-bold uppercase tracking-wider text-zinc-300">
+                <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#595959]">
                   Password
                 </label>
                 <button
@@ -203,13 +198,13 @@ export function AuthModal({
                     setSuccessMsg("");
                     setMode("forgot");
                   }}
-                  className="text-xs font-bold text-[#FFF33D] hover:underline cursor-pointer"
+                  className="font-editorial-serif italic text-xs text-[#C10016] hover:underline cursor-pointer"
                 >
-                  Forgot?
+                  Forgot password?
                 </button>
               </div>
               <div className="relative">
-                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+                <Lock className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 text-[#767676]" />
                 <input
                   type="password"
                   required
@@ -224,7 +219,7 @@ export function AuthModal({
             <button
               type="submit"
               disabled={loading}
-              className="btn-3d-yellow w-full mt-2 inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-xs font-extrabold uppercase tracking-wider disabled:opacity-50 cursor-pointer"
+              className="btn-3d-yellow w-full mt-2 inline-flex items-center justify-center gap-2 px-4 py-3.5 text-[11px] font-bold uppercase tracking-[0.22em] disabled:opacity-50 cursor-pointer"
             >
               {loading ? (
                 <>
@@ -233,14 +228,14 @@ export function AuthModal({
                 </>
               ) : (
                 <>
-                  <span>Sign In to Dashboard</span>
+                  <span>Enter Hosting Console</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
             </button>
 
-            <div className="pt-2 text-center text-xs text-zinc-400">
-              Don&apos;t have an account?{" "}
+            <div className="pt-2 text-center text-xs text-[#595959]">
+              New to Samad Expo?{" "}
               <button
                 type="button"
                 onClick={() => {
@@ -248,9 +243,9 @@ export function AuthModal({
                   setSuccessMsg("");
                   setMode("register");
                 }}
-                className="font-extrabold text-[#FFF33D] hover:underline cursor-pointer"
+                className="font-editorial-serif italic font-semibold text-[#C10016] hover:underline cursor-pointer"
               >
-                Sign Up Free
+                Create Account
               </button>
             </div>
           </form>
@@ -259,28 +254,28 @@ export function AuthModal({
         {mode === "register" && (
           <form onSubmit={handleRegister} className="space-y-3.5">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-1">
+              <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#595959] mb-1">
                 Full Name
               </label>
               <div className="relative">
-                <UserIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+                <UserIcon className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 text-[#767676]" />
                 <input
                   type="text"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="Your Full Name"
+                  placeholder="Full Name"
                   className={inputClass}
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-1">
+              <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#595959] mb-1">
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+                <Mail className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 text-[#767676]" />
                 <input
                   type="email"
                   required
@@ -293,11 +288,11 @@ export function AuthModal({
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-1">
-                Phone Number (Optional)
+              <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#595959] mb-1">
+                Telephone (Optional)
               </label>
               <div className="relative">
-                <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+                <Phone className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 text-[#767676]" />
                 <input
                   type="tel"
                   value={phone}
@@ -309,11 +304,11 @@ export function AuthModal({
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-1">
-                Password (min 8 characters)
+              <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#595959] mb-1">
+                Password (min 8 chars)
               </label>
               <div className="relative">
-                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+                <Lock className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 text-[#767676]" />
                 <input
                   type="password"
                   required
@@ -329,7 +324,7 @@ export function AuthModal({
             <button
               type="submit"
               disabled={loading}
-              className="btn-3d-yellow w-full mt-2 inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-xs font-extrabold uppercase tracking-wider disabled:opacity-50 cursor-pointer"
+              className="btn-3d-yellow w-full mt-2 inline-flex items-center justify-center gap-2 px-4 py-3.5 text-[11px] font-bold uppercase tracking-[0.22em] disabled:opacity-50 cursor-pointer"
             >
               {loading ? (
                 <>
@@ -338,14 +333,14 @@ export function AuthModal({
                 </>
               ) : (
                 <>
-                  <span>Create Account &amp; Host</span>
+                  <span>Create Account</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
             </button>
 
-            <div className="pt-2 text-center text-xs text-zinc-400">
-              Already have an account?{" "}
+            <div className="pt-2 text-center text-xs text-[#595959]">
+              Already registered?{" "}
               <button
                 type="button"
                 onClick={() => {
@@ -353,7 +348,7 @@ export function AuthModal({
                   setSuccessMsg("");
                   setMode("login");
                 }}
-                className="font-extrabold text-[#FFF33D] hover:underline cursor-pointer"
+                className="font-editorial-serif italic font-semibold text-[#C10016] hover:underline cursor-pointer"
               >
                 Sign In
               </button>
@@ -364,11 +359,11 @@ export function AuthModal({
         {mode === "forgot" && (
           <form onSubmit={handleForgotPassword} className="space-y-4">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-1">
+              <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#595959] mb-1">
                 Account Email
               </label>
               <div className="relative">
-                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+                <Mail className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 text-[#767676]" />
                 <input
                   type="email"
                   required
@@ -383,12 +378,12 @@ export function AuthModal({
             <button
               type="submit"
               disabled={loading}
-              className="btn-3d-yellow w-full inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-xs font-extrabold uppercase tracking-wider disabled:opacity-50 cursor-pointer"
+              className="btn-3d-yellow w-full inline-flex items-center justify-center gap-2 px-4 py-3.5 text-[11px] font-bold uppercase tracking-[0.22em] disabled:opacity-50 cursor-pointer"
             >
-              {loading ? "Sending..." : "Send Reset Link"}
+              {loading ? "Sending..." : "Request Recovery Link"}
             </button>
 
-            <div className="pt-2 text-center text-xs text-zinc-400">
+            <div className="pt-2 text-center text-xs text-[#595959]">
               Remember your password?{" "}
               <button
                 type="button"
@@ -397,7 +392,7 @@ export function AuthModal({
                   setSuccessMsg("");
                   setMode("login");
                 }}
-                className="font-extrabold text-[#FFF33D] hover:underline cursor-pointer"
+                className="font-editorial-serif italic font-semibold text-[#C10016] hover:underline cursor-pointer"
               >
                 Back to Sign In
               </button>

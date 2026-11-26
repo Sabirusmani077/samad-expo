@@ -320,21 +320,9 @@ function ensureDatabaseInitialized(): DatabaseSchema {
       mutated = true;
     }
 
-    // Apply the owner-provided profile details only over blank/default seed values.
+    // Apply default corporate contact details only over blank/default seed values.
     // Custom details already saved through the admin editor remain unchanged.
     const profile = parsed.companyProfile;
-    if (!profile.founderName?.trim() || profile.founderName === "MD") {
-      profile.founderName = "Sabir Usmani";
-      mutated = true;
-    }
-    if (!profile.founderDesignation?.trim()) {
-      profile.founderDesignation = "Founder & Owner";
-      mutated = true;
-    }
-    if (!profile.founderBio?.trim() || profile.founderBio === seededFounderBio) {
-      profile.founderBio = "Founder of Samad Expo.";
-      mutated = true;
-    }
     if (!profile.contactEmail?.trim() || profile.contactEmail === "contact@mdenterprises.in") {
       profile.contactEmail = "officialaadhakh@gmail.com";
       mutated = true;
@@ -356,14 +344,6 @@ function ensureDatabaseInitialized(): DatabaseSchema {
       mutated = true;
     }
     for (const member of parsed.teamMembers) {
-      if (member.isFounder && (!member.name?.trim() || member.name === "MD")) {
-        member.name = "Sabir Usmani";
-        mutated = true;
-      }
-      if (member.isFounder && !member.bio?.trim()) {
-        member.bio = "Founder of Samad Expo.";
-        mutated = true;
-      }
       if (member.isFounder && !member.socialLinks?.email?.trim()) {
         member.socialLinks = {
           linkedin: member.socialLinks?.linkedin || "",

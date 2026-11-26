@@ -145,7 +145,7 @@ export function DashboardSidebar({
         <button
           type="button"
           onClick={handleUploadAction}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#FFF33D] text-black text-xs font-bold cursor-pointer hover:bg-white transition-colors"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#C10016] text-white text-xs font-bold cursor-pointer hover:bg-[#9E0012] transition-colors"
         >
           <Plus className="w-3.5 h-3.5" />
           <span>Upload</span>
@@ -162,7 +162,7 @@ export function DashboardSidebar({
 
       {/* Vertical Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-72 flex-col border-r border-[#FFF33D]/15 bg-[#08080B]/95 backdrop-blur-xl text-white p-5 transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 w-72 flex-col border-r border-[#C8A464]/20 bg-[#0B0A0C]/95 backdrop-blur-xl text-white p-5 transition-transform duration-300 ease-in-out lg:translate-x-0 ${
           mobileSidebarOpen ? "translate-x-0 flex" : "-translate-x-full hidden lg:flex"
         }`}
       >
@@ -173,68 +173,68 @@ export function DashboardSidebar({
             onClick={() => setMobileSidebarOpen(false)}
             className="flex items-center gap-3 group"
           >
-            <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-zinc-700/80 bg-zinc-900 shrink-0 group-hover:scale-105 transition-transform">
+            <div className="relative w-10 h-10 overflow-hidden border border-[#C8A464]/40 bg-[#151215] p-1 shrink-0 group-hover:scale-105 transition-transform">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/primary-logo.png"
                 alt="Samad Expo"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
             <div>
-              <span className="block text-sm font-extrabold text-white tracking-tight">
+              <span className="block font-editorial-serif italic text-lg text-white tracking-tight">
                 Samad Expo
               </span>
-              <span className="block text-[11px] font-semibold text-zinc-400">
+              <span className="block text-[10px] uppercase tracking-[0.18em] font-semibold text-[#C8A464]">
                 Hosting Console
               </span>
             </div>
           </Link>
 
-          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[10px] font-bold bg-[#C10016]/20 text-[#E5C78E] border border-[#C8A464]/35">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C10016] animate-pulse" />
             Live
           </span>
         </div>
 
-        {/* User Profile Card - Clickable to open Profile */}
+        {/* User Profile Card */}
         {user ? (
           <button
             type="button"
             onClick={handleProfileAction}
-            className="mt-4 w-full p-3.5 rounded-2xl border border-zinc-800/80 hover:border-[#FFF33D]/50 bg-zinc-900/60 hover:bg-zinc-900 text-left transition-all group cursor-pointer"
+            className="mt-4 w-full p-3.5 border border-zinc-800/80 hover:border-[#C8A464]/50 bg-[#151215]/80 hover:bg-[#191519] text-left transition-all group cursor-pointer"
             title="Click to view full developer profile"
           >
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-[#FFF33D] text-black font-extrabold text-xs flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+              <div className="w-9 h-9 bg-[#C10016] text-white font-extrabold text-xs flex items-center justify-center shrink-0 shadow-sm">
                 {user.name.slice(0, 2).toUpperCase()}
               </div>
               <div className="min-w-0 flex-1">
-                <p className="text-xs font-extrabold text-white truncate group-hover:text-[#FFF33D] transition-colors">{user.name}</p>
+                <p className="text-xs font-extrabold text-white truncate group-hover:text-[#C8A464] transition-colors">{user.name}</p>
                 <p className="text-[11px] text-zinc-400 truncate">{user.email}</p>
               </div>
               <ChevronRight className="w-4 h-4 text-zinc-600 group-hover:text-white transition-colors" />
             </div>
             <div className="mt-2.5 flex items-center justify-between pt-2 border-t border-zinc-800/60 text-[10px]">
               <span className="font-bold text-zinc-400">Account Role</span>
-              <span className="font-extrabold text-[#FFF33D]">
-                {user.role === "admin" ? "Platform Admin" : "Active Developer"}
+              <span className="font-extrabold text-[#C8A464]">
+                {user.role === "admin" ? "Maison Admin" : "Developer"}
               </span>
             </div>
           </button>
         ) : (
-          <div className="mt-4 p-3.5 rounded-2xl border border-zinc-800/80 bg-zinc-900/60 backdrop-blur-sm space-y-2.5">
+          <div className="mt-4 p-3.5 border border-zinc-800/80 bg-[#151215]/80 backdrop-blur-sm space-y-2.5">
             <div className="flex items-center gap-2 text-xs font-bold text-zinc-300">
-              <LogIn className="w-4 h-4 text-[#FFF33D]" />
+              <LogIn className="w-4 h-4 text-[#C8A464]" />
               <span>Developer Workspace</span>
             </div>
             <p className="text-[11px] text-zinc-400 leading-relaxed">
-              Sign in to manage and deploy your hosted websites.
+              Sign in to manage and deploy hosted websites.
             </p>
             <Link
               href="/login?next=/dashboard"
               onClick={() => setMobileSidebarOpen(false)}
-              className="block w-full py-2 px-3 rounded-xl bg-zinc-800 hover:bg-[#FFF33D] hover:text-black text-center text-xs font-bold text-white transition-colors"
+              className="block w-full py-2 px-3 bg-[#C10016] hover:bg-[#9E0012] text-center text-xs font-bold text-white transition-colors"
             >
               Sign In to Account
             </Link>
@@ -246,10 +246,10 @@ export function DashboardSidebar({
           <button
             type="button"
             onClick={handleUploadAction}
-            className="btn-3d-yellow w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-black cursor-pointer"
+            className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[#C10016] hover:bg-[#9E0012] text-white text-xs font-bold uppercase tracking-[0.18em] cursor-pointer transition"
           >
-            <Plus className="w-4 h-4 stroke-[3]" />
-            <span>Upload New Website</span>
+            <Plus className="w-4 h-4" />
+            <span>Upload Website</span>
           </button>
         </div>
 
@@ -266,20 +266,20 @@ export function DashboardSidebar({
           <button
             type="button"
             onClick={handleProfileAction}
-            className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl border text-xs font-bold transition text-left cursor-pointer group ${
+            className={`w-full flex items-center justify-between px-3.5 py-2.5 border text-xs font-bold transition text-left cursor-pointer group ${
               currentTab === "profile"
-                ? "border-[#FFF33D]/50 bg-[#FFF33D]/10 text-[#FFF33D] shadow-xs"
+                ? "border-[#C8A464]/50 bg-[#C10016]/25 text-white shadow-xs"
                 : "border-transparent text-zinc-400 hover:text-white hover:bg-zinc-900"
             }`}
           >
             <div className="flex items-center gap-2.5">
-              <UserIcon className={`w-4 h-4 ${currentTab === "profile" ? "text-[#FFF33D]" : "text-zinc-400 group-hover:text-white"}`} />
+              <UserIcon className={`w-4 h-4 ${currentTab === "profile" ? "text-[#C8A464]" : "text-zinc-400 group-hover:text-white"}`} />
               <span>Developer Profile</span>
             </div>
             <span
-              className={`px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase ${
+              className={`px-2 py-0.5 text-[10px] font-extrabold uppercase ${
                 currentTab === "profile"
-                  ? "bg-[#FFF33D] text-black"
+                  ? "bg-[#C10016] text-white"
                   : "bg-zinc-800 text-zinc-400 group-hover:text-zinc-200"
               }`}
             >
@@ -290,20 +290,20 @@ export function DashboardSidebar({
           <button
             type="button"
             onClick={handleProjectsAction}
-            className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl border text-xs font-bold transition text-left cursor-pointer ${
+            className={`w-full flex items-center justify-between px-3.5 py-2.5 border text-xs font-bold transition text-left cursor-pointer ${
               currentTab === "projects"
-                ? "border-[#FFF33D]/40 bg-[#FFF33D]/10 text-[#FFF33D]"
+                ? "border-[#C8A464]/50 bg-[#C10016]/25 text-white"
                 : "border-transparent text-zinc-400 hover:text-white hover:bg-zinc-900"
             }`}
           >
             <div className="flex items-center gap-2.5">
-              <LayoutDashboard className="w-4 h-4" />
+              <LayoutDashboard className="w-4 h-4 text-[#C8A464]" />
               <span>My Projects</span>
             </div>
             <span
-              className={`px-2 py-0.5 rounded-full text-[10px] font-black ${
+              className={`px-2 py-0.5 text-[10px] font-black ${
                 currentTab === "projects"
-                  ? "bg-[#FFF33D] text-black"
+                  ? "bg-[#C10016] text-white"
                   : "bg-zinc-800 text-zinc-300"
               }`}
             >
@@ -314,17 +314,17 @@ export function DashboardSidebar({
           <button
             type="button"
             onClick={handleUploadAction}
-            className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl border text-xs font-bold transition text-left cursor-pointer group ${
+            className={`w-full flex items-center justify-between px-3.5 py-2.5 border text-xs font-bold transition text-left cursor-pointer group ${
               currentTab === "upload"
-                ? "border-[#FFF33D]/40 bg-[#FFF33D]/10 text-[#FFF33D]"
+                ? "border-[#C8A464]/50 bg-[#C10016]/25 text-white"
                 : "border-transparent text-zinc-400 hover:text-white hover:bg-zinc-900"
             }`}
           >
             <div className="flex items-center gap-2.5">
-              <Upload className="w-4 h-4 text-[#FFF33D] group-hover:scale-110 transition-transform" />
+              <Upload className="w-4 h-4 text-[#C8A464] group-hover:scale-110 transition-transform" />
               <span>Upload File</span>
             </div>
-            <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[9px] font-extrabold uppercase">
+            <span className="px-2 py-0.5 bg-zinc-900 text-[#C8A464] border border-[#C8A464]/40 text-[9px] font-extrabold uppercase">
               + ZIP
             </span>
           </button>
@@ -332,9 +332,9 @@ export function DashboardSidebar({
           <Link
             href="/websites"
             onClick={() => setMobileSidebarOpen(false)}
-            className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl border text-xs font-bold transition ${
+            className={`flex items-center justify-between px-3.5 py-2.5 border text-xs font-bold transition ${
               currentTab === "websites"
-                ? "border-[#FFF33D]/40 bg-[#FFF33D]/10 text-[#FFF33D]"
+                ? "border-[#C8A464]/50 bg-[#C10016]/25 text-white"
                 : "border-transparent text-zinc-400 hover:text-white hover:bg-zinc-900"
             }`}
           >
@@ -350,9 +350,9 @@ export function DashboardSidebar({
           <Link
             href="/ecosystem-search"
             onClick={() => setMobileSidebarOpen(false)}
-            className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl border text-xs font-bold transition ${
+            className={`flex items-center justify-between px-3.5 py-2.5 border text-xs font-bold transition ${
               currentTab === "search"
-                ? "border-[#FFF33D]/40 bg-[#FFF33D]/10 text-[#FFF33D]"
+                ? "border-[#C8A464]/50 bg-[#C10016]/25 text-white"
                 : "border-transparent text-zinc-400 hover:text-white hover:bg-zinc-900"
             }`}
           >
@@ -398,19 +398,19 @@ export function DashboardSidebar({
         {/* Quota & Storage Widget */}
         <div className="mt-auto pt-4 border-t border-zinc-800/80 space-y-3">
           {user && (
-            <div className="p-3 rounded-xl border border-[#FFF33D]/20 bg-zinc-900/70 text-xs">
+            <div className="p-3 border border-[#C8A464]/25 bg-zinc-900/70 text-xs">
               <div className="flex items-center justify-between text-zinc-400 font-bold mb-1.5">
                 <span className="flex items-center gap-1.5 text-[11px]">
-                  <HardDrive className="w-3.5 h-3.5 text-[#FFF33D]" />
+                  <HardDrive className="w-3.5 h-3.5 text-[#C8A464]" />
                   <span>Storage Allocation</span>
                 </span>
-                <span className="text-[#FFF33D] text-[11px]">
+                <span className="text-[#C8A464] text-[11px]">
                   {(totalStorageBytes / (1024 * 1024)).toFixed(1)} / 500 MB
                 </span>
               </div>
-              <div className="w-full bg-zinc-800 h-1.5 rounded-full overflow-hidden">
+              <div className="w-full bg-zinc-800 h-1.5 overflow-hidden">
                 <div
-                  className="bg-[#FFF33D] h-full rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(255,243,61,0.5)]"
+                  className="bg-[#C10016] h-full transition-all duration-500"
                   style={{
                     width: `${Math.min(
                       Math.max(

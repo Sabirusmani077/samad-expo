@@ -350,8 +350,8 @@ function DashboardContent() {
       <div className="min-h-screen bg-[#060608] samad-hero-grid text-white flex items-center justify-center relative overflow-hidden">
         <ThreeHeroCanvas variant="dark" />
         <div className="flex flex-col items-center gap-3 relative z-10">
-          <div className="w-10 h-10 border-4 border-[#FFF33D] border-t-transparent rounded-full animate-spin" />
-          <p className="text-xs font-bold uppercase tracking-wider text-[#FFF33D]">
+          <div className="w-10 h-10 border-4 border-[#C8A464] border-t-transparent rounded-full animate-spin" />
+          <p className="text-xs font-bold uppercase tracking-wider text-[#C8A464]">
             Loading Developer Workspace...
           </p>
         </div>
@@ -364,17 +364,17 @@ function DashboardContent() {
     return (
       <div className="min-h-[85vh] bg-[#060608] samad-hero-grid text-white flex items-center justify-center p-4 relative overflow-hidden">
         <ThreeHeroCanvas variant="dark" />
-        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-[#FFF33D]/15 blur-[130px]" />
+        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-[#C8A464]/15 blur-[130px]" />
 
         <div className="max-w-md w-full relative z-10">
           <Card3D intensity={8}>
-            <div className="samad-card text-center space-y-6 p-8 border-[#FFF33D]/35">
+            <div className="samad-card-dark text-center space-y-6 p-8 border-[#C8A464]/35">
               <div className="mb-4 flex justify-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/primary-logo.png"
                   alt="Samad Expo Logo"
-                  className="h-16 w-16 rounded-2xl object-cover border border-[#FFF33D]/40 shadow-lg shadow-[#FFF33D]/15 select-none"
+                  className="h-16 w-16 rounded-2xl object-cover border border-[#C8A464]/40 shadow-lg shadow-[#C8A464]/15 select-none"
                 />
               </div>
               <div>
@@ -422,7 +422,7 @@ function DashboardContent() {
       {/* Main Content Area (Offset for sidebar on desktop) */}
       <div className="relative z-10 flex-1 lg:pl-72 flex flex-col min-w-0">
         {actionMessage && (
-          <div className="bg-[#FFF33D] text-black px-4 py-2 text-center text-xs font-bold animate-fade-in sticky top-0 z-20">
+          <div className="bg-[#C8A464] text-black px-4 py-2 text-center text-xs font-bold animate-fade-in sticky top-0 z-20">
             {actionMessage}
           </div>
         )}
@@ -434,7 +434,7 @@ function DashboardContent() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-800 pb-5">
                 <div>
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className="px-2.5 py-0.5 rounded-full bg-[#FFF33D]/10 text-[#FFF33D] text-[10px] font-bold uppercase tracking-wider border border-[#FFF33D]/20">
+                    <span className="px-2.5 py-0.5 rounded-full bg-[#C8A464]/10 text-[#C8A464] text-[10px] font-bold uppercase tracking-wider border border-[#C8A464]/20">
                       Instant ZIP Deployment
                     </span>
                   </div>
@@ -475,11 +475,11 @@ function DashboardContent() {
                     {/* File Dropzone */}
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">
-                        Select Website ZIP Archive <span className="text-[#FFF33D]">*</span>
+                        Select Website ZIP Archive <span className="text-[#C8A464]">*</span>
                       </label>
                       <div
                         onClick={() => fileInputRef.current?.click()}
-                        className="border-2 border-dashed border-zinc-800 hover:border-[#FFF33D] rounded-2xl p-8 text-center cursor-pointer transition-colors bg-zinc-900/40 group"
+                        className="border-2 border-dashed border-zinc-800 hover:border-[#C8A464] rounded-2xl p-8 text-center cursor-pointer transition-colors bg-zinc-900/40 group"
                       >
                         <input
                           ref={fileInputRef}
@@ -499,7 +499,7 @@ function DashboardContent() {
                         />
                         {selectedFile ? (
                           <div className="space-y-2">
-                            <div className="w-14 h-14 mx-auto rounded-2xl bg-[#FFF33D]/10 border border-[#FFF33D]/30 flex items-center justify-center text-[#FFF33D]">
+                            <div className="w-14 h-14 mx-auto rounded-2xl bg-[#C8A464]/10 border border-[#C8A464]/30 flex items-center justify-center text-[#C8A464]">
                               <FileCode className="w-7 h-7" />
                             </div>
                             <p className="text-sm font-extrabold text-white">{selectedFile.name}</p>
@@ -512,7 +512,7 @@ function DashboardContent() {
                           </div>
                         ) : (
                           <div className="space-y-2">
-                            <div className="w-14 h-14 mx-auto rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 group-hover:text-[#FFF33D] group-hover:border-[#FFF33D]/40 transition-colors">
+                            <div className="w-14 h-14 mx-auto rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 group-hover:text-[#C8A464] group-hover:border-[#C8A464]/40 transition-colors">
                               <Upload className="w-7 h-7" />
                             </div>
                             <p className="text-sm font-bold text-zinc-200">
@@ -522,7 +522,7 @@ function DashboardContent() {
                               Supports static sites, SPAs, landing pages (up to 50MB)
                             </p>
                             <span className="inline-block px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-[10px] font-bold text-zinc-400 mt-2">
-                              Archive must contain <code className="text-[#FFF33D]">index.html</code>
+                              Archive must contain <code className="text-[#C8A464]">index.html</code>
                             </span>
                           </div>
                         )}
@@ -532,7 +532,7 @@ function DashboardContent() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-1.5">
-                          Project Name <span className="text-[#FFF33D]">*</span>
+                          Project Name <span className="text-[#C8A464]">*</span>
                         </label>
                         <input
                           type="text"
@@ -540,7 +540,7 @@ function DashboardContent() {
                           value={projectName}
                           onChange={(e) => setProjectName(e.target.value)}
                           placeholder="e.g. My Portfolio or Web App"
-                          className="w-full rounded-xl bg-zinc-900 border border-zinc-800 px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[#FFF33D] transition-colors"
+                          className="w-full rounded-xl bg-zinc-900 border border-zinc-800 px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[#C8A464] transition-colors"
                         />
                       </div>
 
@@ -554,7 +554,7 @@ function DashboardContent() {
                             onClick={() => setVisibility("public")}
                             className={`py-2.5 px-3 rounded-xl border text-xs font-bold transition-colors cursor-pointer ${
                               visibility === "public"
-                                ? "border-[#FFF33D] bg-[#FFF33D]/10 text-[#FFF33D]"
+                                ? "border-[#C8A464] bg-[#C8A464]/10 text-[#C8A464]"
                                 : "border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-white"
                             }`}
                           >
@@ -565,7 +565,7 @@ function DashboardContent() {
                             onClick={() => setVisibility("private")}
                             className={`py-2.5 px-3 rounded-xl border text-xs font-bold transition-colors cursor-pointer ${
                               visibility === "private"
-                                ? "border-[#FFF33D] bg-[#FFF33D]/10 text-[#FFF33D]"
+                                ? "border-[#C8A464] bg-[#C8A464]/10 text-[#C8A464]"
                                 : "border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-white"
                             }`}
                           >
@@ -584,7 +584,7 @@ function DashboardContent() {
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         placeholder="Briefly describe what this website or web app does..."
-                        className="w-full rounded-xl bg-zinc-900 border border-zinc-800 px-3.5 py-2 text-xs text-white focus:outline-none focus:border-[#FFF33D] transition-colors"
+                        className="w-full rounded-xl bg-zinc-900 border border-zinc-800 px-3.5 py-2 text-xs text-white focus:outline-none focus:border-[#C8A464] transition-colors"
                       />
                     </div>
 
@@ -592,11 +592,11 @@ function DashboardContent() {
                       <div className="space-y-1.5 p-4 rounded-xl bg-zinc-900/60 border border-zinc-800">
                         <div className="flex justify-between text-xs text-zinc-300 font-bold">
                           <span>Extracting, verifying &amp; deploying files...</span>
-                          <span className="text-[#FFF33D]">{uploadProgress}%</span>
+                          <span className="text-[#C8A464]">{uploadProgress}%</span>
                         </div>
                         <div className="h-2 w-full bg-zinc-950 rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-[#FFF33D] transition-all duration-300"
+                            className="h-full bg-[#C8A464] transition-all duration-300"
                             style={{ width: `${uploadProgress}%` }}
                           />
                         </div>
@@ -607,7 +607,7 @@ function DashboardContent() {
                       <button
                         type="submit"
                         disabled={uploading || !selectedFile}
-                        className="flex-1 py-3.5 rounded-xl bg-[#FFF33D] hover:bg-white text-black font-black text-xs uppercase tracking-wider transition-all disabled:opacity-40 shadow-lg cursor-pointer"
+                        className="flex-1 py-3.5 rounded-xl bg-[#C8A464] hover:bg-white text-black font-black text-xs uppercase tracking-wider transition-all disabled:opacity-40 shadow-lg cursor-pointer"
                       >
                         {uploading ? "Deploying Website..." : "Deploy Website Now"}
                       </button>
@@ -626,24 +626,24 @@ function DashboardContent() {
                 <div className="lg:col-span-4 space-y-4">
                   <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-6 space-y-4">
                     <div className="flex items-center gap-2 text-sm font-extrabold text-white">
-                      <Sparkles className="w-4 h-4 text-[#FFF33D]" />
+                      <Sparkles className="w-4 h-4 text-[#C8A464]" />
                       <span>Deployment Guidelines</span>
                     </div>
                     <ul className="space-y-3 text-xs text-zinc-400">
                       <li className="flex items-start gap-2">
-                        <Check className="w-4 h-4 text-[#FFF33D] shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-[#C8A464] shrink-0 mt-0.5" />
                         <span>Archive must contain an <strong>index.html</strong> file in the root directory.</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <Check className="w-4 h-4 text-[#FFF33D] shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-[#C8A464] shrink-0 mt-0.5" />
                         <span>Use relative asset paths (e.g. <code>./assets/style.css</code>) for CSS, JS, and images.</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <Check className="w-4 h-4 text-[#FFF33D] shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-[#C8A464] shrink-0 mt-0.5" />
                         <span>Static frameworks (Vite, React build, HTML5, Tailwind build) are fully supported.</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <Check className="w-4 h-4 text-[#FFF33D] shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-[#C8A464] shrink-0 mt-0.5" />
                         <span>Uploaded sites receive an instant production URL under <code>/sites/[username]/[project]</code>.</span>
                       </li>
                     </ul>
@@ -657,7 +657,7 @@ function DashboardContent() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-800 pb-5">
                 <div>
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className="px-2.5 py-0.5 rounded-full bg-[#FFF33D]/10 text-[#FFF33D] text-[10px] font-bold uppercase tracking-wider border border-[#FFF33D]/20">
+                    <span className="px-2.5 py-0.5 rounded-full bg-[#C8A464]/10 text-[#C8A464] text-[10px] font-bold uppercase tracking-wider border border-[#C8A464]/20">
                       Developer Console &bull; Account Center
                     </span>
                   </div>
@@ -696,7 +696,7 @@ function DashboardContent() {
                 <div className="lg:col-span-7 space-y-6">
                   <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-6 space-y-6">
                     <div className="flex items-center gap-4 pb-5 border-b border-zinc-850">
-                      <div className="w-16 h-16 rounded-2xl bg-[#FFF33D] text-black font-black text-xl flex items-center justify-center shrink-0 shadow-md">
+                      <div className="w-16 h-16 rounded-2xl bg-[#C8A464] text-black font-black text-xl flex items-center justify-center shrink-0 shadow-md">
                         {user ? user.name.slice(0, 2).toUpperCase() : "SA"}
                       </div>
                       <div className="min-w-0 flex-1">
@@ -708,7 +708,7 @@ function DashboardContent() {
                         </div>
                         <p className="text-xs text-zinc-400 truncate mt-0.5">{user?.email}</p>
                         <div className="flex items-center gap-3 mt-2 text-[11px] text-zinc-500">
-                          <span>Role: <strong className="text-[#FFF33D] font-bold">{user?.role === "admin" ? "Platform Administrator" : "Active Developer"}</strong></span>
+                          <span>Role: <strong className="text-[#C8A464] font-bold">{user?.role === "admin" ? "Platform Administrator" : "Active Developer"}</strong></span>
                           <span>&bull;</span>
                           <span>ID: <code className="text-zinc-400">{user?.id?.slice(0, 12)}...</code></span>
                         </div>
@@ -728,7 +728,7 @@ function DashboardContent() {
                             value={profileName}
                             onChange={(e) => setProfileName(e.target.value)}
                             placeholder="Your full name"
-                            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-800 bg-zinc-900 text-xs font-medium text-white placeholder-zinc-500 focus:outline-none focus:border-[#FFF33D] transition"
+                            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-800 bg-zinc-900 text-xs font-medium text-white placeholder-zinc-500 focus:outline-none focus:border-[#C8A464] transition"
                           />
                         </div>
                       </div>
@@ -762,7 +762,7 @@ function DashboardContent() {
                             value={profilePhone}
                             onChange={(e) => setProfilePhone(e.target.value)}
                             placeholder="+91 98765 43210"
-                            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-800 bg-zinc-900 text-xs font-medium text-white placeholder-zinc-500 focus:outline-none focus:border-[#FFF33D] transition"
+                            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-800 bg-zinc-900 text-xs font-medium text-white placeholder-zinc-500 focus:outline-none focus:border-[#C8A464] transition"
                           />
                         </div>
                       </div>
@@ -770,7 +770,7 @@ function DashboardContent() {
                       {/* Password Change Sub-section */}
                       <div className="pt-4 border-t border-zinc-850 space-y-3.5">
                         <div className="flex items-center gap-2 text-xs font-bold text-white">
-                          <KeyRound className="w-4 h-4 text-[#FFF33D]" />
+                          <KeyRound className="w-4 h-4 text-[#C8A464]" />
                           <span>Change Security Password (Optional)</span>
                         </div>
                         <p className="text-[11px] text-zinc-400">
@@ -786,7 +786,7 @@ function DashboardContent() {
                             value={currentPassword}
                             onChange={(e) => setCurrentPassword(e.target.value)}
                             placeholder="Current password"
-                            className="w-full px-3.5 py-2 rounded-xl border border-zinc-800 bg-zinc-900 text-xs font-medium text-white placeholder-zinc-500 focus:outline-none focus:border-[#FFF33D] transition"
+                            className="w-full px-3.5 py-2 rounded-xl border border-zinc-800 bg-zinc-900 text-xs font-medium text-white placeholder-zinc-500 focus:outline-none focus:border-[#C8A464] transition"
                           />
                         </div>
 
@@ -800,7 +800,7 @@ function DashboardContent() {
                               value={newPassword}
                               onChange={(e) => setNewPassword(e.target.value)}
                               placeholder="New password"
-                              className="w-full px-3.5 py-2 rounded-xl border border-zinc-800 bg-zinc-900 text-xs font-medium text-white placeholder-zinc-500 focus:outline-none focus:border-[#FFF33D] transition"
+                              className="w-full px-3.5 py-2 rounded-xl border border-zinc-800 bg-zinc-900 text-xs font-medium text-white placeholder-zinc-500 focus:outline-none focus:border-[#C8A464] transition"
                             />
                           </div>
                           <div>
@@ -812,7 +812,7 @@ function DashboardContent() {
                               value={confirmPassword}
                               onChange={(e) => setConfirmPassword(e.target.value)}
                               placeholder="Confirm new password"
-                              className="w-full px-3.5 py-2 rounded-xl border border-zinc-800 bg-zinc-900 text-xs font-medium text-white placeholder-zinc-500 focus:outline-none focus:border-[#FFF33D] transition"
+                              className="w-full px-3.5 py-2 rounded-xl border border-zinc-800 bg-zinc-900 text-xs font-medium text-white placeholder-zinc-500 focus:outline-none focus:border-[#C8A464] transition"
                             />
                           </div>
                         </div>
@@ -822,7 +822,7 @@ function DashboardContent() {
                         <button
                           type="submit"
                           disabled={profileSaving}
-                          className="px-5 py-2.5 rounded-xl bg-[#FFF33D] text-black text-xs font-extrabold hover:bg-white transition-colors cursor-pointer disabled:opacity-60 shadow-sm"
+                          className="px-5 py-2.5 rounded-xl bg-[#C8A464] text-black text-xs font-extrabold hover:bg-white transition-colors cursor-pointer disabled:opacity-60 shadow-sm"
                         >
                           {profileSaving ? "Saving Updates..." : "Save Profile Changes"}
                         </button>
@@ -837,10 +837,10 @@ function DashboardContent() {
                   <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-6 space-y-5">
                       <div className="flex items-center justify-between pb-3 border-b border-zinc-850">
                       <div className="flex items-center gap-2 text-sm font-extrabold text-white">
-                        <HardDrive className="w-4 h-4 text-[#FFF33D]" />
+                        <HardDrive className="w-4 h-4 text-[#C8A464]" />
                         <span>Cloud Storage Quota</span>
                       </div>
-                      <span className="text-xs font-bold text-[#FFF33D]">
+                      <span className="text-xs font-bold text-[#C8A464]">
                         {((projects.reduce((acc, p) => acc + (p.storageUsedBytes || 0), 0) / (1024 * 1024))).toFixed(1)} / 500 MB
                       </span>
                     </div>
@@ -848,7 +848,7 @@ function DashboardContent() {
                     <div className="space-y-2">
                       <div className="w-full bg-zinc-850 h-2 rounded-full overflow-hidden">
                         <div
-                          className="bg-[#FFF33D] h-full rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(255,243,61,0.5)]"
+                          className="bg-[#C8A464] h-full rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(255,243,61,0.5)]"
                           style={{
                             width: `${Math.min(
                               Math.max(
@@ -883,7 +883,7 @@ function DashboardContent() {
                         onClick={() => setActiveTab("upload")}
                         className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-xs font-bold text-zinc-300 hover:text-white transition cursor-pointer"
                       >
-                        <Upload className="w-4 h-4 text-[#FFF33D]" />
+                        <Upload className="w-4 h-4 text-[#C8A464]" />
                         <span>Upload New Project (+ ZIP)</span>
                       </button>
                     </div>
@@ -892,7 +892,7 @@ function DashboardContent() {
                   {/* Account Security & Sign Out Card */}
                   <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-6 space-y-4">
                     <div className="flex items-center gap-2 text-sm font-extrabold text-white">
-                      <ShieldCheck className="w-4 h-4 text-[#FFF33D]" />
+                      <ShieldCheck className="w-4 h-4 text-[#C8A464]" />
                       <span>Session &amp; Security</span>
                     </div>
 
@@ -916,16 +916,16 @@ function DashboardContent() {
             <>
               {/* 3D Metric Cards */}
               <section className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                <Card3D intensity={5} className="samad-card p-4 sm:p-5">
+                <Card3D intensity={5} className="samad-card-dark p-4 sm:p-5">
                   <div className="flex items-center justify-between text-zinc-400">
                     <span className="text-xs font-bold uppercase tracking-wider">Total Websites</span>
-                    <Layers className="w-4 h-4 text-[#FFF33D]" />
+                    <Layers className="w-4 h-4 text-[#C8A464]" />
                   </div>
                   <p className="mt-3 text-2xl sm:text-3xl font-black text-white">{projects.length}</p>
                   <p className="mt-1 text-[11px] text-zinc-500">Under your account</p>
                 </Card3D>
 
-                <Card3D intensity={5} className="samad-card p-4 sm:p-5">
+                <Card3D intensity={5} className="samad-card-dark p-4 sm:p-5">
                   <div className="flex items-center justify-between text-zinc-400">
                     <span className="text-xs font-bold uppercase tracking-wider">Active Deployments</span>
                     <Globe className="w-4 h-4 text-emerald-400" />
@@ -934,10 +934,10 @@ function DashboardContent() {
                   <p className="mt-1 text-[11px] text-zinc-500">Publicly accessible</p>
                 </Card3D>
 
-                <Card3D intensity={5} className="samad-card p-4 sm:p-5">
+                <Card3D intensity={5} className="samad-card-dark p-4 sm:p-5">
                   <div className="flex items-center justify-between text-zinc-400">
                     <span className="text-xs font-bold uppercase tracking-wider">Storage Usage</span>
-                    <HardDrive className="w-4 h-4 text-[#FFF33D]" />
+                    <HardDrive className="w-4 h-4 text-[#C8A464]" />
                   </div>
                   <p className="mt-3 text-2xl sm:text-3xl font-black text-white">
                     {(totalStorageBytes / (1024 * 1024)).toFixed(2)} <span className="text-sm font-normal text-zinc-400">MB</span>
@@ -945,10 +945,10 @@ function DashboardContent() {
                   <p className="mt-1 text-[11px] text-zinc-500">Of 500 MB included</p>
                 </Card3D>
 
-                <Card3D intensity={5} className="samad-card p-4 sm:p-5">
+                <Card3D intensity={5} className="samad-card-dark p-4 sm:p-5">
                   <div className="flex items-center justify-between text-zinc-400">
                     <span className="text-xs font-bold uppercase tracking-wider">Total Traffic</span>
-                    <Eye className="w-4 h-4 text-[#FFF33D]" />
+                    <Eye className="w-4 h-4 text-[#C8A464]" />
                   </div>
                   <p className="mt-3 text-2xl sm:text-3xl font-black text-white">{totalViews.toLocaleString()}</p>
                   <p className="mt-1 text-[11px] text-zinc-500">Cumulative website views</p>
@@ -956,9 +956,9 @@ function DashboardContent() {
               </section>
 
               {/* Quick Upload Action Banner */}
-              <Card3D intensity={3} className="samad-card p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <Card3D intensity={3} className="samad-card-dark p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#FFF33D]/15 border border-[#FFF33D]/35 flex items-center justify-center text-[#FFF33D] shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-[#C8A464]/15 border border-[#C8A464]/35 flex items-center justify-center text-[#C8A464] shrink-0">
                     <Upload className="w-6 h-6" />
                   </div>
                   <div>
@@ -995,14 +995,14 @@ function DashboardContent() {
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="Search projects..."
-                      className="w-full sm:w-64 rounded-xl bg-zinc-900 border border-zinc-800 pl-9 pr-3.5 py-2 text-xs text-white focus:outline-none focus:border-[#FFF33D] transition-colors"
+                      className="w-full sm:w-64 rounded-xl bg-zinc-900 border border-zinc-800 pl-9 pr-3.5 py-2 text-xs text-white focus:outline-none focus:border-[#C8A464] transition-colors"
                     />
                   </div>
 
                   <button
                     type="button"
                     onClick={() => setActiveTab("upload")}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FFF33D] text-black font-extrabold text-xs border border-black/20 hover:bg-white transition-all shadow-md active:scale-95 shrink-0 cursor-pointer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#C8A464] text-black font-extrabold text-xs border border-black/20 hover:bg-white transition-all shadow-md active:scale-95 shrink-0 cursor-pointer"
                   >
                     <Upload className="w-4 h-4" />
                     <span className="hidden sm:inline">Upload Website</span>
@@ -1014,7 +1014,7 @@ function DashboardContent() {
               {/* Projects Grid */}
         {filteredProjects.length === 0 ? (
           <div className="rounded-3xl border border-dashed border-zinc-800 p-12 text-center space-y-4">
-            <div className="w-14 h-14 mx-auto rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[#FFF33D]">
+            <div className="w-14 h-14 mx-auto rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[#C8A464]">
               <Upload className="w-6 h-6" />
             </div>
             <div>
@@ -1029,7 +1029,7 @@ function DashboardContent() {
               <button
                 type="button"
                 onClick={() => setUploadOpen(true)}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FFF33D] text-black text-xs font-extrabold hover:bg-white transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#C8A464] text-black text-xs font-extrabold hover:bg-white transition-colors"
               >
                 <Plus className="w-4 h-4" />
                 <span>Upload First Website</span>
@@ -1046,7 +1046,7 @@ function DashboardContent() {
                 <Card3D
                   key={project.id}
                   intensity={5}
-                  className="samad-card p-5 flex flex-col justify-between group"
+                  className="samad-card-dark p-5 flex flex-col justify-between group"
                 >
                   <div className="space-y-3">
                     {/* Top Status & Visibility */}
@@ -1095,7 +1095,7 @@ function DashboardContent() {
 
                     {/* Project Title & Desc */}
                     <div>
-                      <h3 className="text-base font-bold text-white group-hover:text-[#FFF33D] transition-colors truncate">
+                      <h3 className="text-base font-bold text-white group-hover:text-[#C8A464] transition-colors truncate">
                         {project.projectName}
                       </h3>
                       <p className="mt-1 text-xs text-zinc-400 line-clamp-2 min-h-[32px]">
@@ -1145,7 +1145,7 @@ function DashboardContent() {
                         href={`/preview/${project.id}`}
                         className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-zinc-800 text-zinc-200 text-xs font-semibold hover:bg-zinc-700 hover:text-white transition-colors"
                       >
-                        <Eye className="w-3.5 h-3.5 text-[#FFF33D]" />
+                        <Eye className="w-3.5 h-3.5 text-[#C8A464]" />
                         <span>Preview</span>
                       </Link>
 
@@ -1181,12 +1181,12 @@ function DashboardContent() {
             </button>
 
             <div className="mb-6">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#FFF33D] text-black font-extrabold mb-3">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#C8A464] text-black font-extrabold mb-3">
                 <Upload className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold">Upload &amp; Deploy Website</h3>
               <p className="mt-1 text-xs text-zinc-400">
-                Upload your static assets (HTML, CSS, JS, images). We will automatically detect <code className="text-[#FFF33D]">index.html</code> and provision your public live URL.
+                Upload your static assets (HTML, CSS, JS, images). We will automatically detect <code className="text-[#C8A464]">index.html</code> and provision your public live URL.
               </p>
             </div>
 
@@ -1215,7 +1215,7 @@ function DashboardContent() {
                   value={projectName}
                   onChange={(e) => setProjectName(e.target.value)}
                   placeholder="e.g. NextGen Web App"
-                  className="w-full rounded-xl bg-zinc-900 border border-zinc-800 px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[#FFF33D]"
+                  className="w-full rounded-xl bg-zinc-900 border border-zinc-800 px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[#C8A464]"
                 />
               </div>
 
@@ -1228,7 +1228,7 @@ function DashboardContent() {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="Short description of this website or platform..."
-                  className="w-full rounded-xl bg-zinc-900 border border-zinc-800 px-3.5 py-2 text-xs text-white focus:outline-none focus:border-[#FFF33D]"
+                  className="w-full rounded-xl bg-zinc-900 border border-zinc-800 px-3.5 py-2 text-xs text-white focus:outline-none focus:border-[#C8A464]"
                 />
               </div>
 
@@ -1242,7 +1242,7 @@ function DashboardContent() {
                     onClick={() => setVisibility("public")}
                     className={`py-2 px-3 rounded-xl border text-xs font-bold transition-colors ${
                       visibility === "public"
-                        ? "border-[#FFF33D] bg-[#FFF33D]/10 text-[#FFF33D]"
+                        ? "border-[#C8A464] bg-[#C8A464]/10 text-[#C8A464]"
                         : "border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-white"
                     }`}
                   >
@@ -1253,7 +1253,7 @@ function DashboardContent() {
                     onClick={() => setVisibility("private")}
                     className={`py-2 px-3 rounded-xl border text-xs font-bold transition-colors ${
                       visibility === "private"
-                        ? "border-[#FFF33D] bg-[#FFF33D]/10 text-[#FFF33D]"
+                        ? "border-[#C8A464] bg-[#C8A464]/10 text-[#C8A464]"
                         : "border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-white"
                     }`}
                   >
@@ -1269,7 +1269,7 @@ function DashboardContent() {
                 </label>
                 <div
                   onClick={() => fileInputRef.current?.click()}
-                  className="border-2 border-dashed border-zinc-800 hover:border-[#FFF33D] rounded-2xl p-6 text-center cursor-pointer transition-colors bg-zinc-900/40"
+                  className="border-2 border-dashed border-zinc-800 hover:border-[#C8A464] rounded-2xl p-6 text-center cursor-pointer transition-colors bg-zinc-900/40"
                 >
                   <input
                     ref={fileInputRef}
@@ -1289,7 +1289,7 @@ function DashboardContent() {
                   />
                   {selectedFile ? (
                     <div className="space-y-1">
-                      <FileCode className="w-8 h-8 mx-auto text-[#FFF33D]" />
+                      <FileCode className="w-8 h-8 mx-auto text-[#C8A464]" />
                       <p className="text-xs font-bold text-white">{selectedFile.name}</p>
                       <p className="text-[11px] text-zinc-500">
                         {(selectedFile.size / 1024 / 1024).toFixed(2)} MB &bull; Ready to deploy
@@ -1317,7 +1317,7 @@ function DashboardContent() {
                   </div>
                   <div className="h-1.5 w-full bg-zinc-900 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-[#FFF33D] transition-all duration-300"
+                      className="h-full bg-[#C8A464] transition-all duration-300"
                       style={{ width: `${uploadProgress}%` }}
                     />
                   </div>
@@ -1327,7 +1327,7 @@ function DashboardContent() {
               <button
                 type="submit"
                 disabled={uploading || !selectedFile}
-                className="w-full mt-2 py-3 rounded-xl bg-[#FFF33D] hover:bg-white text-black font-extrabold text-xs uppercase tracking-wider transition-colors disabled:opacity-50"
+                className="w-full mt-2 py-3 rounded-xl bg-[#C8A464] hover:bg-white text-black font-extrabold text-xs uppercase tracking-wider transition-colors disabled:opacity-50"
               >
                 {uploading ? "Deploying Website..." : "Deploy Website"}
               </button>
@@ -1359,7 +1359,7 @@ function DashboardContent() {
                   required
                   value={editName}
                   onChange={(e) => setEditName(e.target.value)}
-                  className="w-full rounded-xl bg-zinc-900 border border-zinc-800 px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[#FFF33D]"
+                  className="w-full rounded-xl bg-zinc-900 border border-zinc-800 px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[#C8A464]"
                 />
               </div>
 
@@ -1371,7 +1371,7 @@ function DashboardContent() {
                   rows={2}
                   value={editDesc}
                   onChange={(e) => setEditDesc(e.target.value)}
-                  className="w-full rounded-xl bg-zinc-900 border border-zinc-800 px-3.5 py-2 text-xs text-white focus:outline-none focus:border-[#FFF33D]"
+                  className="w-full rounded-xl bg-zinc-900 border border-zinc-800 px-3.5 py-2 text-xs text-white focus:outline-none focus:border-[#C8A464]"
                 />
               </div>
 
@@ -1385,7 +1385,7 @@ function DashboardContent() {
                     onClick={() => setEditVisibility("public")}
                     className={`py-2 px-3 rounded-xl border text-xs font-bold transition-colors ${
                       editVisibility === "public"
-                        ? "border-[#FFF33D] bg-[#FFF33D]/10 text-[#FFF33D]"
+                        ? "border-[#C8A464] bg-[#C8A464]/10 text-[#C8A464]"
                         : "border-zinc-800 bg-zinc-900 text-zinc-400"
                     }`}
                   >
@@ -1396,7 +1396,7 @@ function DashboardContent() {
                     onClick={() => setEditVisibility("private")}
                     className={`py-2 px-3 rounded-xl border text-xs font-bold transition-colors ${
                       editVisibility === "private"
-                        ? "border-[#FFF33D] bg-[#FFF33D]/10 text-[#FFF33D]"
+                        ? "border-[#C8A464] bg-[#C8A464]/10 text-[#C8A464]"
                         : "border-zinc-800 bg-zinc-900 text-zinc-400"
                     }`}
                   >
@@ -1408,7 +1408,7 @@ function DashboardContent() {
               <button
                 type="submit"
                 disabled={savingEdit}
-                className="w-full mt-2 py-3 rounded-xl bg-[#FFF33D] hover:bg-white text-black font-extrabold text-xs uppercase tracking-wider transition-colors disabled:opacity-50"
+                className="w-full mt-2 py-3 rounded-xl bg-[#C8A464] hover:bg-white text-black font-extrabold text-xs uppercase tracking-wider transition-colors disabled:opacity-50"
               >
                 {savingEdit ? "Saving..." : "Save Changes"}
               </button>
@@ -1426,7 +1426,7 @@ export default function DashboardPage() {
       fallback={
         <div className="min-h-screen bg-[#080808] text-white flex items-center justify-center">
           <div className="flex flex-col items-center gap-3">
-            <div className="w-10 h-10 border-4 border-[#FFF33D] border-t-transparent rounded-full animate-spin" />
+            <div className="w-10 h-10 border-4 border-[#C8A464] border-t-transparent rounded-full animate-spin" />
             <p className="text-xs font-bold uppercase tracking-wider text-zinc-400">Loading Dashboard...</p>
           </div>
         </div>

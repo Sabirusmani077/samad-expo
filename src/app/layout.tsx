@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, Inter } from "next/font/google";
+import { Manrope, Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -23,33 +23,42 @@ const inter = Inter({
   display: "swap",
 });
 
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: {
     default:
-      "Samad Expo — Parent Corporate Brand & Central Digital Headquarters",
+      "Samad Expo — Central Digital Headquarters & Instant Hosting Maison",
     template: "%s | Samad Expo",
   },
   description:
-    "Official corporate headquarters and central digital gateway of Samad Expo. Parent brand for all our businesses, websites, web applications, products, and technology platforms.",
+    "Official digital headquarters of Samad Expo. Instant static website hosting, precision web utilities, and enterprise engineering solutions.",
   keywords: [
     "Samad Expo",
     "Digital Ecosystem",
-    "Corporate Headquarters",
+    "Static Website Hosting",
     "Web Applications",
     "Technology Platforms",
-    "Business Ventures",
+    "Digital Engineering",
   ],
   openGraph: {
-    title:
-      "Samad Expo — Parent Corporate Brand & Central Digital Headquarters",
+    title: "Samad Expo — Digital Headquarters & Hosting Maison",
     description:
-      "An independent business ecosystem bringing together digital platforms, businesses, products, and professional services.",
+      "An independent digital platform uniting instant cloud deployment, utility web software, and refined engineering.",
     type: "website",
     locale: "en_IN",
     siteName: "Samad Expo",
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "j7N4EKQjh9NpQFnXBGQopLmSeJ8lLXxYPD2E3pndgNA",
+    google:
+      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
+      "j7N4EKQjh9NpQFnXBGQopLmSeJ8lLXxYPD2E3pndgNA",
   },
 };
 
@@ -59,28 +68,37 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const companyProfile = readDb().companyProfile;
-  const primary = /^#[0-9a-fA-F]{6}$/.test(companyProfile.brandColors?.primary || "") ? companyProfile.brandColors!.primary : "#000000";
-  const accent = /^#[0-9a-fA-F]{6}$/.test(companyProfile.brandColors?.accent || "") ? companyProfile.brandColors!.accent : "#FFF33D";
-  const configuredFont = companyProfile.brandFontFamily || "";
-  const fontFamily = /^[\w ,'-]{1,100}$/.test(configuredFont) && configuredFont !== "Inter, Arial, sans-serif"
-    ? configuredFont
-    : "Manrope, Arial, sans-serif";
   const brandStyles = {
-    "--md-brand-primary": primary,
-    "--md-brand-accent": accent,
-    "--md-brand-font-family": fontFamily,
+    "--md-brand-primary": "#1D1C1C",
+    "--md-brand-accent": "#C10016",
+    "--md-brand-gold": "#C8A464",
+    "--md-brand-font-family": "var(--font-inter), Inter, Arial, sans-serif",
   } as CSSProperties;
+
   return (
-    <html lang="en" className={`${manrope.variable} ${inter.variable}`} style={brandStyles}>
+    <html
+      lang="en"
+      className={`${manrope.variable} ${inter.variable} ${cormorant.variable}`}
+      style={brandStyles}
+    >
       <head>
-        <meta name="google-site-verification" content="j7N4EKQjh9NpQFnXBGQopLmSeJ8lLXxYPD2E3pndgNA" />
-        <link rel="icon" href={companyProfile.favicon || "/images/primary-logo.png"} />
+        <meta
+          name="google-site-verification"
+          content="j7N4EKQjh9NpQFnXBGQopLmSeJ8lLXxYPD2E3pndgNA"
+        />
+        <link
+          rel="icon"
+          href={companyProfile.favicon || "/images/primary-logo.png"}
+        />
       </head>
-      <body data-site-theme="premium" className="relative min-h-screen flex flex-col bg-[#060608] text-white antialiased font-sans selection:bg-[#FFF33D] selection:text-black">
+      <body
+        data-site-theme="cartier-maison"
+        className="relative min-h-screen flex flex-col bg-white text-[#1D1C1C] antialiased font-sans selection:bg-[#C10016] selection:text-white"
+      >
         <SmoothScroll />
         <PageViewTracker />
         <Header />
-        <div className="page-shell flex-1 w-full bg-[#060608]">{children}</div>
+        <div className="page-shell flex-1 w-full bg-white">{children}</div>
         <Footer />
         <ClickFeedback />
       </body>

@@ -10,41 +10,42 @@
 }
 
 :root {
-  --md-brand-primary: #000000;
-  --md-brand-accent: #FFF33D;
-  --brand-blue: #000000;
-  --brand-yellow: #FFF33D;
-  --brand-yellow-hover: #FACC15;
-  --brand-black: #000000;
+  --md-brand-primary: #1D1C1C;
+  --md-brand-accent: #C10016;
+  --md-brand-gold: #C8A464;
+  --brand-blue: #1D1C1C;
+  --brand-yellow: #C10016;
+  --brand-yellow-hover: #9E0012;
+  --brand-black: #1D1C1C;
   --brand-white: #FFFFFF;
-  --brand-dark: #0A0A0A;
-  --brand-navy: #000000;
-  --brand-sky: #FFF33D;
-  --brand-soft: #FFFDE0;
-  --brand-ink: #000000;
-  --brand-muted: #52525B;
-  --brand-line: #E4E4E7;
+  --brand-dark: #0D0B0D;
+  --brand-navy: #1D1C1C;
+  --brand-sky: #C8A464;
+  --brand-soft: #FAF7F2;
+  --brand-ink: #1D1C1C;
+  --brand-muted: #595959;
+  --brand-line: #E5DFD7;
   --font-heading: var(--font-manrope), "Manrope", sans-serif;
   --font-body: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --display-font: var(--font-heading);
   --body-font: var(--font-body);
   --md-brand-font-family: var(--font-body);
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 110px;
-  background: #060608;
-  color: #FFFFFF;
+  scroll-padding-top: 130px;
+  background: #FFFFFF;
+  color: #1D1C1C;
   font-family: var(--md-brand-font-family);
 }
 
 body {
   min-height: 100vh;
   margin: 0;
-  background: #060608;
-  color: #FFFFFF;
+  background: #FFFFFF;
+  color: #1D1C1C;
   font-family: var(--md-brand-font-family);
   letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
@@ -52,7 +53,7 @@ body {
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-::selection { background: #FFF33D; color: #000000; }
+::selection { background: #C10016; color: #FFFFFF; }
 /* ==========================================================================
    PRIMARY HEADING TYPOGRAPHY SYSTEM (MANROPE)
    ========================================================================== */
@@ -1517,6 +1518,40 @@ body[data-site-theme="premium"] .skip-link:focus-visible {
   50% { transform: translateY(-6px); }
 }
 
+@keyframes samadPreloadSweep {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+@keyframes samadModalPop {
+  0% { opacity: 0; transform: scale(0.94) translateY(14px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes samadProgressFill {
+  0% { transform: scaleX(0.15); }
+  50% { transform: scaleX(0.95); }
+  100% { transform: scaleX(0.75); }
+}
+
+.font-editorial-serif {
+  font-family: var(--font-cormorant), Georgia, "Times New Roman", Times, serif;
+}
+
+.animate-samad-preload {
+  transform-origin: left center;
+  animation: samadPreloadSweep 0.95s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-samad-modal {
+  animation: samadModalPop 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-samad-edge {
+  transform-origin: left center;
+  animation: samadProgressFill 5s ease-in-out infinite;
+}
+
 .animate-athenura-marquee,
 .animate-samad-marquee {
   display: flex;
@@ -1538,85 +1573,124 @@ body[data-site-theme="premium"] .skip-link:focus-visible {
   animation: samadFloat 6s ease-in-out infinite;
 }
 
-/* Signature Samad Expo 3D Obsidian & Gold Luxury Card */
+/* Signature Cartier-Inspired Luxury Maison Card */
 .samad-card,
 .athenura-card {
-  background: linear-gradient(155deg, #141419 0%, #09090C 100%);
-  border-radius: 24px;
-  border: 1px solid rgba(255, 243, 61, 0.16);
-  color: #FFFFFF;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAF7F2 100%);
+  border-radius: 0px;
+  border: 1px solid #E5DFD7;
+  color: #1D1C1C;
   box-shadow:
-    0 20px 44px -12px rgba(0, 0, 0, 0.75),
-    0 6px 16px -4px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 243, 61, 0.14);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s ease;
+    0 18px 40px -18px rgba(29, 28, 28, 0.08),
+    0 2px 8px -2px rgba(29, 28, 28, 0.04);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease;
 }
 
 .samad-card:hover,
 .athenura-card:hover {
-  border-color: rgba(255, 243, 61, 0.55);
+  border-color: #C10016;
   box-shadow:
-    0 28px 60px -12px rgba(255, 243, 61, 0.2),
-    0 18px 38px -10px rgba(0, 0, 0, 0.85),
-    inset 0 1px 0 rgba(255, 243, 61, 0.32);
+    0 28px 58px -18px rgba(193, 0, 22, 0.14),
+    0 12px 26px -10px rgba(29, 28, 28, 0.1);
 }
 
-/* Tactile 3D extruded yellow luxury button */
+/* Sharp Dark Maison Card variant for nocturnal stages */
+.samad-card-dark {
+  background: linear-gradient(160deg, #151215 0%, #0A080A 100%);
+  border-radius: 0px;
+  border: 1px solid rgba(200, 164, 100, 0.25);
+  color: #FFFFFF;
+  box-shadow: 0 24px 55px -16px rgba(0, 0, 0, 0.85);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+}
+
+.samad-card-dark:hover {
+  border-color: #C8A464;
+  box-shadow: 0 30px 65px -16px rgba(193, 0, 22, 0.25);
+}
+
+/* Cartier Solid Maison Rectangular CTA (Jet Black -> Lacquered Crimson) */
 .btn-3d-yellow {
-  background: linear-gradient(180deg, #FFF76A 0%, #FFF33D 65%, #EAB308 100%);
-  color: #09090B;
-  border: 1px solid rgba(255, 243, 61, 0.7);
-  box-shadow:
-    0 5px 0 #A16207,
-    0 14px 28px -4px rgba(255, 243, 61, 0.35),
-    inset 0 1px 1px rgba(255, 255, 255, 0.85);
-  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #1D1C1C;
+  color: #FFFFFF;
+  border-radius: 0px;
+  border: 1px solid #1D1C1C;
+  box-shadow: 0 10px 24px -8px rgba(29, 28, 28, 0.28);
+  transition: background-color 0.28s ease,
+              border-color 0.28s ease,
+              color 0.28s ease,
+              transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.22s ease;
 }
 
 .btn-3d-yellow:hover {
+  background: #C10016;
+  border-color: #C10016;
+  color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow:
-    0 7px 0 #A16207,
-    0 20px 34px -4px rgba(255, 243, 61, 0.5),
-    inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  box-shadow: 0 14px 30px -6px rgba(193, 0, 22, 0.35);
 }
 
 .btn-3d-yellow:active {
-  transform: translateY(3px);
-  box-shadow:
-    0 2px 0 #A16207,
-    0 6px 12px -2px rgba(255, 243, 61, 0.3);
+  transform: translateY(0px);
 }
 
-/* Tactile 3D extruded carbon black button with gold edge */
+.samad-card-dark .btn-3d-yellow,
+.samad-hero-grid .btn-3d-yellow {
+  background: #C10016;
+  border-color: #C10016;
+  color: #FFFFFF;
+}
+
+.samad-card-dark .btn-3d-yellow:hover,
+.samad-hero-grid .btn-3d-yellow:hover {
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  color: #1D1C1C;
+}
+
+/* Cartier Crisp Hairline Outline Rectangular CTA */
 .btn-3d-black {
-  background: linear-gradient(180deg, #27272A 0%, #111115 100%);
-  color: #FFF33D;
-  border: 1px solid rgba(255, 243, 61, 0.4);
-  box-shadow:
-    0 5px 0 #000000,
-    0 14px 26px -6px rgba(0, 0, 0, 0.7),
-    inset 0 1px 0 rgba(255, 243, 61, 0.2);
-  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.18s ease;
+  background: transparent;
+  color: #1D1C1C;
+  border-radius: 0px;
+  border: 1px solid #1D1C1C;
+  box-shadow: none;
+  transition: background-color 0.28s ease,
+              border-color 0.28s ease,
+              color 0.28s ease,
+              transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-3d-black:hover {
+  background: #1D1C1C;
+  border-color: #1D1C1C;
+  color: #FFFFFF;
   transform: translateY(-2px);
-  border-color: #FFF33D;
-  box-shadow:
-    0 7px 0 #000000,
-    0 18px 32px -4px rgba(255, 243, 61, 0.22),
-    inset 0 1px 0 rgba(255, 243, 61, 0.35);
 }
 
 .btn-3d-black:active {
-  transform: translateY(3px);
-  box-shadow: 0 2px 0 #000000;
+  transform: translateY(0px);
+}
+
+/* Sharp Cartier Hero White Outline CTA on Dark Campaign Stages */
+.btn-maison-light {
+  background: transparent;
+  color: #FFFFFF;
+  border-radius: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.25s ease;
+}
+
+.btn-maison-light:hover {
+  background: #FFFFFF;
+  color: #1D1C1C;
+  border-color: #FFFFFF;
+  transform: translateY(-2px);
 }
 
 .translate-z-20 {
@@ -1628,46 +1702,47 @@ body[data-site-theme="premium"] .skip-link:focus-visible {
 }
 
 .samad-surface-warm {
-  background: #0B0B0F;
+  background: #FAF7F2;
 }
 
 .samad-highlight {
-  background: linear-gradient(135deg, #FFF33D 0%, #FACC15 100%);
-  color: #09090B;
-  padding: 2px 12px;
-  border-radius: 12px;
+  color: #C10016;
+  font-style: italic;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 500;
+  padding: 0 4px;
   display: inline-block;
-  box-shadow: 0 6px 20px rgba(255, 243, 61, 0.25);
 }
 
 .text-gradient-gold {
-  background: linear-gradient(135deg, #FFF76A 0%, #FFF33D 50%, #F59E0B 100%);
+  background: linear-gradient(135deg, #E5C78E 0%, #C8A464 55%, #9B783C 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Subtle architectural gold hairline grid on deep black */
+/* Nocturnal Parisian Velvet Campaign Backdrop with Subtle Champagne Hairline Grid */
 .samad-hero-grid {
-  background-color: #060608;
+  background-color: #0B0A0C;
   background-image:
-    linear-gradient(to right, rgba(255, 243, 61, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 243, 61, 0.045) 1px, transparent 1px);
-  background-size: 48px 48px;
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(193, 0, 22, 0.14), transparent 65%),
+    linear-gradient(to right, rgba(200, 164, 100, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(200, 164, 100, 0.045) 1px, transparent 1px);
+  background-size: 100% 100%, 64px 64px, 64px 64px;
 }
 
-/* Unified Luxury 3D Yellow & Black Admin Shell Overrides */
+/* Unified Luxury Cartier Obsidian & Champagne Admin Shell */
 .admin-dark-shell {
-  background-color: #060608;
-  color: #f4f4f5;
+  background-color: #0B0A0C;
+  color: #f5f3ef;
 }
 .admin-dark-shell > div,
 .admin-dark-shell main {
   background-color: transparent !important;
-  color: #f4f4f5;
+  color: #f5f3ef;
 }
 .admin-dark-shell header {
-  background-color: rgba(10, 10, 14, 0.92) !important;
-  border-color: rgba(255, 243, 61, 0.2) !important;
+  background-color: rgba(13, 11, 13, 0.94) !important;
+  border-color: rgba(200, 164, 100, 0.22) !important;
   color: #ffffff !important;
 }
 .admin-dark-shell .bg-white,
@@ -1675,10 +1750,10 @@ body[data-site-theme="premium"] .skip-link:focus-visible {
 .admin-dark-shell .bg-slate-50,
 .admin-dark-shell .bg-slate-50\/70,
 .admin-dark-shell .bg-slate-100 {
-  background: linear-gradient(155deg, #141419 0%, #0b0b0f 100%) !important;
-  border-color: rgba(255, 243, 61, 0.16) !important;
-  color: #f4f4f5 !important;
-  box-shadow: 0 18px 40px -14px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 243, 61, 0.08);
+  background: linear-gradient(155deg, #161316 0%, #0d0b0d 100%) !important;
+  border-color: rgba(200, 164, 100, 0.18) !important;
+  color: #f5f3ef !important;
+  box-shadow: 0 18px 40px -14px rgba(0, 0, 0, 0.75);
 }
 .admin-dark-shell .text-slate-950,
 .admin-dark-shell .text-slate-900,
@@ -1688,23 +1763,23 @@ body[data-site-theme="premium"] .skip-link:focus-visible {
 }
 .admin-dark-shell .bg-\[\#FFF33D\] .text-black,
 .admin-dark-shell .bg-\[\#FFF33D\] {
-  color: #09090b !important;
-  background: #FFF33D !important;
+  color: #FFFFFF !important;
+  background: #C10016 !important;
 }
 .admin-dark-shell .text-slate-700,
 .admin-dark-shell .text-slate-600,
 .admin-dark-shell .text-slate-500 {
-  color: #a1a1aa !important;
+  color: #b4aba0 !important;
 }
 .admin-dark-shell .border-slate-200,
 .admin-dark-shell .border-slate-300,
 .admin-dark-shell .border-slate-100 {
-  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(200, 164, 100, 0.15) !important;
 }
 .admin-dark-shell input,
 .admin-dark-shell textarea,
 .admin-dark-shell select {
-  background-color: #121217 !important;
-  border-color: rgba(255, 243, 61, 0.22) !important;
+  background-color: #141114 !important;
+  border-color: rgba(200, 164, 100, 0.25) !important;
   color: #ffffff !important;
 }

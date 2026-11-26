@@ -49,56 +49,58 @@ export function ThreeHeroCanvas({
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
     camera.position.set(0, 0, variant === "hero" ? 8.5 : 10);
 
-    // Luxury Studio Lighting (Warm Sunbeam Yellow + White Key + Rim)
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.35);
+    // Luxury Maison Studio Lighting (Champagne Gold Key + Ivory Rim + Warm Crimson Fill)
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.25);
     scene.add(ambientLight);
 
-    const keyLight = new THREE.DirectionalLight(0xfff33d, 2.4);
+    const keyLight = new THREE.DirectionalLight(0xf6e6c2, 2.2);
     keyLight.position.set(5, 6, 6);
     scene.add(keyLight);
 
-    const fillLight = new THREE.DirectionalLight(0xffffff, 1.6);
+    const fillLight = new THREE.DirectionalLight(0xffffff, 1.5);
     fillLight.position.set(-6, -3, 5);
     scene.add(fillLight);
 
-    const rimLight = new THREE.PointLight(0xfacc15, 3.2, 24);
+    const rimLight = new THREE.PointLight(0xc10016, 2.8, 24);
     rimLight.position.set(2, 2, 4);
     scene.add(rimLight);
 
     const group = new THREE.Group();
     scene.add(group);
 
-    // Materials: Luxury Polished Yellow Gold, Glossy Pearl White & Obsidian Accent
+    // Materials: Cartier Champagne Gold, Lacquered Crimson & Obsidian Onyx
     const goldMat = new THREE.MeshPhysicalMaterial({
-      color: new THREE.Color(0xfff33d),
-      emissive: new THREE.Color(0x785800),
-      emissiveIntensity: 0.15,
-      metalness: 0.55,
-      roughness: 0.18,
+      color: new THREE.Color(0xc8a464),
+      emissive: new THREE.Color(0x3a2a0a),
+      emissiveIntensity: 0.14,
+      metalness: 0.72,
+      roughness: 0.16,
       clearcoat: 1.0,
-      clearcoatRoughness: 0.08,
+      clearcoatRoughness: 0.06,
     });
 
     const amberMat = new THREE.MeshPhysicalMaterial({
-      color: new THREE.Color(0xf59e0b),
-      metalness: 0.65,
-      roughness: 0.22,
-      clearcoat: 0.9,
+      color: new THREE.Color(0x9e0014),
+      emissive: new THREE.Color(0x3a0007),
+      emissiveIntensity: 0.18,
+      metalness: 0.52,
+      roughness: 0.18,
+      clearcoat: 1.0,
     });
 
     const pearlMat = new THREE.MeshPhysicalMaterial({
-      color: new THREE.Color(0x141418),
-      metalness: 0.72,
+      color: new THREE.Color(0x181518),
+      metalness: 0.75,
       roughness: 0.16,
       clearcoat: 1.0,
       clearcoatRoughness: 0.05,
     });
 
     const wireMat = new THREE.MeshBasicMaterial({
-      color: 0xfff33d,
+      color: 0xc8a464,
       wireframe: true,
       transparent: true,
-      opacity: variant === "hero" ? 0.35 : 0.24,
+      opacity: variant === "hero" ? 0.36 : 0.24,
     });
 
     const meshes: Array<{
@@ -194,8 +196,8 @@ export function ThreeHeroCanvas({
       new THREE.BufferAttribute(positions, 3)
     );
     const particleMat = new THREE.PointsMaterial({
-      color: 0xfff33d,
-      size: 0.085,
+      color: 0xe5c78e,
+      size: 0.075,
       transparent: true,
       opacity: 0.65,
     });

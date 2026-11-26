@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { ThreeHeroCanvas } from "@/components/ThreeHeroCanvas";
 import { Card3D } from "@/components/Card3D";
-import { ShieldCheck, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 export const metadata = {
   title: "Privacy Policy | Samad Expo",
@@ -11,95 +11,92 @@ export const metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="bg-[#060608] samad-hero-grid min-h-screen py-14 sm:py-20 text-white relative overflow-hidden">
-      <ThreeHeroCanvas variant="dark" />
-      <div className="pointer-events-none absolute -top-24 right-0 h-80 w-80 rounded-full bg-[#FFF33D]/15 blur-[120px]" />
+    <div className="bg-[#FAF7F2] min-h-screen text-[#1D1C1C]">
+      <section className="samad-hero-grid border-b border-[#C8A464]/25 pt-14 pb-14 relative overflow-hidden text-white">
+        <ThreeHeroCanvas variant="dark" className="opacity-75" />
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
+          <nav
+            aria-label="Breadcrumb"
+            className="text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-400 flex items-center gap-2"
+          >
+            <Link href="/" className="hover:text-[#C8A464] transition">
+              Home
+            </Link>
+            <span>/</span>
+            <span className="text-[#C8A464]">Privacy Policy</span>
+          </nav>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 relative z-10">
-        <nav
-          aria-label="Breadcrumb"
-          className="text-xs text-zinc-400 flex items-center gap-2"
-        >
-          <Link href="/" className="hover:text-[#FFF33D] font-semibold transition">
-            Home
-          </Link>
-          <span>/</span>
-          <span className="text-[#FFF33D] font-bold">Privacy Policy</span>
-        </nav>
-
-        <div className="space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FFF33D]/10 border border-[#FFF33D]/30 text-[#FFF33D] text-xs font-bold uppercase tracking-wider">
-            <ShieldCheck className="w-3.5 h-3.5" />
-            <span>Data Protection &amp; Governance</span>
+          <div className="text-[10px] font-bold uppercase tracking-[0.34em] text-[#C8A464]">
+            Legal Area &middot; Governance
           </div>
-
-          <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight">
-            Privacy <span className="samad-highlight">Policy</span>
+          <h1 className="text-3xl sm:text-5xl font-bold uppercase tracking-[0.14em] text-white">
+            Privacy Policy
           </h1>
-
-          <p className="text-xs text-zinc-400 font-medium">
+          <p className="font-editorial-serif italic text-sm text-zinc-300">
             Effective Date: November 2026 &bull; Samad Expo
           </p>
         </div>
+      </section>
 
-        <Card3D intensity={4}>
-          <div className="samad-card p-8 sm:p-10 space-y-8 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t-4 border-t-[#FFF33D]">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+        <Card3D intensity={3}>
+          <div className="samad-card p-8 sm:p-12 space-y-8 font-editorial-serif text-base text-[#595959] leading-relaxed border-t-2 border-t-[#C10016]">
             <section className="space-y-3">
-              <h2 className="text-base sm:text-lg font-extrabold text-[#FFF33D]">
+              <h2 className="font-sans text-sm font-bold uppercase tracking-[0.18em] text-[#1D1C1C]">
                 1. Information We Collect
               </h2>
               <p>
-                Samad Expo collects only the minimum personal information necessary to respond to inquiries, operate user hosting accounts, and maintain platform performance:
+                Samad Expo collects only the minimal personal information required to respond to advisory inquiries, operate hosting accounts, and maintain platform performance:
               </p>
-              <ul className="space-y-2 pl-2">
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#FFF33D] shrink-0 mt-0.5" />
+              <ul className="space-y-2.5 pl-1">
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#C10016] shrink-0 mt-1 stroke-[1.5]" />
                   <span>
-                    <strong className="text-white">Account &amp; Contact Details:</strong> Name, email address, optional phone number, and organization submitted during registration or contact inquiries.
+                    <strong className="text-[#1D1C1C]">Account &amp; Contact Details:</strong> Name, email address, optional telephone, and organization provided during sign-up or inquiry forms.
                   </span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#FFF33D] shrink-0 mt-0.5" />
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#C10016] shrink-0 mt-1 stroke-[1.5]" />
                   <span>
-                    <strong className="text-white">Uploaded Static Assets:</strong> Website files uploaded intentionally by registered users for static hosting under `/sites/`.
+                    <strong className="text-[#1D1C1C]">Hosted Static Packages:</strong> Website assets uploaded voluntarily by authenticated users under static hosting routes.
                   </span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#FFF33D] shrink-0 mt-0.5" />
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#C10016] shrink-0 mt-1 stroke-[1.5]" />
                   <span>
-                    <strong className="text-white">Basic Usage Metrics:</strong> Anonymized page-view paths used strictly to monitor uptime and platform health.
+                    <strong className="text-[#1D1C1C]">Platform Diagnostics:</strong> Anonymized route-level traffic metrics used strictly to ensure stability.
                   </span>
                 </li>
               </ul>
             </section>
 
-            <section className="space-y-3 pt-6 border-t border-zinc-800">
-              <h2 className="text-base sm:text-lg font-extrabold text-[#FFF33D]">
-                2. How We Use Information
+            <section className="space-y-3 pt-6 border-t border-[#E5DFD7]">
+              <h2 className="font-sans text-sm font-bold uppercase tracking-[0.18em] text-[#1D1C1C]">
+                2. How Information Is Used
               </h2>
               <p>
-                Submitted information is used solely to fulfill hosting deployments, respond to business inquiries, and provide support. We never sell or rent user data to third parties.
+                Submitted information is utilized solely to deliver website hosting, respond to project inquiries, and preserve system integrity. Personal data is never sold or rented.
               </p>
             </section>
 
-            <section className="space-y-3 pt-6 border-t border-zinc-800">
-              <h2 className="text-base sm:text-lg font-extrabold text-[#FFF33D]">
+            <section className="space-y-3 pt-6 border-t border-[#E5DFD7]">
+              <h2 className="font-sans text-sm font-bold uppercase tracking-[0.18em] text-[#1D1C1C]">
                 3. Security &amp; Access Controls
               </h2>
               <p>
-                User accounts, sessions, and administrative APIs are protected by cryptographic password hashing, server-side authorization checks, rate limiting, and hardened HTTP security headers.
+                User accounts, sessions, and API endpoints are protected by PBKDF2 password hashing, server-side authorization checks, token-bucket rate limiting, and hardened HTTP security headers.
               </p>
             </section>
 
-            <section className="space-y-3 pt-6 border-t border-zinc-800">
-              <h2 className="text-base sm:text-lg font-extrabold text-[#FFF33D]">
-                4. Contact Privacy Desk
+            <section className="space-y-3 pt-6 border-t border-[#E5DFD7]">
+              <h2 className="font-sans text-sm font-bold uppercase tracking-[0.18em] text-[#1D1C1C]">
+                4. Privacy Correspondence
               </h2>
               <p>
-                To request access, correction, or deletion of your information, email{" "}
+                To request review, correction, or removal of your data, write to{" "}
                 <a
                   href="mailto:officialaadhakh@gmail.com"
-                  className="text-[#FFF33D] font-bold underline decoration-[#FFF33D]/60 decoration-2 hover:text-white"
+                  className="italic text-[#C10016] underline"
                 >
                   officialaadhakh@gmail.com
                 </a>

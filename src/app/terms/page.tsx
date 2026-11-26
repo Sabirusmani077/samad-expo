@@ -2,85 +2,81 @@ import React from "react";
 import Link from "next/link";
 import { ThreeHeroCanvas } from "@/components/ThreeHeroCanvas";
 import { Card3D } from "@/components/Card3D";
-import { FileText } from "lucide-react";
 
 export const metadata = {
-  title: "Terms and Conditions | Samad Expo",
+  title: "Terms of Use | Samad Expo",
   description:
-    "Terms and Conditions governing the use of Samad Expo website hosting and digital tools.",
+    "Terms of Use governing Samad Expo website hosting and digital tools.",
 };
 
 export default function TermsPage() {
   return (
-    <div className="bg-[#060608] samad-hero-grid min-h-screen py-14 sm:py-20 text-white relative overflow-hidden">
-      <ThreeHeroCanvas variant="dark" />
-      <div className="pointer-events-none absolute -top-24 right-0 h-80 w-80 rounded-full bg-[#FFF33D]/15 blur-[120px]" />
+    <div className="bg-[#FAF7F2] min-h-screen text-[#1D1C1C]">
+      <section className="samad-hero-grid border-b border-[#C8A464]/25 pt-14 pb-14 relative overflow-hidden text-white">
+        <ThreeHeroCanvas variant="dark" className="opacity-75" />
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
+          <nav
+            aria-label="Breadcrumb"
+            className="text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-400 flex items-center gap-2"
+          >
+            <Link href="/" className="hover:text-[#C8A464] transition">
+              Home
+            </Link>
+            <span>/</span>
+            <span className="text-[#C8A464]">Terms of Use</span>
+          </nav>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 relative z-10">
-        <nav
-          aria-label="Breadcrumb"
-          className="text-xs text-zinc-400 flex items-center gap-2"
-        >
-          <Link href="/" className="hover:text-[#FFF33D] font-semibold transition">
-            Home
-          </Link>
-          <span>/</span>
-          <span className="text-[#FFF33D] font-bold">Terms &amp; Conditions</span>
-        </nav>
-
-        <div className="space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FFF33D]/10 border border-[#FFF33D]/30 text-[#FFF33D] text-xs font-bold uppercase tracking-wider">
-            <FileText className="w-3.5 h-3.5" />
-            <span>Legal Agreement</span>
+          <div className="text-[10px] font-bold uppercase tracking-[0.34em] text-[#C8A464]">
+            Legal Area &middot; Terms
           </div>
-
-          <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight">
-            Terms and <span className="samad-highlight">Conditions</span>
+          <h1 className="text-3xl sm:text-5xl font-bold uppercase tracking-[0.14em] text-white">
+            Terms and Conditions
           </h1>
-
-          <p className="text-xs text-zinc-400 font-medium">
+          <p className="font-editorial-serif italic text-sm text-zinc-300">
             Effective Date: November 2026 &bull; Samad Expo
           </p>
         </div>
+      </section>
 
-        <Card3D intensity={4}>
-          <div className="samad-card p-8 sm:p-10 space-y-8 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t-4 border-t-[#FFF33D]">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+        <Card3D intensity={3}>
+          <div className="samad-card p-8 sm:p-12 space-y-8 font-editorial-serif text-base text-[#595959] leading-relaxed border-t-2 border-t-[#C10016]">
             <section className="space-y-3">
-              <h2 className="text-base sm:text-lg font-extrabold text-[#FFF33D]">
+              <h2 className="font-sans text-sm font-bold uppercase tracking-[0.18em] text-[#1D1C1C]">
                 1. General Use
               </h2>
               <p>
-                By accessing Samad Expo, our static hosting platform, and our live digital utilities, you agree to use the service lawfully and provide accurate information during registration or inquiry submission.
+                By accessing Samad Expo, static website hosting routes, and browser utilities, you agree to use platform features lawfully and supply accurate registration information.
               </p>
             </section>
 
-            <section className="space-y-3 pt-6 border-t border-zinc-800">
-              <h2 className="text-base sm:text-lg font-extrabold text-[#FFF33D]">
+            <section className="space-y-3 pt-6 border-t border-[#E5DFD7]">
+              <h2 className="font-sans text-sm font-bold uppercase tracking-[0.18em] text-[#1D1C1C]">
                 2. Intellectual Property
               </h2>
               <p>
-                The Samad Expo brand, logo, and platform code belong to Samad Expo. Creators who deploy static websites retain rights to their own uploaded content while granting Samad Expo permission to serve those assets.
+                Samad Expo architecture, trademarks, and platform code belong to Samad Expo. Creators who deploy static packages retain rights over their own submitted content while authorizing hosting delivery.
               </p>
             </section>
 
-            <section className="space-y-3 pt-6 border-t border-zinc-800">
-              <h2 className="text-base sm:text-lg font-extrabold text-[#FFF33D]">
+            <section className="space-y-3 pt-6 border-t border-[#E5DFD7]">
+              <h2 className="font-sans text-sm font-bold uppercase tracking-[0.18em] text-[#1D1C1C]">
                 3. Acceptable Hosting Policy
               </h2>
               <p>
-                Users may not upload phishing pages, malware, executable payloads, or unlawful content to the Samad Expo hosting service. Violations result in immediate suspension.
+                Deceptive pages, malicious payloads, executable binaries, or unlawful assets are strictly prohibited across hosting routes and are subject to immediate removal.
               </p>
             </section>
 
-            <section className="space-y-3 pt-6 border-t border-zinc-800">
-              <h2 className="text-base sm:text-lg font-extrabold text-[#FFF33D]">
-                4. Contact Legal Desk
+            <section className="space-y-3 pt-6 border-t border-[#E5DFD7]">
+              <h2 className="font-sans text-sm font-bold uppercase tracking-[0.18em] text-[#1D1C1C]">
+                4. Legal Desk
               </h2>
               <p>
-                For questions regarding these terms, write to{" "}
+                Direct inquiries concerning these terms to{" "}
                 <a
                   href="mailto:officialaadhakh@gmail.com"
-                  className="text-[#FFF33D] font-bold underline decoration-[#FFF33D]/60 decoration-2 hover:text-white"
+                  className="italic text-[#C10016] underline"
                 >
                   officialaadhakh@gmail.com
                 </a>

@@ -12,8 +12,8 @@ interface Card3DProps {
 export function Card3D({
   children,
   className = "",
-  intensity = 7,
-  glowColor = "rgba(255, 243, 61, 0.28)",
+  intensity = 6,
+  glowColor = "rgba(200, 164, 100, 0.22)",
 }: Card3DProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState(
@@ -40,7 +40,7 @@ export function Card3D({
     setTransform(
       `perspective(1100px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(
         2
-      )}deg) scale3d(1.015, 1.015, 1.015)`
+      )}deg) scale3d(1.012, 1.012, 1.012)`
     );
     setSheen({ x: px * 100, y: py * 100, opacity: 1 });
   };
@@ -61,15 +61,15 @@ export function Card3D({
         transform,
         transformStyle: "preserve-3d",
       }}
-      className={`relative transition-transform duration-300 ease-out will-change-transform ${className}`}
+      className={`relative h-full transition-transform duration-300 ease-out will-change-transform ${className}`}
     >
-      {/* Dynamic 3D Specular Gold/White Sheen */}
+      {/* Dynamic 3D Specular Champagne-Gold / Satin Sheen */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-300 z-20"
         style={{
           opacity: sheen.opacity,
-          background: `radial-gradient(420px circle at ${sheen.x}% ${sheen.y}%, ${glowColor}, transparent 60%)`,
+          background: `radial-gradient(420px circle at ${sheen.x}% ${sheen.y}%, ${glowColor}, transparent 62%)`,
         }}
       />
       {children}
